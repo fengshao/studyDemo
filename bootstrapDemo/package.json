@@ -1,0 +1,8 @@
+{
+  "name": "bootstrapDemo",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "3.3.3"
+  }
+}
