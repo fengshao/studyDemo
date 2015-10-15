@@ -3,23 +3,59 @@
  */
 var sass = require('node-sass');
 var path = require("path");
+var fs = require("fs");
 var baseDir = path.resolve(__dirname, "../style");
-var lessFileReg = /\/bootstrap\/style(\/[\w\-\.\/]+)\.css(?:\?.*)?/;
-function devLessHandler(req, res, next) {
-	console.log("test:" + req.url);
-	//var ret = req.url.match(lessFileReg);
+var scssFileReg = /\/style(\/[\w\-\.\/]+)\.css(?:\?.*)?/;
 
-	if (req.url.lastIndexOf("test.css") == -1) {
+//生成sourcemap的配置
+function getSourceMapOptions(ret) {
+	var matches = ret.slice();
+	matches[1] = matches[1].replace(/^\//, '');
+	var scssFileRelativePath = matches[1] + '.scss';
+	//G:\\portal\\public\\styles\\page\\home\\search.scss
+	var sourceMapInputFilename = path.resolve(baseDir, scssFileRelativePath);
+	//search.css
+	var sourceMapOutputFilename = path.basename(sourceMapInputFilename).replace(/\.scss$/, '.css');
+	//G:\\portal\\public\\styles\\page\\home\\search.css.map
+	var sourceMapFullFilename = sourceMapInputFilename.replace(/\.scss$/, '.css.map');
+	//search.css.map
+	var sourceMapFilename = path.basename(sourceMapFullFilename);
+	//G:\\portal\\public\\styles   css根目录
+	var sourceMapBasepath = baseDir;
+	// ../../styles    当前目录到css根目录的对应关系
+	var sourceMapRootpath = path.relative(path.dirname(sourceMapInputFilename), baseDir);
+	var sourceMapFileInline = true;
+	var sourceMapOptions = {
+		sourceMapInputFilename: sourceMapInputFilename,
+		sourceMapOutputFilename: sourceMapOutputFilename,
+		sourceMapFullFilename: sourceMapFullFilename,
+		sourceMapFilename: sourceMapFilename,
+		sourceMapBasepath: sourceMapBasepath,
+		sourceMapRootpath: sourceMapRootpath,
+		sourceMapFileInline: sourceMapFileInline
+	};
+	return sourceMapOptions;
+}
+
+function devScssHandler(req, res, next) {
+	var ret = req.url.match(scssFileReg);
+	if (!ret) {
 		next();
 		return;
 	}
-	var lessFilePath = req.url.replace(".css", ".scss");
-	console.log("lessFilePath:" + lessFilePath.replace(".css", ".scss"));
-	console.log("baseDir:" + baseDir);
+	var scssFilePath = path.join(baseDir, ret[1] + '.scss');
+	if (!fs.existsSync(scssFilePath)) {
+		next();
+		return;
+	}
+	var sourceMapOptions = getSourceMapOptions(ret);
 	sass.render({
-		file: baseDir + lessFilePath.substring(lessFilePath.lastIndexOf("/")),
-		includePaths: ['lib/', 'mod/', 'style/']
-		//outputStyle: 'compressed'
+		paths: ['.', baseDir],
+		file: scssFilePath,
+		includePaths: ['lib/', 'mod/', 'style/'],
+		compress: false,
+		//outputStyle: 'compressed',
+		sourceComments: sourceMapOptions
 	}, function (error, result) { // node-style callback from v3.0.0 onwards
 		if (error) {
 			console.log("error:" + error.status); // used to be "code" in v2x and below
@@ -34,5 +70,5 @@ function devLessHandler(req, res, next) {
 }
 //返回一个app.use的方法
 module.exports = function () {
-	return devLessHandler;
+	return devScssHandler;
 };
