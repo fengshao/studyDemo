@@ -50,11 +50,10 @@ function devScssHandler(req, res, next) {
 	}
 	var sourceMapOptions = getSourceMapOptions(ret);
 	sass.render({
-		paths: ['.', baseDir],
 		file: scssFilePath,
-		includePaths: ['lib/', 'mod/', 'style/'],
+		includePaths: ['style/'],
 		compress: false,
-		//outputStyle: 'compressed',
+		outputStyle: 'expanded',
 		sourceComments: sourceMapOptions
 	}, function (error, result) { // node-style callback from v3.0.0 onwards
 		if (error) {

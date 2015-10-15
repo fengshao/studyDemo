@@ -1,15 +1,16 @@
-nav {
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.div-contain {
+  height: height(2);
+  width: width(2);
+  @include left;
+  .extend-div-con1 {
+    @extend .div-con;
+    background-color: grayscale($color); // #cc3
   }
-
-  li { display: inline-block; }
-
-  a {
-    display: block;
-    padding: 6px 12px;
-    text-decoration: none;
+  .div-contain1 {
+    height: height(0.5);
+    width: width(0.5);
+    @include left;
+    background-color: complement($color); // #3333cc
   }
+  background-color: $color;
 }

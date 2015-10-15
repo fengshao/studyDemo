@@ -1,7 +1,65 @@
-$fontStack:    Helvetica, sans-serif;
+@charset "UTF-8";
+/*!
+　　　　重要注释！
+　　*/
+
+$fontStack: Helvetica, sans-serif;
 $primaryColor: #333;
-@import "test1";
+$color: #cc3;
+$width: 100px;
+$height: 100px;
+
+@mixin left {
+  float: left;
+  margin-left: 10px;
+}
+
+@mixin rounded($vert, $horz, $radius: 10px) {
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-#{$vert}#{$horz}-radius: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+@function width($n) {
+  @return $width * $n;
+}
+
+@function height($n) {
+  @return $height * $n;
+}
+
 body {
   font-family: $fontStack;
   color: $primaryColor;
 }
+
+//单行注释 只保留在SASS源文件中，编译后被省略。
+/* 标准注释 */
+.div-con {
+  @include rounded(top, left);
+  @include left;
+  border: {
+    color: #2B1B1B;
+    width: 1px;
+    style: solid;
+  }
+  height: height(1);
+  width: width(1);
+  background: {
+    color: lighten($color, 10%); //#d6d65c
+  }
+}
+
+.extend-div-con {
+  @extend .div-con;
+  @include rounded(top, right);
+  background-color: darken($color, 10%); // #a3a329
+  &:hover {
+    background: {
+      color: #080808;
+    }
+  }
+}
+
+@import "test1";
+
