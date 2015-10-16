@@ -11,6 +11,9 @@
     width: width(0.5);
     @include left;
     background-color: complement($color); // #3333cc
+    color: $primaryColor;
   }
   background-color: $color;
+
+  text-align:center;
 }

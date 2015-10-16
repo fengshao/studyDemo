@@ -49,10 +49,10 @@ function devScssHandler(req, res, next) {
 		return;
 	}
 	var sourceMapOptions = getSourceMapOptions(ret);
+	console.log("scssFilePath:" + scssFilePath);
 	sass.render({
 		file: scssFilePath,
-		includePaths: ['style/'],
-		compress: false,
+		includePaths: ['style/', ''],
 		outputStyle: 'expanded',
 		sourceComments: sourceMapOptions
 	}, function (error, result) { // node-style callback from v3.0.0 onwards

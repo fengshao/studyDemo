@@ -12,7 +12,7 @@ app.set('port',9192);
 
 
 app.use(express.compress());
-app.use(sass_handler());
+//app.use(sass_handler());
 app.use('/', express.static(__dirname));
 app.use(express.urlencoded());
 app.use(express.json());

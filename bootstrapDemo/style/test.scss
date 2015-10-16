@@ -8,7 +8,6 @@ $primaryColor: #333;
 $color: #cc3;
 $width: 100px;
 $height: 100px;
-
 @mixin left {
   float: left;
   margin-left: 10px;
@@ -36,7 +35,9 @@ body {
 //单行注释 只保留在SASS源文件中，编译后被省略。
 /* 标准注释 */
 .div-con {
-  @include rounded(top, left);
+  $primaryColor: #B74A4A;
+  color: $primaryColor;
+  @include rounded(top, left ,5px);
   @include left;
   border: {
     color: #2B1B1B;
@@ -51,6 +52,7 @@ body {
 }
 
 .extend-div-con {
+  color: $primaryColor;
   @extend .div-con;
   @include rounded(top, right);
   background-color: darken($color, 10%); // #a3a329
