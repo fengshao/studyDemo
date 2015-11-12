@@ -1,12 +1,31 @@
 <!doctype html>
-<html ng-app lang="en">
+<html ng-app="webApp" lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="../script/angular.js"></script>
+    <title>{{title}}</title>
+
 </head>
 <body>
-Your name: <input value="test"  type="text" ng-model="yourname" placeholder="Worlds" />
-<hr>
-Hello {{yourname || 'World'}}!
+
+<script src="../public/vendors/angular/angular.js"></script>
+
+<script src="../public/vendors/angular-route/angular-route.min.js"></script>
+<script src="../public/vendors/angular-cookie/angular-cookie.min.js"></script>
+<script src="../public/vendors/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="../public/vendors/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+<script src="../public/scripts/angular/app.js"></script>
+
+<script src="../public/scripts/angular/controllers/InviteDetailController.js"></script>
+<script src="../public/scripts/angular/controllers/UserController.js"></script>
+
+<div id="pageframe">
+    <div id="W_main" class="W_main">
+        <section class="left-menu" id="left-menu" ng-include="'left.html'"></section>
+        <section class="right-cont scroll-bar" id="right-cont">
+            <div class="content" ng-view=""></div>
+        </section>
+    </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<div>
+    <div>{{test1}}</div>
+    <input type="text" class="form-control" ng-model="keyword" ng-change="showUserList(true)"/>
+    <table class="table table-bordered" tablesort="accountName asc" orderby="orderby(order)" >
+        <thead>
+        <tr>
+            <td>序号</td>
+            <td class="sort" sort="payId"><div class="h">ID</div></td>
+            <td class="sort" sort="payId"><div class="h">NAME</div></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tenant in tenantsList">
+            <td>{{$index + 1 +  (currentPage - 1) * itemsPerPage }}</td>
+            <td>{{tenant.id}}</td>
+            <td>{{tenant.name}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="visibility: {{totalItems > itemsPerPage ? 'visible' : 'hidden'}}">
+        <pagination total-items="totalItems" ng-model="currentPage" max-size="maxPageSize" class="pagination-sm" boundary-links="true" rotate="false" ng-change="showUserList()"></pagination>
+    </div>
+</div>
