@@ -11,6 +11,7 @@ angular.module('webApp').controller('UserController', ['$routeParams', '$filter'
 	$scope.maxPageSize = 10;
 	//每页显示多少条
 	$scope.itemsPerPage = 10;
+	$scope.pageClass = 'test2';
 	//一共多少条
 	$scope.totalItems;
 	var dataList = [];

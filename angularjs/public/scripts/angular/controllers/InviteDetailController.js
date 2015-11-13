@@ -11,5 +11,6 @@ angular.module('webApp').controller('InviteDetailController',['$routeParams','$r
     //隐藏 用户、日志量、操作日志
     $rootScope.licensekey = '';
     $scope.test1 = "test1";
+    $scope.pageClass = 'test1';
 
 }]);

@@ -5,25 +5,23 @@
     <title>{{title}}</title>
 
 </head>
-<body>
-
+<body class="ng-scope">
+<link type="text/css" rel="stylesheet" href="../public/style/test.css" />
 <script src="../public/vendors/angular/angular.js"></script>
-
+<script src="../public/vendors/angular-animate/angular-animate.js"></script>
 <script src="../public/vendors/angular-route/angular-route.min.js"></script>
 <script src="../public/vendors/angular-cookie/angular-cookie.min.js"></script>
 <script src="../public/vendors/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="../public/vendors/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-
 <script src="../public/scripts/angular/app.js"></script>
 
 <script src="../public/scripts/angular/controllers/InviteDetailController.js"></script>
 <script src="../public/scripts/angular/controllers/UserController.js"></script>
-
 <div id="pageframe">
     <div id="W_main" class="W_main">
         <section class="left-menu" id="left-menu" ng-include="'left.html'"></section>
         <section class="right-cont scroll-bar" id="right-cont">
-            <div class="content" ng-view=""></div>
+            <div class="content {{ pageClass }}" ng-view=""></div>
         </section>
     </div>
 </div>

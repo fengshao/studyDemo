@@ -1,0 +1,116 @@
+.left-menu {
+    width: 200px;
+    float: left;
+}
+
+.right-cont {
+    margin-left: 200px;
+}
+
+.test1 {
+    height: 1500px;
+    background-color: #419641;
+}
+
+.test2 {
+    height: 1500px;
+    background-color: #990000;
+}
+
+.test11, .test22 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+
+}
+
+/* BASE STYLES
+============================================================================= */
+html {
+    overflow-y: hidden;
+}
+
+/* ANIMATIONS
+============================================================================= */
+
+.page.ng-leave {
+    z-index: 9999;
+}
+
+.page.ng-enter {
+    z-index: 8888;
+}
+
+/* page specific animations ------------------------ */
+
+/* home -------------------------- */
+.test1.ng-leave {
+    -webkit-animation: scaleDown .7s ease both;
+    animation: scaleDown .7s ease both;
+}
+
+.test1.ng-enter {
+    -webkit-animation: scaleUpDown .5s ease both;
+    animation: scaleUpDown .5s ease both;
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+
+/* about ------------------------ */
+.test2.ng-leave {
+    -webkit-animation: scaleDown .7s ease both;
+    animation: scaleDown .7s ease both;
+}
+
+.test2.ng-enter {
+    -webkit-animation: scaleUpDown .5s ease both;
+    animation: scaleUpDown .5s ease both;
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+
+@-webkit-keyframes scaleDown {
+    from {
+    }
+    to {
+        opacity: 0;
+        -webkit-transform: scale(.8);
+    }
+}
+
+@keyframes scaleDown {
+    from {
+    }
+    to {
+        opacity: 0;
+        -webkit-transform: scale(.8);
+        transform: scale(.8);
+    }
+}
+
+@-webkit-keyframes scaleUpDown {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(1.2);
+    }
+}
+
+@keyframes scaleUpDown {
+    from {
+        opacity: 0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}

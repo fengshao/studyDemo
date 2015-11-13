@@ -2,6 +2,7 @@ angular.module('webApp', [
 	'ngRoute',
 	'ngSanitize',
 	'ngLocale',
+	'ngAnimate',
 	'ui.bootstrap'
 ]).factory('SafeApply', [function () {
 	return function ($scope, fn) {

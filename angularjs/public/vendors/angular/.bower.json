@@ -1,15 +1,15 @@
 {
   "name": "angular",
-  "version": "1.2.6",
+  "version": "1.2.13",
   "main": "./angular.js",
   "dependencies": {},
   "_release": "1.2.6",
   "_resolution": {
     "type": "version",
-    "tag": "v1.2.6",
+    "tag": "v1.2.13",
     "commit": "74ab84326c3ddf32fa49f36c9050b92382d1b5cc"
   },
   "_source": "git://shanhai.aliyun-inc.com:8002/angular",
-  "_target": "1.2.6",
+  "_target": "1.2.13",
   "_originalSource": "angular"
 }
