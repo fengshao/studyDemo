@@ -1,7 +1,7 @@
 /**
  * 用户管理
  */
-angular.module('webApp').controller('UserController', ['$routeParams', '$filter', '$rootScope', '$scope', '$q', function ($routeParams, $filter, $rootScope, $scope, $q) {
+angular.module('webApp').controller('UserController', ['$routeParams', '$filter', '$rootScope', '$scope', '$q', 'UserModel', function ($routeParams, $filter, $rootScope, $scope, $q, $UserModel) {
 	//页面标题
 	$rootScope.title = '用户管理';
 	$scope.test1 = "test2";
@@ -36,16 +36,20 @@ angular.module('webApp').controller('UserController', ['$routeParams', '$filter'
 
 	tableData();
 	function tableData() {
-		for (var i = 0; i < 30; i++) {
-			var tdData = {
-				id: "",
-				name: ""
-			};
-			tdData.id = i;
-			tdData.name = "name" + i;
-			dataList.push(tdData);
-		}
-		showUserList();
+		//for (var i = 0; i < 30; i++) {
+		//	var tdData = {
+		//		id: "",
+		//		name: ""
+		//	};
+		//	tdData.id = i;
+		//	tdData.name = "name" + i;
+		//	dataList.push(tdData);
+		//}
+
+		$UserModel.getData().then(function (ret) {
+			dataList = ret.records;
+			showUserList();
+		});
 	}
 
 	//暴露显示用户列表的方法

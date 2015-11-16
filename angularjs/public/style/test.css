@@ -7,25 +7,24 @@
     margin-left: 200px;
 }
 
+.content{
+    width: 500px;
+
+}
+
 .test1 {
-    height: 1500px;
+    position: absolute;
+    height: 500px;
     background-color: #419641;
 }
 
 .test2 {
-    height: 1500px;
+    position: absolute;;
+    height: 500px;
     background-color: #990000;
 }
 
 .test11, .test22 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    overflow: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -103,14 +102,14 @@ html {
 @-webkit-keyframes scaleUpDown {
     from {
         opacity: 0;
-        -webkit-transform: scale(1.2);
+        -webkit-transform: scale(1);
     }
 }
 
 @keyframes scaleUpDown {
     from {
         opacity: 0;
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2);
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
 }

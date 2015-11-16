@@ -1,19 +1,21 @@
 <div class="test22">
     <div>{{test1}}</div>
-    <input type="text" class="form-control" ng-model="keyword" ng-change="showUserList(true)"/>
+    <input type="text" class="form-control" ng-model="keyword" />
     <table class="table table-bordered" tablesort="accountName asc" orderby="orderby(order)" >
         <thead>
         <tr>
             <td>序号</td>
-            <td class="sort" sort="payId"><div class="h">ID</div></td>
-            <td class="sort" sort="payId"><div class="h">NAME</div></td>
+            <td class="sort" sort="payId"><div class="h">Name</div></td>
+            <td class="sort" sort="payId"><div class="h">City</div></td>
+            <td class="sort" sort="payId"><div class="h">Country</div></td>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="tenant in tenantsList">
+        <tr ng-repeat="tenant in tenantsList | orderBy: '-Name' | filter: keyword">
             <td>{{$index + 1 +  (currentPage - 1) * itemsPerPage }}</td>
-            <td>{{tenant.id}}</td>
-            <td>{{tenant.name}}</td>
+            <td>{{tenant.Name | uppercase }}</td>
+            <td>{{tenant.City | lowercase}}</td>
+            <td>{{tenant.Country}}</td>
         </tr>
         </tbody>
     </table>
