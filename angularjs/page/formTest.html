@@ -1,0 +1,24 @@
+<div class="test22">
+    <form name="myForm" >
+        <input type="text" name="name" ng-model="name" required ng-minlength="5" ng-maxlength="20"/>
+        <input type="text" name="email" ng-model="email" required
+        ng-pattern="/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/"/>
+
+
+        <p>用户名:<br>
+            <input type="text" name="user" ng-model="user" required>
+            <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+             <span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+            </span>
+        </p>
+
+        <p>邮箱:<br>
+            <input type="email" name="email" ng-model="email" required>
+            <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                <span ng-show="myForm.email.$error.required">邮箱是必须的。</span>
+                <span ng-show="myForm.email.$error.email">非法的邮箱地址。</span>
+            </span>
+        </p>
+    </form>
+    <button ng-click="getFormStatus()">查看表单状态</button>
+</div>

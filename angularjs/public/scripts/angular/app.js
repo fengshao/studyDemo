@@ -14,8 +14,12 @@ angular.module('webApp', [
 			templateUrl: '../page/test2.html',
 			controller: 'UserController'
 		})
+		.when('/formTest', {
+			templateUrl: '../page/formTest.html',
+			controller: 'FormTestController'
+		})
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/user'
 		});
 
 	$httpProvider.defaults.timeout = 180 * 1000;

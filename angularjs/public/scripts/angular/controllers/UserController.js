@@ -1,7 +1,7 @@
 /**
  * 用户管理
  */
-angular.module('webApp').controller('UserController', ['$routeParams', '$filter', '$rootScope', '$scope', '$q', 'UserModel', function ($routeParams, $filter, $rootScope, $scope, $q, $UserModel) {
+angular.module('webApp').controller('UserController', ['$filter', '$rootScope', '$scope', 'UserModel', function ( $filter, $rootScope, $scope, $UserModel) {
 	//页面标题
 	$rootScope.title = '用户管理';
 	$scope.test1 = "test2";
