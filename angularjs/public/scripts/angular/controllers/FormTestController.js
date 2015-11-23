@@ -10,7 +10,7 @@ angular.module('webApp').controller('FormTestController', ['$rootScope', '$scope
 	$scope.email = 'taet@qq.com';
 
 	$scope.getFormStatus = function () {
-		console.log($scope.form);
+		console.log($scope.myForm);
 	}
 
 }]);
