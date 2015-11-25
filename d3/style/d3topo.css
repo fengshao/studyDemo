@@ -1,0 +1,59 @@
+.node-dot {
+    fill: orange;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.node {
+    font: 14px sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+#ins02 .node {
+    cursor: pointer;
+}
+
+#ins02 .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+#ins02 .node text {
+    font: 14px sans-serif;
+}
+
+#ins02 .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+#ins02 .lvl0 {
+    font-weight: bold;
+}
+
+#ins02 .lvl1 {
+    font-weight: bold;
+    font-style: italic;;
+}
+
+body {
+    font: 10px sans-serif;
+}
+
+
+.border {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: #aaa;
+}
+
+.node {
+    stroke: #fff;
+}
