@@ -1,8 +1,8 @@
 /**
  * Created by xiaojinfeng on  2015/11/25 17:01 .
  */
-var margin = {top: 140, right: 10, bottom: 140, left: 10},
-	width = 240 - margin.left - margin.right,
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+	width = 700 - margin.left - margin.right,
 	height = 500 - margin.top - margin.bottom;
 
 var orientations = {
@@ -14,37 +14,37 @@ var orientations = {
 		y: function (d) {
 			return d.y;
 		}
-	},
-	"right-to-left": {
-		size: [height, width],
-		x: function (d) {
-			return width - d.y;
-		},
-		y: function (d) {
-			return d.x;
-		}
-	},
-	"bottom-to-top": {
-		size: [width, height],
-		x: function (d) {
-			return d.x;
-		},
-		y: function (d) {
-			return height - d.y;
-		}
-	},
-	"left-to-right": {
-		size: [height, width],
-		x: function (d) {
-			return d.y;
-		},
-		y: function (d) {
-			return d.x;
-		}
+	//},
+	//"right-to-left": {
+	//	size: [height, width],
+	//	x: function (d) {
+	//		return width - d.y;
+	//	},
+	//	y: function (d) {
+	//		return d.x;
+	//	}
+	//},
+	//"bottom-to-top": {
+	//	size: [width, height],
+	//	x: function (d) {
+	//		return d.x;
+	//	},
+	//	y: function (d) {
+	//		return height - d.y;
+	//	}
+	//},
+	//"left-to-right": {
+	//	size: [height, width],
+	//	x: function (d) {
+	//		return d.y;
+	//	},
+	//	y: function (d) {
+	//		return d.x;
+	//	}
 	}
 };
 
-var svg = d3.select("#ins03").selectAll("svg")
+var svg = d3.select("#ins03").selectAll("#ins03 svg")
 	.data(d3.entries(orientations))
 	.enter().append("svg")
 	.attr("width", width + margin.left + margin.right)
@@ -67,7 +67,6 @@ svg.append("text")
 
 d3.json('../script/user-defunid/json.php', function (error, root) {
 	if (error) throw error;
-
 	svg.each(function (orientation) {
 		var svg = d3.select(this),
 			o = orientation.value;
