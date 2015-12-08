@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * Created by jinfeng on 2015/10/14.
  */
 var sass = require('node-sass');
@@ -7,7 +7,7 @@ var fs = require("fs");
 var baseDir = path.resolve(__dirname, "../style");
 var scssFileReg = /\/style(\/[\w\-\.\/]+)\.css(?:\?.*)?/;
 
-//Éú³ÉsourcemapµÄÅäÖÃ
+//ç”Ÿæˆsourcemapçš„é…ç½®
 function getSourceMapOptions(ret) {
 	var matches = ret.slice();
 	matches[1] = matches[1].replace(/^\//, '');
@@ -20,9 +20,9 @@ function getSourceMapOptions(ret) {
 	var sourceMapFullFilename = sourceMapInputFilename.replace(/\.scss$/, '.css.map');
 	//search.css.map
 	var sourceMapFilename = path.basename(sourceMapFullFilename);
-	//G:\\portal\\public\\styles   css¸ùÄ¿Â¼
+	//G:\\portal\\public\\styles   cssæ ¹ç›®å½•
 	var sourceMapBasepath = baseDir;
-	// ../../styles    µ±Ç°Ä¿Â¼µ½css¸ùÄ¿Â¼µÄ¶ÔÓ¦¹ØÏµ
+	// ../../styles    å½“å‰ç›®å½•åˆ°cssæ ¹ç›®å½•çš„å¯¹åº”å…³ç³»
 	var sourceMapRootpath = path.relative(path.dirname(sourceMapInputFilename), baseDir);
 	var sourceMapFileInline = true;
 	var sourceMapOptions = {
@@ -67,7 +67,7 @@ function devScssHandler(req, res, next) {
 		}
 	});
 }
-//·µ»ØÒ»¸öapp.useµÄ·½·¨
+//è¿”å›ä¸€ä¸ªapp.useçš„æ–¹æ³•
 module.exports = function () {
 	return devScssHandler;
 };
