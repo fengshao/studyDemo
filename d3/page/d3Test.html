@@ -7,15 +7,141 @@
     <!--<script src="../script/public/prettify.js"></script>-->
     <script src="../script/public/jquery-1.9.1.js"></script>
     <script src="../script/public/d3.js" charset="utf-8"></script>
+    <script src="../script/user-defunid/deepmerge.js"></script>
     <link href="../style/d3topo.css" rel="stylesheet" />
 
 </head>
 <body>
-<div id="ins01"></div>
-<!--<div id="ins02"></div>-->
-<div id="ins03"></div>
+<!--<div id="ins01"></div>-->
+<div id="ins02"></div>
+<button id="button-click">重新绘图</button>
+<!--<div id="ins03"></div>-->
+<!--<div id="ins04"></div>-->
 </body>
-<script src="../script/user-defunid/topojs.js"></script>
-<!--<script src="../script/user-defunid/topoClick.js"></script>-->
+<!--<script src="../script/user-defunid/topojs.js"></script>-->
+<!--<script src="../script/user-defunid/topoPosition.js"></script>-->
+<script src="../script/user-defunid/topoClick.js"></script>
+<script>
+    var data = {
+        "name": "我是根节点",
+        "children": [
+            {
+                "name": "我是第一子节点",
+                "children": [
+                    {
+                        "name": "我是第二子节点",
+                        "children": [
+                            {"name": "我是第三子节点"},
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "我也是第一子节点",
+                "children": [
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "老子也是第一子节点",
+                "children": [
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"},
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "老子也是",
+                "children": [
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    },
+                    {
+                        "name": "第二子节点+1",
+                        "children": [
+                            {"name": "第三子节点+1"}
+                        ]
+                    }
+                ]
+            },
+            {"name": "还有朕"}
+        ]
+    };
+    $("#button-click").bind("click", function(){
+        init(data);
+    });
+    init(data);
+</script>
 <!--<script src="../script/user-defunid/topo.js"></script>-->
 </html>

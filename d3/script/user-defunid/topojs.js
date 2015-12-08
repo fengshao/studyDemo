@@ -2,10 +2,11 @@
  * Created by xiaojinfeng on  2015/11/23 15:53 .
  */
 
-var width = 700,
-	height = 500;
+var margin = {top: 15, right: 10, bottom: 10, left: 100},
+	width = 700 - margin.left - margin.right,
+	height = 500 - margin.top - margin.bottom;
 
-var tree = d3.layout.tree()
+var trees = d3.layout.tree()
 	.sort(null)
 	.size([height, width - 15 * 10])
 	.children(function (d) {
@@ -14,10 +15,12 @@ var tree = d3.layout.tree()
 
 
 var layoutRoot = d3.select("#ins01")
-	.append("svg:svg").attr("width", width).attr("height", height)
+	.append("svg:svg")
+	.attr("width", width + margin.left + margin.right)
+	.attr("height", height + margin.top + margin.bottom)
 	.append("svg:g")
 	.attr("class", "container")
-	.attr("transform", "translate(" + 50 + ",0)");
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
 // Edges between nodes as a <path class="link" />
@@ -26,8 +29,8 @@ var link = d3.svg.diagonal()
 		return [d.y, d.x];
 	});
 d3.json('../script/user-defunid/json.php', function (error, root) {
-	var nodes = tree.nodes(root);
-	var links = tree.links(nodes);
+	var nodes = trees.nodes(root);
+	var links = trees.links(nodes);
 	layoutRoot.selectAll("path.link")
 		.data(links)
 		.enter()
