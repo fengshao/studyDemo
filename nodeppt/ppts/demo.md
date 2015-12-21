@@ -22,21 +22,30 @@ usemathjax: no
 *	CSS 预处理器是一种语言用来为 CSS 增加一些编程的的特性，
 		无需考虑浏览器的兼容性问题，例如你可以在 CSS 中使用变量、简单的程序逻辑、函数等等在编程语言中的一些基本技巧，
 		可以让 CSS 更见简洁，适应性更强，代码更直观等诸多好处。
-[slide]
-
-# sass特色 {:&.flexbox.vleft}
-* 完全兼容 CSS3;
-* 在 CSS 语言基础上添加了扩展功能，比如变量、嵌套 (nesting)、混合 (mixin)
-* 对颜色和其它值进行操作的{Sass::Script::Functions 函数}
-* 函数库控制指令之类的高级功能
-* 良好的格式，可对输出格式进行定制
-* 支持 Firebug
 
 [slide]
 ## 介绍
 ----
 * SASS: 2007年诞生，最早也是最成熟的CSS预处理器，拥有ruby社区的支持和compass这一最强大的css框架，目前受LESS影响，已经进化到了全面兼容CSS的SCSS。
 * LESS: 2009年出现，受SASS的影响较大，但又使用CSS的语法，让大部分开发者和设计师更容易上手，在ruby社区之外支持者远超过SASS，其缺点是比起SASS来，可编程功能不够，不过优点是简单和兼容CSS，反过来也影响了SASS演变到了SCSS的时代，著名的Twitter Bootstrap就是采用LESS做底层语言的。
+
+[slide]
+## 安装
+
+<img src="/images/ruby.png"/>
+<img src="/images/ruby-cmd.png"/>
+<img src="/images/ruby-cmd-install.png"/>
+
+
+[slide]
+
+# sass特色 {:&.flexbox.vleft}
+* 完全兼容 CSS3;
+* 在 CSS 语言基础上添加了扩展功能，比如变量、嵌套 (nesting)、混合 (mixin)
+* 对颜色和其它值进行操作的函数
+* 函数库控制指令之类的高级功能
+* 良好的格式，可对输出格式进行定制
+* 支持 Firebug
 
 [slide]
 ## 变量

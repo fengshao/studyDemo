@@ -1,0 +1,34 @@
+.react-topo-node-dot {
+  fill: orange;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.react-topo-node {
+  font: 14px sans-serif;
+}
+
+.react-topo-link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.react-topo-node {
+  cursor: pointer;
+}
+
+.react-topo-node {
+  circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+  text {
+    font: 14px sans-serif;
+  }
+}
+
+.test{
+  color: #000000;
+}
