@@ -1,0 +1,87 @@
+
+@color: #4D926F;
+
+#lessTest {
+  color: @color;
+}
+
+.left {
+  float: left;
+  margin-left: 10px;
+}
+
+.rounded(@vert, @horz, @radius: 10px) {
+  border-@{vert}-@{horz}-radius: @radius;
+  -moz-border-@{vert}-@{horz}-radius: @radius;
+  -webkit-border-@{vert}-@{horz}-radius: @radius;
+}
+
+.a{
+  .left();
+  .rounded(top, left ,5px);
+}
+
+.lessExtend{
+  float: left;
+  margin-left: 10px;
+}
+
+.extend-lessExtend{
+  .lessExtend;
+}
+
+/*less: 没有 if else 使用 when  实现。*/
+.mixin (@a) when (@a = monster) {
+  background-color: black;
+}
+
+.mixin (@a) when (@a = ocean) {
+  background-color: white;
+}
+
+.class1 {
+  .mixin(monster)
+}
+
+.class2 {
+  .mixin(ocean)
+}
+
+
+.smaller (@a, @b) when (@a > @b) {
+  background-color: black;
+}
+.math (@a) when (@a > 10) and (@a < 20) {
+  background-color: red;
+}
+.math (@a) when (@a < 10), (@a > 20) {
+  background-color: blue;
+}
+.math (@a) when not (@a = 10)  {
+  background-color: yellow;
+}
+.math (@a) when (@a = 10)  {
+  background-color: green;
+}
+
+.testSmall {.smaller(30, 10) }
+.testMath1 {.math(15)}
+.testMath2 {.math(7)}
+.testMath3 {.math(10)}
+
+/*循环*/
+.loopingClass (@index) when (@index > 0) {
+  .myclass-@{index} {
+    z-index: @index;
+  }
+  // 递归
+  .loopingClass(@index - 1);
+}
+// 停止循环
+.loopingClass (0) {}
+
+// 输出
+.loopingClass (3);
+
+
+

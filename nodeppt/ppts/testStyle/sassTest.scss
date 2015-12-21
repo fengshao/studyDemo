@@ -1,0 +1,114 @@
+$color: black;
+.scoped {
+  $bg: blue;
+  $color: white !global;
+  color: $color;
+  background-color:$bg;
+}
+.unscoped {
+  color:$color;
+}
+
+
+
+#sassTest {
+  color: $color;
+}
+
+.extend-sassTest{
+  @extend #sassTest;
+}
+
+.div-con {
+  border: {
+    color: #2B1B1B;
+    width: 1px;
+    style: solid;
+  }
+  .test{
+    color: #000;
+  }
+}
+
+
+
+@mixin left {
+  float: left;
+  margin-left: 10px;
+}
+
+@mixin rounded($vert, $horz, $radius: 10px) {
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-#{$vert}-#{$horz}-radius: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+.sassMixinTest {
+  @include rounded(top, left ,5px);
+  @include left;
+}
+
+$type: monster;
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == matador {
+    color: red;
+  } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}
+
+p {
+  color: green;
+}
+
+/*  for
+    @for $var from <start> through <end> {}
+    @for $var from <start> to <end> {}
+*/
+@for $i from 1 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}
+
+
+/*  each */
+$animal-data: (puma, black, default),(sea-slug, blue, pointer),(egret, white, move);
+@each $animal, $color, $cursor in $animal-data {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+    border: 2px solid $color;
+    cursor: $cursor;
+  }
+}
+
+/* while*/
+$i: 6;
+@while $i > 0 {
+  .item-#{$i} { width: 2em * $i; }
+  $i: $i - 2;
+}
+
+/* function */
+$width: 100px;
+$height: 100px;
+@function width($n) {
+  @return $width * $n;
+}
+
+@function height($n) {
+  @return $height * $n;
+}
+
+.fnctionTest {
+  height: height(2);
+  width: width(1);
+}
+
+.fnctionTest {
+  height: 200px;
+  width: 100px;
+}
+

@@ -68,6 +68,27 @@ body {
   border-#{$side}-radius: 5px;
 }
 
+article, aside, nav, section {
+  h1 {
+    margin-top: 0.83em; margin-bottom: 0.83em; font-size: 1.50em;
+  }
+  & h1 {
+    margin-top: 1.00em; margin-bottom: 1.00em; font-size: 1.17em;
+  }
+  & & h1 {
+    margin-top: 1.00em; margin-bottom: 1.00em; font-size: 1.17em;
+  }
+  & & & h1 {
+    margin-top: 1.33em; margin-bottom: 1.33em; font-size: 1.00em;
+  }
+  & & & & h1 {
+    margin-top: 1.67em; margin-bottom: 1.67em; font-size: 0.83em;
+  }
+  & & & & & h1 {
+    margin-top: 2.33em; margin-bottom: 2.33em; font-size: 0.67em;
+  }
+}
+
 @import "test1";
 
 
