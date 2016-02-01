@@ -30,10 +30,24 @@ var PageTransitions = (function () {
 
         $(".container").delegate("#shang-div", "click", function (ev) {
             ev.preventDefault();
+            soundsFnc();
             nextPage($(this).attr('data-animation'));
         });
 
     }
+
+    function soundsFnc() {
+        var chongaiMusic = document.getElementById("chongai");
+        var yelaixiangMusic = document.getElementById("yelaixiang");
+        var dageMusic = document.getElementById("dage");
+        var xiaojiuwoMusic = document.getElementById("xiaojiuwo");
+
+        yelaixiangMusic.pause();
+        dageMusic.pause();
+        xiaojiuwoMusic.pause();
+        chongaiMusic.pause();
+    }
+
 
     function nextPage(animation) {
 
@@ -80,6 +94,13 @@ var PageTransitions = (function () {
             if (endCurrPage) {
                 onEndAnimation($currPage, $nextPage);
             }
+            soundsFnc();
+            if ($nextPage.attr("id") == "container-pic-div") {
+                //默认播放宠爱
+                var music = document.getElementById("chongai");
+                music.play();
+            }
+
         });
 
         if (!support) {

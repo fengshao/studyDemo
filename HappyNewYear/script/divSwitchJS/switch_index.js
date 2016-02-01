@@ -9,6 +9,28 @@ $(function () {
     var ready = true;
     var wait = 0;
 
+    var closeMusicFlag = false;
+
+    $("#container-pic-div").delegate(".pic-music-btn", "click", function () {
+        var chongaiMusic = document.getElementById("chongai");
+        var yelaixiangMusic = document.getElementById("yelaixiang");
+        var dageMusic = document.getElementById("dage");
+        var xiaojiuwoMusic = document.getElementById("xiaojiuwo");
+
+        if ($(this).hasClass("close-music-music")) {
+            closeMusicFlag = false;
+            $(this).removeClass("close-music-music");
+            soundsFnc();
+        } else {
+            closeMusicFlag = true;
+            $(this).addClass("close-music-music");
+            chongaiMusic.pause();
+            yelaixiangMusic.pause();
+            dageMusic.pause();
+            xiaojiuwoMusic.pause();
+        }
+    });
+
     aA[0].onclick = function () {
         tab((iNow - 1 + aLi.length) % aLi.length);
     };
@@ -55,10 +77,60 @@ $(function () {
         aLi[m(iNow + 1)].className = 'right';
         aLi[m(iNow + 2)].className = 'right2';
 
+        soundsFnc();
         setEv();
     }
 
     setEv();
+
+    function soundsFnc() {
+        if (closeMusicFlag) {
+            return;
+        }
+        var nowPic = $(aLi[iNow]).attr("data-type");
+        var chongaiMusic = document.getElementById("chongai");
+        var yelaixiangMusic = document.getElementById("yelaixiang");
+        var dageMusic = document.getElementById("dage");
+        var xiaojiuwoMusic = document.getElementById("xiaojiuwo");
+
+        switch (nowPic) {
+            case "01":
+            case "02":
+            case "03":
+            case "04":
+            case "05":
+            case "06":
+                yelaixiangMusic.pause();
+                dageMusic.pause();
+                xiaojiuwoMusic.pause();
+                chongaiMusic.play();
+                break;
+            case "07":
+            case "08":
+            case "09":
+            case "10":
+            case "11":
+            case "12":
+            case "13":
+                yelaixiangMusic.pause();
+                dageMusic.pause();
+                chongaiMusic.pause();
+                xiaojiuwoMusic.play();
+                break;
+            case "14":
+                xiaojiuwoMusic.pause();
+                dageMusic.pause();
+                chongaiMusic.pause();
+                yelaixiangMusic.play();
+                break;
+            case "15":
+                xiaojiuwoMusic.pause();
+                chongaiMusic.pause();
+                yelaixiangMusic.pause();
+                dageMusic.play();
+                break;
+        }
+    }
 
     function setEv() {
         var scaled = false;
@@ -92,10 +164,14 @@ $(function () {
     var autoPlayTimer = null;
 
     oDiv.onmouseout = function () {
-        //clearInterval(autoPlayTimer);
-        //autoPlayTimer = setInterval(function () {
-        //    aA[1].onclick();
-        //}, 3000);
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = setInterval(function () {
+            if (!$("#container-pic-div").hasClass("pt-page-current")) {
+                clearInterval(autoPlayTimer);
+                return
+            }
+            aA[1].onclick();
+        }, 30000);
     };
     oDiv.onmouseover = function () {
         clearInterval(autoPlayTimer);

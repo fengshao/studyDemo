@@ -8,7 +8,6 @@
     <link href="style/font/iconfont.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="script/index.js"></script>
-    <script type="text/javascript" src="script/divSwitchJS/switch_index.js"></script>
     <script type="text/javascript" src="script/divSwitchJS/modernizr.custom.js"></script>
     <script>
         yourLogo = '新 年 好 呀, 新 年 好 呀, 祝 福 大 家 新 年 好...';
@@ -70,6 +69,7 @@
             animateLogo();
             setTimeout('Delay()', 20);
         }
+
         window.onload = Delay;
     </script>
 </head>
@@ -85,6 +85,8 @@
     </div>
     <div class="mp3-div">
         <audio id="bgMusic" src="sounds/xinianhao.mp3" autoplay="autoplay" loop="loop"></audio>
+    </div>
+    <div id="blessing-div" class="blessing-div">
     </div>
     <div id="content-div">
         <div id="firecrackers-div">
@@ -130,28 +132,42 @@
         <div id="lantern-div"></div>
     </div>
 </div>
-<div class="container pt-page">
+<div id="container-pic-div" class="container pt-page">
     <div id="shang-div" class="next-div-class iconfont icon-return-btn" data-animation="32"></div>
-
+    <div class="pic-music-btn" title="关闭背景音乐">
+        <i class="iconfont icon-music-open"></i>
+        <i class="iconfont icon-music-suspend" style="display: none"></i>
+    </div>
     <div class="checkbox-div"><input type="checkbox" id="rev" checked="checked"/>倒影</div>
+    <div class="mp3-dage-div">
+        <audio id="dage" src="sounds/dage.mp3" hidden="true" autostart="false" loop="loop"></audio>
+    </div>
+    <div class="mp3-yelaixiang-div">
+        <audio id="yelaixiang" src="sounds/yelaixiang.mp3" hidden="true" autostart="false" loop="loop"></audio>
+    </div>
+    <div class="mp3-chongai-div">
+        <audio id="chongai" src="sounds/chongai.mp3" hidden="true" autostart="false" loop="loop"></audio>
+    </div>
+    <div class="mp3-xiaojiuwo-div">
+        <audio id="xiaojiuwo" src="sounds/xiaojiuwo.mp3" hidden="true" autostart="false" loop="loop"></audio>
+    </div>
     <div id="div1">
-
         <ul id="ul1">
-            <li class="cur"><img class="pic pic1" src="image/friend_images/01.jpg"></li>
-            <li class="right"><img class="pic pic2" src="image/friend_images/02.jpg"></li>
-            <li class="right2"><img class="pic pic3" src="image/friend_images/03.jpg"></li>
-            <li><img class="pic pic4" src="image/friend_images/04.jpg"></li>
-            <li><img class="pic pic5" src="image/friend_images/05.jpg"></li>
-            <li><img class="pic pic6" src="image/friend_images/06.png"></li>
-            <li><img class="pic pic7" src="image/friend_images/07.jpg"></li>
-            <li><img class="pic pic8" src="image/friend_images/08.jpg"></li>
-            <li><img class="pic pic9" src="image/friend_images/09.jpg"></li>
-            <li><img class="pic pic10" src="image/friend_images/10.jpg"></li>
-            <li><img class="pic pic11" src="image/friend_images/11.jpg"></li>
-            <li><img class="pic pic12" src="image/friend_images/12.jpg"></li>
-            <li><img class="pic pic13" src="image/friend_images/13.jpg"></li>
-            <li class="left2"><img class="pic pic14" src="image/friend_images/14.jpg"></li>
-            <li class="left"><img class="pic pic15" src="image/friend_images/15.jpg"></li>
+            <li data-type="01" class="cur"><img class="pic pic1" src="image/friend_images/01.jpg"></li>
+            <li data-type="02" class="right"><img class="pic pic2" src="image/friend_images/02.jpg"></li>
+            <li data-type="03" class="right2"><img class="pic pic3" src="image/friend_images/03.jpg"></li>
+            <li data-type="04"><img class="pic pic4" src="image/friend_images/04.jpg"></li>
+            <li data-type="05"><img class="pic pic5" src="image/friend_images/05.jpg"></li>
+            <li data-type="06"><img class="pic pic6" src="image/friend_images/06.png"></li>
+            <li data-type="07"><img class="pic pic7" src="image/friend_images/07.jpg"></li>
+            <li data-type="08"><img class="pic pic8" src="image/friend_images/08.jpg"></li>
+            <li data-type="09"><img class="pic pic9" src="image/friend_images/09.jpg"></li>
+            <li data-type="10"><img class="pic pic10" src="image/friend_images/10.jpg"></li>
+            <li data-type="11"><img class="pic pic11" src="image/friend_images/11.jpg"></li>
+            <li data-type="12"><img class="pic pic12" src="image/friend_images/12.jpg"></li>
+            <li data-type="13"><img class="pic pic13" src="image/friend_images/13.jpg"></li>
+            <li data-type="14" class="left2"><img class="pic pic14" src="image/friend_images/14.jpg"></li>
+            <li data-type="15" class="left"><img class="pic pic15" src="image/friend_images/15.jpg"></li>
         </ul>
         <div class="btn">
             <a class="prev" href="javascript:;"></a>
@@ -159,6 +175,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="script/divSwitchJS/switch_index.js"></script>
 <script type="text/javascript" src="script/divSwitchJS/jquery.dlmenu.js"></script>
 <script type="text/javascript" src="script/divSwitchJS/pagetransitions.js"></script>
 </body>

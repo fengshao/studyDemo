@@ -5,9 +5,33 @@
 $(function () {
     var setTimer = null;
     layout();
+
+
+    var blessingTitle = '在此新春佳节之际，疯子祝大家在新的一年里工作顺利，身体健康，万事如意。' +
+        '有对象的祝早日喜结良缘，持证上岗，没对象的祝明年的今天不会再说，老子今年要脱单（@累成狗）。' +
+        '再次祝大家新的一年里心想事成，万事如意。词穷了，o(╯□╰)o。开门有彩蛋哟~~~';
+    var con = $('#blessing-div');
+    var index = 0;
+    var length = blessingTitle.length;
+    var tId = null;
+
+    function start() {
+        con.text('');
+
+        tId = setInterval(function () {
+            con.append(blessingTitle.charAt(index));
+            if (index++ === length) {
+                clearInterval(tId);
+                index = 0;
+            }
+        }, 100);
+    }
+
+    start();
     function layout() {
         $("#happy-new-year").css("width", $(window).width()).css("height", $(window).height());
         $(".container").css("width", $(window).width()).css("height", $(window).height());
+        $("#blessing-div").css("top", $("#content-div").offset().top);
     }
 
     $(window).resize(function () {
