@@ -15,6 +15,7 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-return-btn:before { content: "\e603"; }
 .icon-music-open:before { content: "\e600"; }
 .icon-firecrackers-open:before { content: "\e601"; }
 .icon-firecrackers-suspend:before { content: "\e604"; }

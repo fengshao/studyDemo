@@ -8,150 +8,96 @@
     <link href="style/font/iconfont.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="script/index.js"></script>
-    <script type="text/javascript" src="script/index1.js"></script>
-    <script type="text/javascript" src="script/modernizr.custom.js"></script>
+    <script type="text/javascript" src="script/divSwitchJS/switch_index.js"></script>
+    <script type="text/javascript" src="script/divSwitchJS/modernizr.custom.js"></script>
     <script>
-        //        yourLogo = '新 年 好 呀, 新 年 好 呀, 祝 福 大 家 新 年 好...';
-        //        logoFont = 'Arial';
-        //        logoSize = 12;
-        //        logoColor = '#66FFFF';
-        //        logoWidth = 58;
-        //        logoHeight = 58;
-        //        logoSpeed = 0.02;
-        //        yourLogo = yourLogo.split('');
-        //        L = yourLogo.length;
-        //        Result = "<font face=" + logoFont + " style='font-size:" + logoSize + "pt' color=" + logoColor + ">";
-        //        TrigSplit = 360 / L;
-        //        br = (document.layers) ? 1 : 0;
-        //        if (br) {
-        //            for (i = 0; i < L; i++)
-        //                document.write('<layer name="ns' + i + '" top=0 left=0 width=14 height=14">' + Result + yourLogo[i] + '</font></layer>');
-        //        }
-        //        else {
-        //            document.write('<div id="outer" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
-        //            for (i = 0; i < L; i++)
-        //                document.write('<div id="ie" style="position:absolute;top:0px;left:0px;width:14px;height:14px">' + Result + yourLogo[i] + '</font></div>');
-        //            document.write('</div></div>');
-        //        }
-        //        ypos = 0;
-        //        xpos = 0;
-        //        step = logoSpeed;
-        //        currStep = 0;
-        //        Y = new Array();
-        //        X = new Array();
-        //        Yn = new Array();
-        //        Xn = new Array();
-        //        for (i = 0; i < L; i++) {
-        //            Yn[i] = 0;
-        //            Xn[i] = 0;
-        //        }
-        //        (document.layers) ? window.captureEvents(Event.MOUSEMOVE) : 0;
-        //        function Mouse(evnt) {
-        //            ypos = (document.layers) ? evnt.pageY : event.y;
-        //            xpos = (document.layers) ? evnt.pageX : event.x;
-        //        }
-        //
-        //        (document.layers) ? window.onMouseMove = Mouse : document.onmousemove = Mouse;
-        //        function animateLogo() {
-        //            if (!br)outer.style.pixelTop = document.body.scrollTop;
-        //            for (i = 0; i < L; i++) {
-        //                var layer = (document.layers) ? document.layers['ns' + i] : ie[i];
-        //                $(layer).css("top", Y[i] + logoHeight * Math.sin(currStep + i * TrigSplit * Math.PI / 180));
-        //                $(layer).css("left", X[i] + logoWidth * Math.cos(currStep + i * TrigSplit * Math.PI / 180));
-        //            }
-        //            currStep -= step;
-        //        }
-        //
-        //        function Delay() {
-        //            for (i = L; i >= 0; i--) {
-        //                Y[i] = Yn[i] += (ypos - Yn[i]) * (0.1 + i / L);
-        //                X[i] = Xn[i] += (xpos - Xn[i]) * (0.1 + i / L);
-        //            }
-        //            animateLogo();
-        //            setTimeout('Delay()', 20);
-        //        }
-        //
-        //        window.onload = Delay;
+        yourLogo = '新 年 好 呀, 新 年 好 呀, 祝 福 大 家 新 年 好...';
+        logoFont = 'Arial';
+        logoSize = 12;
+        logoColor = '#66FFFF';
+        logoWidth = 58;
+        logoHeight = 58;
+        logoSpeed = 0.02;
+        yourLogo = yourLogo.split('');
+        L = yourLogo.length;
+        Result = "<font face=" + logoFont + " style='font-size:" + logoSize + "pt' color=" + logoColor + ">";
+        TrigSplit = 360 / L;
+        br = (document.layers) ? 1 : 0;
+        if (br) {
+            for (i = 0; i < L; i++)
+                document.write('<layer name="ns' + i + '" top=0 left=0 width=14 height=14">' + Result + yourLogo[i] + '</font></layer>');
+        }
+        else {
+            document.write('<div id="outer" style="position:absolute;top:0px;left:0px; z-index: 100;"><div style="position:relative">');
+            for (i = 0; i < L; i++)
+                document.write('<div id="ie" style="position:absolute;top:0px;left:0px;width:14px;height:14px">' + Result + yourLogo[i] + '</font></div>');
+            document.write('</div></div>');
+        }
+        ypos = 0;
+        xpos = 0;
+        step = logoSpeed;
+        currStep = 0;
+        Y = new Array();
+        X = new Array();
+        Yn = new Array();
+        Xn = new Array();
+        for (i = 0; i < L; i++) {
+            Yn[i] = 0;
+            Xn[i] = 0;
+        }
+        (document.layers) ? window.captureEvents(Event.MOUSEMOVE) : 0;
+        function Mouse(evnt) {
+            ypos = (document.layers) ? evnt.pageY : event.y;
+            xpos = (document.layers) ? evnt.pageX : event.x;
+        }
+
+        (document.layers) ? window.onMouseMove = Mouse : document.onmousemove = Mouse;
+        function animateLogo() {
+            if (!br)outer.style.pixelTop = document.body.scrollTop;
+            for (i = 0; i < L; i++) {
+                var layer = (document.layers) ? document.layers['ns' + i] : ie[i];
+                $(layer).css("top", Y[i] + logoHeight * Math.sin(currStep + i * TrigSplit * Math.PI / 180));
+                $(layer).css("left", X[i] + logoWidth * Math.cos(currStep + i * TrigSplit * Math.PI / 180));
+            }
+            currStep -= step;
+        }
+
+        function Delay() {
+            for (i = L; i >= 0; i--) {
+                Y[i] = Yn[i] += (ypos - Yn[i]) * (0.1 + i / L);
+                X[i] = Xn[i] += (xpos - Xn[i]) * (0.1 + i / L);
+            }
+            animateLogo();
+            setTimeout('Delay()', 20);
+        }
+        window.onload = Delay;
     </script>
-    <style type="text/css">
-        #msg_win {
-            border: 1px solid #A67901;
-            background: #EAEAEA;
-            width: 250px;
-            position: absolute;
-            right: 2;
-            margin: 0px;
-            display: none;
-            overflow: hidden;
-            z-index: 99;
-        }
-
-        #msg_win .icos {
-            position: absolute;
-            top: 2px;
-            *top: 0px;
-            right: 2px;
-            z-index: 9;
-        }
-
-        .icos a {
-            float: left;
-            color: #833B02;
-            margin: 1px;
-            text-align: center;
-            text-decoration: none;
-            font-family: webdings;
-        }
-
-        .icos a:hover {
-            color: #fff;
-        }
-
-        #msg_title {
-            background: #FECD00;
-            border-bottom: 1px solid #A67901;
-            border-top: 1px solid #FFF;
-            border-left: 1px solid #FFF;
-            color: #000;
-            height: 25px;
-            line-height: 25px;
-            text-indent: 5px;
-        }
-
-        #msg_content {
-            margin: 2px;
-            width: 300px;
-            height: 220px;
-            overflow: hidden;
-        }
-    </style>
 </head>
 <body>
 <div id="happy-new-year" class="pt-page">
-    <div id="next-div" class="next-div-class" data-animation="33">下一页</div>
-    <div class="firecrackers-btn">
+    <div class="firecrackers-btn" title="关闭鞭炮声">
         <i class="iconfont icon-firecrackers-open"></i>
         <i class="iconfont icon-firecrackers-suspend" style="display: none"></i>
     </div>
-    <div class="music-btn">
+    <div class="music-btn" title="关闭背景音乐">
         <i class="iconfont icon-music-open"></i>
         <i class="iconfont icon-music-suspend" style="display: none"></i>
     </div>
     <div class="mp3-div">
-        <!--<audio id="bgMusic" src="sounds/xinianhao.mp3" autoplay="autoplay" loop="loop"></audio>-->
+        <audio id="bgMusic" src="sounds/xinianhao.mp3" autoplay="autoplay" loop="loop"></audio>
     </div>
     <div id="content-div">
         <div id="firecrackers-div">
             <div class="firecrackers-div-swf">
-                <!--<object codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"-->
-                <!--height="300" width="300" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">-->
-                <!--<param name="movie" value="sounds/firecrackers.swf">-->
-                <!--<param name="quality" value="hight">-->
-                <!--<param name="wmode" value="transparent">-->
-                <!--<embed src="sounds/firecrackers.swf" width="300" height="300" quality="hight"-->
-                <!--pluginspage="http://www.macromedia.com/go/getflashplayer"-->
-                <!--type="application/x-shockwave-flash" wmode="transparent">-->
-                <!--</object>-->
+                <object codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+                        height="300" width="300" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+                    <param name="movie" value="sounds/firecrackers.swf">
+                    <param name="quality" value="hight">
+                    <param name="wmode" value="transparent">
+                    <embed src="sounds/firecrackers.swf" width="300" height="300" quality="hight"
+                           pluginspage="http://www.macromedia.com/go/getflashplayer"
+                           type="application/x-shockwave-flash" wmode="transparent">
+                </object>
             </div>
 
         </div>
@@ -171,9 +117,9 @@
                         </div>
                     </div>
                     <div class="door-div-welcome">
-                        <script type="text/javascript" src="script/main.js"></script>
-                        <script type="text/javascript" src="script/stars.js"></script>
-                        <script type="text/javascript" src="script/commonFunctions.js"></script>
+                        <script type="text/javascript" src="script/starsCanvasJS/main.js"></script>
+                        <script type="text/javascript" src="script/starsCanvasJS/stars.js"></script>
+                        <script type="text/javascript" src="script/starsCanvasJS/commonFunctions.js"></script>
                         <canvas id="canvas" width="300px" height="151px"></canvas>
                         <div class="door-div-welcome-monkey"></div>
                     </div>
@@ -185,29 +131,27 @@
     </div>
 </div>
 <div class="container pt-page">
-    <div id="shang-div" class="next-div-class" data-animation="32">上一页</div>
+    <div id="shang-div" class="next-div-class iconfont icon-return-btn" data-animation="32"></div>
 
-    <label><input type="checkbox" id="rev" checked="checked"/>倒影</label>
+    <div class="checkbox-div"><input type="checkbox" id="rev" checked="checked"/>倒影</div>
     <div id="div1">
 
         <ul id="ul1">
-            <li class="cur"><img class="pic pic1" src="image/friend_images/1.jpg"></li>
-            <li class="right"><img class="pic pic2" src="image/friend_images/2.jpg"></li>
-            <li class="right2"><img class="pic pic3" src="image/friend_images/3.JPG"></li>
-            <li><img class="pic pic6" src="image/friend_images/4.JPG"></li>
-            <li><img class="pic pic11" src="image/friend_images/5.JPG"></li>
-            <li><img class="pic pic12" src="image/friend_images/6.JPG"></li>
-            <li><img class="pic pic14" src="image/friend_images/7.JPG"></li>
-            <li><img class="pic pic4" src="image/friend_images/8.JPG"></li>
-            <li><img class="pic pic17" src="image/friend_images/9.JPG"></li>
-            <li><img class="pic pic18" src="image/friend_images/10.JPG"></li>
-            <li><img class="pic pic19" src="image/friend_images/11.JPG"></li>
-            <li><img class="pic pic9" src="image/friend_images/12.JPG"></li>
-            <li><img class="pic pic10" src="image/friend_images/13.JPG"></li>
-            <li><img class="pic pic7" src="image/friend_images/14.JPG"></li>
-            <li class="left2"><img class="pic pic16" src="image/friend_images/15.JPG"></li>
-            <li class="left"><img class="pic pic20" src="image/friend_images/16.jpg"></li>
-
+            <li class="cur"><img class="pic pic1" src="image/friend_images/01.jpg"></li>
+            <li class="right"><img class="pic pic2" src="image/friend_images/02.jpg"></li>
+            <li class="right2"><img class="pic pic3" src="image/friend_images/03.jpg"></li>
+            <li><img class="pic pic4" src="image/friend_images/04.jpg"></li>
+            <li><img class="pic pic5" src="image/friend_images/05.jpg"></li>
+            <li><img class="pic pic6" src="image/friend_images/06.png"></li>
+            <li><img class="pic pic7" src="image/friend_images/07.jpg"></li>
+            <li><img class="pic pic8" src="image/friend_images/08.jpg"></li>
+            <li><img class="pic pic9" src="image/friend_images/09.jpg"></li>
+            <li><img class="pic pic10" src="image/friend_images/10.jpg"></li>
+            <li><img class="pic pic11" src="image/friend_images/11.jpg"></li>
+            <li><img class="pic pic12" src="image/friend_images/12.jpg"></li>
+            <li><img class="pic pic13" src="image/friend_images/13.jpg"></li>
+            <li class="left2"><img class="pic pic14" src="image/friend_images/14.jpg"></li>
+            <li class="left"><img class="pic pic15" src="image/friend_images/15.jpg"></li>
         </ul>
         <div class="btn">
             <a class="prev" href="javascript:;"></a>
@@ -215,7 +159,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="script/jquery.dlmenu.js"></script>
-<script type="text/javascript" src="script/pagetransitions.js"></script>
+<script type="text/javascript" src="script/divSwitchJS/jquery.dlmenu.js"></script>
+<script type="text/javascript" src="script/divSwitchJS/pagetransitions.js"></script>
 </body>
 </html>

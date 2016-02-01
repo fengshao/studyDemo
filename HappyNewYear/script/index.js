@@ -3,17 +3,27 @@
  */
 
 $(function () {
+    var setTimer = null;
     layout();
     function layout() {
         $("#happy-new-year").css("width", $(window).width()).css("height", $(window).height());
-        $(".container").css("width", $(window).width() - 100).css("height", $(window).height() - 100);
+        $(".container").css("width", $(window).width()).css("height", $(window).height());
     }
 
     $(window).resize(function () {
         layout();
     });
-    $("#happy-new-year").delegate(".door-div", "click", function () {
-        $(this).addClass("open-door");
+    $("#happy-new-year").delegate(".door-div", "click", function (ev) {
+        ev.preventDefault();
+        var $this = $(this);
+        $this.addClass("open-door");
+        clearTimeout(setTimer);
+        setTimer = setTimeout(function () {
+            $this.removeClass("open-door");
+            closeBgMusic($(".music-btn"));
+            closeFirecrackersSounds($(".firecrackers-btn"));
+            PageTransitions.nextPage("33");
+        }, 1800);
     });
 
     $("#happy-new-year").delegate(".firecrackers-btn", "click", function () {
@@ -21,8 +31,7 @@ $(function () {
             $(this).removeClass("close-firecrackers-music");
             $(".firecrackers-div-swf").show();
         } else {
-            $(this).addClass("close-firecrackers-music");
-            $(".firecrackers-div-swf").hide();
+            closeFirecrackersSounds($(this));
         }
     });
 
@@ -32,9 +41,22 @@ $(function () {
             $(this).removeClass("close-music-music");
             music.play();
         } else {
-            $(this).addClass("close-music-music");
-            music.pause();
+            closeBgMusic($(this));
         }
     });
+
+    //关闭背景音乐
+    function closeBgMusic($element) {
+        var music = document.getElementById("bgMusic");
+        $element.addClass("close-music-music");
+        music.pause();
+    }
+
+//    关闭鞭炮声
+    function closeFirecrackersSounds($element) {
+        $element.addClass("close-firecrackers-music");
+        $(".firecrackers-div-swf").hide();
+    }
+
 
 });
