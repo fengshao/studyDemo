@@ -171,7 +171,7 @@ $(function () {
                 return
             }
             aA[1].onclick();
-        }, 30000);
+        }, 15000);
     };
     oDiv.onmouseover = function () {
         clearInterval(autoPlayTimer);

@@ -1,219 +1,221 @@
 
 body {
-	font-size: 0px;
-	margin: 0px;
-	overflow: hidden;
+    font-size: 0px;
+    margin: 0px;
+    overflow: hidden;
 }
 
 .blessing-div {
-	position: absolute;
-	left: 100px;
-	top: 50%;
-	max-width: 240px;
-	font-size: 26px;
-	color: #101010;
+    position: absolute;
+    left: 100px;
+    top: 50%;
+    max-width: 240px;
+    font-size: 26px;
+    color: #101010;
 
-	text-align: left;
-	margin: 100px auto;
-	font-family: "Comic Sans MS";
-	color: white;
-	text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+    text-align: left;
+    margin: 100px auto;
+    font-family: "Comic Sans MS";
+    color: white;
+    text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
 }
 
 /*背景*/
 #happy-new-year {
-	background: url("../image/new_year_img/bg.gif");
+    background: url("../image/new_year_img/bg.gif");
 }
 
 .mp3-div {
-	visibility: hidden;
+    visibility: hidden;
 }
 
 .firecrackers-btn, .music-btn {
-	float: left;
-	margin-left: 20px;
-	margin-top: 20px;
-	cursor: pointer;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 .pic-music-btn {
-	color: #00D0BC;
-	float: left;
-	margin-top: 6px;
-	cursor: pointer;
+    position: relative;
+    z-index: 101;
+    color: #00D0BC;
+    float: left;
+    margin-top: 6px;
+    cursor: pointer;
 }
 
 .firecrackers-btn.close-firecrackers-music .icon-firecrackers-suspend {
-	display: block !important;
+    display: block !important;
 }
 
 .firecrackers-btn.close-firecrackers-music .icon-firecrackers-open {
-	display: none !important;
+    display: none !important;
 }
 
 .music-btn.close-music-music .icon-music-suspend {
-	display: block !important;
+    display: block !important;
 }
 
 .music-btn.close-music-music .icon-music-open {
-	display: none !important;
+    display: none !important;
 }
 
 .pic-music-btn.close-music-music .icon-music-suspend {
-	display: block !important;
+    display: block !important;
 }
 
 .pic-music-btn.close-music-music .icon-music-open {
-	display: none !important;
+    display: none !important;
 }
 
 .firecrackers-btn .iconfont, .music-btn .iconfont {
-	font-size: 26px;
+    font-size: 26px;
 }
 
 .pic-music-btn .iconfont {
-	font-size: 20px;
+    font-size: 20px;
 }
 
 #content-div {
-	margin: 0 auto;
-	height: 600px;
-	width: 820px;
+    margin: 0 auto;
+    height: 600px;
+    width: 820px;
 
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin-left: -410px;
-	margin-top: -300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -410px;
+    margin-top: -300px;
 }
 
 /*鞭炮*/
 #firecrackers-div {
-	height: 380px;
-	width: 189px;
-	background: url("../image/new_year_img/firecrackers.gif");
-	background-repeat: no-repeat;
-	float: left;
+    height: 380px;
+    width: 189px;
+    background: url("../image/new_year_img/firecrackers.gif");
+    background-repeat: no-repeat;
+    float: left;
 
 }
 
 .firecrackers-div-swf {
-	top: 180px;
-	position: absolute;
+    top: 180px;
+    position: absolute;
 }
 
 /*灯笼*/
 #lantern-div {
-	height: 423px;
-	width: 81px;
-	background: url("../image/new_year_img/lantern.gif");
-	background-repeat: no-repeat;
-	float: left;
+    height: 423px;
+    width: 81px;
+    background: url("../image/new_year_img/lantern.gif");
+    background-repeat: no-repeat;
+    float: left;
 
 }
 
 #content-door-div {
-	width: 550px;
-	float: left;
+    width: 550px;
+    float: left;
 }
 
 /*横批*/
 #banner-div {
-	height: 101px;
-	width: 100%;
-	float: left;
-	text-align: center;
+    height: 101px;
+    width: 100%;
+    float: left;
+    text-align: center;
 }
 
 #banner-div-bg-img {
-	width: 297px;
-	height: 101px;
-	margin: 0 auto;
-	background: url("../image/new_year_img/banner.gif");
-	background-repeat: no-repeat;
+    width: 297px;
+    height: 101px;
+    margin: 0 auto;
+    background: url("../image/new_year_img/banner.gif");
+    background-repeat: no-repeat;
 }
 
 /*左侧对联*/
 #couplet-left-div {
-	height: 500px;
-	width: 50px;
-	background: url("../image/new_year_img/door_couplet_left.png");
-	background-repeat: no-repeat;
-	float: left;
+    height: 500px;
+    width: 50px;
+    background: url("../image/new_year_img/door_couplet_left.png");
+    background-repeat: no-repeat;
+    float: left;
 
 }
 
 /*右侧对联*/
 #couplet-right-div {
-	height: 500px;
-	width: 50px;
-	background: url("../image/new_year_img/door_couplet_right.png");
-	background-repeat: no-repeat;
-	float: left;
+    height: 500px;
+    width: 50px;
+    background: url("../image/new_year_img/door_couplet_right.png");
+    background-repeat: no-repeat;
+    float: left;
 
 }
 
 .door-div-box {
-	z-index: 110;
-	position: relative;
-	cursor: pointer;
+    z-index: 110;
+    position: relative;
+    cursor: pointer;
 }
 
 /*左侧门*/
 #door-left-div {
-	height: 550px;
-	width: 225px;
-	background: url("../image/new_year_img/door_left.png");
-	background-repeat: no-repeat;
-	float: left;
+    height: 550px;
+    width: 225px;
+    background: url("../image/new_year_img/door_left.png");
+    background-repeat: no-repeat;
+    float: left;
 
 }
 
 /*右侧门*/
 #door-right-div {
-	height: 550px;
-	width: 225px;
-	background: url("../image/new_year_img/door_right.png");
-	background-repeat: no-repeat;
-	float: left;
+    height: 550px;
+    width: 225px;
+    background: url("../image/new_year_img/door_right.png");
+    background-repeat: no-repeat;
+    float: left;
 
 }
 
 .door-div-pay-year {
-	height: 168px;
-	width: 152px;
-	background: url("../image/new_year_img/558.gif");
-	background-repeat: no-repeat;
-	margin: 0 auto;
-	margin-top: 290px
+    height: 168px;
+    width: 152px;
+    background: url("../image/new_year_img/558.gif");
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-top: 290px
 }
 
 /*开门效果 start*/
 .door-div {
-	float: left;
+    float: left;
 }
 
 #door-left-div, #door-right-div {
-	position: relative;
-	float: left;
-	box-sizing: border-box;
-	transition: transform 1s ease;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    transition: transform 1s ease;
 }
 
 #door-left-div {
-	-webkit-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
 }
 
 #door-right-div {
-	-webkit-transform-origin: 100% 0;
+    -webkit-transform-origin: 100% 0;
 }
 
 .door-div.open-door #door-left-div {
-	-webkit-transform: rotateY(-70deg);
+    -webkit-transform: rotateY(-70deg);
 }
 
 .door-div.open-door #door-right-div {
-	-webkit-transform: rotateY(70deg);
+    -webkit-transform: rotateY(70deg);
 }
 
 /*开门效果 end*/
@@ -221,72 +223,76 @@ body {
 /*开门后显示拜年图片 start*/
 
 .door-div-welcome {
-	position: absolute;
-	width: 450px;
-	height: 550px;
-	margin: 0 auto;
+    position: absolute;
+    width: 450px;
+    height: 550px;
+    margin: 0 auto;
 }
 
 .door-div-welcome canvas {
-	position: absolute;
-	left: 73px;
-	z-index: 0;
-	top: 80px;
+    position: absolute;
+    left: 73px;
+    z-index: 0;
+    top: 80px;
 }
 
 .door-div-welcome-monkey {
-	width: 216px;
-	height: 280px;
-	background: url("../image/new_year_img/monkey.png");
-	background-repeat: no-repeat;
-	margin: 0 auto;
-	margin-top: 250px;
+    width: 216px;
+    height: 280px;
+    background: url("../image/new_year_img/monkey.png");
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-top: 250px;
 }
 
 /*开门后显示拜年图片 end*/
 
 .next-div-class.iconfont {
-	font-size: 24px !important;
-	height: 30px;
-	width: 40px;
-	color: #00D0BC;
-	float: left;
-	margin-left: 20px;
-	margin-top: 6px;
-	text-align: center;
-	cursor: pointer;
+    position: relative;
+    z-index: 101;
+    font-size: 24px !important;
+    height: 30px;
+    width: 40px;
+    color: #00D0BC;
+    float: left;
+    margin-left: 0px;
+    margin-top: 6px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .checkbox-div {
-	font-size: 16px;
-	height: 30px;
-	width: 56px;
-	color: #00D0BC;
-	float: left;
-	margin-left: 20px;
-	margin-top: 6px;
-	text-align: left;
-	line-height: 30px;
+    position: relative;
+    z-index: 101;
+    font-size: 16px;
+    height: 30px;
+    width: 56px;
+    color: #00D0BC;
+    float: left;
+    margin-left: 20px;
+    margin-top: 6px;
+    text-align: left;
+    line-height: 30px;
 }
 
 .pt-page {
-	position: absolute;
-	visibility: hidden;
-	overflow: hidden;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	transform-style: preserve-3d;
+    position: absolute;
+    visibility: hidden;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .pt-page-current {
-	visibility: visible;
-	z-index: 1;
+    visibility: visible;
+    z-index: 1;
 }
 
 /*------------------*/
@@ -294,173 +300,173 @@ body {
 /* flip */
 
 .pt-page-flipOutRight {
-	-webkit-transform-origin: 50% 50%;
-	-webkit-animation: flipOutRight .5s both ease-in;
-	-moz-transform-origin: 50% 50%;
-	-moz-animation: flipOutRight .5s both ease-in;
-	transform-origin: 50% 50%;
-	animation: flipOutRight .5s both ease-in;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: flipOutRight .5s both ease-in;
+    -moz-transform-origin: 50% 50%;
+    -moz-animation: flipOutRight .5s both ease-in;
+    transform-origin: 50% 50%;
+    animation: flipOutRight .5s both ease-in;
 }
 
 .pt-page-flipInLeft {
-	-webkit-transform-origin: 50% 50%;
-	-webkit-animation: flipInLeft .5s both ease-out;
-	-moz-transform-origin: 50% 50%;
-	-moz-animation: flipInLeft .5s both ease-out;
-	transform-origin: 50% 50%;
-	animation: flipInLeft .5s both ease-out;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: flipInLeft .5s both ease-out;
+    -moz-transform-origin: 50% 50%;
+    -moz-animation: flipInLeft .5s both ease-out;
+    transform-origin: 50% 50%;
+    animation: flipInLeft .5s both ease-out;
 }
 
 .pt-page-flipOutLeft {
-	-webkit-transform-origin: 50% 50%;
-	-webkit-animation: flipOutLeft .5s both ease-in;
-	-moz-transform-origin: 50% 50%;
-	-moz-animation: flipOutLeft .5s both ease-in;
-	transform-origin: 50% 50%;
-	animation: flipOutLeft .5s both ease-in;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: flipOutLeft .5s both ease-in;
+    -moz-transform-origin: 50% 50%;
+    -moz-animation: flipOutLeft .5s both ease-in;
+    transform-origin: 50% 50%;
+    animation: flipOutLeft .5s both ease-in;
 }
 
 .pt-page-flipInRight {
-	-webkit-transform-origin: 50% 50%;
-	-webkit-animation: flipInRight .5s both ease-out;
-	-moz-transform-origin: 50% 50%;
-	-moz-animation: flipInRight .5s both ease-out;
-	transform-origin: 50% 50%;
-	animation: flipInRight .5s both ease-out;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: flipInRight .5s both ease-out;
+    -moz-transform-origin: 50% 50%;
+    -moz-animation: flipInRight .5s both ease-out;
+    transform-origin: 50% 50%;
+    animation: flipInRight .5s both ease-out;
 }
 
 /* flip */
 
 @-webkit-keyframes flipOutRight {
-	to {
-		-webkit-transform: translateZ(-1000px) rotateY(90deg);
-		opacity: 0.2;
-	}
+    to {
+        -webkit-transform: translateZ(-1000px) rotateY(90deg);
+        opacity: 0.2;
+    }
 }
 
 @-moz-keyframes flipOutRight {
-	to {
-		-moz-transform: translateZ(-1000px) rotateY(90deg);
-		opacity: 0.2;
-	}
+    to {
+        -moz-transform: translateZ(-1000px) rotateY(90deg);
+        opacity: 0.2;
+    }
 }
 
 @keyframes flipOutRight {
-	to {
-		transform: translateZ(-1000px) rotateY(90deg);
-		opacity: 0.2;
-	}
+    to {
+        transform: translateZ(-1000px) rotateY(90deg);
+        opacity: 0.2;
+    }
 }
 
 @-webkit-keyframes flipInLeft {
-	from {
-		-webkit-transform: translateZ(-1000px) rotateY(-90deg);
-		opacity: 0.2;
-	}
+    from {
+        -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+        opacity: 0.2;
+    }
 }
 
 @-moz-keyframes flipInLeft {
-	from {
-		-moz-transform: translateZ(-1000px) rotateY(-90deg);
-		opacity: 0.2;
-	}
+    from {
+        -moz-transform: translateZ(-1000px) rotateY(-90deg);
+        opacity: 0.2;
+    }
 }
 
 @keyframes flipInLeft {
-	from {
-		transform: translateZ(-1000px) rotateY(-90deg);
-		opacity: 0.2;
-	}
+    from {
+        transform: translateZ(-1000px) rotateY(-90deg);
+        opacity: 0.2;
+    }
 }
 
 @-webkit-keyframes flipOutLeft {
-	to {
-		-webkit-transform: translateZ(-1000px) rotateY(-90deg);
-		opacity: 0.2;
-	}
+    to {
+        -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+        opacity: 0.2;
+    }
 }
 
 @-moz-keyframes flipOutLeft {
-	to {
-		-moz-transform: translateZ(-1000px) rotateY(-90deg);
-		opacity: 0.2;
-	}
+    to {
+        -moz-transform: translateZ(-1000px) rotateY(-90deg);
+        opacity: 0.2;
+    }
 }
 
 @keyframes flipOutLeft {
-	to {
-		transform: translateZ(-1000px) rotateY(-90deg);
-		opacity: 0.2;
-	}
+    to {
+        transform: translateZ(-1000px) rotateY(-90deg);
+        opacity: 0.2;
+    }
 }
 
 @-webkit-keyframes flipInRight {
-	from {
-		-webkit-transform: translateZ(-1000px) rotateY(90deg);
-		opacity: 0.2;
-	}
+    from {
+        -webkit-transform: translateZ(-1000px) rotateY(90deg);
+        opacity: 0.2;
+    }
 }
 
 @-moz-keyframes flipInRight {
-	from {
-		-moz-transform: translateZ(-1000px) rotateY(90deg);
-		opacity: 0.2;
-	}
+    from {
+        -moz-transform: translateZ(-1000px) rotateY(90deg);
+        opacity: 0.2;
+    }
 }
 
 @keyframes flipInRight {
-	from {
-		transform: translateZ(-1000px) rotateY(90deg);
-		opacity: 0.2;
-	}
+    from {
+        transform: translateZ(-1000px) rotateY(90deg);
+        opacity: 0.2;
+    }
 }
 
 /* animation delay classes */
 
 .pt-page-delay100 {
-	-webkit-animation-delay: .1s;
-	-moz-animation-delay: .1s;
-	animation-delay: .1s;
+    -webkit-animation-delay: .1s;
+    -moz-animation-delay: .1s;
+    animation-delay: .1s;
 }
 
 .pt-page-delay180 {
-	-webkit-animation-delay: .180s;
-	-moz-animation-delay: .180s;
-	animation-delay: .180s;
+    -webkit-animation-delay: .180s;
+    -moz-animation-delay: .180s;
+    animation-delay: .180s;
 }
 
 .pt-page-delay200 {
-	-webkit-animation-delay: .2s;
-	-moz-animation-delay: .2s;
-	animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+    -moz-animation-delay: .2s;
+    animation-delay: .2s;
 }
 
 .pt-page-delay300 {
-	-webkit-animation-delay: .3s;
-	-moz-animation-delay: .3s;
-	animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+    -moz-animation-delay: .3s;
+    animation-delay: .3s;
 }
 
 .pt-page-delay400 {
-	-webkit-animation-delay: .4s;
-	-moz-animation-delay: .4s;
-	animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+    -moz-animation-delay: .4s;
+    animation-delay: .4s;
 }
 
 .pt-page-delay500 {
-	-webkit-animation-delay: .5s;
-	-moz-animation-delay: .5s;
-	animation-delay: .5s;
+    -webkit-animation-delay: .5s;
+    -moz-animation-delay: .5s;
+    animation-delay: .5s;
 }
 
 .pt-page-delay700 {
-	-webkit-animation-delay: .7s;
-	-moz-animation-delay: .7s;
-	animation-delay: .7s;
+    -webkit-animation-delay: .7s;
+    -moz-animation-delay: .7s;
+    animation-delay: .7s;
 }
 
 .pt-page-delay1000 {
-	-webkit-animation-delay: 1s;
-	-moz-animation-delay: 1s;
-	animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
 }
