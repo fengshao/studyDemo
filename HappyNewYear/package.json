@@ -1,0 +1,9 @@
+{
+  "name": "happyNewYear",
+  "version": "0.0.1",
+  "description": "happyNewYear",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "4.13.3"
+  }
+}
