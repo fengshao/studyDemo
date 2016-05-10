@@ -1,0 +1,34 @@
+.img-div {
+    height: 800px;
+    width: 1500px;
+    border: 1px solid red;
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.img-label {
+    height: 500px;
+    width: 100px;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+.img-label img {
+    width: 100px;
+}
+
+.img-div-1 {
+    height: 800px;
+    width: 1500px;
+    border: 1px solid red;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.img-label-1 {
+    width: 200px;
+    height: 200px;
+}

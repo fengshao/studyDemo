@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>example4</title>
+  <style>
+  	#mydiv {
+  		width:50px;
+  		height:50px;
+  		position:absolute;
+  		top:0;
+  		left:0;
+  		background:red;
+  		-webkit-animation:ani1 4s ease-out infinite;
+  		-moz-animation:ani1 4s ease-out infinite;
+  		-o-animation:ani1 4s ease-out infinite;
+  		-ms-animation:ani1 4s ease-out infinite;
+  		animation:ani1 4s linear infinite;
+  	}
+  	@-webkit-keyframes ani1{
+		0%{left:0;top:0}
+		50%{left:200px;top:0}
+		70%{left:200px;top:200px;}
+		100%{left:0;top:200px;}
+	}
+	@-moz-keyframes ani1{
+		0%{left:0;top:0}
+		50%{left:200px;top:0}
+		70%{left:200px;top:200px;}
+		100%{left:0;top:200px;}
+	}
+	@-o-keyframes ani1{
+		0%{left:0;top:0}
+		50%{left:200px;top:0}
+		70%{left:200px;top:200px;}
+		100%{left:0;top:200px;}
+	}
+	@-ms-keyframes ani1{
+		0%{left:0;top:0}
+		50%{left:200px;top:0}
+		70%{left:200px;top:200px;}
+		100%{left:0;top:200px;}
+	}
+	@keyframes ani1{
+		0%{left:0;top:0}
+		50%{left:200px;top:0}
+		70%{left:200px;top:200px;}
+		100%{left:0;top:200px;}
+	}
+  </style>
+</head>
+<body>
+	<div id="mydiv"></div>
+</body>
+</html>
