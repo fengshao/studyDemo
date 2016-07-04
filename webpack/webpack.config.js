@@ -7,7 +7,7 @@ module.exports = {
 //插件项
     plugins: [commonsPlugin],
 //页面入口文件配置
-    entry: {index: './script/index.js'},
+    entry: {index: './index'},
 //入口文件输出配置
     output: {path: 'build/js', filename: '[name].js'},
     module: {
