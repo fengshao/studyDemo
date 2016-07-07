@@ -1,0 +1,13 @@
+{
+  "name": "webpackDemo",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node app"
+  },
+  "devDependencies": {
+    "promise": "7.1.1",
+    "cheerio": "0.20.0"
+  },
+  "dependencies": {
+  }
+}
