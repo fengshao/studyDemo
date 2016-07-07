@@ -48,12 +48,10 @@ function fillterChapters(html) {
 }
 
 function printCourseInfo(coursesData) {
+    console.log("\n")
     coursesData.forEach(function (courseData) {
+        console.log("-------------------------------------------------------\n");
         console.log(courseData.number + " 人学过 " + courseData.title + "\n");
-    });
-
-    coursesData.forEach(function (courseData) {
-        console.log("##### " + courseData.title + "\n");
 
         courseData.videos.forEach(function (item) {
             var chapterTitle = item.chapterTitle;
@@ -62,8 +60,10 @@ function printCourseInfo(coursesData) {
                 console.log("  [" + video.videoId + "]  " + video.videoTitle + "\n");
             });
         });
+        console.log("-------------------------------------------------------\n");
+    });
 
-
+    coursesData.forEach(function (courseData) {
     });
 
 }
