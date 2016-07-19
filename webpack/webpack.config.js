@@ -1,26 +1,32 @@
+'use strict';
+
+const path = require('path');
+const args = require('minimist')(process.argv.slice(2));
+
+// List of allowed environments
+const allowedEnvs = ['dev', 'dist', 'test'];
+
+// Set the correct environment
+let env;
+if (args._.length > 0 && args._.indexOf('start') !== -1) {
+    env = 'test';
+} else if (args.env) {
+    env = args.env;
+} else {
+    env = 'dev';
+}
+process.env.REACT_WEBPACK_ENV = env;
+
 /**
- * Created by xiaojinfeng on  2015/12/11 16:36 .
+ * Build the webpack configuration
+ * @param  {String} wantedEnv The wanted environment
+ * @return {Object} Webpack config
  */
-var webpack = require('webpack');
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
-module.exports = {
-//插件项
-    plugins: [commonsPlugin],
-//页面入口文件配置
-    entry: {index: './index'},
-//入口文件输出配置
-    output: {path: 'build/js', filename: '[name].js'},
-    module: {
-        //加载器配置
-        loaders: [
-            {test: /\.scss$/, loader: "style-loader!css-loader!sass-loader"},
-            {test: /\.css$/, loader: 'style-loader!css-loader'},
-            {test: /\.js$/, loader: 'jsx-loader?harmony'},
-            {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
-        ]
-    },
-    //其它解决方案配置
-    resolve: {
-        extensions: ['', '.js', '.json', '.scss']
-    }
-};
+function buildConfig(wantedEnv) {
+    let isValid = wantedEnv && wantedEnv.length > 0 && allowedEnvs.indexOf(wantedEnv) !== -1;
+    let validEnv = isValid ? wantedEnv : 'dev';
+    let config = require(path.join(__dirname, 'cfg/' + validEnv));
+    return config;
+}
+
+module.exports = buildConfig(env);

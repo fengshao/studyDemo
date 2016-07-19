@@ -3,47 +3,45 @@
  */
 var React = require('react');
 
-var MyStore = require('./store/store');
+//var MyStore = require('./store/store');
 
-var MyAction = require('./action/action');
+//var MyAction = require('./action/action');
 
 var MyComponent = React.createClass({
 
-    getInitialState: function () {
-        return MyStore.getState();
-    },
-
-    getDetail: function (data, e) {
-        var id = data.Id;
-        MyAction.GetDetail(id);
-
-    },
-
-    componentDidMount: function () {
-        MyStore.listen(this.onChange);
-    },
-
-    componentWillMount: function () {
-        MyStore.unlisten(this.onChange);
-
-    },
-
-    onChange: function (state) {
-        this.setState(state);
-    },
+    //getInitialState: function () {
+    //    return MyStore.getState();
+    //},
+    //
+    //getDetail: function (data, e) {
+    //    var id = data.Id;
+    //    MyAction.GetDetail(id);
+    //
+    //},
+    //
+    //componentDidMount: function () {
+    //    MyStore.listen(this.onChange);
+    //},
+    //
+    //componentWillMount: function () {
+    //    MyStore.unlisten(this.onChange);
+    //
+    //},
+    //
+    //onChange: function (state) {
+    //    this.setState(state);
+    //},
 
     render: function () {
         return (
-            <ul>
-                testetste
-                {this.state.datas.map(function (data) {
-                    return (
-                        <li onClick={this.getDetail.bind(null,data)}>{data.name}</li>
-                    );
-                })}
-            </ul>
+            <section>
+                test
+            </section>
         );
     }
 });
+
+
+React.render(<MyComponent />, document.getElementById('content')); // jshint ignore:line
 
 module.exports = MyComponent;
