@@ -2,7 +2,8 @@
  * Created by xiaojinfeng on  2016/2/2 10:08 .
  */
 //var express = require('express');
-const config = require('./webpack.config1');
+const open = require('open');
+const config = require('./webpack.config');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 //var app = express();
@@ -21,7 +22,7 @@ new WebpackDevServer(webpack(config), config.devServer)
         }
         console.log('Listening at localhost:' + config.port);
         console.log('Opening your system browser...');
-        //open('http://localhost:' + config.port + '/webpack-dev-server/');
+        open('http://localhost:' + config.port + '/webpack-dev-server/');
     });
 
 

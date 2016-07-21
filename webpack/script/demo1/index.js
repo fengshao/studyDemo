@@ -34,9 +34,9 @@ var MyComponent = React.createClass({
 
     render: function () {
         return (
-            <section>
-                test
-            </section>
+            <div>
+                testxiaojinfeng
+            </div>
         );
     }
 });
