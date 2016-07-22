@@ -13,16 +13,16 @@ const WebpackDevServer = require('webpack-dev-server');
 //var server = app.listen(app.get('port'), function () {
 //    console.log('server starte, http://localhost:' + app.get('port'));
 //});
-console.log("config->" + JSON.stringify(config));
+//console.log("config->" + JSON.stringify(config));
 
 new WebpackDevServer(webpack(config), config.devServer)
-    .listen(config.port, 'localhost', (err) => {
-        if (err) {
-            console.log(err);
-        }
-        console.log('Listening at localhost:' + config.port);
-        console.log('Opening your system browser...');
-        open('http://localhost:' + config.port + '/webpack-dev-server/');
-    });
+  .listen(config.port, 'localhost', (err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log('Listening at localhost:' + config.port);
+    console.log('Opening your system browser...');
+    //open('http://localhost:' + config.port + '/webpack-dev-server/');
+  });
 
 
