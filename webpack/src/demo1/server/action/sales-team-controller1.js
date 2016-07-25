@@ -3,7 +3,7 @@
  */
 "use strict";
 
-var SalesTeamManageServic = require("../service/sales-team-manage-service");
+//var SalesTeamManageServic = require("../service/sales-team-manage-service");
 var imageDatas = require("../data/imageDatas.json");
 
 exports.getImageDatas = function (req, res) {

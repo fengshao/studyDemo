@@ -14,7 +14,7 @@ module.exports = {
     "path": "/rest/getImageDatas",
     "handler": "getImageDatas",
     "passport": {
-      "needLogin": true
+      "needLogin": false
     }
   }]
 };
