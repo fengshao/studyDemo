@@ -87,6 +87,7 @@ module.exports = {
   cache: true,
 
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new BowerWebpackPlugin({
@@ -99,8 +100,7 @@ module.exports = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
       '_': 'underscore'
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ]
 
 

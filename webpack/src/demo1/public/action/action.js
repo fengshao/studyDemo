@@ -1,17 +1,16 @@
 /**
  * Created by fengs on 2016/6/24.
  */
-//var imageDatas = require("../data/imageDatas.json");
-//console.log("imageDatas-->" + JSON.stringify(imageDatas));
 var MyAjax = require("../ajax/ajax");
+
 function MyActions() {
 
-  this.generateActions(
-    'GetData',
-    'GetDetail'
-  );
+  this.generateActions({
+    'GetData': 'GetData',
+    'GetDetail': 'GetDetail'
+  });
 
-  this.GetData = function (input) {
+  this.GetData = function () {
     var _this = this;
     MyAjax.getImageDatas().then(function (list) {
       _this.dispatch(list);
@@ -20,7 +19,7 @@ function MyActions() {
     });
   };
 
-  this.GetDetail = function (id) {
+  this.GetDetail = function () {
     this.dispatch(data);
   }
 }

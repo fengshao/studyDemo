@@ -10,6 +10,7 @@ function MyStore() {
 };
 
 MyStore.prototype.Handledata = function (data) {
+  debugger
   var newData = this.getImageUrl(data);
   this.newImageDatasArr = newData;
 };

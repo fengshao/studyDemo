@@ -7,7 +7,6 @@
 var imageDatas = require("../data/imageDatas.json");
 
 exports.getImageDatas = function (req, res) {
-  console.log("imageDatas-->" + JSON.stringify(imageDatas));
   res.json({
     imageDatas: imageDatas
   });

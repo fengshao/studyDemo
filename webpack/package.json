@@ -15,9 +15,11 @@
     "release:patch": "npm version patch && npm publish && git push --follow-tags",
     "serve": "node server.js --env=dev",
     "serve:dist": "node server.js --env=dist",
-    "start": "node server.js --env=dev",
+    "startqqqq": "node server.js --env=dev",
     "test": "karma start",
-    "test:watch": "karma start --autoWatch=true --singleRun=false"
+    "test:watch": "karma start --autoWatch=true --singleRun=false",
+    "server": "webpack --progress --config webpack.config.js",
+    "start": "npm run server && node server.js"
   },
   "repository": "",
   "keywords": [],
@@ -64,7 +66,11 @@
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.0",
-    "webpack-dev-server": "^1.12.0"
+    "reload": "1.0.1",
+    "webpack-dev-middleware": "1.6.1",
+    "webpack-dev-server": "1.14.1",
+    "webpack-hot-middleware": "2.6.0",
+    "express": "4.14.0"
   },
   "dependencies": {
     "jquery": "2.1.4",
