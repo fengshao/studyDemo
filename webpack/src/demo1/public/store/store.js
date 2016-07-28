@@ -1,6 +1,7 @@
 /**
  * Created by fengs on 2016/6/24.
  */
+
 var MyActions = require("../action/action");
 
 function MyStore() {
@@ -10,7 +11,6 @@ function MyStore() {
 };
 
 MyStore.prototype.Handledata = function (data) {
-  debugger
   var newData = this.getImageUrl(data);
   this.newImageDatasArr = newData;
 };

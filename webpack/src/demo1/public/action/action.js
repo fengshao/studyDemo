@@ -1,19 +1,20 @@
 /**
  * Created by fengs on 2016/6/24.
  */
+
 var MyAjax = require("../ajax/ajax");
 
 function MyActions() {
 
   this.generateActions({
-    'GetData': 'GetData',
+    'Handledata': 'Handledata',
     'GetDetail': 'GetDetail'
   });
 
-  this.GetData = function () {
+  this.Handledata = function () {
     var _this = this;
     MyAjax.getImageDatas().then(function (list) {
-      _this.dispatch(list);
+      _this.dispatch(list.imageDatas);
     }, function (errorMsg) {
       _this.dispatch(errorMsg);
     });

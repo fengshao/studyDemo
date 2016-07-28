@@ -16,7 +16,7 @@ var MyComponent = React.createClass({
 
   componentDidMount: function () {
     MyStore.listen(this.onChange);
-    MyAction.GetData();
+    MyAction.Handledata();
   },
 
   componentWillMount: function () {

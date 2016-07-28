@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "jquery": "2.1.4",
-    "alt": "^0.18.5",
+    "alt": "0.17.9",
     "core-js": "^2.0.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
