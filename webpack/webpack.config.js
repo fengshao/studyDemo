@@ -41,10 +41,11 @@ module.exports = {
       include: srcPath,
       loader: 'eslint-loader'
     }],
+
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
+        loader: 'style-loader!css-loader!autoprefixer-loader?{browsers:["last 2 version", "firefox 15"]}'
       },
       {
         test: /\.sass/,
@@ -52,7 +53,7 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=expanded'
+        loader: 'style-loader!css-loader!autoprefixer-loader?{browsers:["last 2 version", "firefox 15"]}!sass-loader?outputStyle=expanded'
       },
       {
         test: /\.less/,
@@ -63,7 +64,7 @@ module.exports = {
         loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
       },
       {
-        test: /\.(png|jpg|gif|woff|woff2)$/,
+        test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=8192'
       },
       {
@@ -74,6 +75,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loader: 'react-hot!babel-loader',
         include: [path.join(__dirname, './src')]
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },

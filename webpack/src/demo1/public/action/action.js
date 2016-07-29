@@ -7,11 +7,12 @@ var MyAjax = require("../ajax/ajax");
 function MyActions() {
 
   this.generateActions({
-    'Handledata': 'Handledata',
-    'GetDetail': 'GetDetail'
+    'handledata': 'handledata',
+    'inverse': 'inverse',
+    'rearrange': 'rearrange'
   });
 
-  this.Handledata = function () {
+  this.handledata = function () {
     var _this = this;
     MyAjax.getImageDatas().then(function (list) {
       _this.dispatch(list.imageDatas);
@@ -20,9 +21,23 @@ function MyActions() {
     });
   };
 
-  this.GetDetail = function () {
-    this.dispatch(data);
-  }
+  this.inverse = function (index) {
+    this.dispatch(index);
+  };
+
+  this.rearrange = function (index, constant) {
+    this.dispatch({
+      index: index,
+      constant: constant
+    });
+  };
+
+  this.center = function (index, constant) {
+    this.dispatch({
+      index: index,
+      constant: constant
+    });
+  };
 }
 
 module.exports = alt.createActions(MyActions);

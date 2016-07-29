@@ -6,12 +6,12 @@ var ImgFigure = React.createClass({
   /*
    * imgFigure 的点击处理函数
    */
-  handleClick: function (e) {
+  handleClick: function (index, e) {
 
     if (this.props.arrange.isCenter) {
-      this.props.inverse();
+      this.props.inverse(index);
     } else {
-      this.props.center();
+      this.props.center(index);
     }
 
     e.stopPropagation();
@@ -43,13 +43,13 @@ var ImgFigure = React.createClass({
     imgFigureClassName += this.props.arrange.isInverse ? ' is-inverse' : '';
 
     return (
-      <figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick}>
+      <figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick.bind(this,this.key)}>
         <img src={this.props.data.imageUrl}
              alt={this.props.data.title}
         />
         <figcaption>
           <h2 className="img-title">{this.props.data.title}</h2>
-          <div className="img-back" onClick={this.handleClick}>
+          <div className="img-back" onClick={this.handleClick.bind(this,this.key)}>
             <p>
               {this.props.data.desc}
             </p>
