@@ -33,11 +33,6 @@ var MyComponent = React.createClass({
     return MyStore.getState();
   },
 
-  componentDidMount: function () {
-    MyStore.listen(this.onChange);
-    MyAction.handledata();
-  },
-
   componentWillMount: function () {
     MyStore.unlisten(this.onChange);
 
@@ -49,7 +44,8 @@ var MyComponent = React.createClass({
 
   // 组件加载以后， 为每张图片计算其位置的范围
   componentDidMount: function () {
-
+    MyStore.listen(this.onChange);
+    MyAction.handledata();
     // 首先拿到舞台的大小
     var stageDOM = ReactDOM.findDOMNode(this.refs.stage),
       stageW = stageDOM.scrollWidth,
@@ -57,11 +53,10 @@ var MyComponent = React.createClass({
       halfStageW = Math.ceil(stageW / 2),
       halfStageH = Math.ceil(stageH / 2);
 
-    debugger
     // 拿到一个imageFigure的大小
     var imgFigureDOM = ReactDOM.findDOMNode(this.refs.imgFigure0),
-      imgW = imgFigureDOM.scrollWidth,
-      imgH = imgFigureDOM.scrollHeight,
+      imgW = imgFigureDOM ? imgFigureDOM.scrollWidth : 320,
+      imgH = imgFigureDOM ? imgFigureDOM.scrollHeight : 360,
       halfImgW = Math.ceil(imgW / 2),
       halfImgH = Math.ceil(imgH / 2);
 
@@ -113,7 +108,6 @@ var MyComponent = React.createClass({
   },
 
   render: function () {
-    debugger
     var _this = this;
     var newImageDatasArr = this.state.newImageDatasArr;
     var imgsArrangeArr = this.state.imgsArrangeArr;

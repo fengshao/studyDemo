@@ -7,23 +7,7 @@ var MyActions = require("../action/action");
 function MyStore() {
   this.newImageDatasArr = [];
   this.imgsArrangeArr = [];
-  this.Constant = {
-    centerPos: {
-      left: 0,
-      right: 0
-    },
-    hPosRange: {   // 水平方向的取值范围
-      leftSecX: [0, 0],
-      rightSecX: [0, 0],
-      y: [0, 0]
-    },
-    vPosRange: {    // 垂直方向的取值范围
-      x: [0, 0],
-      topY: [0, 0]
-    }
-  },
-
-    this.bindActions(MyActions);
+  this.bindActions(MyActions);
 };
 
 MyStore.prototype.handledata = function (data) {
@@ -54,9 +38,8 @@ MyStore.prototype.center = function (obj) {
  * @param centerIndex 指定居中排布哪个图片
  */
 MyStore.prototype.rearrange = function (obj) {
-
   var imgsArrangeArr = this.imgsArrangeArr,
-    Constant = obj.Constant,
+    Constant = obj.constant,
     centerPos = Constant.centerPos,
     hPosRange = Constant.hPosRange,
     vPosRange = Constant.vPosRange,
@@ -65,7 +48,7 @@ MyStore.prototype.rearrange = function (obj) {
     hPosRangeY = hPosRange.y,
     vPosRangeTopY = vPosRange.topY,
     vPosRangeX = vPosRange.x,
-    index = obj.index,
+    centerIndex = obj.index,
     imgsArrangeTopArr = [],
     topImgNum = Math.floor(Math.random() * 2),    // 取一个或者不取
     topImgSpliceIndex = 0,

@@ -9,7 +9,8 @@ function MyActions() {
   this.generateActions({
     'handledata': 'handledata',
     'inverse': 'inverse',
-    'rearrange': 'rearrange'
+    'rearrange': 'rearrange',
+    'center': 'center'
   });
 
   this.handledata = function () {
