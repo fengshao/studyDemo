@@ -7,12 +7,32 @@ var MyActions = require("../action/action");
 function MyStore() {
   this.newImageDatasArr = [];
   this.imgsArrangeArr = [];
+  this.Constant = {
+    centerPos: {
+      left: 0,
+      right: 0
+    },
+    hPosRange: {   // 水平方向的取值范围
+      leftSecX: [0, 0],
+      rightSecX: [0, 0],
+      y: [0, 0]
+    },
+    vPosRange: {    // 垂直方向的取值范围
+      x: [0, 0],
+      topY: [0, 0]
+    }
+  };
   this.bindActions(MyActions);
 };
 
 MyStore.prototype.handledata = function (data) {
   var newData = this.getImageUrl(data);
   this.newImageDatasArr = newData;
+  this.getImgsArrangeArr(newData);
+  this.rearrange({
+    index: 0,
+    constant: this.Constant
+  });
 };
 
 /*
@@ -48,10 +68,11 @@ MyStore.prototype.rearrange = function (obj) {
     hPosRangeY = hPosRange.y,
     vPosRangeTopY = vPosRange.topY,
     vPosRangeX = vPosRange.x,
-    centerIndex = obj.index,
     imgsArrangeTopArr = [],
     topImgNum = Math.floor(Math.random() * 2),    // 取一个或者不取
     topImgSpliceIndex = 0,
+    _this = this,
+    centerIndex = obj.index,
 
     imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
 
@@ -70,10 +91,10 @@ MyStore.prototype.rearrange = function (obj) {
   imgsArrangeTopArr.forEach(function (value, index) {
     imgsArrangeTopArr[index] = {
       pos: {
-        top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
-        left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+        top: _this.getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
+        left: _this.getRangeRandom(vPosRangeX[0], vPosRangeX[1])
       },
-      rotate: get30DegRandom(),
+      rotate: _this.get30DegRandom(),
       isCenter: false
     };
   });
@@ -91,10 +112,10 @@ MyStore.prototype.rearrange = function (obj) {
 
     imgsArrangeArr[i] = {
       pos: {
-        top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
-        left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+        top: _this.getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
+        left: _this.getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
       },
-      rotate: get30DegRandom(),
+      rotate: _this.get30DegRandom(),
       isCenter: false
     };
 
@@ -120,5 +141,38 @@ MyStore.prototype.getImageUrl = function (imageDatasArr) {
 
   return imageDatasArr;
 };
+
+
+MyStore.prototype.getImgsArrangeArr = function (newImageDatasArr) {
+  var _this = this;
+  newImageDatasArr.forEach(function (value, index) {
+    if (!_this.imgsArrangeArr[index]) {
+      _this.imgsArrangeArr[index] = {
+        pos: {
+          left: 0,
+          top: 0
+        },
+        rotate: 0,
+        isInverse: false,
+        isCenter: false
+      };
+    }
+  });
+}
+
+/*
+ * 获取区间内的一个随机值
+ */
+MyStore.prototype.getRangeRandom = function (low, high) {
+  return Math.ceil(Math.random() * (high - low) + low);
+}
+
+/*
+ * 获取 0~30° 之间的一个任意正负值
+ */
+MyStore.prototype.get30DegRandom = function () {
+  return ((Math.random() > 0.5 ? '' : '-') + Math.ceil(Math.random() * 30));
+}
+
 
 module.exports = alt.createStore(MyStore, 'MyStore');

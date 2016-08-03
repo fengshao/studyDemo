@@ -3,13 +3,13 @@
  */
 // 控制组件
 var ControllerUnit = React.createClass({
-  handleClick: function (e) {
-
+  handleClick: function (index, e) {
+    debugger
     // 如果点击的是当前正在选中态的按钮，则翻转图片，否则将对应的图片居中
     if (this.props.arrange.isCenter) {
-      this.props.inverse();
+      this.props.inverse(index);
     } else {
-      this.props.center();
+      this.props.center(index);
     }
 
     e.preventDefault();
@@ -29,7 +29,7 @@ var ControllerUnit = React.createClass({
     }
 
     return (
-      <span className={controlelrUnitClassName} onClick={this.handleClick}></span>
+      <span className={controlelrUnitClassName} onClick={this.handleClick.bind(this,this.props.value)}></span>
     );
   }
 });

@@ -26,13 +26,6 @@ function MyActions() {
     this.dispatch(index);
   };
 
-  this.rearrange = function (index, constant) {
-    this.dispatch({
-      index: index,
-      constant: constant
-    });
-  };
-
   this.center = function (index, constant) {
     this.dispatch({
       index: index,

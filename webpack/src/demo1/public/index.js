@@ -13,22 +13,6 @@ var ImgFigure = require('./view/imageFigure');
 var ControllerUnit = require('./view/ControllerUnit');
 var MyComponent = React.createClass({
 
-  Constant: {
-    centerPos: {
-      left: 0,
-      right: 0
-    },
-    hPosRange: {   // 水平方向的取值范围
-      leftSecX: [0, 0],
-      rightSecX: [0, 0],
-      y: [0, 0]
-    },
-    vPosRange: {    // 垂直方向的取值范围
-      x: [0, 0],
-      topY: [0, 0]
-    }
-  },
-
   getInitialState: function () {
     return MyStore.getState();
   },
@@ -46,6 +30,8 @@ var MyComponent = React.createClass({
   componentDidMount: function () {
     MyStore.listen(this.onChange);
     MyAction.handledata();
+
+    var Constant = this.state.Constant;
     // 首先拿到舞台的大小
     var stageDOM = ReactDOM.findDOMNode(this.refs.stage),
       stageW = stageDOM.scrollWidth,
@@ -61,27 +47,24 @@ var MyComponent = React.createClass({
       halfImgH = Math.ceil(imgH / 2);
 
     // 计算中心图片的位置点
-    this.Constant.centerPos = {
+    Constant.centerPos = {
       left: halfStageW - halfImgW,
       top: halfStageH - halfImgH
     };
 
     // 计算左侧，右侧区域图片排布位置的取值范围
-    this.Constant.hPosRange.leftSecX[0] = -halfImgW;
-    this.Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
-    this.Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
-    this.Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
-    this.Constant.hPosRange.y[0] = -halfImgH;
-    this.Constant.hPosRange.y[1] = stageH - halfImgH;
+    Constant.hPosRange.leftSecX[0] = -halfImgW;
+    Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
+    Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
+    Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
+    Constant.hPosRange.y[0] = -halfImgH;
+    Constant.hPosRange.y[1] = stageH - halfImgH;
 
     // 计算上侧区域图片排布位置的取值范围
-    this.Constant.vPosRange.topY[0] = -halfImgH;
-    this.Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3;
-    this.Constant.vPosRange.x[0] = halfStageW - imgW;
-    this.Constant.vPosRange.x[1] = halfStageW;
-
-    MyAction.rearrange(0, this.Constant);
-
+    Constant.vPosRange.topY[0] = -halfImgH;
+    Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3;
+    Constant.vPosRange.x[0] = halfStageW - imgW;
+    Constant.vPosRange.x[1] = halfStageW;
   },
 
 
@@ -101,7 +84,7 @@ var MyComponent = React.createClass({
      * @returns {Function}
      */
     center: function (index) {
-      MyAction.center(index, this.Constant);
+      MyAction.center(index, this.state.Constant);
     }
 
 
@@ -109,35 +92,26 @@ var MyComponent = React.createClass({
 
   render: function () {
     var _this = this;
-    var newImageDatasArr = this.state.newImageDatasArr;
     var imgsArrangeArr = this.state.imgsArrangeArr;
+    var newImageDatasArr = this.state.newImageDatasArr;
     var controllerUnits = [],
       imgFigures = [];
 
     newImageDatasArr.forEach(function (value, index) {
 
-      if (!imgsArrangeArr[index]) {
-        imgsArrangeArr[index] = {
-          pos: {
-            left: 0,
-            top: 0
-          },
-          rotate: 0,
-          isInverse: false,
-          isCenter: false
-        };
-      }
-
       imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFigure' + index}
                                  arrange={imgsArrangeArr[index]}
-                                 inverse={this.events.inverse}
-                                 center={this.events.center}
+                                 value={index}
+                                 inverse={_this.events.inverse.bind(_this)}
+                                 center={_this.events.center.bind(_this)}
       />);
 
       controllerUnits.push(<ControllerUnit key={index} arrange={imgsArrangeArr[index]}
-                                           inverse={this.events.inverse} center={this.events.center}
+                                           value={index}
+                                           inverse={_this.events.inverse.bind(_this)}
+                                           center={_this.events.center.bind(_this)}
       />);
-    }.bind(this));
+    });
 
     return (
       <section className="stage" ref="stage">
