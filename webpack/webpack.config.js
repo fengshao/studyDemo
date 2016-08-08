@@ -85,7 +85,7 @@ module.exports = {
   },
 
   entry: [
-    'webpack-dev-server/client?http://127.0.0.1:' + dfltPort,
+    'webpack-dev-server/client?http://localhost:' + dfltPort,
     'webpack/hot/only-dev-server',
     './src/demo1/public/index',
     './public/index'
