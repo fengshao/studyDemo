@@ -1,0 +1,124 @@
+@import "./animation";
+
+.content {
+  background-image: url("../image/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+
+  .top-title-img, .luoxuanquan-cls-img {
+    width: 90%;
+
+  }
+
+  .top-tite-content {
+
+    .activity-rule-btn {
+      background-image: url("../image/activity-rule-btn.png");
+      background-repeat: no-repeat;
+      height: 80px;
+      width: 170px;
+      position: absolute;
+      top: 368px;
+      left: 66%;
+      transform: scale(1.2);
+
+      animation: activity-rule-btn_animation 3s infinite;
+      -webkit-animation: activity-rule-btn_animation 3s infinite;
+
+    }
+
+    .zimutiao {
+      background-image: url("../image/zimutiao.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-left: -94px;
+      height: 243px;
+      margin-top: -99px;
+      line-height: 171px;
+
+      label {
+        display: inline-block;
+        height: 44px;
+        color: #cabe68;
+        font-size: 30px;
+        transform: skewY(-9deg);
+        position: relative;
+        /*animation:mymove 5s infinite;*/
+        /*-webkit-animation:mymove 5s infinite; !*Safari and Chrome*!*/
+      }
+
+    }
+  }
+
+  .foter-basketball-content {
+
+    .luoxuanquan-cls {
+      width: 100%;
+      margin-top: 6px;
+
+      .luoxuanquan-cls-img {
+        animation: ring_animation 10s infinite linear;
+        -webkit-animation: ring_animation 10s infinite linear;
+      }
+
+      .weisai-logo {
+        position: absolute;
+        background-image: url("../image/weisai.png");
+        background-repeat: no-repeat;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background-color: #febb1f;
+        left: 40%;
+        background-position: center;
+        z-index: 10;
+        background-size: 170px;
+      }
+
+      .weisai-div {
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background-color: #736750;
+        left: 40%;
+        z-index: 1;
+        opacity: 0.8;
+
+        animation: circular_animation 10s infinite;
+        -webkit-animation: circular_animation 10s infinite;
+
+      }
+
+    }
+
+    .head-ico-content {
+      position: absolute;
+      width: 100%;
+      animation: head_icon_animation 20s infinite linear;
+      -webkit-animation: head_icon_animation 20s infinite linear;
+
+      .head-ico-div {
+        text-align: center;
+        width: 98px;
+        height: 150px;
+        position: absolute;
+        color: #ffffff;
+        clear: both;
+        animation: ring_animation 20s infinite linear;
+        -webkit-animation: ring_animation 20s infinite linear;
+
+        .head-ico-title {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          position: relative;
+          top: -13px;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+}
