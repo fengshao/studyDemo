@@ -5,7 +5,7 @@ $(function () {
 
     init();
     headIconBoxFnc();
-
+    addEvent();
 
     function init() {
         $(".content").css("width", document.documentElement.clientWidth).css("height", document.documentElement.clientHeight);
@@ -36,6 +36,20 @@ $(function () {
                 "top": Math.cos((ahd * index)) * radius + dotTop - 75
             });
         });
+    };
+
+    function addEvent() {
+
+        var contentElement = $(".content");
+
+        $(".content").delegate(".activity-rule-btn", "click", function () {
+            $(".layer-bg-div").show();
+            $(".activity-rule-layer").show();
+        });
+        contentElement.delegate(".activity-rule-close-btn", "click", function () {
+            $(".layer-bg-div").hide();
+            $(".activity-rule-layer").hide();
+        })
     }
 
 });

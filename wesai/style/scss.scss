@@ -1,5 +1,9 @@
 @import "./animation";
 
+body {
+  margin: 0px;
+}
+
 .content {
   background-image: url("../image/bg.png");
   background-repeat: no-repeat;
@@ -8,7 +12,16 @@
 
   .top-title-img, .luoxuanquan-cls-img {
     width: 90%;
+  }
 
+  .layer-bg-div {
+    background-image: url("../image/layer-bg.png");
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 99;
   }
 
   .top-tite-content {
@@ -21,8 +34,8 @@
       position: absolute;
       top: 368px;
       left: 66%;
+      z-index: 10;
       transform: scale(1.2);
-
       animation: activity-rule-btn_animation 3s infinite;
       -webkit-animation: activity-rule-btn_animation 3s infinite;
 
@@ -119,6 +132,109 @@
         }
       }
     }
+  }
+
+  .layer-content-div {
+    position: absolute;
+    height: 70%;
+    width: 100%;
+    top: 15%;
+    z-index: 100;
+
+    .activity-rule-layer {
+      display: none;
+
+      .activity-rule {
+        position: absolute;
+        top: 31%;
+        width: 78%;
+        left: 10%;
+        z-index: 100;
+      }
+      .activity-rule-close-btn {
+        position: absolute;
+        top: 28%;
+        right: 10%;
+        z-index: 100;
+      }
+    }
+    .give-me-fine-layer {
+      height: 100%;
+      .give-me-fine-logo {
+        background-image: url("../image/gogo-baijingting.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+        width: 80%;
+        margin-left: 10%;
+      }
+      .give-me-fine-close-btn {
+        margin-right: 10%;
+        z-index: 100;
+        float: right;
+      }
+
+      .give-me-fine-form {
+        height: 300px;
+        margin-top: -270px;
+        background-color: #aa7c2e;
+        width: 70%;
+        margin-left: 15%;
+        border-radius: 20px;
+        font-size: 40px;
+
+        .give-me-fine-form-phone {
+          height: 100px;
+
+          input {
+            float: left;
+            width: 50%;
+            border-radius: 10px;
+            line-height: 60px;
+            height: 60px;
+            font-size: 40px;
+            margin-left: 30px;
+            margin-top: 50px;
+            border: 0px;
+            padding: 0px 10px 0px 10px;
+          }
+          .get-verification-btn {
+            width: 38%;
+            float: left;
+            background-color: #ffffff;
+            border-radius: 10px;
+            margin-left: 10px;
+            height: 60px;
+            line-height: 60px;
+            color: #aa7c2e;
+            margin-top: 50px;
+
+          }
+
+        }
+
+        .give-me-fine-form-verification {
+          height: 60px;
+          line-height: 60px;
+
+          input {
+            font-size: 40px;
+            border-radius: 10px;
+            border: 0px;
+            padding: 0px 10px 0px 10px;
+            margin-top: 50px;
+            height: 60px;
+            width: 90%;
+          }
+
+        }
+        img.gogo-btn {
+          margin-top: 100px;
+        }
+
+      }
+    }
+
   }
 
 }
