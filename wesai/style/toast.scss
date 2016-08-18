@@ -44,31 +44,30 @@
   animation-name: fadeOut
 }
 
-
-.toast{
-  position:fixed;
-  z-index:100000001;
-  //top:30%;
-  left:0;
+.toast {
+  position: fixed;
+  z-index: 100000001;
+  bottom: 18%;;
+  left: 0;
   text-align: center;
   width: 100%;
-  .toast-text{
-    max-width:300px;
-    display:inline-block;
-    border-radius:4px;
-    color:#fff;
-    background: rgba(0,0,0,.6);
+  .toast-text {
+    max-width: 300px;
+    display: inline-block;
+    border-radius: 4px;
+    color: #fff;
+    background: rgba(0, 0, 0, .6);
     padding: 12px 20px;
-    font-size: 25px;
+    font-size: 16px
   }
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  &.on{
+  &.on {
     @extend .fadeIn;
   }
-  &.off{
+  &.off {
     @extend .fadeOut;
   }
 }

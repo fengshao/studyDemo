@@ -8,23 +8,33 @@ html, body {
   overflow: hidden;
 }
 
+body {
+  background-image: url("../image/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+//关闭按钮样式
 @mixin close-btnk {
   width: 30px;
   height: 30px;
 }
 
+//最外层div样式
 .content {
   height: 100%;
   width: 100%;
-  background-image: url("../image/bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  //background-image: url("../image/bg.png");
+  //background-repeat: no-repeat;
+  //background-size: cover;
   text-align: center;
 
+  //顶部大字图及底部线圈图样式
   .top-title-img, .luoxuanquan-cls-img {
     width: 90%;
   }
 
+  //弹层背景层样式
   .layer-bg-div {
     background-image: url("../image/layer-bg.png");
     position: absolute;
@@ -35,8 +45,21 @@ html, body {
     z-index: 99;
   }
 
+  //顶部样式
   .top-tite-content {
 
+    //顶部模糊图片进入样式
+    .top-tite-scale {
+      animation: top_title_animation .3s linear;
+      -webkit-animation: top_title_animation .3s linear;
+    }
+
+    //动画进入完毕之后显示的顶部图片样式
+    .top-tite-logo {
+      display: none;
+    }
+
+    //查看规则按钮样式
     .activity-rule-btn {
       background-image: url("../image/activity-rule-btn.png");
       background-repeat: no-repeat;
@@ -44,7 +67,7 @@ html, body {
       height: 50px;
       width: 100px;
       position: absolute;
-      top: 19%;
+      top: 22%;
       left: 66%;
       z-index: 10;
       animation: activity-rule-btn_animation 3s infinite;
@@ -52,6 +75,7 @@ html, body {
 
     }
 
+    //滚动字幕样式
     .zimutiao {
       background-image: url("../image/zimutiao.png");
       background-repeat: no-repeat;
@@ -74,18 +98,33 @@ html, body {
     }
   }
 
+  //底部样式
   .foter-basketball-content {
     margin-top: 40px;
-
     overflow: hidden;
+
+    //线圈区域样式
     .luoxuanquan-cls {
       width: 100%;
 
+      //线圈图片样式
       .luoxuanquan-cls-img {
-        animation: ring_animation 10s infinite linear;
-        -webkit-animation: ring_animation 10s infinite linear;
+        visibility: hidden;
+
+        //线圈图片转圈动画样式
+        &.luoxuanquan-cls-img-animation {
+          animation: ring_animation 10s 0.5s infinite linear;
+          -webkit-animation: ring_animation 10s 0.5s infinite linear;
+        }
+
+        //线圈图由小变大动画样式
+        &.luoxuanquan-cls-img-show-animation {
+          animation: ring_show_animation 0.5;
+          -webkit-animation: ring_show_animation 0.5s;
+        }
       }
 
+      //微赛logo div样式
       .weisai-logo {
         position: absolute;
         background-image: url("../image/weisai.png");
@@ -98,47 +137,85 @@ html, body {
         background-position: center;
         z-index: 10;
         background-size: 72px;
+        display: none;
+
+        //微赛logo由上到下由小到大动画样式
+        &.weisai-logo-animation {
+          animation: weisai_logo_animation 0.5s linear;
+          -webkit-animation: weisai_logo_animation 0.5s linear;
+        }
+
       }
 
+      //微赛下方div 样式
       .weisai-div {
         position: absolute;
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         background-color: #736750;
         left: 39%;
         z-index: 1;
         opacity: 0.8;
+        display: none;
 
-        animation: circular_animation 10s infinite;
-        -webkit-animation: circular_animation 10s infinite;
+        //div 大小不断变化动画样式 持续稳定
+        &.weisai-div-animation {
+          animation: circular_animation 10s 1s infinite;
+          -webkit-animation: circular_animation 10s 1s infinite;
+        }
+
+        //div大小变化动画样式 入场动画
+        &.weisai-div-quick-animation {
+          animation: weisai-div-quick-animation 1s;
+          -webkit-animation: weisai-div-quick-animation 1s;
+        }
 
       }
 
     }
 
+    //明星头像区域样式
     .head-ico-content {
       position: absolute;
       width: 100%;
       z-index: 50;
-      animation: head_icon_animation 20s infinite linear;
-      -webkit-animation: head_icon_animation 20s infinite linear;
 
+      //整个明星头像旋转动画样式
+      &.head-ico-content-animation {
+        animation: head_icon_animation 20s infinite linear;
+        -webkit-animation: head_icon_animation 20s infinite linear;
+      }
+
+      //单个明星头像样式
       .head-ico-div {
         text-align: center;
         width: 56px;
         height: 80px;
         position: absolute;
         color: #ffffff;
-        animation: ring_animation 20s infinite linear;
-        -webkit-animation: ring_animation 20s infinite linear;
         z-index: 50;
+        display: none;
 
-        .head-ico {
+        //明星头像由小及大入场动画样式
+        &.head-ico-div-expand-animation {
+          animation: ring_show_animation 0.5s linear;
+          -webkit-animation: ring_show_animation 0.5s linear;
+        }
+
+        //明星头像转动样式动画 与外层转动相互抵消 头像始终保持竖直
+        &.head-ico-div-turn-animation {
+          animation: ring_animation 20s infinite linear;
+          -webkit-animation: ring_animation 20s infinite linear;
+        }
+
+        //头像 img样式
+        img.head-ico {
           width: 50px;
           height: 60px;
         }
 
+        //头像 名称样式
         .head-ico-title {
           display: inline-block;
           width: 100%;
@@ -150,6 +227,7 @@ html, body {
       }
     }
 
+    //投票排行区域样式
     .votes-num-layer {
       display: none;
 
@@ -158,6 +236,7 @@ html, body {
         width: 100%;
         z-index: 100;
 
+        //关闭排行区域按钮样式
         .close-votes-num-layer-btn {
           position: absolute;
           right: 10%;
@@ -165,8 +244,8 @@ html, body {
 
         }
 
+        //单个明星头像样式
         .head-ico-div {
-
           text-align: center;
           width: 56px;
           height: 80px;
@@ -175,11 +254,13 @@ html, body {
           z-index: 100;
           transform: scale(1.3);
 
+          //头像 img样式
           .head-ico {
             width: 50px;
             height: 60px;
           }
 
+          //头像 名称样式
           .head-ico-title {
             display: inline-block;
             width: 100%;
@@ -189,6 +270,7 @@ html, body {
             font-size: 12px;
           }
 
+          //投票数量样式
           .head-ico-votes-num {
             display: inline-block;
             width: 100%;
@@ -201,15 +283,18 @@ html, body {
         }
       }
 
+      //投票排行弹层按钮区域样式
       .votes-num-layer-btn {
         position: relative;
         z-index: 100;
 
+        //现场喊人按钮样式
         .gogo-live-btn-cls {
           width: 30%;
           margin-left: 14%;
           float: left;
         }
+        //分享按钮样式
         .gogo-hanr-btn-cls {
           width: 30%;
         }
@@ -218,6 +303,7 @@ html, body {
     }
   }
 
+  //弹层区域样式
   .layer-content-div {
     position: absolute;
     height: 70%;
@@ -225,9 +311,11 @@ html, body {
     top: 15%;
     //z-index: 100;
 
+    //活动规则弹层区域样式
     .activity-rule-layer {
       display: none;
 
+      //规则说明图片样式
       .activity-rule {
         position: absolute;
         top: 31%;
@@ -236,6 +324,7 @@ html, body {
         z-index: 100;
       }
 
+      //关闭规则弹层按钮样式
       .activity-rule-close-btn {
         position: absolute;
         top: 25%;
@@ -246,14 +335,15 @@ html, body {
       }
     }
 
+    //点击明星头像弹层区域样式
     .give-me-fine-layer {
       height: 100%;
       display: none;
       position: relative;
       z-index: 100;
 
+      //明星背景图片样式
       .give-me-fine-logo {
-        background-image: url("../image/gogo-maidi.png");
         background-repeat: no-repeat;
         background-size: contain;
         height: 100%;
@@ -282,6 +372,7 @@ html, body {
         }
       }
 
+      //关闭弹层样式
       .give-me-fine-close-btn {
         margin-right: 10%;
         z-index: 100;
@@ -289,9 +380,10 @@ html, body {
         @include close-btnk;
       }
 
+      //弹层底部表单样式
       .give-me-fine-form {
         height: 150px;
-        margin-top: -165px;
+        margin-top: -40%;
         background-image: url("../image/form-bg.png");
         background-repeat: no-repeat;
         background-size: cover;
@@ -300,6 +392,7 @@ html, body {
         border-radius: 10px;
         font-size: 14px;
 
+        //手机号区域样式
         .give-me-fine-form-phone {
           padding-top: 20px;
 
@@ -315,6 +408,7 @@ html, body {
             padding: 0px 10px 0px 10px;
           }
 
+          //获取验证码按钮样式
           .get-verification-btn {
             width: 34%;
             float: left;
@@ -328,6 +422,7 @@ html, body {
 
         }
 
+        //验证码区域样式
         .give-me-fine-form-verification {
           height: 60px;
           line-height: 60px;
@@ -343,6 +438,7 @@ html, body {
 
         }
 
+        //给我加油按钮样式
         img.gogo-btn {
           margin-top: 46px;
           width: 50%;
@@ -350,9 +446,10 @@ html, body {
 
       }
 
+      //提交验证码后投票数区域样式
       .give-me-fine-tks {
         height: 150px;
-        margin-top: -165px;
+        margin-top: -40%;
         background-image: url("../image/form-bg.png");
         background-repeat: no-repeat;
         background-size: cover;

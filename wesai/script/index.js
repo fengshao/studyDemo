@@ -18,11 +18,55 @@ $(function () {
         $(".weisai-logo").css("top", topHeight - $(".weisai-logo").height() / 2)
             .css("left", ($(".luoxuanquan-cls").width() / 2 - $(".weisai-logo").width() / 2));
         $(".weisai-div").css("top", topHeight - $(".weisai-div").height() / 2)
-            .css("left", ($(".luoxuanquan-cls").width() / 2 - $(".weisai-logo").width() / 2));
+            .css("left", ($(".luoxuanquan-cls").width() / 2 - $(".weisai-div").width() / 2));
         $(".head-ico-content").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
         $(".head-ico-content-copy").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
+        animationFnc();
     };
 
+    function animationFnc() {
+        var top_tite_scale_Animation = document.querySelector('.top-tite-scale');
+        var logo_Animation = document.querySelector('.weisai-logo');
+        var weisai_div_Animation = document.querySelector('.weisai-div');
+        var ring_div_Animation = document.querySelector('.luoxuanquan-cls-img');
+        var head_icon_div_Animation = document.querySelector('.head-ico-div');
+
+
+        top_tite_scale_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
+            //顶部大字图片进场动画结束之后执行后续动画
+            $(".top-tite-logo").show();
+            $(".top-tite-scale").hide();
+            //微赛logo开始进场
+            $(".weisai-logo").addClass("weisai-logo-animation").show();
+        }, false);
+
+        logo_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
+            //微赛logo进场动画结束之后执行微赛底部div进场动画
+            $(".weisai-div").addClass("weisai-div-quick-animation").show();
+        }, false);
+
+        weisai_div_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
+            //微赛底部div进场动画完毕之后执行线圈图片进场动画
+            $(".luoxuanquan-cls-img").addClass("luoxuanquan-cls-img-show-animation").css("visibility", "visible");
+        }, false);
+
+        ring_div_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
+            //线圈图片进场之后执行线圈图片转圈动画
+            $(".luoxuanquan-cls-img").removeClass("luoxuanquan-cls-img-show-animation").addClass("luoxuanquan-cls-img-animation");
+            //微赛底部div执行稳定持续动画
+            $(".weisai-div").removeClass("weisai-div-quick-animation").addClass("weisai-div-animation");
+            //明星头像进场动画
+            $(".head-ico-div").addClass("head-ico-div-expand-animation").show();
+        }, false);
+
+        head_icon_div_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
+            //明星头像进场动画结束之后执行明星头像转圈动画
+            $(".head-ico-content").addClass("head-ico-content-animation");
+            $(".head-ico-div").removeClass("head-ico-div-expand-animation").addClass("head-ico-div-turn-animation");
+        }, false);
+    };
+
+    //明星头像圆形分布
     function headIconBoxFnc() {
 
         //中心点横坐标
@@ -109,26 +153,30 @@ $(function () {
                 "phone": params.phone
             }
 
+            if (!params.phone) {
+                toastFnc("请填写手机号码");
+                return;
+            }
             if (!(/^1[3|4|5|7|8]\d{9}$/.test(params.phone))) {
-                toastFnc("手机号码有误，请重填");
-            } else {
-                $.ajax({
-                    "type": "get",
-                    "data": data,
-                    "url": url,
-                    "success": function (data) {
-                        if (data.error == 0) {
-                            params.verificationCode = data.result.code;
-                        } else {
-                            toastFnc(data.info);
-                        }
-                    },
-                    "error": function (data) {
-                        params.phone = "";
+                toastFnc("手机号码有误，请重新输入");
+                return;
+            }
+            $.ajax({
+                "type": "get",
+                "data": data,
+                "url": url,
+                "success": function (data) {
+                    if (data.error == 0) {
+                        params.verificationCode = data.result.code;
+                    } else {
                         toastFnc(data.info);
                     }
-                });
-            }
+                },
+                "error": function (data) {
+                    params.phone = "";
+                    toastFnc(data.info);
+                }
+            });
         });
 
 
@@ -142,11 +190,16 @@ $(function () {
                 "phone": params.phone
             };
 
+
             if (params.phone !== phone) {
                 toastFnc("请输入当前获取验证码的手机号");
-            } else if (verificationCode !== params.verificationCode) {
+                return;
+            }
+            if (verificationCode !== params.verificationCode) {
                 toastFnc("请输入正确的验证码");
-            } else {
+                return;
+            }
+            if (params.phone && verificationCode) {
                 $.ajax({
                     "type": "get",
                     "data": data,
@@ -168,7 +221,6 @@ $(function () {
                     }
                 });
             }
-
         });
 
 
@@ -201,6 +253,7 @@ $(function () {
 
     };
 
+    //投票排行赋值
     function setStarVotesNum(data) {
         $(".head-ico-content-copy .head-ico-div").each(function () {
             for (var i = 0; i < data.length; i++) {
@@ -211,6 +264,7 @@ $(function () {
         })
     };
 
+    //错误信息提示
     function toastFnc(msg, opts) {
         if (!opts)opts = {};
         var toast = document.createElement('div');
