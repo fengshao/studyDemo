@@ -1,0 +1,74 @@
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut
+}
+
+
+.toast{
+  position:fixed;
+  z-index:100000001;
+  //top:30%;
+  left:0;
+  text-align: center;
+  width: 100%;
+  .toast-text{
+    max-width:300px;
+    display:inline-block;
+    border-radius:4px;
+    color:#fff;
+    background: rgba(0,0,0,.6);
+    padding: 12px 20px;
+    font-size: 25px;
+  }
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  &.on{
+    @extend .fadeIn;
+  }
+  &.off{
+    @extend .fadeOut;
+  }
+}
