@@ -100,6 +100,7 @@ body {
   }
 
   .top-tite-content {
+    position: relative;
 
     //顶部模糊图片进入样式
     .top-tite-scale {
@@ -120,8 +121,8 @@ body {
       height: 50px;
       width: 100px;
       position: absolute;
-      top: 22%;
-      left: 66%;
+      top: 55%;
+      left: 63%;
       z-index: 10;
       animation: activity-rule-btn_animation 3s infinite;
       -webkit-animation: activity-rule-btn_animation 3s infinite;
@@ -133,19 +134,24 @@ body {
       background-image: url("../image/zimutiao.png");
       background-repeat: no-repeat;
       background-size: cover;
-      margin-left: -49px;
-      height: 76px;
-      margin-top: -45px;
+      height: 34px;
+      transform: skewY(-10deg);
+      width: 80%;
+      margin-left: 10%;
+      overflow: hidden;
+      margin-top: -16px;
 
       label {
-        display: inline-block;
-        height: 44px;
         color: #cabe68;
-        font-size: 14px;
-        transform: skewY(-9deg);
+        font-size: 12px;
         position: relative;
-        margin-top: 7%;
+        height: 20px;
+        display: inline-block;
+        animation: zimutiao_animation 6s infinite linear;
+        -webkit-animation: zimutiao_animation 6s infinite linear;
+
       }
+
     }
   }
 
@@ -639,11 +645,22 @@ body {
   }
 }
 
+@media (max-width: 414px) {
+  .activity-rule-btn {
+    top: 59% !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .activity-rule-btn {
+    top: 58% !important;
+  }
+}
+
 @media (max-width: 320px) {
-  .zimutiao {
-    label {
-      margin-top: 11% !important;
-    }
+  .activity-rule-btn {
+    top: 56% !important;
+    left: 59% !important;
   }
 }
 

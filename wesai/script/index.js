@@ -113,6 +113,7 @@ $(function () {
     };
 
     function animationFnc() {
+
         $(".top-title-img-index").addClass("top-tite-scale");
         var top_tite_scale_Animation = document.querySelector('.top-title-img-index');
         var logo_Animation = document.querySelector('.weisai-logo');
@@ -280,6 +281,7 @@ $(function () {
             $(".layer-bg-div").hide();
             $(".head-ico-content").show();
             $(".votes-num-layer").hide();
+            $(".weisai-logo").removeClass("show-votes-weisai");
         });
 
         //喊人加油
@@ -340,7 +342,7 @@ $(function () {
                 "phone": params.phone
             };
 
-      
+
             if (!phone) {
                 toastFnc("请填写手机号码");
                 return;
@@ -450,7 +452,7 @@ $(function () {
 
     function weixinfengxiang() {
         var wxDate = {};
-        $.getJSON('http://wx.t.wesai.com/token/CreateJsApiTicket?url=http://mini.wesai.com/20160809/&callback=?', function (data) {
+        $.getJSON('http://wx.t.wesai.com/token/CreateJsApiTicket?url=http://mini.wesai.com/20160819/&callback=?', function (data) {
             wxDate = data.data;
         }).done(function () {
             wx.config({
@@ -467,8 +469,8 @@ $(function () {
 
                 wx.onMenuShareTimeline({
                     title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
-                    link: 'http://mini.wesai.com/20160809/', // 分享链接
-                    imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
+                    link: 'http://mini.wesai.com/20160819/', // 分享链接
+                    imgUrl: 'http://mini.wesai.com/20160819/image/wx200.jpg', // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
                         hideFenxiangLayer();
@@ -482,8 +484,8 @@ $(function () {
                 wx.onMenuShareAppMessage({
                     title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
                     desc: '麦蒂、吴亦凡、萧敬腾等20位明星巅峰对决！偶像人气就看你的了！', // 分享描述
-                    link: 'http://mini.wesai.com/20160809/', // 分享链接
-                    imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
+                    link: 'http://mini.wesai.com/20160819/', // 分享链接
+                    imgUrl: 'http://mini.wesai.com/20160819/image/wx200.jpg', // 分享图标
                     type: '', // 分享类型,music、video或link，不填默认为link
                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                     success: function () {
@@ -499,8 +501,8 @@ $(function () {
                 wx.onMenuShareWeibo({
                     title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
                     desc: '麦蒂、吴亦凡、萧敬腾等20位明星巅峰对决！偶像人气就看你的了！', // 分享描述
-                    link: 'http://mini.wesai.com/20160809/', // 分享链接
-                    imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
+                    link: 'http://mini.wesai.com/20160819/', // 分享链接
+                    imgUrl: 'http://mini.wesai.com/20160819/image/wx200.jpg', // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
                         hideFenxiangLayer();

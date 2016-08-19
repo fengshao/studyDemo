@@ -113,7 +113,6 @@
   }
 }
 
-
 @-webkit-keyframes weisai-div-quick-animation {
   0% {
     transform: scale(1);
@@ -250,6 +249,27 @@
 
   100% {
     transform: translateY(0px) scale(1);
+  }
+}
+
+//字幕条
+@keyframes zimutiao_animation {
+  0% {
+    transform: translateX(250px);
+  }
+
+  100% {
+    transform: translateX(-250px);
+  }
+}
+
+@-webkit-keyframes zimutiao_animation {
+  0% {
+    transform: translateX(250px);
+  }
+
+  100% {
+    transform: translateX(-250px);
   }
 }
 
