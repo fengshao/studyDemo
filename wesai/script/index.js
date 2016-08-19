@@ -157,6 +157,7 @@ $(function () {
     //明星头像圆形分布
     function headIconBoxFnc() {
 
+        var wh = document.documentElement.clientWidth;
         //中心点横坐标
         var dotLeft = $(".head-ico-content").width() / 2;
         //中心点纵坐标
@@ -165,6 +166,9 @@ $(function () {
         var stard = 0;
         //半径
         var radius = 120;
+        if (wh <= 320) {
+            radius = 95;
+        }
         //每一个BOX对应的角度;
         var avd = 360 / $(".head-ico-content .head-ico-div").length;
         //每一个BOX对应的弧度;
@@ -207,7 +211,7 @@ $(function () {
 
 
         //定时调用运动函数
-        params.setAnimate = setInterval(fun_animat, 100);
+        params.setAnimate = setInterval(fun_animat, 80);
 
     };
 
@@ -229,6 +233,7 @@ $(function () {
 
         //查看活动规则
         contentElement.delegate(".activity-rule-btn", "click", function () {
+            $(".layer-content-div").show();
             $(".layer-bg-div").show();
             $(".activity-rule-layer").show();
         });
@@ -237,12 +242,14 @@ $(function () {
         contentElement.delegate(".activity-rule-close-btn", "click", function () {
             $(".layer-bg-div").hide();
             $(".activity-rule-layer").hide();
+            $(".layer-content-div").hide();
         });
 
         //点击明星头像弹出明星加油弹层
         contentElement.delegate(".head-ico-content .head-ico-div", "click", function (event) {
             params.nowUserId = $(event.currentTarget).attr("userid");
             $(".layer-bg-div").show();
+            $(".layer-content-div").show();
             $(".give-me-fine-layer").show();
             $(".give-me-fine-form").show();
             $(".give-me-fine-tks").hide();
@@ -253,6 +260,7 @@ $(function () {
         contentElement.delegate(".give-me-fine-close-btn", "click", function () {
             $(".layer-bg-div").hide();
             $(".give-me-fine-layer").hide();
+            $(".layer-content-div").hide();
             $(".give-me-fine-logo").removeClass().addClass("give-me-fine-logo");
             $(".give-me-fine-form-phone input").val("");
             $(".give-me-fine-form-phone input").val("");
@@ -332,6 +340,7 @@ $(function () {
                 "phone": params.phone
             };
 
+      
             if (!phone) {
                 toastFnc("请填写手机号码");
                 return;
@@ -375,11 +384,12 @@ $(function () {
         //查看票数排行榜
         contentElement.delegate(".see-votes-num-btn", "click", function () {
             var url = "http://activity.api.wesai.com/user/get_list.json";
-
+            $(".layer-content-div").hide();
             $(".give-me-fine-layer").hide();
             $(".head-ico-content").hide();
             $(".votes-num-layer").show();
-
+            $(".layer-bg-div").addClass("show-votes");
+            $(".weisai-logo").addClass("show-votes-weisai");
             $.ajax({
                 "type": "get",
                 "url": url,
@@ -432,6 +442,8 @@ $(function () {
     };
 
     function hideFenxiangLayer() {
+        $(".layer-bg-div").removeClass("show-votes");
+        $(".weisai-logo").removeClass("show-votes-weisai");
         $(".layer-bg-div").hide();
         $(".fenxiang-ayer-bg-div").hide();
     };
@@ -454,7 +466,7 @@ $(function () {
             wx.ready(function () {
 
                 wx.onMenuShareTimeline({
-                    title: '超级企鹅，明星篮球赛', // 分享标题
+                    title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
                     link: 'http://mini.wesai.com/20160809/', // 分享链接
                     imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
                     success: function () {
@@ -468,8 +480,8 @@ $(function () {
                 });
 
                 wx.onMenuShareAppMessage({
-                    title: '超级企鹅，明星篮球赛', // 分享标题
-                    desc: '为你心爱的明星点赞，加油助威去现场！', // 分享描述
+                    title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
+                    desc: '麦蒂、吴亦凡、萧敬腾等20位明星巅峰对决！偶像人气就看你的了！', // 分享描述
                     link: 'http://mini.wesai.com/20160809/', // 分享链接
                     imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
                     type: '', // 分享类型,music、video或link，不填默认为link
@@ -485,8 +497,8 @@ $(function () {
                 });
 
                 wx.onMenuShareWeibo({
-                    title: '超级企鹅，明星篮球赛', // 分享标题
-                    desc: '为你心爱的明星点赞，加油助威去现场！', // 分享描述
+                    title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
+                    desc: '麦蒂、吴亦凡、萧敬腾等20位明星巅峰对决！偶像人气就看你的了！', // 分享描述
                     link: 'http://mini.wesai.com/20160809/', // 分享链接
                     imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
                     success: function () {

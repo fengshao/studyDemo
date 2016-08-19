@@ -19,6 +19,10 @@ body {
   height: 30px;
 }
 
+.hide-img-div {
+  display: none;
+}
+
 .noteBg {
   width: 100%;
   height: 100%;
@@ -64,11 +68,14 @@ body {
   z-index: 99;
   opacity: 0.9;
   background-color: #000;
+  &.show-votes {
+    opacity: 0.7;
+  }
 }
 
 .fenxiang-ayer-bg-div {
   background-image: url("../image/fenxiang.png");
-  position: absolute;
+  position: fixed;
   top: 0px;
   width: 100%;
   height: 100%;
@@ -144,7 +151,7 @@ body {
 
   //底部样式
   .foter-basketball-content {
-    margin-top: 40px;
+    margin-top: 6px;
     overflow: hidden;
     //线圈区域样式
     .luoxuanquan-cls {
@@ -170,7 +177,7 @@ body {
       //微赛logo div样式
       .weisai-logo {
         position: absolute;
-        background-image: url("../image/weisai.png");
+        background-image: url("../image/shanghai.png");
         background-repeat: no-repeat;
         width: 90px;
         height: 90px;
@@ -181,6 +188,10 @@ body {
         z-index: 10;
         background-size: 72px;
         display: none;
+
+        &.show-votes-weisai {
+          background-image: url("../image/weisai.png") !important;
+        }
 
         //微赛logo由上到下由小到大动画样式
         &.weisai-logo-animation {
@@ -247,8 +258,8 @@ body {
 
         //明星头像由小及大入场动画样式
         &.head-ico-div-expand-animation {
-          animation: ring_show_animation 0.5s linear;
-          -webkit-animation: ring_show_animation 0.5s linear;
+          animation: ring_show_animation 0.4s linear;
+          -webkit-animation: ring_show_animation 0.4s linear;
         }
 
         //明星头像转动样式动画 与外层转动相互抵消 头像始终保持竖直
@@ -274,7 +285,7 @@ body {
         }
 
         &.scal-class {
-          transform: scale(1.5, 1.5);
+          transform: scale(1.4, 1.4);
         }
       }
     }
@@ -332,19 +343,32 @@ body {
             font-size: 12px;
 
           }
+
+          .head-ico-title-maidi {
+            float: left;
+            width: 50%;
+            padding-top: 5px;
+          }
+
+          .head-ico-votes-num-maidi {
+            float: left;
+            width: 50%;
+            padding-top: 5px;
+          }
         }
       }
 
       //投票排行弹层按钮区域样式
       .votes-num-layer-btn {
-        position: relative;
+        position: absolute;
         z-index: 100;
+        text-align: center;
+        width: 100%;
+        padding-top: 16px;
 
         //现场喊人按钮样式
         .gogo-live-btn-cls {
           width: 30%;
-          margin-left: 14%;
-          float: left;
         }
         //分享按钮样式
         .gogo-hanr-btn-cls {
@@ -357,11 +381,12 @@ body {
 
   //弹层区域样式
   .layer-content-div {
-    position: absolute;
+    position: fixed;
     height: 70%;
     width: 100%;
     top: 15%;
-    //z-index: 100;
+    z-index: 100;
+    display: none;
 
     //活动规则弹层区域样式
     .activity-rule-layer {
@@ -369,19 +394,23 @@ body {
 
       //规则说明图片样式
       .activity-rule {
-        position: absolute;
-        top: 31%;
         width: 78%;
         left: 10%;
         z-index: 100;
+        top: 25%;
+        right: 10%;
+        margin-right: 10%;
+        float: right;
+
       }
 
       //关闭规则弹层按钮样式
       .activity-rule-close-btn {
-        position: absolute;
         top: 25%;
         right: 10%;
         z-index: 100;
+        margin-right: 10%;
+        float: right;
         @include close-btnk;
 
       }
@@ -618,7 +647,7 @@ body {
   }
 }
 
-.gpu{
+.gpu {
   webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
