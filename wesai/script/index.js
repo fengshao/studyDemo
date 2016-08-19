@@ -2,16 +2,16 @@
  * Created by fengshao on 2016/8/17.
  */
 $(function () {
+    var params = {
+        nowUserId: "", //当前点击加油的明星ID
+        phone: "",
+        verificationCode: "",
+        setAnimate: ""
+    };
 
     init();
     headIconBoxFnc();
     addEvent();
-
-    var params = {
-        nowUserId: "", //当前点击加油的明星ID
-        phone: "",
-        verificationCode: ""
-    };
 
     function init() {
         var topHeight = $(".luoxuanquan-cls").position().top + $(".luoxuanquan-cls").height() / 2;
@@ -22,6 +22,10 @@ $(function () {
         $(".head-ico-content").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
         $(".head-ico-content-copy").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
         animationFnc();
+
+        var scaleHeadIconTimer = setInterval(function () {
+            scaleHeadIcon();
+        }, 3000);
     };
 
     function animationFnc() {
@@ -30,7 +34,6 @@ $(function () {
         var weisai_div_Animation = document.querySelector('.weisai-div');
         var ring_div_Animation = document.querySelector('.luoxuanquan-cls-img');
         var head_icon_div_Animation = document.querySelector('.head-ico-div');
-
 
         top_tite_scale_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
             //顶部大字图片进场动画结束之后执行后续动画
@@ -81,10 +84,12 @@ $(function () {
         var avd = 360 / $(".head-ico-content .head-ico-div").length;
         //每一个BOX对应的弧度;
         var ahd = avd * Math.PI / 180;
+        //运动的速度
+        var speed = 2;
 
         $(".head-ico-content .head-ico-div").each(function (index, element) {
             $(this).css({
-                "left": Math.sin((ahd * index)) * radius + dotLeft - 30,
+                "left": Math.sin((ahd * index)) * radius + dotLeft - 35,
                 "top": Math.cos((ahd * index)) * radius + dotTop - 30
             });
         });
@@ -96,7 +101,42 @@ $(function () {
             });
         });
 
+        //运动函数
+        var fun_animat = function () {
+
+            speed = speed < 360 ? speed : 2;
+
+            //运运的速度
+            speed += 2;
+            //运动距离，即运动的弧度数;
+            var ainhd = speed * Math.PI / 180;
+
+            //按速度来定位DIV元素
+            $(".head-ico-content .head-ico-div").each(function (index, element) {
+                $(this).css({
+                    "left": Math.sin((ahd * index + ainhd)) * radius + dotLeft - 35,
+                    "top": Math.cos((ahd * index + ainhd)) * radius + dotTop - 30
+                });
+            });
+        };
+
+
+        //定时调用运动函数
+        params.setAnimate = setInterval(fun_animat, 100);
+
     };
+
+    function scaleHeadIcon() {
+
+        var numIcon = Math.floor(Math.random() * 4 + 1);
+        $(".head-ico-content .head-ico-div").removeClass("scal-class");
+        for (var i = 0; i <= numIcon; i++) {
+            var index = Math.floor(Math.random() * 5);
+            $(".head-ico-content .head-ico-div:eq(" + index + ")").addClass("scal-class");
+        }
+    }
+
+    ;
 
     function addEvent() {
 
@@ -143,6 +183,13 @@ $(function () {
             $(".layer-bg-div").hide();
             $(".head-ico-content").show();
             $(".votes-num-layer").hide();
+        });
+
+        //喊人加油
+        contentElement.delegate(".gogo-hanr-btn-cls", "click", function () {
+            $(".votes-num-layer").hide();
+            $(".head-ico-content").show();
+            $(".fenxiang-ayer-bg-div").show();
         });
 
         //获取手机验证码
