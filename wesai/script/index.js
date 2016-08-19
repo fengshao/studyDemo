@@ -1,19 +1,44 @@
 /**
  * Created by fengshao on 2016/8/17.
  */
+
+//判断手机横竖屏状态：
+function checkDirect() {
+    if (window.orientation == 180 || window.orientation == 0) {
+        document.querySelector(".mask").style.display = "none";
+        $("body").unbind('touchmove');
+        window.location.reload();
+    }
+    if (window.orientation == 90 || window.orientation == -90) {
+        document.querySelector(".mask").style.display = "block";
+        $("body").on('touchmove', function (event) {
+            event.preventDefault();
+        }, false);
+
+    }
+}
+window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", checkDirect, false);
+
 $(function () {
     var params = {
         nowUserId: "", //当前点击加油的明星ID
         phone: "",
         verificationCode: "",
-        setAnimate: ""
+        setAnimate: "",
+        setInitTimer: ""
     };
 
-    init();
-    headIconBoxFnc();
+    params.setInitTimer = setInterval(function () {
+        if ($(".content").css("visibility") !== "hidden") {
+            init();
+        }
+    }, 100)
+
     addEvent();
+    weixinfengxiang();
 
     function init() {
+        clearInterval(params.setInitTimer);
         var topHeight = $(".luoxuanquan-cls").position().top + $(".luoxuanquan-cls").height() / 2;
         $(".weisai-logo").css("top", topHeight - $(".weisai-logo").height() / 2)
             .css("left", ($(".luoxuanquan-cls").width() / 2 - $(".weisai-logo").width() / 2));
@@ -21,7 +46,11 @@ $(function () {
             .css("left", ($(".luoxuanquan-cls").width() / 2 - $(".weisai-div").width() / 2));
         $(".head-ico-content").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
         $(".head-ico-content-copy").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
+
+        $(".layer-bg-div").css("height", $(".content").height());
+
         animationFnc();
+        headIconBoxFnc();
 
         var scaleHeadIconTimer = setInterval(function () {
             scaleHeadIcon();
@@ -29,7 +58,8 @@ $(function () {
     };
 
     function animationFnc() {
-        var top_tite_scale_Animation = document.querySelector('.top-tite-scale');
+        $(".top-title-img-index").addClass("top-tite-scale");
+        var top_tite_scale_Animation = document.querySelector('.top-title-img-index');
         var logo_Animation = document.querySelector('.weisai-logo');
         var weisai_div_Animation = document.querySelector('.weisai-div');
         var ring_div_Animation = document.querySelector('.luoxuanquan-cls-img');
@@ -159,6 +189,8 @@ $(function () {
             params.nowUserId = $(event.currentTarget).attr("userid");
             $(".layer-bg-div").show();
             $(".give-me-fine-layer").show();
+            $(".give-me-fine-form").show();
+            $(".give-me-fine-tks").hide();
             $(".give-me-fine-logo").addClass(event.currentTarget.id);
         });
 
@@ -190,6 +222,11 @@ $(function () {
             $(".votes-num-layer").hide();
             $(".head-ico-content").show();
             $(".fenxiang-ayer-bg-div").show();
+        });
+
+        //
+        contentElement.delegate(".fenxiang-ayer-bg-div", "click", function () {
+            hideFenxiangLayer();
         });
 
         //获取手机验证码
@@ -232,42 +269,52 @@ $(function () {
             var verificationCode = $(".give-me-fine-form-verification input").val();
             var phone = $(".give-me-fine-form-phone input").val();
             var url = "http://mrsd.wesai.com/user/get_add_user.json";
+
+            $(".give-me-fine-tks").show();
+            $(".give-me-fine-form").hide();
+            return
             var data = {
                 "userid": params.nowUserId,
                 "phone": params.phone
             };
 
+            if (!phone) {
+                toastFnc("请填写手机号码");
+                return;
+            }
+            if (!(/^1[3|4|5|7|8]\d{9}$/.test(phone))) {
+                toastFnc("手机号码有误，请重新输入");
+                return;
+            }
 
             if (params.phone !== phone) {
                 toastFnc("请输入当前获取验证码的手机号");
                 return;
             }
-            if (verificationCode !== params.verificationCode) {
+            if (!verificationCode || verificationCode !== params.verificationCode) {
                 toastFnc("请输入正确的验证码");
                 return;
             }
-            if (params.phone && verificationCode) {
-                $.ajax({
-                    "type": "get",
-                    "data": data,
-                    "url": url,
-                    "success": function (data) {
-                        if (data.error == 0) {
-                            $(".give-me-fine-ths-num-label").text(data.result.num);
-                        } else {
-                            toastFnc(data.info);
-                        }
-                        $(".give-me-fine-tks").show();
-                        $(".give-me-fine-form").hide();
-                        params.phone = "";
-                        params.verificationCode = "";
-                    },
-                    "error": function (data) {
+            $.ajax({
+                "type": "get",
+                "data": data,
+                "url": url,
+                "success": function (data) {
+                    if (data.error == 0) {
+                        $(".give-me-fine-ths-num-label").text(data.result.num);
+                    } else {
                         toastFnc(data.info);
-                        params.phone = "";
                     }
-                });
-            }
+                    $(".give-me-fine-tks").show();
+                    $(".give-me-fine-form").hide();
+                    params.phone = "";
+                    params.verificationCode = "";
+                },
+                "error": function (data) {
+                    toastFnc(data.info);
+                    params.phone = "";
+                }
+            });
         });
 
 
@@ -328,6 +375,78 @@ $(function () {
             }, 500);
         }, (opts.time || 2000) + 1000);
         $(".give-me-fine-form").prepend(toast);
-    }
+    };
 
+    function hideFenxiangLayer() {
+        $(".layer-bg-div").hide();
+        $(".fenxiang-ayer-bg-div").hide();
+    };
+
+    function weixinfengxiang() {
+        var wxDate = {};
+        $.getJSON('http://wx.t.wesai.com/token/CreateJsApiTicket?url=http://mini.wesai.com/20160809/&callback=?', function (data) {
+            wxDate = data.data;
+        }).done(function () {
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: wxDate.appId, // 必填，公众号的唯一标识
+                timestamp: wxDate.timestamp, // 必填，生成签名的时间戳
+                nonceStr: wxDate.nonceStr, // 必填，生成签名的随机串
+                signature: wxDate.signature,// 必填，签名，见附录1
+                jsApiList: ['onMenuShareTimeline',
+                    'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone',] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+
+            wx.ready(function () {
+
+                wx.onMenuShareTimeline({
+                    title: '超级企鹅，明星篮球赛', // 分享标题
+                    link: 'http://mini.wesai.com/20160809/', // 分享链接
+                    imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        hideFenxiangLayer();
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        hideFenxiangLayer();
+                    }
+                });
+
+                wx.onMenuShareAppMessage({
+                    title: '超级企鹅，明星篮球赛', // 分享标题
+                    desc: '为你心爱的明星点赞，加油助威去现场！', // 分享描述
+                    link: 'http://mini.wesai.com/20160809/', // 分享链接
+                    imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        hideFenxiangLayer();
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        hideFenxiangLayer();
+                    }
+                });
+
+                wx.onMenuShareWeibo({
+                    title: '超级企鹅，明星篮球赛', // 分享标题
+                    desc: '为你心爱的明星点赞，加油助威去现场！', // 分享描述
+                    link: 'http://mini.wesai.com/20160809/', // 分享链接
+                    imgUrl: 'http://mini.wesai.com/20160809/image/wx300.jpg', // 分享图标
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        hideFenxiangLayer();
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        hideFenxiangLayer();
+                    }
+                });
+
+
+            });
+        });
+    }
 });

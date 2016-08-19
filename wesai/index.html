@@ -5,15 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
-    <title>Title</title>
-    <link href="../style/scss.css" rel="stylesheet"/>
-    <script language="JavaScript" src="../script/jquery-3.1.0.js"></script>
+    <title>超级企鹅，明星篮球赛</title>
+    <link href="./style/scss.css" rel="stylesheet"/>
+    <script language="JavaScript" src="./script/jquery-3.1.0.js"></script>
 </head>
-<body>
+<body onload="fakeProgress(0, sb)">
+<div class="noteBg" id="noteBg">
+    <img class="sssss" src="./image/213123.gif"/>
+    <div class="loading">
+        <div class="num" id="sb"><i>10</i></div>
+    </div>
+</div>
 <div class="content">
     <div class="top-tite-content">
-        <img class="top-title-img top-tite-scale" src="../image/top-title-into.png"/>
-        <img class="top-title-img top-tite-logo" src="../image/top-title.png"/>
+        <img class="top-title-img top-title-img-index" src="./image/top-title-into.png"/>
+        <img class="top-title-img top-tite-logo" src="./image/top-title.png"/>
         <div class="activity-rule-btn"></div>
         <div class="zimutiao">
             <label>爱他就点他，为他助威加油！赢取观赛门票！</label>
@@ -22,82 +28,80 @@
 
     <div class="foter-basketball-content">
         <div class="luoxuanquan-cls">
-            <img class="luoxuanquan-cls-img" src="../image/luoxuanquan.png">
+            <img class="luoxuanquan-cls-img" src="./image/luoxuanquan.png">
             <div class="weisai-logo"></div>
             <div class="weisai-div"></div>
         </div>
 
         <div class="head-ico-content">
             <div class="head-ico-div" id="head-icon-maidi" userId="1">
-                <img class="head-ico" src="../image/head-icon-maidi.png">
+                <img class="head-ico" src="./image/head-icon-maidi.png">
                 <label class="head-ico-title">麦蒂</label>
             </div>
             <div class="head-ico-div" id="head-icon-baijingting" userId="2">
-                <img class="head-ico" src="../image/head-icon-baijingting.png">
+                <img class="head-ico" src="./image/head-icon-baijingting.png">
                 <label class="head-ico-title">白敬亭</label>
             </div>
             <div class="head-ico-div" id="head-icon-jiangjinfu" userId="3">
-                <img class="head-ico" src="../image/head-icon-jiangjinfu.png">
+                <img class="head-ico" src="./image/head-icon-jiangjinfu.png">
                 <label class="head-ico-title">蒋劲夫</label>
             </div>
             <div class="head-ico-div" id="head-icon-wuyifan" userId="4">
-                <img class="head-ico" src="../image/head-icon-wuyifan.png">
+                <img class="head-ico" src="./image/head-icon-wuyifan.png">
                 <label class="head-ico-title">吴亦凡</label>
             </div>
             <div class="head-ico-div" id="head-icon-xiaojingteng" userId="5">
-                <img class="head-ico" src="../image/head-icon-xiaojingteng.png">
+                <img class="head-ico" src="./image/head-icon-xiaojingteng.png">
                 <label class="head-ico-title">萧敬腾</label>
             </div>
         </div>
 
         <div class="votes-num-layer">
             <div class="head-ico-content-copy">
-                <img class="close-votes-num-layer-btn" src="../image/close-btn.png"/>
+                <img class="close-votes-num-layer-btn" src="./image/close-btn.png"/>
                 <div class="head-ico-div" userId="1">
-                    <img class="head-ico" src="../image/head-icon-maidi.png">
+                    <img class="head-ico" src="./image/head-icon-maidi.png">
                     <label class="head-ico-title">麦蒂</label>
                     <label class="head-ico-votes-num"></label>
                 </div>
                 <div class="head-ico-div" userId="2">
-                    <img class="head-ico" src="../image/head-icon-baijingting.png">
+                    <img class="head-ico" src="./image/head-icon-baijingting.png">
                     <label class="head-ico-title">白敬亭</label>
                     <label class="head-ico-votes-num"></label>
                 </div>
                 <div class="head-ico-div" userId="3">
-                    <img class="head-ico" src="../image/head-icon-jiangjinfu.png">
+                    <img class="head-ico" src="./image/head-icon-jiangjinfu.png">
                     <label class="head-ico-title">蒋劲夫</label>
                     <label class="head-ico-votes-num"></label>
                 </div>
                 <div class="head-ico-div" userId="4">
-                    <img class="head-ico" src="../image/head-icon-wuyifan.png">
+                    <img class="head-ico" src="./image/head-icon-wuyifan.png">
                     <label class="head-ico-title">吴亦凡</label>
                     <label class="head-ico-votes-num"></label>
                 </div>
                 <div class="head-ico-div" userId="5">
-                    <img class="head-ico" src="../image/head-icon-xiaojingteng.png">
+                    <img class="head-ico" src="./image/head-icon-xiaojingteng.png">
                     <label class="head-ico-title">萧敬腾</label>
                     <label class="head-ico-votes-num"></label>
                 </div>
             </div>
             <div class="votes-num-layer-btn">
-                <img class="gogo-live-btn-cls" src="../image/gogo-live.png"/>
-                <img class="gogo-hanr-btn-cls" src="../image/gogo-hanr-btn.png"/>
+                <img class="gogo-live-btn-cls" src="./image/gogo-live.png"/>
+                <img class="gogo-hanr-btn-cls" src="./image/gogo-hanr-btn.png"/>
             </div>
         </div>
 
     </div>
-
-    <div class="layer-bg-div"></div>
-    <div class="fenxiang-ayer-bg-div"></div>
+    <div class="" style="height: 50px;width: 100%;"></div>
 
     <div class="layer-content-div">
         <div class="activity-rule-layer">
-            <img class="activity-rule-close-btn" src="../image/close-btn.png"/>
-            <img class="activity-rule" src="../image/activity-rule.png"/>
+            <img class="activity-rule-close-btn" src="./image/close-btn.png"/>
+            <img class="activity-rule" src="./image/activity-rule.png"/>
         </div>
 
         <div class="give-me-fine-layer">
-            <img class="give-me-fine-close-btn" src="../image/close-btn.png"/>
+            <img class="give-me-fine-close-btn" src="./image/close-btn.png"/>
             <div class="give-me-fine-logo"></div>
             <div class="give-me-fine-form">
                 <div class="give-me-fine-form-phone">
@@ -109,7 +113,7 @@
                 <div class="give-me-fine-form-verification">
                     <input type="text" placeholder="请输入手机验证号码 "/>
                 </div>
-                <img class="gogo-btn" src="../image/gogo-btn.png">
+                <img class="gogo-btn" src="./image/gogo-btn.png">
             </div>
             <div class="give-me-fine-tks">
                 <div class="give-me-fine-ths-title">谢谢你！</div>
@@ -118,7 +122,7 @@
                     <label class="give-me-fine-ths-num-label"></label>
                     位为我加油的粉丝
                 </div>
-                <img class="see-votes-num-btn" src="../image/see-votes-num.png">
+                <img class="see-votes-num-btn" src="./image/see-votes-num.png">
             </div>
         </div>
 
@@ -126,7 +130,49 @@
     </div>
 
 </div>
+<div class="layer-bg-div"></div>
+<div class="fenxiang-ayer-bg-div"></div>
+<div class="mask" id="mask">
+    <div class="mask-box">
+        <div class="mask-pic"><i></i></div>
+        <span>为了更好的体验，请将设备竖过来</span>
+    </div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script language="JavaScript" src="./script/index.js"></script>
+<script language="javascript">
+
+    var cliWH = document.documentElement.clientWidth;
+    var cliHG = document.documentElement.clientHeight;
+    if (cliHG < cliWH) {
+        //横屏
+        document.querySelector(".mask").style.display = "block";
+    } else {
+        //竖屏
+        document.querySelector(".mask").style.display = "none";
+    }
+
+    function setSB(v, el) {
+        var ie5 = (document.all && document.getElementsByTagName);
+        if (ie5 || document.readyState == "complete") {
+            valueEl = el.children[0];
+            valueEl.innerText = v;
+        }
+    }
+    function fakeProgress(v, el) {
+        $("body").on('touchmove', function (event) {
+            event.preventDefault();
+        }, false);
+        if (v > 100) {
+            $('#noteBg').hide();
+            $('.content').css("visibility", "visible");
+            $("body").unbind('touchmove');
+        } else {
+            setSB(v, el);
+            window.setTimeout("fakeProgress(" + (++v) + ", document.all['" + el.id + "'])", 20);
+        }
+    }
+</script>
 </body>
 
-<script language="JavaScript" src="../script/index.js"></script>
 </html>

@@ -3,8 +3,6 @@
 
 html, body {
   margin: 0px;
-  height: 100%;
-  width: 100%;
   overflow: hidden;
 }
 
@@ -12,6 +10,7 @@ body {
   background-image: url("../image/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
 }
 
 //关闭按钮样式
@@ -20,9 +19,66 @@ body {
   height: 30px;
 }
 
+.noteBg {
+  width: 100%;
+  height: 100%;
+  //background: #000D47 url('../image/213123.gif') no-repeat center 0;
+  background-size: 100%;
+  z-index: 10;
+  position: absolute;
+
+  .sssss {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loading {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    overflow: hidden;
+    top: 68%;
+    left: 50%;
+    margin: -50px 0 0 -40px;
+  }
+
+  .num {
+    color: #916c40;
+    font-size: 20px;
+    text-align: center;
+    width: 80px;
+    line-height: 24px;
+    margin-top: 0px;
+  }
+
+}
+
+//弹层背景层样式
+.layer-bg-div {
+  background-image: url("../image/layer-bg.png");
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 99;
+}
+
+.fenxiang-ayer-bg-div {
+  background-image: url("../image/fenxiang.png");
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 99;
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+}
+
 //最外层div样式
 .content {
-  height: 100%;
+  visibility: hidden;
   width: 100%;
   //background-image: url("../image/bg.png");
   //background-repeat: no-repeat;
@@ -34,30 +90,6 @@ body {
     width: 90%;
   }
 
-  //弹层背景层样式
-  .layer-bg-div {
-    background-image: url("../image/layer-bg.png");
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 99;
-  }
-
-  .fenxiang-ayer-bg-div {
-    background-image: url("../image/fenxiang.png");
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 99;
-    background-repeat: no-repeat;
-    background-position-x: 100%;
-  }
-
-  //顶部样式
   .top-tite-content {
 
     //顶部模糊图片进入样式
@@ -513,5 +545,68 @@ body {
     }
 
   }
-
 }
+
+.mask {
+  width: 100%;
+  height: 100%;
+  background: #32373b;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  display: none;
+}
+
+.mask-box {
+  width: 100%;
+  height: 252px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -119px;
+}
+
+.mask-pic {
+  width: 194px;
+  height: 194px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mask span {
+  font-size: 12px;
+  display: block;
+  color: #ffd40a;
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  padding-top: 10px;
+}
+
+.mask i {
+  width: 128px;
+  height: 194px;
+  background: url(../image/hengping.png) 0 0 no-repeat;
+  background-size: 128px 194px;
+  display: block;
+  margin: 0 auto;
+  -webkit-animation: maskAni 1.5s ease infinite alternate;
+  animation: maskAni 1.5s ease infinite alternate;
+}
+
+@-webkit-keyframes maskAni {
+  0% {
+    -webkit-transform: rotate(-90deg);
+  }
+  30% {
+    -webkit-transform: rotate(-90deg);
+  }
+  70% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
