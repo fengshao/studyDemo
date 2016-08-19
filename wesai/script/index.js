@@ -7,7 +7,6 @@ function checkDirect() {
     if (window.orientation == 180 || window.orientation == 0) {
         document.querySelector(".mask").style.display = "none";
         $("body").unbind('touchmove');
-        window.location.reload();
     }
     if (window.orientation == 90 || window.orientation == -90) {
         document.querySelector(".mask").style.display = "block";
@@ -18,6 +17,62 @@ function checkDirect() {
     }
 }
 window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", checkDirect, false);
+
+/*
+ ----> 监控埋点 <----
+ pid:  20160819
+ page:
+ url: http://mini.wesai.com/20160819/
+ uid:
+ ext: 购票:1 分享：2
+ pos:       //业务按钮参数
+ */
+var statis = {
+    'domain': 'http://log.wesai.com',
+    'pid': 1,
+    'page': 1,
+    'pos': 1,
+    'ext': '1',
+    'uid': '',
+    'search': 'http://mini.wesai.com/20160819/',
+    'clickV': function (ext) {
+        $.ajax({
+            'url': this.domain + '/click.html',
+            'data': {
+                'url': this.search,
+                'pid': this.pid,
+                'page': this.page,
+                'pos': this.pos,
+                'uid': this.uid,
+                'ext': ext
+            },
+            'success': function (response, status, xhr) {
+            },
+            dataType: 'jsonp'
+        });
+    },
+    'viewV': function () {
+        $.ajax({
+            'url': this.domain + '/view.html',
+            'data': {'url': this.search},
+            'success': function (response, status, xhr) {
+            },
+            dataType: 'jsonp'
+        });
+    },
+    'setUrl': function (url) {
+        var statId = document.getElementById("statisGa");
+        if (!statId) {
+            var wsta = document.createElement("script");
+            wsta.id = 'statisGa';
+            wsta.src = url;
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.appendChild(wsta);
+        } else {
+            statId.setAttribute('src', url);
+        }
+    }
+}
 
 $(function () {
     var params = {
@@ -32,7 +87,7 @@ $(function () {
         if ($(".content").css("visibility") !== "hidden") {
             init();
         }
-    }, 100)
+    }, 100);
 
     addEvent();
     weixinfengxiang();
@@ -205,12 +260,14 @@ $(function () {
 
         //现场加油
         contentElement.delegate(".gogo-live-btn-cls", "click", function () {
+            statis.clickV(1);
+            window.location.href = "http://sports.wepiao.com/wechat/detail/onlineId=c6f6e2c7519545a68618b7956752f51e&x-from=dianzan";
             $(".layer-bg-div").hide();
             $(".head-ico-content").show();
             $(".votes-num-layer").hide();
         });
 
-        //现场加油
+        //关闭票数排行榜弹层
         contentElement.delegate(".close-votes-num-layer-btn", "click", function () {
             $(".layer-bg-div").hide();
             $(".head-ico-content").show();
@@ -219,12 +276,12 @@ $(function () {
 
         //喊人加油
         contentElement.delegate(".gogo-hanr-btn-cls", "click", function () {
+            statis.clickV(2);
             $(".votes-num-layer").hide();
             $(".head-ico-content").show();
             $(".fenxiang-ayer-bg-div").show();
         });
 
-        //
         contentElement.delegate(".fenxiang-ayer-bg-div", "click", function () {
             hideFenxiangLayer();
         });
@@ -232,7 +289,7 @@ $(function () {
         //获取手机验证码
         contentElement.delegate(".get-verification-btn", "click", function () {
             params.phone = $(".give-me-fine-form-phone input").val();
-            var url = "http://mrsd.wesai.com/user/get_send_message.json";
+            var url = "http://activity.api.wesai.com/user/get_send_message.json";
             var data = {
                 "phone": params.phone
             }
@@ -268,11 +325,8 @@ $(function () {
         contentElement.delegate(".gogo-btn", "click", function () {
             var verificationCode = $(".give-me-fine-form-verification input").val();
             var phone = $(".give-me-fine-form-phone input").val();
-            var url = "http://mrsd.wesai.com/user/get_add_user.json";
+            var url = "http://activity.api.wesai.com/user/get_add_user.json";
 
-            $(".give-me-fine-tks").show();
-            $(".give-me-fine-form").hide();
-            return
             var data = {
                 "userid": params.nowUserId,
                 "phone": params.phone
@@ -320,7 +374,7 @@ $(function () {
 
         //查看票数排行榜
         contentElement.delegate(".see-votes-num-btn", "click", function () {
-            var url = "http://mrsd.wesai.com/user/get_list.json";
+            var url = "http://activity.api.wesai.com/user/get_list.json";
 
             $(".give-me-fine-layer").hide();
             $(".head-ico-content").hide();
