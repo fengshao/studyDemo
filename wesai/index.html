@@ -79,27 +79,27 @@
                 <div class="head-ico-div" userId="1">
                     <img class="head-ico" src="./image/head-icon-maidi.png">
                     <label class="head-ico-title head-ico-title-maidi">麦蒂</label>
-                    <label class="head-ico-votes-num head-ico-votes-num-maidi"></label>
+                    <label class="head-ico-votes-num head-ico-votes-num-maidi">0</label>
                 </div>
                 <div class="head-ico-div" userId="2">
                     <img class="head-ico" src="./image/head-icon-baijingting.png">
                     <label class="head-ico-title">白敬亭</label>
-                    <label class="head-ico-votes-num"></label>
+                    <label class="head-ico-votes-num">0</label>
                 </div>
                 <div class="head-ico-div" userId="3">
                     <img class="head-ico" src="./image/head-icon-jiangjinfu.png">
                     <label class="head-ico-title">蒋劲夫</label>
-                    <label class="head-ico-votes-num"></label>
+                    <label class="head-ico-votes-num">0</label>
                 </div>
                 <div class="head-ico-div" userId="4">
                     <img class="head-ico" src="./image/head-icon-wuyifan.png">
                     <label class="head-ico-title">吴亦凡</label>
-                    <label class="head-ico-votes-num"></label>
+                    <label class="head-ico-votes-num">0</label>
                 </div>
                 <div class="head-ico-div" userId="5">
                     <img class="head-ico" src="./image/head-icon-xiaojingteng.png">
                     <label class="head-ico-title">萧敬腾</label>
-                    <label class="head-ico-votes-num"></label>
+                    <label class="head-ico-votes-num">0</label>
                 </div>
             </div>
             <div class="votes-num-layer-btn">
@@ -109,8 +109,6 @@
         </div>
     </div>
     <!--<img class="see-votes-num-btn shouye-see-votes-num-btn" src="./image/see-votes-num.png">-->
-    <div class="gpu" style="height: 40px;width: 100%;">
-    </div>
 
     <div class="layer-content-div">
         <div class="activity-rule-layer">
@@ -161,9 +159,13 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script language="JavaScript" src="./script/index.js"></script>
 <script language="javascript">
-
     var cliWH = document.documentElement.clientWidth;
     var cliHG = document.documentElement.clientHeight;
+    $("body").css("height", cliHG).css("width", cliWH);
+    //防止屏幕拖动
+    document.documentElement.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    });
     if (cliHG < cliWH) {
         //横屏
         document.querySelector(".mask").style.display = "block";
@@ -186,7 +188,6 @@
         if (v > 100) {
             $('#noteBg').hide();
             $('.content').css("visibility", "visible");
-            $("body").unbind('touchmove');
         } else {
             setSB(v, el);
             window.setTimeout("fakeProgress(" + (++v) + ", document.all['" + el.id + "'])", 20);

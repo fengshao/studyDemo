@@ -6,18 +6,16 @@
 function checkDirect() {
     if (window.orientation == 180 || window.orientation == 0) {
         document.querySelector(".mask").style.display = "none";
-        $("body").unbind('touchmove');
     }
     if (window.orientation == 90 || window.orientation == -90) {
         document.querySelector(".mask").style.display = "block";
-        $("body").on('touchmove', function (event) {
-            event.preventDefault();
-        }, false);
-
     }
 }
 window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", checkDirect, false);
-
+//防止屏幕拖动
+document.documentElement.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+});
 /*
  ----> 监控埋点 <----
  pid:  20160819
@@ -82,7 +80,8 @@ $(function () {
         setAnimate: "",
         setInitTimer: "",
         verificationCodeTimer: "",
-        verificationCodeFlag: true
+        verificationCodeFlag: true,
+        scaleHeadIconTimer: ""
     };
 
     params.setInitTimer = setInterval(function () {
@@ -94,13 +93,20 @@ $(function () {
     addEvent();
     weixinfengxiang();
 
+    $(window).resize(function () {
+        var cliWH = document.documentElement.clientWidth;
+        var cliHG = document.documentElement.clientHeight;
+        $("body").css("height", cliHG).css("width", cliWH);
+        init();
+    });
+
     function init() {
         clearInterval(params.setInitTimer);
         var topHeight = $(".luoxuanquan-cls").position().top + $(".luoxuanquan-cls").height() / 2;
         $(".weisai-logo").css("top", topHeight - $(".weisai-logo").height() / 2)
             .css("left", ($(".luoxuanquan-cls").width() / 2 - $(".weisai-logo").width() / 2));
-        $(".weisai-div").css("top", topHeight - $(".weisai-div").height() / 2)
-            .css("left", ($(".luoxuanquan-cls").width() / 2 - $(".weisai-div").width() / 2));
+        $(".weisai-div").css("top", topHeight - 120 / 2)
+            .css("left", ($(".luoxuanquan-cls").width() / 2 - 120 / 2));
         $(".head-ico-content").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
         $(".head-ico-content-copy").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
 
@@ -109,7 +115,10 @@ $(function () {
         animationFnc();
         headIconBoxFnc();
 
-        var scaleHeadIconTimer = setInterval(function () {
+        if (params.scaleHeadIconTimer) {
+            clearInterval(params.scaleHeadIconTimer);
+        }
+        params.scaleHeadIconTimer = setInterval(function () {
             scaleHeadIcon();
         }, 3000);
     };
@@ -175,7 +184,7 @@ $(function () {
         var stard = 0;
         //半径
         var radius = 120;
-        if (wh <= 320) {
+        if (wh <= 360) {
             radius = 95;
         }
         //每一个BOX对应的角度;
@@ -220,6 +229,9 @@ $(function () {
 
 
         //定时调用运动函数
+        if (params.setAnimate) {
+            clearInterval(params.setAnimate);
+        }
         params.setAnimate = setInterval(fun_animat, 80);
 
     };
@@ -314,17 +326,17 @@ $(function () {
                 "phone": params.phone
             };
             if (!params.phone) {
-                toastFnc("请填写手机号码");
+                toastFnc("请填写手机号码", $(".give-me-fine-form"));
                 return;
             }
 
             if (!(/^1[3|4|5|7|8]\d{9}$/.test(params.phone))) {
-                toastFnc("手机号码有误，请重新输入");
+                toastFnc("手机号码有误，请重新输入", $(".give-me-fine-form"));
                 return;
             }
 
             if (!params.verificationCodeFlag) {
-                toastFnc("验证码正在发送中...");
+                toastFnc("验证码正在发送中...", $(".give-me-fine-form"));
                 return;
             }
             params.verificationCodeFlag = false;
@@ -342,16 +354,19 @@ $(function () {
                 "data": data,
                 "url": url,
                 "success": function (data) {
+
+                    // alert(JSON.stringify(data));
                     if (data.error == 0) {
                         params.verificationCode = data.result.code;
                     } else {
-                        toastFnc(data.info ? data.info : "获取验证码失败。");
+                        toastFnc(data.info ? data.info : "获取验证码失败。", $(".give-me-fine-form"));
                         params.verificationCodeFlag = true;
                         clearTimeout(params.verificationCodeTimer);
                     }
                 },
                 "error": function (data) {
-                    toastFnc(data.info ? data.info : "获取验证码失败。");
+                    // alert(JSON.stringify(data) + "wocou");
+                    toastFnc(data.info ? data.info : "获取验证码失败。", $(".give-me-fine-form"));
                     params.verificationCodeFlag = true;
                     clearTimeout(params.verificationCodeTimer);
                 }
@@ -372,20 +387,20 @@ $(function () {
 
 
             if (!phone) {
-                toastFnc("请填写手机号码");
+                toastFnc("请填写手机号码", $(".give-me-fine-form"));
                 return;
             }
             if (!(/^1[3|4|5|7|8]\d{9}$/.test(phone))) {
-                toastFnc("手机号码有误，请重新输入");
+                toastFnc("手机号码有误，请重新输入", $(".give-me-fine-form"));
                 return;
             }
 
             if (params.phone !== phone) {
-                toastFnc("请输入当前获取验证码的手机号");
+                toastFnc("请输入当前获取验证码的手机号", $(".give-me-fine-form"));
                 return;
             }
             if (!verificationCode || verificationCode !== params.verificationCode) {
-                toastFnc("请输入正确的验证码");
+                toastFnc("请输入正确的验证码", $(".give-me-fine-form"));
                 return;
             }
             $.ajax({
@@ -394,9 +409,9 @@ $(function () {
                 "url": url,
                 "success": function (data) {
                     if (data.error == 0) {
-                        $(".give-me-fine-ths-num-label").text(data.result.num);
+                        $(".give-me-fine-ths-num-label").text(data.result.num ? data.result.num : 0);
                     } else {
-                        toastFnc(data.info);
+                        toastFnc(data.info ? data.info : "加油失败，请重试。", $(".give-me-fine-form"));
                     }
                     $(".give-me-fine-tks").show();
                     $(".give-me-fine-form").hide();
@@ -404,7 +419,7 @@ $(function () {
                     params.verificationCode = "";
                 },
                 "error": function (data) {
-                    toastFnc(data.info);
+                    toastFnc(data.info ? data.info : "加油失败，请重试。", $(".give-me-fine-form"));
                     params.phone = "";
                 }
             });
@@ -432,12 +447,12 @@ $(function () {
                             setStarVotesNum(data.result.data);
                         }
                     } else {
-                        toastFnc(data.info);
+                        toastFnc(data.info ? data.info : "获取票数失败", $(".votes-num-layer"));
                     }
                 },
                 "error": function (data) {
                     params.phone = "";
-                    toastFnc(data.info);
+                    toastFnc(data.info ? data.info : "获取票数失败", $(".votes-num-layer"));
                 }
             });
         });
@@ -460,17 +475,15 @@ $(function () {
         $(".head-ico-content-copy .head-ico-div").each(function () {
             for (var i = 0; i < data.length; i++) {
                 if ($(this).attr("userId") == data[i].userid) {
-                    $(this).find(".head-ico-votes-num").text(data[i].num);
+                    $(this).find(".head-ico-votes-num").text(data[i].num ? data[i].num : 0);
                 }
             }
         })
     };
 
     //错误信息提示
-    function toastFnc(msg, opts) {
-        if (!opts)opts = {};
-
-        if ($(".give-me-fine-form .toast").length > 0) {
+    function toastFnc(msg, element) {
+        if (element.find(".toast").length > 0) {
             return;
         }
         var toast = document.createElement('div');
@@ -483,10 +496,9 @@ $(function () {
             toast.className = 'toast fadeOut';
             setTimeout(function () {
                 $(toast).remove();
-                opts.callback && opts.callback();
             }, 500);
-        }, (opts.time || 2000) + 1000);
-        $(".give-me-fine-form").prepend(toast);
+        }, 3000);
+        element.prepend(toast);
     };
 
     function hideFenxiangLayer() {
