@@ -418,6 +418,17 @@ $(function () {
             });
         });
 
+        $("body").delegate(".music-btn", "click", function () {
+            var music = document.getElementById("mp3");
+            if ($(this).hasClass("close-music-music")) {
+                $(this).removeClass("close-music-music");
+                music.play();
+            } else {
+                $(this).addClass("close-music-music");
+                music.pause();
+            }
+        });
+
     };
 
     //投票排行赋值

@@ -85,6 +85,26 @@ body {
   background-position-x: 100%;
 }
 
+.music-btn {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  color: #cabe68;
+  z-index: 100;
+  right: 5%;
+  .iconfont {
+    font-size: 20px;
+  }
+  &.close-music-music {
+    .icon-music-open {
+      display: none !important;
+    }
+    .icon-music-suspend {
+      display: block !important;
+    }
+  }
+}
+
 //最外层div样式
 .content {
   visibility: hidden;
