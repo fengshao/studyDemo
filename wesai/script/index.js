@@ -120,6 +120,7 @@ $(function () {
         var weisai_div_Animation = document.querySelector('.weisai-div');
         var ring_div_Animation = document.querySelector('.luoxuanquan-cls-img');
         var head_icon_div_Animation = document.querySelector('.head-ico-div');
+        var aaaa = document.querySelector('.aaaaaa');
 
         top_tite_scale_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
             //顶部大字图片进场动画结束之后执行后续动画
@@ -137,6 +138,11 @@ $(function () {
         weisai_div_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
             //微赛底部div进场动画完毕之后执行线圈图片进场动画
             $(".luoxuanquan-cls-img").addClass("luoxuanquan-cls-img-show-animation").css("visibility", "visible");
+            $(".zimutiao label").addClass("zimutiao_animation");
+        }, false);
+
+        aaaa.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
+            $(".zimutiao label").addClass("zimutiao_animation1");
         }, false);
 
         ring_div_Animation.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
@@ -224,9 +230,7 @@ $(function () {
             var index = Math.floor(Math.random() * 5);
             $(".head-ico-content .head-ico-div:eq(" + index + ")").addClass("scal-class");
         }
-    }
-
-    ;
+    };
 
     function addEvent() {
 
@@ -280,6 +284,7 @@ $(function () {
         contentElement.delegate(".close-votes-num-layer-btn", "click", function () {
             $(".layer-bg-div").hide();
             $(".head-ico-content").show();
+            $(".shouye-see-votes-num-btn").css("visibility", "visible");
             $(".votes-num-layer").hide();
             $(".weisai-logo").removeClass("show-votes-weisai");
         });
@@ -290,6 +295,7 @@ $(function () {
             $(".votes-num-layer").hide();
             $(".head-ico-content").show();
             $(".fenxiang-ayer-bg-div").show();
+            $(".shouye-see-votes-num-btn").css("visibility", "visible");
         });
 
         contentElement.delegate(".fenxiang-ayer-bg-div", "click", function () {
@@ -389,8 +395,9 @@ $(function () {
             $(".layer-content-div").hide();
             $(".give-me-fine-layer").hide();
             $(".head-ico-content").hide();
+            $(".shouye-see-votes-num-btn").css("visibility", "hidden");
             $(".votes-num-layer").show();
-            $(".layer-bg-div").addClass("show-votes");
+            $(".layer-bg-div").show().addClass("show-votes");
             $(".weisai-logo").addClass("show-votes-weisai");
             $.ajax({
                 "type": "get",
