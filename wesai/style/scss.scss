@@ -7,9 +7,9 @@ html, body {
 }
 
 body {
-  background-image: url("../image/bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  //background-image: url("../image/bg.png");
+  //background-repeat: no-repeat;
+  //background-size: cover;
   width: 100%;
 }
 
@@ -61,7 +61,6 @@ body {
 .layer-bg-div {
   //background-image: url("../image/layer-bg.png");
   position: absolute;
-  top: 0px;
   width: 100%;
   height: 100%;
   display: none;
@@ -92,6 +91,7 @@ body {
   color: #cabe68;
   z-index: 100;
   right: 5%;
+  top: 15px;
   .iconfont {
     font-size: 20px;
   }
@@ -109,9 +109,9 @@ body {
 .content {
   visibility: hidden;
   width: 100%;
-  //background-image: url("../image/bg.png");
-  //background-repeat: no-repeat;
-  //background-size: cover;
+  background-image: url("../image/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
 
   //顶部大字图及底部线圈图样式
@@ -247,7 +247,7 @@ body {
       //微赛logo div样式
       .weisai-logo {
         position: absolute;
-        background-image: url("../image/shanghai.png");
+        background-image: url("../image/kanpiao.png");
         background-repeat: no-repeat;
         width: 90px;
         height: 90px;
@@ -255,8 +255,8 @@ body {
         background-color: #febb1f;
         left: 39%;
         background-position: center;
-        z-index: 10;
-        background-size: 72px;
+        z-index: 51;
+        background-size: 44px;
         display: none;
 
         &.show-votes-weisai {
@@ -430,7 +430,7 @@ body {
 
       //投票排行弹层按钮区域样式
       .votes-num-layer-btn {
-        position: absolute;
+        position: relative;
         z-index: 100;
         text-align: center;
         width: 100%;
@@ -443,6 +443,7 @@ body {
         //分享按钮样式
         .gogo-hanr-btn-cls {
           width: 30%;
+          margin-left: 30px;
         }
       }
 
@@ -639,16 +640,15 @@ body {
           margin-top: 25px;
           width: 50%;
         }
-
       }
     }
 
   }
 }
 
-.see-votes-num-btn {
+.shouye-see-votes-num-btn {
   width: 30%;
-  margin-top: 17px;
+  margin-top: 20px;
 }
 
 .mask {

@@ -80,7 +80,9 @@ $(function () {
         phone: "",
         verificationCode: "",
         setAnimate: "",
-        setInitTimer: ""
+        setInitTimer: "",
+        verificationCodeTimer: "",
+        verificationCodeFlag: true
     };
 
     params.setInitTimer = setInterval(function () {
@@ -241,6 +243,7 @@ $(function () {
             $(".layer-content-div").show();
             $(".layer-bg-div").show();
             $(".activity-rule-layer").show();
+            $(".layer-bg-div").css("height", $(".content").height());
         });
 
         //关闭活动规则
@@ -259,6 +262,7 @@ $(function () {
             $(".give-me-fine-form").show();
             $(".give-me-fine-tks").hide();
             $(".give-me-fine-logo").addClass(event.currentTarget.id);
+            $(".layer-bg-div").css("height", $(".content").height());
         });
 
         //关闭明星加油弹层
@@ -309,15 +313,30 @@ $(function () {
             var data = {
                 "phone": params.phone
             };
-
             if (!params.phone) {
                 toastFnc("请填写手机号码");
                 return;
             }
+
             if (!(/^1[3|4|5|7|8]\d{9}$/.test(params.phone))) {
                 toastFnc("手机号码有误，请重新输入");
                 return;
             }
+
+            if (!params.verificationCodeFlag) {
+                toastFnc("验证码正在发送中...");
+                return;
+            }
+            params.verificationCodeFlag = false;
+            if (params.verificationCodeTimer) {
+                clearTimeout(params.verificationCodeTimer);
+            }
+            params.verificationCodeTimer = setTimeout(function () {
+                params.verificationCodeFlag = true;
+                clearTimeout(params.verificationCodeTimer);
+            }, 30000);
+
+
             $.ajax({
                 "type": "get",
                 "data": data,
@@ -327,11 +346,14 @@ $(function () {
                         params.verificationCode = data.result.code;
                     } else {
                         toastFnc(data.info ? data.info : "获取验证码失败。");
+                        params.verificationCodeFlag = true;
+                        clearTimeout(params.verificationCodeTimer);
                     }
                 },
                 "error": function (data) {
-                    params.phone = "";
-                    toastFnc(data.info);
+                    toastFnc(data.info ? data.info : "获取验证码失败。");
+                    params.verificationCodeFlag = true;
+                    clearTimeout(params.verificationCodeTimer);
                 }
             });
         });
@@ -390,7 +412,7 @@ $(function () {
 
 
         //查看票数排行榜
-        contentElement.delegate(".see-votes-num-btn", "click", function () {
+        contentElement.delegate(".weisai-logo", "click", function () {
             var url = "http://activity.api.wesai.com/user/get_list.json";
             $(".layer-content-div").hide();
             $(".give-me-fine-layer").hide();
@@ -399,6 +421,8 @@ $(function () {
             $(".votes-num-layer").show();
             $(".layer-bg-div").show().addClass("show-votes");
             $(".weisai-logo").addClass("show-votes-weisai");
+            $(".layer-bg-div").css("height", $(".content").height());
+            // alert($(".content").height() + "," + $(".layer-bg-div").height() + "," + $("body").height() + "a111");
             $.ajax({
                 "type": "get",
                 "url": url,
@@ -445,6 +469,10 @@ $(function () {
     //错误信息提示
     function toastFnc(msg, opts) {
         if (!opts)opts = {};
+
+        if ($(".give-me-fine-form .toast").length > 0) {
+            return;
+        }
         var toast = document.createElement('div');
         toast.className = 'toast fadeIn';
         var toastText = document.createElement('div');
