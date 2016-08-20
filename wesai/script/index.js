@@ -302,7 +302,7 @@ $(function () {
             var url = "http://activity.api.wesai.com/user/get_send_message.json";
             var data = {
                 "phone": params.phone
-            }
+            };
 
             if (!params.phone) {
                 toastFnc("请填写手机号码");
@@ -320,7 +320,7 @@ $(function () {
                     if (data.error == 0) {
                         params.verificationCode = data.result.code;
                     } else {
-                        toastFnc(data.info);
+                        toastFnc(data.info ? data.info : "获取验证码失败。");
                     }
                 },
                 "error": function (data) {
@@ -452,7 +452,8 @@ $(function () {
 
     function weixinfengxiang() {
         var wxDate = {};
-        $.getJSON('http://wx.t.wesai.com/token/CreateJsApiTicket?url=http://mini.wesai.com/20160819/&callback=?', function (data) {
+        var href = encodeURIComponent(location.href.split('#')[0]);
+        $.getJSON('http://wx.t.wesai.com/token/CreateJsApiTicket?url=' + href + '&callback=?', function (data) {
             wxDate = data.data;
         }).done(function () {
             wx.config({
@@ -462,14 +463,14 @@ $(function () {
                 nonceStr: wxDate.nonceStr, // 必填，生成签名的随机串
                 signature: wxDate.signature,// 必填，签名，见附录1
                 jsApiList: ['onMenuShareTimeline',
-                    'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone',] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             });
 
             wx.ready(function () {
 
                 wx.onMenuShareTimeline({
                     title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
-                    link: 'http://mini.wesai.com/20160819/', // 分享链接
+                    link: decodeURIComponent(href), // 分享链接
                     imgUrl: 'http://mini.wesai.com/20160819/image/wx200.jpg', // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
@@ -484,7 +485,7 @@ $(function () {
                 wx.onMenuShareAppMessage({
                     title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
                     desc: '麦蒂、吴亦凡、萧敬腾等20位明星巅峰对决！偶像人气就看你的了！', // 分享描述
-                    link: 'http://mini.wesai.com/20160819/', // 分享链接
+                    link: decodeURIComponent(href), // 分享链接
                     imgUrl: 'http://mini.wesai.com/20160819/image/wx200.jpg', // 分享图标
                     type: '', // 分享类型,music、video或link，不填默认为link
                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -501,7 +502,7 @@ $(function () {
                 wx.onMenuShareWeibo({
                     title: '企鹅明星赛！助威赢门票只等你揭榜！', // 分享标题
                     desc: '麦蒂、吴亦凡、萧敬腾等20位明星巅峰对决！偶像人气就看你的了！', // 分享描述
-                    link: 'http://mini.wesai.com/20160819/', // 分享链接
+                    link: decodeURIComponent(href), // 分享链接
                     imgUrl: 'http://mini.wesai.com/20160819/image/wx200.jpg', // 分享图标
                     success: function () {
                         // 用户确认分享后执行的回调函数
