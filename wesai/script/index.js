@@ -321,7 +321,7 @@ $(function () {
         //获取手机验证码
         contentElement.delegate(".get-verification-btn", "click", function () {
             params.phone = $(".give-me-fine-form-phone input").val();
-            var url = "http://activity.api.wesai.com/user/get_send_message.json";
+            var url = "http://mini.wesai.com/api/user/get_send_message.json";
             var data = {
                 "phone": params.phone
             };
@@ -378,7 +378,7 @@ $(function () {
         contentElement.delegate(".gogo-btn", "click", function () {
             var verificationCode = $(".give-me-fine-form-verification input").val();
             var phone = $(".give-me-fine-form-phone input").val();
-            var url = "http://activity.api.wesai.com/user/get_add_user.json";
+            var url = "http://mini.wesai.com/api/user/get_add_user.json";
 
             var data = {
                 "userid": params.nowUserId,
@@ -427,8 +427,8 @@ $(function () {
 
 
         //查看票数排行榜
-        contentElement.delegate(".weisai-logo", "click", function () {
-            var url = "http://activity.api.wesai.com/user/get_list.json";
+        contentElement.delegate(".weisai-logo, .see-votes-num-btn", "click", function () {
+            var url = "http://mini.wesai.com/api/user/get_list.json";
             $(".layer-content-div").hide();
             $(".give-me-fine-layer").hide();
             $(".head-ico-content").hide();
