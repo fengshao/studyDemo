@@ -109,6 +109,7 @@ $(function () {
             .css("left", ($(".luoxuanquan-cls").width() / 2 - 120 / 2));
         $(".head-ico-content").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
         $(".head-ico-content-copy").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
+        $(".votes-num-layer-btn").css("top", $(".luoxuanquan-cls").position().top - 50);
 
         $(".layer-bg-div").css("height", $(".content").height());
 
@@ -181,7 +182,7 @@ $(function () {
         //中心点纵坐标
         var dotTop = $(".head-ico-content").height() / 2;
         //起始角度
-        var stard = 0;
+        var stard = 10;
         //半径
         var radius = 120;
         if (wh <= 360) {
@@ -385,7 +386,6 @@ $(function () {
                 "phone": params.phone
             };
 
-
             if (!phone) {
                 toastFnc("请填写手机号码", $(".give-me-fine-form"));
                 return;
@@ -427,34 +427,14 @@ $(function () {
 
 
         //查看票数排行榜
-        contentElement.delegate(".weisai-logo, .see-votes-num-btn", "click", function () {
-            var url = "http://mini.wesai.com/api/user/get_list.json";
-            $(".layer-content-div").hide();
-            $(".give-me-fine-layer").hide();
-            $(".head-ico-content").hide();
-            $(".shouye-see-votes-num-btn").css("visibility", "hidden");
-            $(".votes-num-layer").show();
-            $(".layer-bg-div").show().addClass("show-votes");
-            $(".weisai-logo").addClass("show-votes-weisai");
-            $(".layer-bg-div").css("height", $(".content").height());
-            // alert($(".content").height() + "," + $(".layer-bg-div").height() + "," + $("body").height() + "a111");
-            $.ajax({
-                "type": "get",
-                "url": url,
-                "success": function (data) {
-                    if (data.error == 0) {
-                        if (data.result.data) {
-                            setStarVotesNum(data.result.data);
-                        }
-                    } else {
-                        toastFnc(data.info ? data.info : "获取票数失败", $(".votes-num-layer"));
-                    }
-                },
-                "error": function (data) {
-                    params.phone = "";
-                    toastFnc(data.info ? data.info : "获取票数失败", $(".votes-num-layer"));
-                }
-            });
+        contentElement.delegate(".see-votes-num-btn", "click", function () {
+            $(".close-votes-num-layer-btn").hide();
+            lastSeeVotesNum();
+        });
+
+        //首页查看票数排行榜
+        contentElement.delegate(".weisai-logo", "click", function () {
+            lastSeeVotesNum();
         });
 
         $("body").delegate(".music-btn", "click", function () {
@@ -469,6 +449,36 @@ $(function () {
         });
 
     };
+
+    function lastSeeVotesNum() {
+        var url = "http://mini.wesai.com/api/user/get_list.json";
+        $(".layer-content-div").hide();
+        $(".give-me-fine-layer").hide();
+        $(".head-ico-content").hide();
+        $(".shouye-see-votes-num-btn").css("visibility", "hidden");
+        $(".votes-num-layer").show();
+        $(".layer-bg-div").show().addClass("show-votes");
+        $(".weisai-logo").addClass("show-votes-weisai");
+        $(".layer-bg-div").css("height", $(".content").height());
+        // alert($(".content").height() + "," + $(".layer-bg-div").height() + "," + $("body").height() + "a111");
+        $.ajax({
+            "type": "get",
+            "url": url,
+            "success": function (data) {
+                if (data.error == 0) {
+                    if (data.result.data) {
+                        setStarVotesNum(data.result.data);
+                    }
+                } else {
+                    toastFnc(data.info ? data.info : "获取票数失败", $(".votes-num-layer"));
+                }
+            },
+            "error": function (data) {
+                params.phone = "";
+                toastFnc(data.info ? data.info : "获取票数失败", $(".votes-num-layer"));
+            }
+        });
+    }
 
     //投票排行赋值
     function setStarVotesNum(data) {

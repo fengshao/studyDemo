@@ -85,11 +85,11 @@ body {
 
 .music-btn {
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
   color: #cabe68;
-  z-index: 100;
-  right: 5%;
+  z-index: 200;
+  right: 3%;
   top: 15px;
   .iconfont {
     font-size: 20px;
@@ -430,7 +430,7 @@ body {
 
       //投票排行弹层按钮区域样式
       .votes-num-layer-btn {
-        position: relative;
+        position: absolute;
         z-index: 100;
         text-align: center;
         width: 100%;
