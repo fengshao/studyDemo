@@ -142,17 +142,18 @@ var closeShare = (function (mqq) {
                     ]
                 });
 
-                mqq.error(function (res) {
-                    //签名过期导致验证失败
-                    if (res.errMsg != 'config:ok' && reqCount < 2) { //如果签名失效，不读缓存，强制获取新的签名
-                        var script = document.createElement("script");
-                        script.src = 'http://mqq.wesai.com/qq/token/CreateJsApiTicket?url=' + href + "&callback=closeShare.getPower&force=1";
-                        document.body.insertBefore(script, document.body.firstChild);
-                        reqCount++;
-                    }
-                });
             })
+            mqq.error(function (res) {
 
+                //签名过期导致验证失败
+                if (res.errMsg != 'config:ok' && reqCount < 2) { //如果签名失效，不读缓存，强制获取新的签名
+
+                    var script = document.createElement("script");
+                    script.src = 'http://mqq.wesai.com/qq/token/CreateJsApiTicket?url=' + href + "&callback=closeShare.getPower&force=1";
+                    document.body.insertBefore(script, document.body.firstChild);
+                    reqCount++;
+                }
+            });
 
         }
 
