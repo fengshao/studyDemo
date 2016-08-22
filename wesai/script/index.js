@@ -291,7 +291,7 @@ $(function () {
         //现场加油
         contentElement.delegate(".gogo-live-btn-cls", "click", function () {
             statis.clickV(1);
-            window.location.href = "http://sports.wepiao.com/wechat/detail/onlineId=c6f6e2c7519545a68618b7956752f51e&x-from=dianzan";
+            wondowLocalHref();
             $(".layer-bg-div").hide();
             $(".head-ico-content").show();
             $(".votes-num-layer").hide();
@@ -449,6 +449,53 @@ $(function () {
         });
 
     };
+
+    function wondowLocalHref() {
+
+        switch (GetURLParameter('channel')) {
+            case '3':
+                //微信钱包
+                window.location.href = "http://sports.wepiao.com/wechat/detail/onlineId=c6f6e2c7519545a68618b7956752f51e&x-from=dianzanqb";
+                break;
+            case '4':
+                //APP
+                window.location.href = "wxmovie://showdetail?onlineid=c6f6e2c7519545a68618b7956752f51e";
+                break;
+            case '5':
+                //M站
+                window.location.href = "http://m.t.wesai.com/detail/onlineId=c6f6e2c7519545a68618b7956752f51e&x-from=dianzanqbm";
+                break;
+            case '6':
+                //微信公众号
+                window.location.href = "http://wx.t.wesai.com/detail/onlineId=c6f6e2c7519545a68618b7956752f51e&x-from=dianzangzh";
+                break;
+            case '7':
+                //手Q
+                window.location.href = "http://mqq.wesai.com/qq/detail/?onlineId=c6f6e2c7519545a68618b7956752f51e&_wv=4097";
+                break;
+            default:
+                //默认M站
+                window.location.href = "http://m.t.wesai.com/detail/onlineId=c6f6e2c7519545a68618b7956752f51e&x-from=dianzanqbm";
+                break;
+        }
+
+
+    }
+
+    function GetURLParameter(paras) {
+        var url = location.href;
+        var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+        var paraObj = {}
+        for (i = 0; j = paraString[i]; i++) {
+            paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+        }
+        var returnValue = paraObj[paras.toLowerCase()];
+        if (typeof(returnValue) == "undefined") {
+            return "";
+        } else {
+            return returnValue;
+        }
+    }
 
     function lastSeeVotesNum() {
         var url = "http://mini.wesai.com/api/user/get_list.json";
