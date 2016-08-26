@@ -109,13 +109,13 @@ $(function () {
             .css("left", ($(".luoxuanquan-cls").width() / 2 - 120 / 2));
         $(".head-ico-content").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
         $(".head-ico-content-copy").css("top", $(".luoxuanquan-cls").position().top).css("height", $(".luoxuanquan-cls").height());
-        $(".votes-num-layer-btn").css("top", $(".luoxuanquan-cls").position().top - 50);
+        $(".votes-num-layer-btn").css("top", $(".luoxuanquan-cls").position().top - 30);
 
         $(".layer-bg-div").css("height", $(".content").height());
 
         animationFnc();
         headIconBoxFnc();
-
+        lastSeeVotesNum();
         if (params.scaleHeadIconTimer) {
             clearInterval(params.scaleHeadIconTimer);
         }
@@ -204,8 +204,8 @@ $(function () {
 
         $(".head-ico-content-copy .head-ico-div").each(function (index, element) {
             $(this).css({
-                "left": Math.sin((ahd * index)) * radius + dotLeft - 25,
-                "top": Math.cos((ahd * index)) * radius + dotTop - 30
+                "left": Math.sin((ahd * (index+0.5))) * radius + dotLeft - 25,
+                "top": Math.cos((ahd * (index+0.5))) * radius + dotTop - 30
             });
         });
 
@@ -292,9 +292,9 @@ $(function () {
         contentElement.delegate(".gogo-live-btn-cls", "click", function () {
             statis.clickV(1);
             wondowLocalHref();
-            $(".layer-bg-div").hide();
-            $(".head-ico-content").show();
-            $(".votes-num-layer").hide();
+            //$(".layer-bg-div").hide();
+            //$(".head-ico-content").show();
+            //$(".votes-num-layer").hide();
         });
 
         //关闭票数排行榜弹层
@@ -505,7 +505,7 @@ $(function () {
         $(".shouye-see-votes-num-btn").css("visibility", "hidden");
         $(".votes-num-layer").show();
         $(".layer-bg-div").show().addClass("show-votes");
-        $(".weisai-logo").addClass("show-votes-weisai");
+        $(".weisai-logo").addClass("toupiao-end-div");
         $(".layer-bg-div").css("height", $(".content").height());
         // alert($(".content").height() + "," + $(".layer-bg-div").height() + "," + $("body").height() + "a111");
         $.ajax({
