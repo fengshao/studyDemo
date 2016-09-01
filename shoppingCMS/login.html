@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>商城CMS登录</title>
+    <meta name="description" content="slick Login">
+    <meta name="author" content="Webdesigntuts+">
+    <link rel="stylesheet" type="text/css" href="./style/login.css"/>
+    <script language="JavaScript" src="./script/jquery-3.1.0.js"></script>
+    <script>
+        function userLogin() {
+            var result = document.getElementById("name").value;
+            var password = document.getElementById("password").value;
+            if (result == "") {
+                $("#check-username").show();
+                return false;
+            }
+            if (password == "") {
+                $("#check-username").show();
+                return false;
+            }
+
+            var data = {};
+            data.name = result;
+            data.password = password;
+
+            $.ajax({
+                "type": "post",
+                "data": data,
+                "url": 'http://han.devel.wesai.com/api/userLogin',
+                "success": function (data) {
+                    alert(JSON.stringify(data));
+                },
+                "error": function (data) {
+                    alert(JSON.stringify(data) + "wocou");
+                    window.location.href = "./view/index.html";
+                }
+            });
+
+        }
+    </script>
+</head>
+
+<body>
+<form id="slick-login">
+    <label>username</label>
+    <input type="text" name="name" id="name" class="placeholder"
+           placeholder="username">
+    <label id="check-username">用户名不能为空</label>
+    <label>password</label>
+    <input type="password" name="password" id="password" class="placeholder"
+           placeholder="password">
+    <label id="check-pwd">密码不能为空</label>
+    <input type="button" value="Log In" onclick="userLogin()">
+</form>
+</body>
+
+</html>

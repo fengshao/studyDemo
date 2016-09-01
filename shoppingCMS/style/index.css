@@ -1,0 +1,32 @@
+
+body {
+}
+
+#dt-content {
+	width: 100%;
+	height: 100%;
+}
+
+#dt-content-div {
+	width: 80%;
+	height: 60%;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.center {
+	text-align: center;
+}
+
+.operate-div {
+	width: 50px;
+	float: left;
+}
+
+img {
+	height: 100px;
+}
