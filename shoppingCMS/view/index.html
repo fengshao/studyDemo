@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="jdmKGUP1SpHnBMEA1wb6TFQolK7ubTBRLPyXXgQg">
     <title>欢迎来到商城CMS</title>
     <script language="JavaScript" src="../script/jquery-3.1.0.js"></script>
     <script language="JavaScript" src="../script/jquery.dataTables.js"></script>
@@ -13,21 +14,54 @@
 </head>
 <body>
 <div id="dt-content">
-    <div id="dt-content-div">
-        <table id="example" class="display" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>create_time</th>
-                <th>description</th>
-                <th>img</th>
-                <th>url</th>
-                <th>sort</th>
-                <th>title</th>
-                <th>test</th>
-            </tr>
-            </thead>
-        </table>
+    <div id="content">
+        <div id="dt-content-div">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>专题名称</th>
+                    <th>链接</th>
+                    <th>专题封面</th>
+                    <th>排序</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div id="operate-content-div">
+            <div id="operate-title-add" class="operate-title">添加专题</div>
+            <div id="operate-title-edit" class="operate-title">修改专题</div>
+            <div class="operate-div-form">
+                <form>
+                    <div class="operate-from-group">
+                        <label class="operate-from-label">专题名称：</label>
+                        <input id="operate-from-title" type="text" class="operate-from-input"/>
+                    </div>
+                    <div class="operate-from-group">
+                        <label class="operate-from-label">链<label>链接</label>接：</label>
+                        <input id="operate-from-url" type="text" class="operate-from-input"/>
+                    </div>
+                    <div class="operate-from-group">
+                        <label class="operate-from-label">排<label>排序</label>序：</label>
+                        <input id="operate-from-sort" type="text" class="operate-from-input"/>
+                    </div>
+                    <div class="operate-from-group">
+                        <label class="operate-from-label">专题图片：</label>
+                        <input id="operate-from-img" type="text" class="operate-from-input"/>
+                    </div>
+                    <div class="operate-from-group-btn">
+                        <div id="operate-btn-ok" class="operate-div-btn button gray">完成</div>
+                        <div id="operate-btn-addok" class="operate-div-btn button gray">完成</div>
+                        <div id="operate-btn-cancel" class="operate-div-btn button white">取消</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </div>
+
 
 </div>
 
