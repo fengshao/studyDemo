@@ -234,7 +234,7 @@ $(function () {
         dataSet: [],
         dt: "",
         editData: "",
-        editUrl: "http://han.devel.wesai.com/api/editSpecia",//post
+        editUrl: "http://han.devel.wesai.com/api/editSpecial",//post
         getListUrl: "http://han.devel.wesai.com/api/getSpecialList", //get
         addUrl: "http://han.devel.wesai.com/api/addSpecial",//post
         delUrl: "http://han.devel.wesai.com/api/delSpecial"//get
@@ -328,6 +328,8 @@ $(function () {
             $("#operate-content-div").show();
             $("#operate-btn-addok").hide();
             $("#operate-btn-ok").show();
+            $("#operate-btn-addok").show();
+            //$("#operate-btn-ok").hide();
 
             $("#operate-from-title").val(data.title);
             $("#operate-from-url").val(data.url);
@@ -375,29 +377,16 @@ $(function () {
             test.url = $("#operate-from-url").val();
             test.sort = $("#operate-from-sort").val();
             test.img = "../images/test.jpg";
+
             $.ajax({
                 "type": "post",
                 "url": parms.editUrl,
                 "data": parms.editData,
-                beforeSend: function (XHR) {
-                    XHR.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'))
-                },
                 "success": function (data) {
                 },
                 "error": function (data) {
                 }
             });
-            //$.ajax({
-            //    "type": "post",
-            //    "url": "http://han.test.wesai.com/edit_bulletin?hanrenId=466&bulletin=7897898797",
-            //    beforeSend: function (XHR) {
-            //        XHR.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'))
-            //    },
-            //    "success": function (data) {
-            //    },
-            //    "error": function (data) {
-            //    }
-            //});
         });
         /**
          * 添加完成
@@ -413,9 +402,6 @@ $(function () {
                 "type": "post",
                 "url": parms.addUrl,
                 "data": addDta,
-                beforeSend: function (XHR) {
-                    XHR.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'))
-                },
                 "success": function (data) {
                 },
                 "error": function (data) {
