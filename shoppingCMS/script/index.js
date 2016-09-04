@@ -361,6 +361,11 @@ $(function () {
 
 	function addEvent() {
 
+		$('#file_upload_return').load(function () {
+			var res = $(this).contents().find('body').text();
+			console.log(res);
+		});
+
 		$(window).resize(function () {
 			$(".login-welcome label.usernam-label").text(window.sessionStorage.getItem("username"));
 			$(".loading-div").css("height", $(window).height()).css("width", $(window).width());
@@ -382,6 +387,25 @@ $(function () {
 					window.sessionStorage.clear();
 					window.location.href = "../login.html";
 				}
+			});
+		});
+		$(".body-div").delegate(".btn-primary", "click", function () {
+			var form = $("form[name=fileForm]");
+			var options = {
+				url: 'http://10.2.2.202:20202/uploading',
+				resetForm: true,
+				dataType: 'json',
+				success: function (data) {
+					alert("success");
+				},
+				error: function (data) {
+					alert("error")
+				}
+			};
+			// form.ajaxSubmit(options);
+			form.submit(function () { //注意这里的index_form
+				$(this).ajaxSubmit(options);
+				return false;//防止dialog 自动关闭
 			});
 		});
 
@@ -562,7 +586,7 @@ $(function () {
 		}
 	}
 
-	//错误信息提示
+//错误信息提示
 	function toastFnc(msg, element) {
 		if (element.find(".toast").length > 0) {
 			return;
