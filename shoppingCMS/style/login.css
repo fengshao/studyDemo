@@ -134,7 +134,7 @@ body {
 }
 
 #slick-login {
-	width: 220px;
+	width: 260px;
 	height: 155px;
 	position: absolute;
 	left: 50%;
@@ -244,7 +244,6 @@ body {
 
 	-webkit-box-shadow: inset 0px 1px 0px #aab9f4;
 	box-shadow: inset 0px 1px 0px #aab9f4;
-	margin-top: 10px;
 }
 
 #slick-login input[type="button"]:active {
@@ -261,8 +260,48 @@ body {
 
 #check-username {
 	display: none;
+	color: red;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 2px;
 }
 
 #check-pwd {
 	display: none;
+	color: red;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 2px;
+}
+
+.show-error-prompt {
+	display: inline-block !important;
+}
+
+.login-success-prompt {
+	display: none;
+	color: red;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 2px;
+
+}
+
+.login-success-prompt {
+	color: red;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 2px;
+}
+
+.login-file-prompt {
+	color: red;
+	height: 26px;
+	line-height: 26px;
+	display: none;
+	padding-left: 2px;
+}
+
+.show-login-prompt {
+	display: inline-block !important;
 }
