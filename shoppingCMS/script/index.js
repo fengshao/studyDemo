@@ -72,7 +72,7 @@ $(function () {
 				{"data": "title", "class": "center", "sWidth": "25%"},
 				{"data": "url", "class": "center", "sWidth": "20%"},
 				{"data": "img", "class": "center", "sWidth": "20%"},
-				{"data": "sort", "class": "center", "sWidth": "5%"},
+				{"data": "sort", "class": "center sort-td", "sWidth": "5%"},
 				{"data": "test", "class": "center", "sWidth": "20%"}
 			],
 			"aoColumnDefs": [//设置列的属性，此处设置第一列不排序
@@ -114,6 +114,37 @@ $(function () {
 	};
 
 	function addEvent() {
+
+		//双击编辑排序列
+		$(".body-div").delegate("#example tbody tr td.sort-td", "click", function () {
+			var inval = $(this).html();                            //获得td里的html内容
+			//获得td的父节点id属性的值
+			var data = $('#example').DataTable().row($(this).parents('tr')).data();
+			parms.editData = data;
+
+			var infd = data.id;                        //获得td的fd属性的值
+			var inid = data.sort;
+
+			if ($("#edit" + infd + inid).length > 0) {
+				return;
+			} else {
+				//把td里的html内容变为input框，并赋值
+				$(this).html("<input type='text' id='edit" + infd + inid + "' value='" + inval + "'>");
+			}
+
+			//input框获得焦点，以及失去焦点后的处理
+			$("#edit" + infd + inid).focus().blur(function () {
+				var editval = parseInt($(this).val());                      //获得input框中的值
+				if (editval != parms.editData.sort && /^\d+$/.test(editval)) {
+					$(this).parent().html(editval);                //把得到的值赋给input框父节点的html
+					parms.editData.sort = editval;
+					editSaveFnc();
+				} else {
+					$(this).parent().html(parms.editData.sort);
+				}
+			});
+		});
+
 
 		$(window).resize(function () {
 			$(".login-welcome label.usernam-label").text(window.sessionStorage.getItem("username"));
@@ -219,6 +250,11 @@ $(function () {
 		 */
 		$(".body-div").delegate("#operate-btn-editok", "click", function () {
 			if (parms.formValidate.form() && checkImgIsNull()) {
+				$(".form-loading-div").show();
+				parms.editData.title = $("#operate-from-title").val();
+				parms.editData.url = $("#operate-from-url").val();
+				parms.editData.sort = $("#operate-from-sort").val();
+				parms.editData.img = $("#imgurl-div img").attr("src");
 				editSaveFnc();
 			}
 
@@ -295,12 +331,6 @@ $(function () {
 
 	//修改保存
 	function editSaveFnc() {
-		$(".form-loading-div").show();
-		parms.editData.title = $("#operate-from-title").val();
-		parms.editData.url = $("#operate-from-url").val();
-		parms.editData.sort = $("#operate-from-sort").val();
-		parms.editData.img = $("#imgurl-div img").attr("src");
-
 		$.ajax({
 			"type": "post",
 			"url": parms.editUrl,
