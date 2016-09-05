@@ -8,6 +8,10 @@ body {
 .body-div {
   position: relative;
 
+  .error {
+	color: red;
+  }
+
   .need-login-div {
 	position: absolute;
 	height: 100%;
@@ -225,7 +229,7 @@ body {
 		  }
 
 		  .operate-from-group {
-			height: 50px;
+			min-height: 50px;
 			line-height: 50px;
 			float: left;
 			margin-left: 160px;
@@ -242,10 +246,42 @@ body {
 			.operate-from-input {
 			  width: 300px;
 			}
+
+			#file {
+			  width: 256px;
+			}
+
+			#imgurl-div {
+			  position: relative;
+
+			  img {
+				position: relative;
+				z-index: 10;
+				width: 410px;
+				height: 156px;
+			  }
+
+			  div.img-preview {
+				position: absolute;
+				height: 30px;
+				width: 100px;
+				line-height: 30px;
+				left: 37%;
+				top: 33%;
+				margin: auto;
+			  }
+
+			  div.error {
+				visibility: hidden;
+				height: 30px;
+				line-height: 30px;
+			  }
+			}
+
 		  }
 
 		  .operate-from-group-btn {
-			margin-top: 100px;
+			margin-top: 8px;
 			float: left;
 			margin-left: 200px;
 

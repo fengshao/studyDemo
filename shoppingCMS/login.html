@@ -1,115 +1,149 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>商城CMS登录</title>
-    <meta name="description" content="slick Login">
-    <meta name="author" content="Webdesigntuts+">
-    <link rel="stylesheet" type="text/css" href="./style/login.css"/>
-    <script language="JavaScript" src="./script/jquery-3.1.0.js"></script>
-    <script>
-        var errorUserNameTimer = null;
-        var errorPasswordTimer = null;
-        var loginFlag = false;
-        function userLogin() {
-            var username = document.getElementById("name").value.trim();
-            var password = document.getElementById("password").value.trim();
-            if (loginFlag) {
-                return;
-            }
-            if (username == "") {
-                $("#name").val("");
-                $("#check-username").addClass("show-error-prompt");
-                if (errorUserNameTimer) {
-                    errorUserNameTimer = null;
-                }
-                errorUserNameTimer = setTimeout(function () {
-                    $("#check-username").removeClass("show-error-prompt");
-                }, 1500);
-                return false;
-            }
-            if (password == "") {
-                $("#check-pwd").addClass("show-error-prompt");
-                $("#password").val("");
-                if (errorPasswordTimer) {
-                    errorPasswordTimer = null;
-                }
-                errorPasswordTimer = setTimeout(function () {
-                    $("#check-pwd").removeClass("show-error-prompt");
-                }, 1500);
-                return false;
-            }
-            loginFlag = true;
-            var data = {};
-            data.name = username;
-            data.password = password;
+	<meta charset="utf-8">
+	<title>商城CMS登录</title>
+	<meta name="description" content="slick Login">
+	<meta name="author" content="Webdesigntuts+">
+	<link rel="stylesheet" type="text/css" href="./style/login.css"/>
+	<script language="JavaScript" src="./script/jquery-3.1.0.js"></script>
+	<script>
+		var errorUserNameTimer = null;
+		var errorPasswordTimer = null;
+		var loginFlag = false;
+		function userLogin() {
+			var username = document.getElementById("name").value.trim();
+			var password = document.getElementById("password").value.trim();
+			if (loginFlag) {
+				return;
+			}
+			if (username == "") {
+				$("#name").val("");
+				$("#check-username").addClass("show-error-prompt");
+				if (errorUserNameTimer) {
+					errorUserNameTimer = null;
+				}
+				errorUserNameTimer = setTimeout(function () {
+					$("#check-username").removeClass("show-error-prompt");
+				}, 1500);
+				return false;
+			}
+			if (password == "") {
+				$("#check-pwd").addClass("show-error-prompt");
+				$("#password").val("");
+				if (errorPasswordTimer) {
+					errorPasswordTimer = null;
+				}
+				errorPasswordTimer = setTimeout(function () {
+					$("#check-pwd").removeClass("show-error-prompt");
+				}, 1500);
+				return false;
+			}
+			loginFlag = true;
+			var data = {};
+			data.name = username;
+			data.password = password;
 
-            $.ajax({
-                "type": "post",
-                "data": data,
-                "url": 'http://han.devel.wesai.com/api/userLogin',
-                "success": function (data) {
-                    if (data.error == 0) {
-                        $(".login-file-prompt").removeClass("show-login-prompt");
-                        $(".login-success-prompt").addClass("show-login-prompt");
-                        window.sessionStorage.setItem("username", username);
-                        setTimeout(function () {
-                            $(".login-success-prompt span").text("2");
-                        }, 1000);
-                        setTimeout(function () {
-                            $(".login-success-prompt span").text("1");
-                        }, 2000);
-                        setTimeout(function () {
-                            $(".login-success-prompt span").text("0");
-                            window.location.href = "./view/index.html";
-                            loginFlag = false;
-                        }, 3000);
-                    } else {
-                        loginFlag = false;
-                        $(".login-file-prompt").addClass("show-login-prompt");
-                    }
-                },
-                "error": function (data) {
-                    if (data.error == 0) {
-                        $(".login-file-prompt").removeClass("show-login-prompt");
-                        $(".login-success-prompt").addClass("show-login-prompt");
-                        window.sessionStorage.setItem("username", username);
-                        setTimeout(function () {
-                            $(".login-success-prompt span").text("2");
-                        }, 1000);
-                        setTimeout(function () {
-                            $(".login-success-prompt span").text("1");
-                        }, 2000);
-                        setTimeout(function () {
-                            $(".login-success-prompt span").text("0");
-                            window.location.href = "./view/index.html";
-                            loginFlag = false;
-                        }, 3000);
-                    } else {
-                        loginFlag = false;
-                        $(".login-file-prompt").addClass("show-login-prompt");
-                    }
-                }
-            });
-        }
-    </script>
+			$.ajax({
+				"type": "post",
+				"data": data,
+				"url": 'http://han.devel.wesai.com/api/userLogin',
+				"success": function (data) {
+					if (data.error == 0) {
+						$(".login-file-prompt").removeClass("show-login-prompt");
+						$(".login-success-prompt").addClass("show-login-prompt");
+						window.sessionStorage.setItem("username", username);
+						setTimeout(function () {
+							$(".login-success-prompt span").text("2");
+						}, 1000);
+						setTimeout(function () {
+							$(".login-success-prompt span").text("1");
+						}, 2000);
+						setTimeout(function () {
+							$(".login-success-prompt span").text("0");
+//                            window.location.href = "./view/index.html";
+							loginFlag = false;
+						}, 3000);
+					} else {
+						loginFlag = false;
+						$(".login-file-prompt").addClass("show-login-prompt");
+					}
+				},
+				"error": function (data) {
+					if (data.error == 0) {
+						$(".login-file-prompt").removeClass("show-login-prompt");
+						$(".login-success-prompt").addClass("show-login-prompt");
+						window.sessionStorage.setItem("username", username);
+						setTimeout(function () {
+							$(".login-success-prompt span").text("2");
+						}, 1000);
+						setTimeout(function () {
+							$(".login-success-prompt span").text("1");
+						}, 2000);
+						setTimeout(function () {
+							$(".login-success-prompt span").text("0");
+//                            window.location.href = "./view/index.html";
+							loginFlag = false;
+						}, 3000);
+					} else {
+						loginFlag = false;
+						$(".login-file-prompt").addClass("show-login-prompt");
+					}
+				}
+			});
+		}
+
+		function outLogin() {
+			$.ajax({
+				"type": "get",
+				"url": 'http://han.devel.wesai.com/api/userLogout',
+				"success": function (data) {
+					window.sessionStorage.clear();
+//					window.location.href = "../login.html";
+				},
+				"error": function (data) {
+					window.sessionStorage.clear();
+//					window.location.href = "../login.html";
+				}
+			});
+		}
+
+		function qqqq() {
+			$.ajax({
+				"type": "get",
+				"url": 'http://han.devel.wesai.com/api/isLogin',
+				"success": function (data) {
+					if (data.error == 0) {
+						init();
+					} else {
+						needLogiunInit();
+					}
+				},
+				"error": function (data) {
+					alert(JSON.stringify(data) + "wocou");
+				}
+			});
+		}
+
+	</script>
 </head>
 
 <body>
 <form id="slick-login">
-    <label>username</label>
-    <input type="text" name="name" id="name" class="placeholder"
-           placeholder="username"/>
-    <label id="check-username">用户名不能为空</label>
-    <label>password</label>
-    <input type="password" name="password" id="password" class="placeholder"
-           placeholder="password"/>
-    <label id="check-pwd">密码不能为空</label>
-    <input type="button" value="Log In" onclick="userLogin()">
-    <input type="button" value="qqwewq In" onclick="qqqq()">
-    <label class="login-success-prompt">登录成功，即将进行跳转。。。<span>3</span></label>
-    <label class="login-file-prompt">登录失败，请重试</label>
+	<label>username</label>
+	<input type="text" name="name" id="name" class="placeholder"
+		   placeholder="username"/>
+	<label id="check-username">用户名不能为空</label>
+	<label>password</label>
+	<input type="password" name="password" id="password" class="placeholder"
+		   placeholder="password"/>
+	<label id="check-pwd">密码不能为空</label>
+	<input type="button" value="Log In" onclick="userLogin()">
+	<input type="button" value="out login" onclick="outLogin()">
+	<input type="button" value="yes or no login" onclick="qqqq()">
+	<label class="login-success-prompt">登录成功，即将进行跳转。。。<span>3</span></label>
+	<label class="login-file-prompt">登录失败，请重试</label>
 </form>
 </body>
 

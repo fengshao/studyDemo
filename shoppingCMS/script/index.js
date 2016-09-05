@@ -3,237 +3,11 @@
  */
 $(function () {
 
-	var tsetData = [
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 2,
-			"type_id": 1,
-			"title": "测试专题-2",
-			"title_en": "test special 2",
-			"description": "测试专题用例2",
-			"url": "www.baidu.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472438650,
-			"update_time": "2016-08-31 16:05:26",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 3,
-			"type_id": 2,
-			"title": "测试专题-3",
-			"title_en": "test special 3",
-			"description": "2分类的测试专题",
-			"url": "www.sina.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472525176,
-			"update_time": "0000-00-00 00:00:00",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 4,
-			"type_id": 1,
-			"title": "aaaaaaaaa",
-			"title_en": null,
-			"description": null,
-			"url": "www.jd.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472543533,
-			"update_time": "0000-00-00 00:00:00",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 5,//ID
-			"title": "afasfdsaf", //专题名称
-			"url": "afdsasfas",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"type_id": 1,
-			"title_en": null,
-			"description": null,
-			"status": 0,
-			"create_time": 1472544986,
-			"update_time": "2016-08-31 16:05:24",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		},
-		{
-			"id": 1,
-			"type_id": 1,
-			"title": "测试专题-1",
-			"title_en": "test special 1",
-			"description": "测试用的测试用的",
-			"url": "www.wesai.com",
-			"img": "<img src='../images/test.jpg'/>",
-			"sort": 0,
-			"status": 0,
-			"create_time": 1472437386,
-			"update_time": "2016-08-30 14:54:08",
-			"testImg": "<img src='../images/test.jpg'/>"
-		}
-	];
-
 	var parms = {
 		dataSet: [],
 		dt: "",
 		editData: "",
+		formValidate: "",
 		editUrl: "http://han.devel.wesai.com/api/editSpecial",//post
 		getListUrl: "http://han.devel.wesai.com/api/getSpecialList", //get
 		addUrl: "http://han.devel.wesai.com/api/addSpecial",//post
@@ -271,29 +45,11 @@ $(function () {
 
 		$(".loading-div").css("height", $(window).height()).css("width", $(window).width());
 		$(".loading-bg-div").css("height", $(document).height()).css("width", $(document).width());
+		parms.formValidate = $("#operate-form").validate();
 
 		initDt();
 		addEvent();
 	}
-
-	// getData();
-	function getData() {
-		$.ajax({
-			"type": "get",
-			"url": parms.getListUrl + '?typeId=&cacheOpen=11&pageSize=2',
-			"success": function (data) {
-
-				for (var i = 0; i < data.data.length; i++) {
-					//data.data[i].img = "http://img.wesai.com/0102000057b2c9220000142aee8da1ae.jpg";
-					data.data[i].img = "../images/test.jpg";
-				}
-				parms.dataSet = data.data;
-				initDt(parms.dataSet);
-			},
-			"error": function (data) {
-			}
-		});
-	};
 
 	function initDt() {
 		parms.dt = $('#example').DataTable({
@@ -303,7 +59,7 @@ $(function () {
 				"type": "get",
 				"dataSrc": function (json) {
 					for (var i = 0; i < json.data.length; i++) {
-						json.data[i].img = "../images/test.jpg";
+						json.data[i].img ? json.data[i].img : json.data[i].img = "../images/test.jpg";
 						// json.data[i].url = "http://img.wesai.com/0102000057b2c9220000142aee8da1ae.jpg";
 					}
 					parms.dataSet = json.data;
@@ -320,7 +76,6 @@ $(function () {
 				{"data": "sort", "class": "center", "sWidth": "5%"},
 				{"data": "test", "class": "center", "sWidth": "20%"}
 			],
-			"autoWidth": true,
 			"aoColumnDefs": [//设置列的属性，此处设置第一列不排序
 				// {"bSortable": false, "aTargets": [0]}, {"class": "tn", "targets": [0]},
 				{
@@ -333,7 +88,7 @@ $(function () {
 				{
 					"render": function (data, type, row, meta) {
 						//渲染 把数据源中的标题和url组成超链接
-						return '<img src=' + data + '/>';
+						return '<img src="' + data + '"/>';
 					},
 					//指定是第三列
 					"targets": 3
@@ -361,11 +116,6 @@ $(function () {
 
 	function addEvent() {
 
-		$('#file_upload_return').load(function () {
-			var res = $(this).contents().find('body').text();
-			console.log(res);
-		});
-
 		$(window).resize(function () {
 			$(".login-welcome label.usernam-label").text(window.sessionStorage.getItem("username"));
 			$(".loading-div").css("height", $(window).height()).css("width", $(window).width());
@@ -389,25 +139,7 @@ $(function () {
 				}
 			});
 		});
-		$(".body-div").delegate(".btn-primary", "click", function () {
-			var form = $("form[name=fileForm]");
-			var options = {
-				url: 'http://10.2.2.202:20202/uploading',
-				resetForm: true,
-				dataType: 'json',
-				success: function (data) {
-					alert("success");
-				},
-				error: function (data) {
-					alert("error")
-				}
-			};
-			// form.ajaxSubmit(options);
-			form.submit(function () { //注意这里的index_form
-				$(this).ajaxSubmit(options);
-				return false;//防止dialog 自动关闭
-			});
-		});
+
 
 		/**
 		 * 查看修改
@@ -425,13 +157,14 @@ $(function () {
 			$("#operate-from-title").val(data.title);
 			$("#operate-from-url").val(data.url);
 			$("#operate-from-sort").val(data.sort);
-
+			$("#imgurl-div img").attr("src", data.img);
 		});
 
 		/**
 		 * 添加
 		 */
 		$(".body-div").delegate(".add-btn", "click", function () {
+
 			$("#operate-title-add").show();
 			$("#operate-title-edit").hide();
 			$("#dt-content-div").hide();
@@ -449,7 +182,11 @@ $(function () {
 		 * 重置
 		 */
 		$(".body-div").delegate("#operate-btn-resert", "click", function () {
+			parms.formValidate.resetForm();
 			$(".operate-from-input").val("");
+			$("#imgurl-div img").attr("src", "");
+			$("#imgurl-div div.error").css("visibility", "hidden");
+
 		});
 
 		/**
@@ -504,89 +241,137 @@ $(function () {
 		 * 修改完成
 		 */
 		$(".body-div").delegate("#operate-btn-editok", "click", function () {
-			$(".form-loading-div").show();
+			if (parms.formValidate.form() && checkImgIsNull()) {
+				$(".form-loading-div").show();
+				parms.editData.title = $("#operate-from-title").val();
+				parms.editData.url = $("#operate-from-url").val();
+				parms.editData.sort = $("#operate-from-sort").val();
+				parms.editData.img = $("#imgurl-div img").attr("src");
 
-			parms.editData.title = $("#operate-from-title").val();
-			parms.editData.url = $("#operate-from-url").val();
-			parms.editData.sort = $("#operate-from-sort").val();
+				$.ajax({
+					"type": "post",
+					"url": parms.editUrl,
+					"data": parms.editData,
+					"success": function (data) {
+						$(".form-loading-div").hide();
+						if (data.error == 0) {
+							toastFnc("修改成功", $(".operate-div-form"));
+						} else {
+							toastFnc("修改失败", $(".operate-div-form"));
+						}
+					},
+					"error": function (data) {
+						$(".form-loading-div").hide();
+						if (data.error == 0) {
+							toastFnc("修改成功", $(".operate-div-form"));
+						} else {
+							toastFnc("修改失败", $(".operate-div-form"));
+						}
+					}
+				});
+			}
 
-			$.ajax({
-				"type": "post",
-				"url": parms.editUrl,
-				"data": parms.editData,
-				"success": function (data) {
-					$(".form-loading-div").hide();
-					if (data.error == 0) {
-						toastFnc("修改成功", $(".operate-div-form"));
-					} else {
-						toastFnc("修改失败", $(".operate-div-form"));
-					}
-				},
-				"error": function (data) {
-					$(".form-loading-div").hide();
-					if (data.error == 0) {
-						toastFnc("修改成功", $(".operate-div-form"));
-					} else {
-						toastFnc("修改失败", $(".operate-div-form"));
-					}
-				}
-			});
 		});
 		/**
 		 * 添加完成
 		 * */
 		$(".body-div").delegate("#operate-btn-addok", "click", function () {
-			$(".form-loading-div").show();
-			var addDta = {};
+			if (parms.formValidate.form() && checkImgIsNull()) {
+				$(".form-loading-div").show();
+				var addDta = {};
 
-			addDta.title = $("#operate-from-title").val();
-			addDta.url = $("#operate-from-url").val();
-			addDta.sort = $("#operate-from-sort").val();
-			addDta.img = "../images/test.jpg";
-			$.ajax({
-				"type": "post",
-				"url": parms.addUrl,
-				"data": addDta,
-				"success": function (data) {
-					$(".form-loading-div").hide();
-					if (data.error == 0) {
-						$(".operate-from-input").val("");
-						toastFnc("添加成功", $(".operate-div-form"));
-					} else {
-						toastFnc("添加失败", $(".operate-div-form"));
+				addDta.title = $("#operate-from-title").val();
+				addDta.url = $("#operate-from-url").val();
+				addDta.sort = $("#operate-from-sort").val();
+				addDta.img = $("#imgurl-div img").attr("src");
+				$.ajax({
+					"type": "post",
+					"url": parms.addUrl,
+					"data": addDta,
+					"success": function (data) {
+						$(".form-loading-div").hide();
+						if (data.error == 0) {
+							$(".operate-from-input").val("");
+							toastFnc("添加成功", $(".operate-div-form"));
+						} else {
+							toastFnc("添加失败", $(".operate-div-form"));
+						}
+					},
+					"error": function (data) {
+						$(".form-loading-div").hide();
+						if (data.error == 0) {
+							$(".operate-from-input").val("");
+							toastFnc("添加成功", $(".operate-div-form"));
+						} else {
+							toastFnc("添加失败", $(".operate-div-form"));
+						}
+					}
+				});
+			}
+		});
+
+		$(".body-div").delegate(".btn-primary", "click", function () {
+			var form = $("form[name=fileForm]");
+			var options = {
+				dataType: 'json',
+				beforeSubmit: function (a, form, options) {
+					if (!a[0].value) {
+						checkImgIsNull();
+						return false
+					}
+					var fileType = a[0].value.type.toLocaleLowerCase();
+					if (!(fileType.lastIndexOf("png") !== -1
+						|| fileType.lastIndexOf("jpg") !== -1
+						|| fileType.lastIndexOf("jpeg") !== -1)) {
+						checkImgIsNull();
+						return false
 					}
 				},
-				"error": function (data) {
-					$(".form-loading-div").hide();
-					if (data.error == 0) {
-						$(".operate-from-input").val("");
-						toastFnc("添加成功", $(".operate-div-form"));
+				success: function (data) {
+					if (data && data.result) {
+						var imgData = data.result;
+						var srcUrl = imgData.savehost + imgData.savepath + "/" + imgData.savename;
+						$("#imgurl-div img").attr("src", srcUrl);
 					} else {
-						toastFnc("添加失败", $(".operate-div-form"));
+						toastFnc("上传失败", $(".operate-div-form"));
 					}
+					checkImgIsNull();
+				},
+				error: function (data) {
+					checkImgIsNull();
+					toastFnc("上传失败", $(".operate-div-form"));
 				}
-			});
+			};
+
+			form.ajaxForm(options);
+
+
 		});
 
 		/**
-		 * 取消
+		 * 返回按钮
 		 */
 		$(".body-div").delegate("#operate-btn-cancel", "click", function () {
 			hideEditDiv(false);
 		});
 	}
 
+	//返回按钮
 	function hideEditDiv(falg) {
+		parms.formValidate.resetForm();
 		$("#dt-content-div").show();
 		$("#operate-content-div").hide();
 		$(".operate-from-input").val("");
+		$("#imgurl-div img").attr("src", "");
+		$("#imgurl-div div.error").css("visibility", "hidden");
+
 		parms.editData = "";
 		if (!falg) {
 			parms.dt.ajax.reload(null, false);
 		}
 	}
 
-//错误信息提示
+	//错误信息提示
 	function toastFnc(msg, element) {
 		if (element.find(".toast").length > 0) {
 			return;
@@ -604,5 +389,16 @@ $(function () {
 			}, 500);
 		}, 1500);
 		element.prepend(toast);
+	}
+
+	//校验是否已经上传图片
+	function checkImgIsNull() {
+		if (!$("#imgurl-div img").attr("src")) {
+			$("#imgurl-div div.error").css("visibility", "visible");
+			return false;
+		} else {
+			$("#imgurl-div div.error").css("visibility", "hidden");
+			return true;
+		}
 	}
 });

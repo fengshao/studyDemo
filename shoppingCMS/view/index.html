@@ -5,8 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="csrf-token" content="jdmKGUP1SpHnBMEA1wb6TFQolK7ubTBRLPyXXgQg">
 	<title>欢迎来到商城CMS</title>
-	<script language="JavaScript" src="../script/jquery-1.9.1.js"></script>
+	<script language="JavaScript" src="../script/jquery-3.1.0.js"></script>
 	<script language="JavaScript" src="../script/jquery.dataTables.js"></script>
+	<script language="JavaScript" src="../script/jquery.validate.js"></script>
+	<script language="JavaScript" src="../script/messages_zh.js"></script>
 	<script language="JavaScript" src="../script/jquery.form.js"></script>
 	<link rel="stylesheet" type="text/css" href="../style/jquery.dataTables.css"/>
 	<link rel="stylesheet" type="text/css" href="../style/index.css"/>
@@ -54,30 +56,37 @@
 							<div class="form-ajax-loader"></div>
 						</div>
 					</div>
+					<form id="operate-form" name="operate-form">
+						<div class="operate-from-group">
+							<label class="operate-from-label">专题名称：</label>
+							<input id="operate-from-title" name="operate-from-title" type="text"
+								   class="operate-from-input" required
+								   maxlength="20"/>
+						</div>
+						<div class="operate-from-group">
+							<label class="operate-from-label">链<label>链接</label>接：</label>
+							<input id="operate-from-url" name="operate-from-url" type="url"
+								   class="operate-from-input" required/>
+						</div>
+						<div class="operate-from-group">
+							<label class="operate-from-label">排<label>排序</label>序：</label>
+							<input id="operate-from-sort" name="operate-from-sort" type="text"
+								   class="operate-from-input" required
+								   digits="true"/>
+						</div>
+					</form>
 					<div class="operate-from-group">
-						<label class="operate-from-label">专题名称：</label>
-						<input id="operate-from-title" type="text" class="operate-from-input"/>
-					</div>
-					<div class="operate-from-group">
-						<label class="operate-from-label">链<label>链接</label>接：</label>
-						<input id="operate-from-url" type="text" class="operate-from-input"/>
-					</div>
-					<div class="operate-from-group">
-						<label class="operate-from-label">排<label>排序</label>序：</label>
-						<input id="operate-from-sort" type="text" class="operate-from-input"/>
-					</div>
-					<div class="operate-from-group">
-						<label class="operate-from-label">专题图片：</label>
-
-						<!-- 提交表单处理iframe框架 -->
-						<iframe id="file_upload_return" name="file_upload_return" width="100px"
-								height="300px;"></iframe>
-						<form action="http://10.2.2.202:20202/uploading" enctype="multipart/form-data" method="post"
-							  id="fileForm" name="fileForm"
-							  target="file_upload_return">
-							<input type="file" id="file" name="file"/>
-							<!--<button class="btn btn-primary">上传</button>-->
-							<input type="submit" value="上传图片到CDN"/>
+						<form action="http://10.2.2.9:20202/uploading" enctype="multipart/form-data" method="post"
+							  id="fileForm" name="fileForm">
+							<label class="operate-from-label">专题图片：</label>
+							<input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg"
+								   class="operate-from-input"/>
+							<button class="btn btn-primary">上传</button>
+							<div id="imgurl-div">
+								<div class="img-preview">图片预览区域</div>
+								<img src=""/>
+								<div class="error">请选择png,jpg，jpeg格式图片上传</div>
+							</div>
 						</form>
 					</div>
 					<div class="operate-from-group-btn">
@@ -86,6 +95,7 @@
 						<div id="operate-btn-resert" class="operate-div-btn button white">重置</div>
 						<div id="operate-btn-cancel" class="operate-div-btn button white">返回</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
