@@ -32,6 +32,14 @@ body {
 
   }
 
+  .del-bg-div {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+	display: none;
+  }
+
   .pub-ajax-loader-content {
 	width: 50px;
 	height: 50px;
@@ -138,6 +146,10 @@ body {
 		.operate-div {
 		  position: relative;
 
+		  .del-div-btn {
+			position: relative;
+			z-index: 100;
+		  }
 		  .operate-btn {
 			margin-right: 10px;
 		  }
@@ -150,6 +162,7 @@ body {
 			right: 20px;
 			top: -57px;
 			border-radius: 5px;
+			z-index: 100;
 
 			.sanjiao {
 			  width: 0;
@@ -232,10 +245,10 @@ body {
 			min-height: 50px;
 			line-height: 50px;
 			float: left;
-			margin-left: 160px;
+			margin-left: 130px;
 
 			.operate-from-label {
-			  width: 100px;
+			  width: 90px;
 
 			  display: inline-block;
 			  label {
@@ -283,7 +296,7 @@ body {
 		  .operate-from-group-btn {
 			margin-top: 8px;
 			float: left;
-			margin-left: 200px;
+			margin-left: 160px;
 
 			.operate-div-btn {
 			  width: 50px;

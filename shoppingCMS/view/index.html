@@ -9,6 +9,7 @@
 	<script language="JavaScript" src="../script/jquery.dataTables.js"></script>
 	<script language="JavaScript" src="../script/jquery.validate.js"></script>
 	<script language="JavaScript" src="../script/messages_zh.js"></script>
+	<script language="JavaScript" src="../script/additional-methods.js"></script>
 	<script language="JavaScript" src="../script/jquery.form.js"></script>
 	<link rel="stylesheet" type="text/css" href="../style/jquery.dataTables.css"/>
 	<link rel="stylesheet" type="text/css" href="../style/index.css"/>
@@ -20,6 +21,7 @@
 			<div class="need-login-title">您还未登录，请 <a href="../login.html">登录</a></div>
 		</div>
 	</div>
+	<div class="del-bg-div"></div>
 	<div class="loading-div">
 		<div class="loading-bg-div"></div>
 		<div class="ajax-loader-content">
@@ -61,7 +63,7 @@
 							<label class="operate-from-label">专题名称：</label>
 							<input id="operate-from-title" name="operate-from-title" type="text"
 								   class="operate-from-input" required
-								   maxlength="20"/>
+								   mymaxlength="20"/>
 						</div>
 						<div class="operate-from-group">
 							<label class="operate-from-label">链<label>链接</label>接：</label>
@@ -85,7 +87,7 @@
 							<div id="imgurl-div">
 								<div class="img-preview">图片预览区域</div>
 								<img src=""/>
-								<div class="error">请选择png,jpg，jpeg格式图片上传</div>
+								<div class="error">请选择小于2MB的png，jpg，jpeg格式图片上传</div>
 							</div>
 						</form>
 					</div>
