@@ -61,7 +61,7 @@
 							$(".login-success-prompt span").text("1");
 						}, 2000);
 						setTimeout(function () {
-							$(".login-success-prompt span").text("0");
+//							$(".login-success-prompt span").text("0");
 							if (type != 1) {
 								window.location.href = "./view/index.html";
 							}
@@ -144,9 +144,9 @@
 		   placeholder="password"/>
 	<label id="check-pwd">密码不能为空</label>
 	<input type="button" value="Log In" onclick="userLogin()">
-	<input type="button" value="ceshi Log In" onclick="userLogin(1)">
-	<input type="button" value="out login" onclick="outLogin()">
-	<input type="button" value="yes or no login" onclick="qqqq()">
+	<!--<input type="button" value="ceshi Log In" onclick="userLogin(1)">-->
+	<!--<input type="button" value="out login" onclick="outLogin()">-->
+	<!--<input type="button" value="yes or no login" onclick="qqqq()">-->
 	<label class="login-success-prompt">登录成功，即将进行跳转。。。<span>3</span></label>
 	<label class="login-file-prompt">登录失败，请重试</label>
 </form>

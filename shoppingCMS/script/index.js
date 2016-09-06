@@ -56,11 +56,13 @@ $(function () {
 	function initDt() {
 		parms.dt = $('#example').DataTable({
 			"ajax": {
-				"url": parms.getListUrl + '?typeId=&cacheOpen=11&pageSize=2',
+				"url": parms.getListUrl + '?typeId=&cacheOpen=11&pageSize=1000',
 				"type": "get",
 				"dataSrc": function (json) {
-					for (var i = 0; i < json.data.length; i++) {
-						json.data[i].img ? json.data[i].img : json.data[i].img = "../images/test.jpg";
+					if (json && json.data) {
+						for (var i = 0; i < json.data.length; i++) {
+							json.data[i].img ? json.data[i].img : json.data[i].img = "../images/test.jpg";
+						}
 					}
 					parms.dataSet = json.data;
 					return parms.dataSet;
@@ -135,11 +137,14 @@ $(function () {
 
 			//input框获得焦点，以及失去焦点后的处理
 			$("#edit" + infd + inid).focus().blur(function () {
-				var editval = parseInt($(this).val());                      //获得input框中的值
+				var $this = $(this);
+				var editval = parseInt($(this).val());//获得input框中的值
 				if (editval != parms.editData.sort && /^\d+$/.test(editval)) {
-					$(this).parent().html(editval);                //把得到的值赋给input框父节点的html
-					parms.editData.sort = editval;
-					editSaveFnc();
+					var newEditData = {};
+					newEditData = $.extend({}, newEditData, parms.editData);
+					newEditData.sort = editval;
+
+					checkSortAndTitle(newEditData, "edit", "onlyEditSort", $this);
 				} else {
 					$(this).parent().html(parms.editData.sort);
 				}
@@ -264,9 +269,9 @@ $(function () {
 						flag = true
 					}
 				});
+
 				if (flag) {
-					$(".form-loading-div").show();
-					editSaveFnc(newEditData);
+					checkSortAndTitle(newEditData, "edit");
 				}
 			}
 
@@ -289,7 +294,7 @@ $(function () {
 					}
 				});
 				if (flag) {
-					addSaveFnc(newaddData);
+					checkSortAndTitle(newaddData, "add");
 				}
 			}
 		});
@@ -353,7 +358,7 @@ $(function () {
 	}
 
 	//修改保存
-	function editSaveFnc(newEditData) {
+	function editSaveFnc(newEditData, checkType) {
 		$.ajax({
 			"type": "post",
 			"url": parms.editUrl,
@@ -366,6 +371,9 @@ $(function () {
 				} else {
 					toastFnc("修改失败", $(".operate-div-form"));
 				}
+				if (checkType == "onlyEditSort") {
+					parms.dt.ajax.reload(null, false);
+				}
 			},
 			"error": function (data) {
 				$(".form-loading-div").hide();
@@ -373,6 +381,9 @@ $(function () {
 					toastFnc("修改成功", $(".operate-div-form"));
 				} else {
 					toastFnc("修改失败", $(".operate-div-form"));
+				}
+				if (checkType == "onlyEditSort") {
+					parms.dt.ajax.reload(null, false);
 				}
 			}
 		});
@@ -503,5 +514,61 @@ $(function () {
 			$("#imgurl-div div.error").css("visibility", "hidden");
 			return true;
 		}
+	}
+
+	//	校验sort是否存在
+	function checkSortAndTitle(newData, type, checkType, $this) {
+		var sort = newData.sort;
+		var id = newData.id;
+		var title = newData.title;
+		$(".form-loading-div").show();
+		$.ajax({
+			"url": parms.getListUrl + '?typeId=&cacheOpen=11&pageSize=1000',
+			"type": "get",
+			"success": function (json) {
+				var flag = false;
+				if (json && json.data) {
+					for (var i = 0; i < json.data.length; i++) {
+						if (id != json.data[i].id) {
+							if (sort == json.data[i].sort) {
+								if (checkType != "onlyEditSort") {
+									toastFnc("排序序号重复，请重新输入", $(".operate-div-form"));
+								} else {
+									$this.parent().html(parms.editData.sort);
+								}
+								flag = false;
+								$(".form-loading-div").hide();
+								return;
+							} else if (title == json.data[i].title && checkType != "onlyEditSort") {
+								toastFnc("专题名称重复，请重新输入", $(".operate-div-form"));
+								flag = false;
+								$(".form-loading-div").hide();
+								return;
+							} else {
+								flag = true;
+							}
+						}
+					}
+				} else {
+					toastFnc("获取专题列表失败", $(".operate-div-form"));
+					flag = false;
+					$this.parent().html(parms.editData.sort);
+				}
+				if (flag) {
+					if (type == "add") {
+						addSaveFnc(newData);
+					} else if (type == "edit") {
+						editSaveFnc(newData, checkType);
+					}
+				} else {
+					$(".form-loading-div").hide();
+				}
+
+			},
+			"error": function (data) {
+				toastFnc("获取专题列表失败", $(".operate-div-form"));
+				$(".loading-div").hide();
+			}
+		});
 	}
 });
