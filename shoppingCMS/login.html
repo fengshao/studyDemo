@@ -12,7 +12,7 @@
 		var errorUserNameTimer = null;
 		var errorPasswordTimer = null;
 		var loginFlag = false;
-		function userLogin() {
+		function userLogin(type) {
 			var username = document.getElementById("name").value.trim();
 			var password = document.getElementById("password").value.trim();
 			if (loginFlag) {
@@ -62,7 +62,9 @@
 						}, 2000);
 						setTimeout(function () {
 							$(".login-success-prompt span").text("0");
-//                            window.location.href = "./view/index.html";
+							if (type != 1) {
+								window.location.href = "./view/index.html";
+							}
 							loginFlag = false;
 						}, 3000);
 					} else {
@@ -83,7 +85,9 @@
 						}, 2000);
 						setTimeout(function () {
 							$(".login-success-prompt span").text("0");
-//                            window.location.href = "./view/index.html";
+							if (type != 1) {
+								window.location.href = "./view/index.html";
+							}
 							loginFlag = false;
 						}, 3000);
 					} else {
@@ -140,6 +144,7 @@
 		   placeholder="password"/>
 	<label id="check-pwd">密码不能为空</label>
 	<input type="button" value="Log In" onclick="userLogin()">
+	<input type="button" value="ceshi Log In" onclick="userLogin(1)">
 	<input type="button" value="out login" onclick="outLogin()">
 	<input type="button" value="yes or no login" onclick="qqqq()">
 	<label class="login-success-prompt">登录成功，即将进行跳转。。。<span>3</span></label>

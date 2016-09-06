@@ -6,7 +6,8 @@ $(function () {
 	var parms = {
 		dataSet: [],
 		dt: "",
-		editData: "",
+		editData: {},
+		addData: {},
 		formValidate: "",
 		editUrl: "http://han.devel.wesai.com/api/editSpecial",//post
 		getListUrl: "http://han.devel.wesai.com/api/getSpecialList", //get
@@ -115,7 +116,7 @@ $(function () {
 
 	function addEvent() {
 
-		//双击编辑排序列
+		//单击编辑排序列
 		$(".body-div").delegate("#example tbody tr td.sort-td", "click", function () {
 			var inval = $(this).html();                            //获得td里的html内容
 			//获得td的父节点id属性的值
@@ -129,7 +130,7 @@ $(function () {
 				return;
 			} else {
 				//把td里的html内容变为input框，并赋值
-				$(this).html("<input type='text' id='edit" + infd + inid + "' value='" + inval + "'>");
+				$(this).html("<input type='text' class='sort-edit-input' id='edit" + infd + inid + "' value='" + inval + "'>");
 			}
 
 			//input框获得焦点，以及失去焦点后的处理
@@ -250,12 +251,23 @@ $(function () {
 		 */
 		$(".body-div").delegate("#operate-btn-editok", "click", function () {
 			if (parms.formValidate.form() && checkImgIsNull()) {
-				$(".form-loading-div").show();
-				parms.editData.title = $("#operate-from-title").val();
-				parms.editData.url = $("#operate-from-url").val();
-				parms.editData.sort = $("#operate-from-sort").val();
-				parms.editData.img = $("#imgurl-div img").attr("src");
-				editSaveFnc();
+				var newEditData = {};
+				newEditData.title = $("#operate-from-title").val();
+				newEditData.url = $("#operate-from-url").val();
+				newEditData.sort = $("#operate-from-sort").val();
+				newEditData.img = $("#imgurl-div img").attr("src");
+				newEditData.id = parms.editData.id;
+
+				var flag = false;
+				$.each(newEditData, function (name, value) {
+					if (value != parms.editData[name]) {
+						flag = true
+					}
+				});
+				if (flag) {
+					$(".form-loading-div").show();
+					editSaveFnc(newEditData);
+				}
 			}
 
 		});
@@ -264,7 +276,21 @@ $(function () {
 		 * */
 		$(".body-div").delegate("#operate-btn-addok", "click", function () {
 			if (parms.formValidate.form() && checkImgIsNull()) {
-				addSaveFnc();
+
+				var newaddData = {};
+				newaddData.title = $("#operate-from-title").val();
+				newaddData.url = $("#operate-from-url").val();
+				newaddData.sort = $("#operate-from-sort").val();
+				newaddData.img = $("#imgurl-div img").attr("src");
+				var flag = false;
+				$.each(newaddData, function (name, value) {
+					if (value != parms.addData[name]) {
+						flag = true
+					}
+				});
+				if (flag) {
+					addSaveFnc(newaddData);
+				}
 			}
 		});
 
@@ -297,21 +323,18 @@ $(function () {
 	}
 
 	//添加保存
-	function addSaveFnc() {
+	function addSaveFnc(newaddData) {
 		$(".form-loading-div").show();
-		var addDta = {};
-		addDta.title = $("#operate-from-title").val();
-		addDta.url = $("#operate-from-url").val();
-		addDta.sort = $("#operate-from-sort").val();
-		addDta.img = $("#imgurl-div img").attr("src");
 		$.ajax({
 			"type": "post",
 			"url": parms.addUrl,
-			"data": addDta,
+			"data": newaddData,
 			"success": function (data) {
 				$(".form-loading-div").hide();
 				if (data.error == 0) {
+					parms.addData = $.extend({}, parms.addData, newaddData);
 					$(".operate-from-input").val("");
+					$("#imgurl-div img").attr("src", "");
 					toastFnc("添加成功", $(".operate-div-form"));
 				} else {
 					toastFnc("添加失败", $(".operate-div-form"));
@@ -330,14 +353,15 @@ $(function () {
 	}
 
 	//修改保存
-	function editSaveFnc() {
+	function editSaveFnc(newEditData) {
 		$.ajax({
 			"type": "post",
 			"url": parms.editUrl,
-			"data": parms.editData,
+			"data": newEditData,
 			"success": function (data) {
 				$(".form-loading-div").hide();
 				if (data.error == 0) {
+					parms.editData = $.extend({}, parms.editData, newEditData);
 					toastFnc("修改成功", $(".operate-div-form"));
 				} else {
 					toastFnc("修改失败", $(".operate-div-form"));
@@ -391,19 +415,19 @@ $(function () {
 			dataType: 'json',
 			beforeSubmit: function (a, form, options) {
 				if (!a[0].value) {
-					checkImgIsNull();
+					showImgErrorPrompt();
 					return false
 				}
 				var fileType = a[0].value.type.toLocaleLowerCase();
 				var fileSize = a[0].value.size;
 				if (fileSize > 2048 * 1024) {
-					checkImgIsMax();
+					showImgErrorPrompt();
 					return false
 				}
 				if (!(fileType.lastIndexOf("png") !== -1
 					|| fileType.lastIndexOf("jpg") !== -1
 					|| fileType.lastIndexOf("jpeg") !== -1)) {
-					checkImgIsNull();
+					showImgErrorPrompt();
 					return false
 				}
 			},
@@ -415,10 +439,10 @@ $(function () {
 				} else {
 					toastFnc("上传失败", $(".operate-div-form"));
 				}
-				checkImgIsNull();
+				hideImgErrorPrompt();
 			},
 			error: function (data) {
-				checkImgIsNull();
+				hideImgErrorPrompt();
 				toastFnc("上传失败", $(".operate-div-form"));
 			}
 		};
@@ -460,10 +484,14 @@ $(function () {
 		element.prepend(toast);
 	}
 
-	//图片大小超出限制提示
-	function checkImgIsMax() {
+	//图片大小超出限制 图片为空提示
+	function showImgErrorPrompt() {
 		$("#imgurl-div div.error").css("visibility", "visible");
-		return false;
+	}
+
+	//上传图片后隐藏提示消息
+	function hideImgErrorPrompt() {
+		$("#imgurl-div div.error").css("visibility", "hidden");
 	}
 
 	//校验是否已经上传图片
