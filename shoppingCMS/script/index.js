@@ -15,25 +15,31 @@ $(function () {
 		delUrl: "http://han.devel.wesai.com/api/delSpecial"//get
 	};
 
-	// isLoginFnc();
+	isLoginFnc();
 	function isLoginFnc() {
-		$.ajax({
-			"type": "get",
-			"url": 'http://han.devel.wesai.com/api/isLogin',
-			"success": function (data) {
-				if (data.error == 0) {
-					init();
-				} else {
+		var user = window.sessionStorage.getItem("user");
+		if (user) {
+			$.ajax({
+				"type": "get",
+				"url": 'http://han.devel.wesai.com/api/isLogin?user=' + user,
+				"success": function (data) {
+					if (data.error == 0) {
+						init();
+					} else {
+						needLogiunInit();
+					}
+				},
+				"error": function (data) {
 					needLogiunInit();
 				}
-			},
-			"error": function (data) {
-				alert(JSON.stringify(data) + "wocou");
-			}
-		});
+			});
+		} else {
+			needLogiunInit();
+		}
+
 	}
 
-	init();
+	//init();
 	function needLogiunInit() {
 		$(".content").hide();
 		$(".need-login-div").css("height", $(window).height()).css("width", $(window).width()).show();
@@ -313,9 +319,10 @@ $(function () {
 
 	//退出登录
 	function logingOut() {
+		var user = window.sessionStorage.getItem("user");
 		$.ajax({
 			"type": "get",
-			"url": 'http://han.devel.wesai.com/api/userLogout',
+			"url": 'http://han.devel.wesai.com/api/userLogout?user=' + user,
 			"success": function (data) {
 				window.sessionStorage.clear();
 				window.location.href = "../login.html";

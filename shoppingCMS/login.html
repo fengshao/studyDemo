@@ -54,6 +54,7 @@
 						$(".login-file-prompt").removeClass("show-login-prompt");
 						$(".login-success-prompt").addClass("show-login-prompt");
 						window.sessionStorage.setItem("username", username);
+						window.sessionStorage.setItem("user", data.user);
 						setTimeout(function () {
 							$(".login-success-prompt span").text("2");
 						}, 1000);
@@ -69,7 +70,7 @@
 						}, 3000);
 					} else {
 						loginFlag = false;
-						$(".login-file-prompt").addClass("show-login-prompt");
+						$(".login-file-prompt").html(data.message ? data.message : "登录失败，请重试").addClass("show-login-prompt");
 					}
 				},
 				"error": function (data) {
@@ -92,44 +93,11 @@
 						}, 3000);
 					} else {
 						loginFlag = false;
-						$(".login-file-prompt").addClass("show-login-prompt");
+						$(".login-file-prompt").html(data.message ? data.message : "登录失败，请重试").addClass("show-login-prompt");
 					}
 				}
 			});
 		}
-
-		function outLogin() {
-			$.ajax({
-				"type": "get",
-				"url": 'http://han.devel.wesai.com/api/userLogout',
-				"success": function (data) {
-					window.sessionStorage.clear();
-//					window.location.href = "../login.html";
-				},
-				"error": function (data) {
-					window.sessionStorage.clear();
-//					window.location.href = "../login.html";
-				}
-			});
-		}
-
-		function qqqq() {
-			$.ajax({
-				"type": "get",
-				"url": 'http://han.devel.wesai.com/api/isLogin',
-				"success": function (data) {
-					if (data.error == 0) {
-						init();
-					} else {
-						needLogiunInit();
-					}
-				},
-				"error": function (data) {
-					alert(JSON.stringify(data) + "wocou");
-				}
-			});
-		}
-
 	</script>
 </head>
 
@@ -144,9 +112,6 @@
 		   placeholder="password"/>
 	<label id="check-pwd">密码不能为空</label>
 	<input type="button" value="Log In" onclick="userLogin()">
-	<!--<input type="button" value="ceshi Log In" onclick="userLogin(1)">-->
-	<!--<input type="button" value="out login" onclick="outLogin()">-->
-	<!--<input type="button" value="yes or no login" onclick="qqqq()">-->
 	<label class="login-success-prompt">登录成功，即将进行跳转。。。<span>3</span></label>
 	<label class="login-file-prompt">登录失败，请重试</label>
 </form>
