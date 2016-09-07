@@ -9,10 +9,11 @@ $(function () {
 		editData: {},
 		addData: {},
 		formValidate: "",
-		editUrl: "http://han.devel.wesai.com/api/editSpecial",//post
-		getListUrl: "http://han.devel.wesai.com/api/getSpecialList", //get
-		addUrl: "http://han.devel.wesai.com/api/addSpecial",//post
-		delUrl: "http://han.devel.wesai.com/api/delSpecial"//get
+		editUrl: "http://han.wesai.com/api/editSpecial",//post
+		getListUrl: "http://han.wesai.com/api/getSpecialList", //get
+		addUrl: "http://han.wesai.com/api/addSpecial",//post
+		delUrl: "http://han.wesai.com/api/delSpecial",//get
+		isloginUrl: "http://han.wesai.com/api/isLogin",//get
 	};
 
 	isLoginFnc();
@@ -21,7 +22,7 @@ $(function () {
 		if (user) {
 			$.ajax({
 				"type": "get",
-				"url": 'http://han.devel.wesai.com/api/isLogin?user=' + user,
+				"url": parms.isloginUrl + '?user=' + user,
 				"success": function (data) {
 					if (data.error == 0) {
 						init();
@@ -54,9 +55,27 @@ $(function () {
 		$(".loading-bg-div").css("height", $(document).height()).css("width", $(document).width());
 		$(".del-bg-div").css("height", $(document).height()).css("width", $(document).width());
 		parms.formValidate = $("#operate-form").validate();
-
+		editAjaxUrl();
 		initDt();
 		addEvent();
+	}
+
+	function editAjaxUrl() {
+		var locationHref = window.location.href;
+
+		if (locationHref.indexOf("devel") != -1) {
+			parms.editUrl = "http://han.devel.wesai.com/api/editSpecial";//post
+			parms.getListUrl = "http://han.devel.wesai.com/api/getSpecialList"; //get
+			parms.addUrl = "http://han.devel.wesai.com/api/addSpecial";//post
+			parms.delUrl = "http://han.devel.wesai.com/api/delSpecial";//get
+			parms.isloginUrl = "http://han.devel.wesai.com/api/isLogin";//get
+		} else if (locationHref.indexOf("test") != -1) {
+			parms.editUrl = "http://han.test.wesai.com/api/editSpecial";//post
+			parms.getListUrl = "http://han.test.wesai.com/api/getSpecialList"; //get
+			parms.addUrl = "http://han.test.wesai.com/api/addSpecial";//post
+			parms.delUrl = "http://han.test.wesai.com/api/delSpecial";//get
+			parms.isloginUrl = "http://han.test.wesai.com/api/isLogin";//get
+		}
 	}
 
 	function initDt() {
@@ -535,6 +554,9 @@ $(function () {
 			"success": function (json) {
 				var flag = false;
 				if (json && json.data) {
+					if (json.data.length == 0) {
+						flag = true;
+					}
 					for (var i = 0; i < json.data.length; i++) {
 						if (id != json.data[i].id) {
 							if (sort == json.data[i].sort) {

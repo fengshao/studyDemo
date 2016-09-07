@@ -13,6 +13,15 @@
 		var errorPasswordTimer = null;
 		var loginFlag = false;
 		function userLogin(type) {
+			var locationHref = window.location.href;
+			var url = "http://han.wesai.com/api/userLogin";
+
+			if (locationHref.indexOf("devel") != -1) {
+				url = "http://han.devel.wesai.com/api/userLogin";
+			} else if (locationHref.indexOf("test") != -1) {
+				url = "http://han.test.wesai.com/api/userLogin";
+			}
+
 			var username = document.getElementById("name").value.trim();
 			var password = document.getElementById("password").value.trim();
 			if (loginFlag) {
@@ -48,7 +57,7 @@
 			$.ajax({
 				"type": "post",
 				"data": data,
-				"url": 'http://han.devel.wesai.com/api/userLogin',
+				"url": url,
 				"success": function (data) {
 					if (data.error == 0) {
 						$(".login-file-prompt").removeClass("show-login-prompt");
