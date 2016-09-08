@@ -344,11 +344,11 @@ $(function () {
 			"url": 'http://han.devel.wesai.com/api/userLogout?user=' + user,
 			"success": function (data) {
 				window.sessionStorage.clear();
-				window.location.href = "../login.html";
+				window.location.href = "..";
 			},
 			"error": function (data) {
 				window.sessionStorage.clear();
-				window.location.href = "../login.html";
+				window.location.href = "..";
 			}
 		});
 	}
