@@ -13,7 +13,7 @@
 		var errorPasswordTimer = null;
 		var loginFlag = false;
 		function userLogin(type) {
-			var locationHref = window.location.href;
+			var locationHref = window.location.href.split("#")[0];
 			var url = "http://han.wesai.com/api/userLogin";
 
 			if (locationHref.indexOf("devel") != -1) {

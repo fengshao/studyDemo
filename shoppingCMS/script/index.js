@@ -18,6 +18,7 @@ $(function () {
 
 	isLoginFnc();
 	function isLoginFnc() {
+		editAjaxUrl();
 		var user = window.sessionStorage.getItem("user");
 		if (user) {
 			$.ajax({
@@ -55,13 +56,12 @@ $(function () {
 		$(".loading-bg-div").css("height", $(document).height()).css("width", $(document).width());
 		$(".del-bg-div").css("height", $(document).height()).css("width", $(document).width());
 		parms.formValidate = $("#operate-form").validate();
-		editAjaxUrl();
 		initDt();
 		addEvent();
 	}
 
 	function editAjaxUrl() {
-		var locationHref = window.location.href;
+		var locationHref = window.location.href.split("#")[0];
 
 		if (locationHref.indexOf("devel") != -1) {
 			parms.editUrl = "http://han.devel.wesai.com/api/editSpecial";//post
