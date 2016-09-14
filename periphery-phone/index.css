@@ -1,0 +1,11 @@
+.periphery-content {
+  font-size: 52px; }
+  .periphery-content .periphery-top-title-div {
+    background-color: #f7f7f7;
+    height: 30px;
+    width: 120px;
+    border-radius: 5px; }
+    .periphery-content .periphery-top-title-div .periphery-title-ports {
+      background-color: #29cc6d; }
+
+/*# sourceMappingURL=index.css.map */
