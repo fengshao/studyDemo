@@ -1,0 +1,16 @@
+body {
+  //图片路径可以从顶层目录找,不用../,这种必须以~images开头
+  background:transparent url("~images/logo.png") no-repeat center 100px;
+  background-size:15%;
+}
+
+.loginform {
+  position:absolute;
+  top:300px;
+  left:50%;
+  margin-left:-250px;
+
+  button {
+    background:blue;
+  }
+}
