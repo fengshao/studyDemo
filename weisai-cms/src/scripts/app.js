@@ -4,7 +4,6 @@ var App = React.createClass({
 		return (
 			<div>
 				<ul className="ant-col-4">
-					<li><Link to="/">首页设置</Link></li>
 					<li><Link to="/brand_setting">品牌设置</Link></li>
 					<li><Link to="/main_activity">主打活动</Link></li>
 					<li><Link to="/worth_buying">值得买</Link></li>
@@ -18,5 +17,5 @@ var App = React.createClass({
 		);
 	}
 });
-
+// <li><Link to="/">首页设置</Link></li>
 module.exports = App;

@@ -9,7 +9,7 @@ function FirstProductStore() {
 }
 
 //获取团队分组列表
-BrandSettingStore.prototype.getBrandList = function (firstProductList) {
+FirstProductStore.prototype.getBrandList = function (firstProductList) {
 	this.firstProductList = firstProductList;
 };
 

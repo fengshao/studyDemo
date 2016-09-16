@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var WorthBuyingAction = require("../action/brand-setting-action");
+var WorthBuyingAction = require("../action/worth-buying-action");
 
 function WorthBuyingStore() {
 	this.WorthBuyingList = [];

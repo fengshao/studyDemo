@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var WorthBuyingAjax = require("../ajax/WorthBuying-setting-ajax");
+var WorthBuyingAjax = require("../ajax/worth-buying-ajax");
 
 function WorthBuyingAction() {
 

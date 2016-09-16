@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var MainActivityAjax = require("../ajax/MainActivity-setting-ajax");
+var MainActivityAjax = require("../ajax/main-activity-ajax");
 
 function MainActivityAction() {
 

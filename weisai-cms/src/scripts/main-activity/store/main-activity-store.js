@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var MainActivityAction = require("../action/MainActivity-setting-action");
+var MainActivityAction = require("../action/main-activity-action");
 
 function MainActivityStore() {
 	this.MainActivityList = [];
