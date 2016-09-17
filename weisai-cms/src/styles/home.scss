@@ -1,3 +1,43 @@
 body {
-  background:lightblue;
+  background: lightblue;
+
+  .left-menu {
+	text-align: center;
+	padding-left: 20px;
+	li {
+	  margin: .5em 0;
+	  line-height: 32px;
+	  font-size: 16px;
+	  background: #CCC;
+	  a {
+		display: inline-block;
+		width: 100%;
+	  }
+	}
+  }
+  .right-content {
+
+	padding: 20px;
+
+	.ant-table-title {
+	  font-size: 16px;
+	  border: 0px !important;
+	}
+
+	tr {
+	  th {
+		text-align: center;
+	  }
+	  td {
+		text-align: center;
+	  }
+	}
+
+	.td-img {
+	  width: 100%;
+	}
+	.operate-btn {
+	  margin-right: 10px;
+	}
+  }
 }
