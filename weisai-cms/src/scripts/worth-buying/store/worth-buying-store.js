@@ -12,6 +12,7 @@ function WorthBuyingStore() {
 }
 
 WorthBuyingStore.prototype.getWorthBuyingList = function (worthBuyingList) {
+	this.editRowData = {};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.worthBuyingList = worthBuyingList;

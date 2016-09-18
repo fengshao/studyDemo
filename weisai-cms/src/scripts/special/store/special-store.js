@@ -13,6 +13,7 @@ function SpecialStore() {
 }
 
 SpecialStore.prototype.getSpecialList = function (specialList) {
+	this.editRowData = {};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.specialList = specialList ? specialList : [];

@@ -29,7 +29,6 @@ exports.getBrandList = function () {
 		"type": "get",
 		"url": parms.getListUrl + '?typeId=1&cacheOpen=11&pageSize=1000',
 		"success": function (data) {
-			console.log(data);
 			Deferred.resolve(data);
 		},
 		"error": function (data) {

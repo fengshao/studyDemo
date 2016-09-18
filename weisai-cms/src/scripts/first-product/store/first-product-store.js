@@ -5,12 +5,50 @@ var FirstProductAction = require("../action/first-product-action");
 
 function FirstProductStore() {
 	this.firstProductList = [];
+	this.editRowData = {};
+	this.isShowEditFrom = false;
+	this.isShowAddFrom = false;
 	this.bindActions(FirstProductAction);
 }
 
-//获取团队分组列表
-FirstProductStore.prototype.getBrandList = function (firstProductList) {
+FirstProductStore.prototype.getFirstProductList = function (firstProductList) {
+	this.editRowData = {};
+	this.isShowEditFrom = false;
+	this.isShowAddFrom = false;
 	this.firstProductList = firstProductList;
+};
+
+FirstProductStore.prototype.deleteSpecial = function (obj) {
+	if (obj.data.error == 0) {
+		var id = obj.id;
+		for (var i = 0; i < this.firstProductList.length; i++) {
+			if (id == this.firstProductList[i].id) {
+				this.firstProductList.splice(i, 1);
+			}
+		}
+	}
+
+};
+
+FirstProductStore.prototype.showEditFrom = function (rowData) {
+	this.editRowData = rowData;
+	this.isShowEditFrom = true;
+};
+
+FirstProductStore.prototype.showAddFrom = function () {
+	this.isShowAddFrom = true;
+};
+
+FirstProductStore.prototype.addSpecial = function () {
+};
+
+FirstProductStore.prototype.editSpecial = function () {
+};
+
+FirstProductStore.prototype.hideEditFrom = function () {
+	this.editRowData = {};
+	this.isShowEditFrom = false;
+	this.isShowAddFrom = false;
 };
 
 module.exports = alt.createStore(FirstProductStore, 'FirstProductStore');

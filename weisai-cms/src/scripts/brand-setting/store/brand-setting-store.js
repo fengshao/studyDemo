@@ -12,6 +12,7 @@ function BrandSettingStore() {
 }
 
 BrandSettingStore.prototype.getBrandList = function (brandSettingLists) {
+	this.editRowData = {};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.brandSettingList = brandSettingLists;
