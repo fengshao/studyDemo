@@ -4,13 +4,18 @@
 var MainActivityAction = require("../action/main-activity-action");
 
 function MainActivityStore() {
-	this.MainActivityList = [];
+	this.mainActivity = {};
 	this.bindActions(MainActivityAction);
 }
 
-//获取团队分组列表
-MainActivityStore.prototype.getMainActivityList = function (MainActivityLists) {
-	this.MainActivityList = MainActivityLists;
+MainActivityStore.prototype.getMainActivity = function (mainActivity) {
+	this.mainActivity = mainActivity;
+};
+
+MainActivityStore.prototype.addSpecial = function () {
+};
+
+MainActivityStore.prototype.editSpecial = function () {
 };
 
 module.exports = alt.createStore(MainActivityStore, 'MainActivityStore');

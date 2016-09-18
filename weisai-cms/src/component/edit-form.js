@@ -13,6 +13,11 @@ var EditForm = React.createClass({
 
 	checkSpecialName: function (rule, value, callback) {
 		var flag = false;
+
+		if (this.props.isNotShowCancelBtn) {
+			callback();
+			return
+		}
 		for (var i = 0; i < this.props.allData.length; i++) {
 			if (value == this.props.allData[i].title && this.props.editRowData.id != this.props.allData[i].id) {
 				flag = true;
@@ -41,6 +46,10 @@ var EditForm = React.createClass({
 			callback([new Error('抱歉，请输入数字。')]);
 		}
 
+		if (this.props.isNotShowCancelBtn) {
+			callback();
+			return
+		}
 		var flag = false;
 		for (var i = 0; i < this.props.allData.length; i++) {
 			if (value == this.props.allData[i].sort && this.props.editRowData.id != this.props.allData[i].id) {
@@ -68,7 +77,6 @@ var EditForm = React.createClass({
 			});
 
 			if (!!errors || !flag) {
-				console.log("111")
 				return;
 			}
 			if (_this.props.editRowData.id) {
@@ -100,13 +108,16 @@ var EditForm = React.createClass({
 			initialValue: this.props.editRowData.url
 		});
 
-		const specialSortProps = getFieldProps('sort', {
-			rules: [
-				{required: true, message: '排序不能为空'},
-				{validator: this.checkSpecialSort}
-			],
-			initialValue: this.props.editRowData.sort ? this.props.editRowData.sort.toString() : this.props.editRowData.sort
-		});
+		if (!this.props.isNotShowCancelBtn) {
+			const specialSortProps = getFieldProps('sort', {
+				rules: [
+					{required: true, message: '排序不能为空'},
+					{validator: this.checkSpecialSort}
+				],
+				initialValue: this.props.editRowData.sort ? this.props.editRowData.sort.toString() : this.props.editRowData.sort
+			});
+		}
+
 
 		const formItemLayout = {
 			labelCol: {span: 7},
@@ -133,21 +144,24 @@ var EditForm = React.createClass({
 						<Input {...specialUrlProps} placeholder="请输入链接"/>
 					</FormItem>
 
-					<FormItem
-						{...formItemLayout}
-						label="排序"
-						hasFeedback
-						help={isFieldValidating('sort') ? '校验中...' : (getFieldError('sort') || []).join(', ')}
-					>
-						<Input placeholder="请输入排序序号"
-							{...specialSortProps}
-						/>
-					</FormItem>
+					{this.props.isNotShowCancelBtn ? "" :
+						(<FormItem
+							{...formItemLayout}
+							label="排序"
+							hasFeedback
+							help={isFieldValidating('sort') ? '校验中...' : (getFieldError('sort') || []).join(', ')}
+						>
+							<Input placeholder="请输入排序序号"
+								{...specialSortProps}
+							/>
+						</FormItem>)}
+
 
 					<FormItem wrapperCol={{ span: 12, offset: 7 }}>
 						<Button type="primary" onClick={this.saveSpecial}>确定</Button>
 						&nbsp;&nbsp;&nbsp;
-						<Button type="ghost" onClick={this.props.hideEditFrom}>返回</Button>
+						{this.props.isNotShowCancelBtn ? "" :
+							(<Button type="ghost" onClick={this.props.hideEditFrom}>返回</Button>)}
 					</FormItem>
 				</Form>
 			</div>
