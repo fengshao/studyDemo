@@ -6,32 +6,56 @@ var SpecialAction = require("../action/special-action");
 
 function SpecialStore() {
 	this.specialList = [];
+	this.editRowData = {};
 	this.isShowEditFrom = false;
+	this.isShowAddFrom = false;
+	this.isHaveSpecialSort = false;
+	this.isHaveSpecialName = false;
 	this.bindActions(SpecialAction);
 }
 
-//获取团队分组列表
 SpecialStore.prototype.getSpecialList = function (specialList) {
-	this.specialList = specialList;
+	this.specialList = specialList ? specialList : [];
 };
 
-//获取团队分组列表
 SpecialStore.prototype.deleteSpecial = function (obj) {
-	var id = obj.id;
-	for (var i = 0; i < this.specialList.length; i++) {
-		if (id == this.specialList[i].id) {
-			this.specialList.splice(i, 1);
+	if (obj.data.error == 0) {
+		var id = obj.id;
+		for (var i = 0; i < this.specialList.length; i++) {
+			if (id == this.specialList[i].id) {
+				this.specialList.splice(i, 1);
+			}
 		}
 	}
+
 };
 
-//展示编辑表单
-SpecialStore.prototype.showEditFrom = function () {
+SpecialStore.prototype.showEditFrom = function (rowData) {
+	this.editRowData = rowData;
 	this.isShowEditFrom = true;
 };
 
-//展示编辑表单
+SpecialStore.prototype.showAddFrom = function () {
+	this.isShowAddFrom = true;
+};
+
 SpecialStore.prototype.hideEditFrom = function () {
 	this.isShowEditFrom = false;
+	this.isShowAddFrom = false;
+};
+
+SpecialStore.prototype.checkSpecialSort = function (newSpecialSort) {
+	this.isShowEditFrom = false;
+};
+
+SpecialStore.prototype.checkSpecialName = function (newSpecialName) {
+	var _this = this;
+	for (var i = 0; i < _this.specialList.length; i++) {
+		if (newSpecialName == _this.specialList[i].title) {
+			_this.isHaveSpecialName = true;
+			console.log("_this.isHaveSpecialName:" + _this.isHaveSpecialName);
+			break;
+		}
+	}
 };
 module.exports = alt.createStore(SpecialStore, 'SpecialStore');

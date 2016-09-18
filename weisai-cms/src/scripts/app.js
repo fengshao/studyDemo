@@ -11,7 +11,7 @@ var App = React.createClass({
 					<li><Link to="/first_product">最鲜品</Link></li>
 					<li><Link to="/special">专题列表</Link></li>
 				</ul>
-				<div className="ant-col-15 right-content">
+				<div className="ant-col-17 right-content">
 					{this.props.children}
 				</div>
 			</div>

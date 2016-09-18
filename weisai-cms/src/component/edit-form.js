@@ -3,118 +3,102 @@
  */
 import {Form, Input, Button, InputNumber, Upload, Icon} from 'antd';
 const FormItem = Form.Item;
+//require("jquery-form");
 var EditForm = React.createClass({
-	getInitialState: function () {
-		return {
-			fileList: [{
-				uid: -1,
-				name: 'xxx.png',
-				status: 'done',
-				url: 'http://www.baidu.com/xxx.png',
-				thumbUrl: 'http://www.baidu.com/xxx.png'
-			}],
-			tableHeight: $(window).height() - 56 - 30 - 130
-		}
-	},
 
-	resizeWindow: function () {
-		var tableHeight = $(window).height() - 56 - 30 - 130;
-		this.setState({
-			tableHeight: tableHeight
-		});
-	},
-
-	componentWillUnmount: function () {
-		$(window).off("resize", this.resizeWindow);
-	},
 
 	confirm: function (rowData) {
 		this.props.deleteSpecialFnc(rowData);
 	},
 
-	componentDidMount: function () {
-		$("body").css("overflow", "hidden");
-		$(window).on("resize", this.resizeWindow);
-	},
-
-	checkSpecialName: function () {
-		console.log("校验专题名称");
-	},
-
-	checkSpecialSort: function () {
-		console.log("校验专题排序");
-	},
-
-	uploadImg: function (event) {
+	checkSpecialName: function (rule, value, callback) {
 		var flag = false;
-		var file = event.target.files ? event.target.files[0] : null;
-		if (file) {
-			var type = file.type.split("/")[1];
-			type = type.toUpperCase();
-			if (type != "JPEG" && type != "PNG" && type != "JPG"
-				&& type != "GIF" && type != "BMP") {
-				message.warn('图片类型必须是gif,jpeg,jpg,png,bmp中的一种！');
-				event.target.value = "";
-			} else if (file.size > limitSize * 1024) {
-				message.warn('图片大小必须小于' + limitSize + 'kb!');
-				event.target.value = "";
-			} else {
-				var reader = new FileReader();
-				var _this = this;
-				reader.onload = function (evt) {
-					var image = evt.target.result;
-					_this.props.onChange(image);
-				};
-				reader.readAsDataURL(file);
+		for (var i = 0; i < this.props.allData.length; i++) {
+			if (value == this.props.allData[i].title && this.props.editRowData.id != this.props.allData[i].id) {
 				flag = true;
+				break;
 			}
 		}
-		return flag;
+
+		if (flag) {
+			callback([new Error('抱歉，该专题名称已被占用。')]);
+		} else {
+			callback();
+		}
 	},
 
-	handleChange(info) {
-		let fileList = info.fileList;
-
-		// 1. 上传列表数量的限制
-		//    只显示最近上传的一个，旧的会被新的顶掉
-		fileList = fileList.slice(-2);
-
-		// 2. 读取远程路径并显示链接
-		fileList = fileList.map((file) => {
-			if (file.response) {
-				// 组件会将 file.url 作为链接进行展示
-				file.url = file.response.url;
-			}
-			return file;
-		});
-
-		// 3. 按照服务器返回信息筛选成功上传的文件
-		fileList = fileList.filter((file) => {
-			if (file.response) {
-				return file.response.status === 'success';
-			}
-			return true;
-		});
-
-		this.setState({fileList});
+	checkSpecialUrl: function (rule, value, callback) {
+		if (!/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})).?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value)) {
+			callback([new Error('抱歉，请输入有效的网址。')]);
+		} else {
+			callback();
+		}
 	},
 
-	render() {
+	checkSpecialSort: function (rule, value, callback) {
+
+		if (!/^\d+$/.test(value)) {
+			callback([new Error('抱歉，请输入数字。')]);
+		}
+
+		var flag = false;
+		for (var i = 0; i < this.props.allData.length; i++) {
+			if (value == this.props.allData[i].sort && this.props.editRowData.id != this.props.allData[i].id) {
+				flag = true;
+				break;
+			}
+		}
+
+		if (flag) {
+			callback([new Error('抱歉，该排序序号已被占用。')]);
+		} else {
+			callback();
+		}
+	},
+
+	saveSpecial: function () {
+
+		var _this = this;
+		this.props.form.validateFields((errors, values) => {
+			var flag = false;
+			$.each(values, function (name, value) {
+				if (value != _this.props.editRowData[name]) {
+					flag = true
+				}
+			});
+
+			if (!!errors || !flag) {
+				console.log("111")
+				return;
+			}
+			if (_this.props.editRowData.id) {
+				values.id = _this.props.editRowData.id;
+				_this.props.editSpecial(values);
+			} else {
+				_this.props.addSpecial(values);
+			}
+		});
+
+
+	},
+
+	render(){
 		const {getFieldProps, getFieldError, isFieldValidating} = this.props.form;
-		const specialNameProps = getFieldProps('specialName', {
+		const specialNameProps = getFieldProps('title', {
 			rules: [
 				{required: true, max: 20, message: '专题名称最多为 20 个字符'},
 				{validator: this.checkSpecialName}
 			]
 		});
 
-		const specialUrlProps = getFieldProps('specialUrl', {
+		const specialUrlProps = getFieldProps('url', {
 			rules: [
-				{required: true, message: '链接不能为空'}
+				{required: true, message: '链接不能为空'},
+				{validator: this.checkSpecialUrl}
 			]
 		});
 
-		const specialSortProps = getFieldProps('specialSort', {
+		const specialSortProps = getFieldProps('sort', {
 			rules: [
 				{required: true, message: '排序不能为空'},
 				{validator: this.checkSpecialSort}
@@ -125,81 +109,62 @@ var EditForm = React.createClass({
 			labelCol: {span: 7},
 			wrapperCol: {span: 12}
 		};
-
-		const props = {
-			action: 'http://10.2.2.9:20202/uploading',
-			listType: 'picture',
-			showUploadList: false,
-			onChange: this.handleChange,
-			beforeUpload: function (file) {
-				var fileType = file.type.toLocaleLowerCase();
-				var fileSize = file.size;
-				if (fileSize > 2048 * 1024) {
-					showImgErrorPrompt();
-					return false
-				}
-				if (!(fileType.lastIndexOf("png") !== -1
-					|| fileType.lastIndexOf("jpg") !== -1
-					|| fileType.lastIndexOf("jpeg") !== -1)) {
-					showImgErrorPrompt();
-					return false
-				}
-				console.log(file);
-			}
-		};
-
 		return (
-			<Form horizontal className="editform">
-				<FormItem
-					{...formItemLayout}
-					label="用户名"
-					hasFeedback
-					help={isFieldValidating('specialName') ? '校验中...' : (getFieldError('specialName') || []).join(', ')}
-				>
-					<Input {...specialNameProps} placeholder="请输入专题名称"/>
-				</FormItem>
+			<div>
+				<Form horizontal className="editform">
+					<FormItem
+						{...formItemLayout}
+						label="用户名"
+						hasFeedback
+						help={isFieldValidating('title') ? '校验中...' : (getFieldError('title') || []).join(', ')}
+					>
+						<Input {...specialNameProps} placeholder="请输入专题名称" defaultValue={this.props.editRowData.title}/>
+					</FormItem>
 
-				<FormItem
-					{...formItemLayout}
-					label="链接"
-					hasFeedback
-					help={isFieldValidating('specialUrl') ? '校验中...' : (getFieldError('specialUrl') || []).join(', ')}
-				>
-					<Input {...specialUrlProps} placeholder="请输入链接"/>
-				</FormItem>
+					<FormItem
+						{...formItemLayout}
+						label="链接"
+						hasFeedback
+						help={isFieldValidating('url') ? '校验中...' : (getFieldError('url') || []).join(', ')}
+					>
+						<Input {...specialUrlProps} placeholder="请输入链接" defaultValue={this.props.editRowData.url}/>
+					</FormItem>
 
-				<FormItem
-					{...formItemLayout}
-					label="排序"
-					hasFeedback
-					help={isFieldValidating('specialSort') ? '校验中...' : (getFieldError('specialSort') || []).join(', ')}
-				>
-					<InputNumber min={1} style={{ width: 100 }}
-						{...specialSortProps}
-					/>
-				</FormItem>
-				<FormItem
-					{...formItemLayout}
-					label="专题图片"
-					hasFeedback
-				>
-					<Upload {...props} className="upload-list-inline" fileList={this.state.fileList}>
-						<Button type="ghost">
-							<Icon type="upload"/> 点击上传
-						</Button>
-					</Upload>
+					<FormItem
+						{...formItemLayout}
+						label="排序"
+						hasFeedback
+						help={isFieldValidating('sort') ? '校验中...' : (getFieldError('sort') || []).join(', ')}
+					>
+						<Input placeholder="请输入排序序号"
+							{...specialSortProps}
+							   defaultValue={parseInt(this.props.editRowData.sort)}
+						/>
+					</FormItem>
 
-				</FormItem>
-
-				<FormItem wrapperCol={{ span: 12, offset: 7 }}>
-					<Button type="primary">确定</Button>
-					&nbsp;&nbsp;&nbsp;
-					<Button type="ghost" onClick={this.props.hideEditFrom}>返回</Button>
-				</FormItem>
-			</Form>
+					<FormItem wrapperCol={{ span: 12, offset: 7 }}>
+						<Button type="primary" onClick={this.saveSpecial}>确定</Button>
+						&nbsp;&nbsp;&nbsp;
+						<Button type="ghost" onClick={this.props.hideEditFrom}>返回</Button>
+					</FormItem>
+				</Form>
+			</div>
 		);
 	}
 });
 EditForm = Form.create()(EditForm);
 
 module.exports = EditForm;
+
+//<form action="http://10.2.2.9:20202/uploading" enctype="multipart/form-data" method="post"
+//	  id="fileForm" name="fileForm">
+//	<label className="operate-from-label">专题图片：</label>
+//	<input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg"
+//		   className="operate-from-input"/>
+//	<Button type="primary" onClick={this.uploadImgFnc}>上传</Button>
+//	<div id="imgurl-div">
+//		<div class="img-preview">图片预览区域</div>
+//		<img src=""/>
+//		<div class="error">请选择小于2MB的png，jpg，jpeg格式图片上传</div>
+//	</div>
+//</form>

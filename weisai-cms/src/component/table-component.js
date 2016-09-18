@@ -73,7 +73,8 @@ var TableComponent = React.createClass({
 				render: function (apps, rowData, idx) {
 					const text = '确定要删除吗？';
 					return <div className='operate-div'>
-						<Button className="operate-btn" type="primary">修改</Button>
+						<Button className="operate-btn" type="primary"
+								onClick={_this.props.showEditFrom.bind(_this,rowData)}>修改</Button>
 						<Popconfirm placement="topRight" title={text} onConfirm={_this.confirm.bind(_this, rowData)}>
 							<Button>删除</Button>
 						</Popconfirm>
@@ -104,7 +105,7 @@ var TableComponent = React.createClass({
 			<span>
 				{this.props.titleData}
 			</span>
-			<Button type="primary" onClick={this.props.showEditFrom}>添加</Button>
+			<Button type="primary" onClick={this.props.showAddFrom}>添加</Button>
 		</div>
 	},
 

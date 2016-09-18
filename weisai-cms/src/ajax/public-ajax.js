@@ -3,11 +3,11 @@
  */
 var locationHref = window.location.href.split("#")[0];
 var parms = {
-	editUrl: "http://han.wesai.com/api/editSpecial",//post
-	getListUrl: "http://han.wesai.com/api/getSpecialList", //get
-	addUrl: "http://han.wesai.com/api/addSpecial",//post
-	delUrl: "http://han.wesai.com/api/delSpecial",//get
-	isloginUrl: "http://han.wesai.com/api/isLogin"//get
+	editUrl: "http://han.devel.wesai.com/api/editSpecial",//post
+	getListUrl: "http://han.devel.wesai.com/api/getSpecialList", //get
+	addUrl: "http://han.devel.wesai.com/api/addSpecial",//post
+	delUrl: "http://han.devel.wesai.com/api/delSpecial",//get
+	isloginUrl: "http://han.devel.wesai.com/api/isLogin"//get
 };
 if (locationHref.indexOf("devel") != -1) {
 	parms.editUrl = "http://han.devel.wesai.com/api/editSpecial";//post
@@ -28,6 +28,37 @@ exports.deleteSpecial = function (id) {
 	$.ajax({
 		"type": "get",
 		"url": parms.delUrl + "?id=" + id,
+		"success": function (data) {
+			Deferred.resolve(data);
+		},
+		"error": function (data) {
+			Deferred.resolve(data);
+		}
+	});
+	return Deferred.promise();
+};
+
+exports.addSpecial = function (newaddData) {
+	var Deferred = $.Deferred();
+	$.ajax({
+		"type": "post",
+		"url": parms.addUrl,
+		"data": newaddData,
+		"success": function (data) {
+			Deferred.resolve(data);
+		},
+		"error": function (data) {
+			Deferred.resolve(data);
+		}
+	});
+	return Deferred.promise();
+};
+exports.editSpecial = function (newaddData) {
+	var Deferred = $.Deferred();
+	$.ajax({
+		"type": "post",
+		"url": parms.editUrl,
+		"data": newaddData,
 		"success": function (data) {
 			Deferred.resolve(data);
 		},

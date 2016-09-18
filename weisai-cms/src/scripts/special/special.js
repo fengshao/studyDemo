@@ -37,8 +37,23 @@ var Special = React.createClass({
 		deleteSpecialFnc: function (data) {
 			SpecialAction.deleteSpecial(data.id);
 		},
-		showEditFrom: function () {
-			SpecialAction.showEditFrom();
+		checkSpecialName: function (newSpecialName) {
+			SpecialAction.checkSpecialName(newSpecialName);
+		},
+		checkSpecialSort: function (newSpecialName) {
+			SpecialAction.checkSpecialSort(newSpecialSort);
+		},
+		showEditFrom: function (rowData) {
+			SpecialAction.showEditFrom(rowData);
+		},
+		showAddFrom: function () {
+			SpecialAction.showAddFrom();
+		},
+		addSpecial: function (newData) {
+			SpecialAction.addSpecial(newData);
+		},
+		editSpecial: function (newData) {
+			SpecialAction.editSpecial(newData);
 		},
 		hideEditFrom: function () {
 			SpecialAction.hideEditFrom();
@@ -48,13 +63,22 @@ var Special = React.createClass({
 	render: function () {
 		return (
 			<div>
-				{this.state.isShowEditFrom ?
+				{this.state.isShowEditFrom || this.state.isShowAddFrom ?
 					(<EditForm
 						hideEditFrom={this.events.hideEditFrom}
+						isHaveSpecialName={this.state.isHaveSpecialName}
+						isHaveSpecialSort={this.state.isHaveSpecialSort}
+						checkSpecialName={this.events.checkSpecialName}
+						checkSpecialSort={this.events.checkSpecialSort}
+						addSpecial={this.events.addSpecial}
+						editSpecial={this.events.editSpecial}
+						allData={this.state.specialList}
+						editRowData={this.state.editRowData}
 					/>) : (
 					<Table tableData={this.state.specialList} titleData={"专题列表"}
 						   deleteSpecialFnc={this.events.deleteSpecialFnc}
 						   showEditFrom={this.events.showEditFrom}
+						   showAddFrom={this.events.showAddFrom}
 					/>)}
 
 			</div>
