@@ -21,7 +21,6 @@ var Special = React.createClass({
 	},
 
 	componentDidMount: function () {
-		$("body").css("overflow", "hidden");
 		$(window).on("resize", this.resizeWindow);
 		SpecialStore.listen(this.onChange);
 		SpecialAction.getSpecialList();
@@ -30,7 +29,7 @@ var Special = React.createClass({
 	componentWillUnmount: function () {
 		$(window).off("resize", this.resizeWindow);
 		SpecialStore.unlisten(this.onChange);
-		$("body").css("overflow", "auto");
+		alt.flush();
 	},
 
 	events: {
@@ -66,8 +65,6 @@ var Special = React.createClass({
 				{this.state.isShowEditFrom || this.state.isShowAddFrom ?
 					(<EditForm
 						hideEditFrom={this.events.hideEditFrom}
-						isHaveSpecialName={this.state.isHaveSpecialName}
-						isHaveSpecialSort={this.state.isHaveSpecialSort}
 						checkSpecialName={this.events.checkSpecialName}
 						checkSpecialSort={this.events.checkSpecialSort}
 						addSpecial={this.events.addSpecial}

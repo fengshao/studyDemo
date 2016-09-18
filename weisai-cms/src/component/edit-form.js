@@ -88,21 +88,24 @@ var EditForm = React.createClass({
 			rules: [
 				{required: true, max: 20, message: '专题名称最多为 20 个字符'},
 				{validator: this.checkSpecialName}
-			]
+			],
+			initialValue: this.props.editRowData.title
 		});
 
 		const specialUrlProps = getFieldProps('url', {
 			rules: [
 				{required: true, message: '链接不能为空'},
 				{validator: this.checkSpecialUrl}
-			]
+			],
+			initialValue: this.props.editRowData.url
 		});
 
 		const specialSortProps = getFieldProps('sort', {
 			rules: [
 				{required: true, message: '排序不能为空'},
 				{validator: this.checkSpecialSort}
-			]
+			],
+			initialValue: this.props.editRowData.sort ? this.props.editRowData.sort.toString() : this.props.editRowData.sort
 		});
 
 		const formItemLayout = {
@@ -118,7 +121,7 @@ var EditForm = React.createClass({
 						hasFeedback
 						help={isFieldValidating('title') ? '校验中...' : (getFieldError('title') || []).join(', ')}
 					>
-						<Input {...specialNameProps} placeholder="请输入专题名称" defaultValue={this.props.editRowData.title}/>
+						<Input {...specialNameProps} placeholder="请输入专题名称"/>
 					</FormItem>
 
 					<FormItem
@@ -127,7 +130,7 @@ var EditForm = React.createClass({
 						hasFeedback
 						help={isFieldValidating('url') ? '校验中...' : (getFieldError('url') || []).join(', ')}
 					>
-						<Input {...specialUrlProps} placeholder="请输入链接" defaultValue={this.props.editRowData.url}/>
+						<Input {...specialUrlProps} placeholder="请输入链接"/>
 					</FormItem>
 
 					<FormItem
@@ -138,7 +141,6 @@ var EditForm = React.createClass({
 					>
 						<Input placeholder="请输入排序序号"
 							{...specialSortProps}
-							   defaultValue={parseInt(this.props.editRowData.sort)}
 						/>
 					</FormItem>
 

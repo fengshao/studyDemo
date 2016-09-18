@@ -9,12 +9,12 @@ function SpecialStore() {
 	this.editRowData = {};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
-	this.isHaveSpecialSort = false;
-	this.isHaveSpecialName = false;
 	this.bindActions(SpecialAction);
 }
 
 SpecialStore.prototype.getSpecialList = function (specialList) {
+	this.isShowEditFrom = false;
+	this.isShowAddFrom = false;
 	this.specialList = specialList ? specialList : [];
 };
 
@@ -37,6 +37,12 @@ SpecialStore.prototype.showEditFrom = function (rowData) {
 
 SpecialStore.prototype.showAddFrom = function () {
 	this.isShowAddFrom = true;
+};
+
+SpecialStore.prototype.addSpecial = function () {
+};
+
+SpecialStore.prototype.editSpecial = function () {
 };
 
 SpecialStore.prototype.hideEditFrom = function () {

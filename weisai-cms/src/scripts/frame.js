@@ -11,7 +11,6 @@ import NoMatch from 'scripts/nomatch';
 let Frame = React.createClass({
 	render: function () {
 		return (
-
 			<div>
 				<Router history={hashHistory}>
 					<Route path="/" component={App}>
@@ -24,8 +23,6 @@ let Frame = React.createClass({
 					</Route>
 				</Router>
 			</div>
-
-
 		);
 	}
 });
