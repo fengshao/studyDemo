@@ -6,12 +6,12 @@ import {Table, Icon, Button, message, Popconfirm} from 'antd';
 var TableComponent = React.createClass({
 	getInitialState: function () {
 		return {
-			tableHeight: $(window).height() - 56 - 30 - 130
+			tableHeight: $(window).height() - 56 - 30 - 130 - 80
 		}
 	},
 
 	resizeWindow: function () {
-		var tableHeight = $(window).height() - 56 - 30 - 130;
+		var tableHeight = $(window).height() - 56 - 30 - 130 - 80;
 		this.setState({
 			tableHeight: tableHeight
 		});

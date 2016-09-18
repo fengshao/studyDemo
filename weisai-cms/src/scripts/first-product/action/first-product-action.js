@@ -1,7 +1,6 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var FirstProductAjax = require("../ajax/first-product-ajax");
 var PublicAjax = require("../../../ajax/public-ajax");
 
 function FirstProductAction() {
@@ -18,7 +17,7 @@ function FirstProductAction() {
 
 	this.getFirstProductList = function () {
 		var _this = this;
-		FirstProductAjax.getFirstProductList().then(function (list) {
+		PublicAjax.getFirstProductList().then(function (list) {
 			_this.dispatch(list.data);
 		}, function (errorMsg) {
 			_this.dispatch(errorMsg);

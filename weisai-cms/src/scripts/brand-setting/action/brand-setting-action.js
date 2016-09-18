@@ -2,7 +2,6 @@
  * Created by fengs on 2016/9/16.
  */
 var PublicAjax = require("../../../ajax/public-ajax");
-var BrandSettingAjax = require("../ajax/brand-setting-ajax");
 
 function BrandSettingAction() {
 
@@ -18,7 +17,7 @@ function BrandSettingAction() {
 
 	this.getBrandList = function () {
 		var _this = this;
-		BrandSettingAjax.getBrandList().then(function (list) {
+		PublicAjax.getBrandList().then(function (list) {
 			_this.dispatch(list.data);
 		}, function (errorMsg) {
 			_this.dispatch(errorMsg);

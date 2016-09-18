@@ -2,7 +2,6 @@
  * Created by fengs on 2016/9/16.
  */
 
-var SpecialAjax = require("../ajax/special-ajax");
 var PublicAjax = require("../../../ajax/public-ajax");
 
 function SpecialAction() {
@@ -19,7 +18,7 @@ function SpecialAction() {
 
 	this.getSpecialList = function () {
 		var _this = this;
-		SpecialAjax.getSpecialList().then(function (list) {
+		PublicAjax.getSpecialList().then(function (list) {
 			_this.dispatch(list.data);
 		}, function (errorMsg) {
 			_this.dispatch(errorMsg);

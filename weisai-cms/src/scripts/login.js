@@ -24,7 +24,7 @@ let Demo = React.createClass({
 		} else if (locationHref.indexOf("test") != -1) {
 			url = "http://han.test.wesai.com/api/userLogin";
 		}
-		const hide = message.loading('正在登录...', 0);
+		const hide = message.loading('正在登录，请稍后...', 0);
 		$.ajax({
 			"type": "post",
 			"data": loginData,
@@ -34,18 +34,18 @@ let Demo = React.createClass({
 				if (data.error == 0) {
 					window.sessionStorage.setItem("username", loginData.name);
 					window.sessionStorage.setItem("user", data.user);
-					const hide = message.loading('正在跳转...', 0);
+					const hide = message.loading('登录成功，正在跳转...', 0);
 					setTimeout(function () {
 						hide();
 						window.location.href = '/home.html';
 					}, 2500);
 				} else {
-					message.error(data.message ? data.message : "登录失败");
+					message.error(data.message ? data.message : "登录失败，请重试");
 				}
 			},
 			"error": function (data) {
 				hide();
-				message.error(data.message ? data.message : "登录失败");
+				message.error(data.message ? data.message : "登录失败，请重试");
 			}
 		});
 	},

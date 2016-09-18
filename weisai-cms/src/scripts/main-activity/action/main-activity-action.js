@@ -1,7 +1,6 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var MainActivityAjax = require("../ajax/main-activity-ajax");
 var PublicAjax = require("../../../ajax/public-ajax");
 
 function MainActivityAction() {
@@ -14,7 +13,7 @@ function MainActivityAction() {
 
 	this.getMainActivity = function () {
 		var _this = this;
-		MainActivityAjax.getMainActivity().then(function (list) {
+		PublicAjax.getMainActivity().then(function (list) {
 			_this.dispatch(list.data[0]);
 		}, function (errorMsg) {
 			_this.dispatch(errorMsg);

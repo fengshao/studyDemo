@@ -1,6 +1,48 @@
 body {
   background: lightblue;
   overflow: hidden;
+  font-size: 16px;
+
+  .need-login-div {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	font-size: 16px;
+
+	.need-login-centent {
+	  width: 300px;
+	  height: 200px;
+	  margin: auto;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  font-size: 16px;
+
+	}
+  }
+
+  .top-menu-div {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	.login-welcome {
+	  height: 30px;
+	  margin-left: 20px;
+	  font-size: 16px;
+	  line-height: 30px;
+
+	  label.usernam-label {
+		font-size: 16px;
+		color: #c3bbbb;
+		padding-left: 10px;
+		padding-right: 10px;
+	  }
+	  .loginout-btn {
+		margin-left: 20px;
+	  }
+	}
+  }
 
   .left-menu {
 	text-align: center;
@@ -23,6 +65,10 @@ body {
 	.ant-table-title {
 	  font-size: 16px;
 	  border: 0px !important;
+
+	  .ant-btn {
+		margin-left: 20px;
+	  }
 	}
 
 	tr {
