@@ -97,7 +97,7 @@ var EditForm = React.createClass({
 				{required: true, max: 20, message: '专题名称最多为 20 个字符'},
 				{validator: this.checkSpecialName}
 			],
-			initialValue: this.props.editRowData.title
+			initialValue: this.props.editRowData.title ? this.props.editRowData.title : ""
 		});
 
 		const specialUrlProps = getFieldProps('url', {
@@ -105,7 +105,7 @@ var EditForm = React.createClass({
 				{required: true, message: '链接不能为空'},
 				{validator: this.checkSpecialUrl}
 			],
-			initialValue: this.props.editRowData.url
+			initialValue: this.props.editRowData.url ? this.props.editRowData.url : ""
 		});
 
 		if (!this.props.isNotShowCancelBtn) {

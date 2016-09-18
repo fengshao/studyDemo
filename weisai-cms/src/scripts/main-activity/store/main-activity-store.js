@@ -4,12 +4,18 @@
 var MainActivityAction = require("../action/main-activity-action");
 
 function MainActivityStore() {
-	this.mainActivity = {};
+	this.mainActivity = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.bindActions(MainActivityAction);
 }
 
 MainActivityStore.prototype.getMainActivity = function (mainActivity) {
-	this.mainActivity = mainActivity;
+	this.mainActivity = mainActivity ? mainActivity : this.mainActivity;
 };
 
 MainActivityStore.prototype.addSpecial = function () {

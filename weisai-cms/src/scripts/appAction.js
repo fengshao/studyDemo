@@ -12,7 +12,7 @@ function AppAction() {
 	this.getUserIsLogin = function () {
 		var _this = this;
 		PublicAjax.userIsLogin().then(function (data) {
-			_this.dispatch(data.error ? data.error : 1);
+			_this.dispatch(data);
 		}, function (errorMsg) {
 			_this.dispatch(1);
 		});

@@ -1,4 +1,4 @@
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 
 import App from 'scripts/app';
 import BrandSetting from 'scripts/brand-setting/brand-setting';
@@ -14,6 +14,7 @@ let Frame = React.createClass({
 			<div>
 				<Router history={hashHistory}>
 					<Route path="/" component={App}>
+						<IndexRoute component={BrandSetting}/>
 						<Route path="brand_setting" component={BrandSetting}/>
 						<Route path="main_activity" component={MainActivity}/>
 						<Route path="worth_buying" component={WorthBuying}/>
