@@ -17,13 +17,11 @@ var App = React.createClass({
 	},
 
 	componentDidMount: function () {
-		console.log("APPcomponentDidMount");
 		AppStore.listen(this.onChange);
 		AppAction.getUserIsLogin();
 	},
 
 	componentWillUnmount: function () {
-		console.log("APPcomponentWillUnmount");
 		AppStore.unlisten(this.onChange);
 		alt.flush();
 	},

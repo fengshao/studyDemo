@@ -176,11 +176,9 @@ exports.userIsLogin = function (newaddData) {
 			"type": "get",
 			"url": parms.isloginUrl + '?user=' + user,
 			"success": function (data) {
-				console.log("success");
 				Deferred.resolve(data ? data.error : 1);
 			},
 			"error": function (data) {
-				console.log("error");
 				Deferred.resolve(1);
 			}
 		});

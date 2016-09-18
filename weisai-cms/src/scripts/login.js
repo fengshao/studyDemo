@@ -7,7 +7,6 @@ let Demo = React.createClass({
 
 		this.props.form.validateFields((errors, values) => {
 			if (!!errors) {
-				console.log('Errors in form!!!');
 				return;
 			}
 			this.loginFnc(values);

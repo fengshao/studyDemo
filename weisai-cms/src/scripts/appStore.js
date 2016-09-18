@@ -8,7 +8,6 @@ function AppStore() {
 }
 
 AppStore.prototype.getUserIsLogin = function (userIsLogin) {
-	console.log("getUserIsLogin：" + userIsLogin);
 	this.userIsLogin = userIsLogin;
 };
 
