@@ -3,7 +3,7 @@
  */
 
 var SpecialAjax = require("../ajax/special-ajax");
-var PublicAjax = require("../../../ajax/public-ajax.js");
+var PublicAjax = require("../../../ajax/public-ajax");
 
 function SpecialAction() {
 
@@ -14,9 +14,7 @@ function SpecialAction() {
 		'editSpecial',
 		'showEditFrom',
 		'showAddFrom',
-		'hideEditFrom',
-		'checkSpecialSort',
-		'checkSpecialName'
+		'hideEditFrom'
 	);
 
 	this.getSpecialList = function () {

@@ -32,12 +32,6 @@ var BrandSetting = React.createClass({
 		deleteSpecialFnc: function (data) {
 			BrandSettingAction.deleteSpecial(data.id);
 		},
-		checkSpecialName: function (newSpecialName) {
-			BrandSettingAction.checkSpecialName(newSpecialName);
-		},
-		checkSpecialSort: function (newSpecialName) {
-			BrandSettingAction.checkSpecialSort(newSpecialSort);
-		},
 		showEditFrom: function (rowData) {
 			BrandSettingAction.showEditFrom(rowData);
 		},
@@ -61,14 +55,12 @@ var BrandSetting = React.createClass({
 				{this.state.isShowEditFrom || this.state.isShowAddFrom ?
 					(<EditForm
 						hideEditFrom={this.events.hideEditFrom}
-						checkSpecialName={this.events.checkSpecialName}
-						checkSpecialSort={this.events.checkSpecialSort}
 						addSpecial={this.events.addSpecial}
 						editSpecial={this.events.editSpecial}
 						allData={this.state.brandSettingList}
 						editRowData={this.state.editRowData}
 					/>) : (
-					<Table tableData={this.state.brandSettingList} titleData={"品牌设置（最多四个）"}
+					<Table tableData={this.state.brandSettingList} titleData={"品牌设置"}
 						   deleteSpecialFnc={this.events.deleteSpecialFnc}
 						   showEditFrom={this.events.showEditFrom}
 						   showAddFrom={this.events.showAddFrom}

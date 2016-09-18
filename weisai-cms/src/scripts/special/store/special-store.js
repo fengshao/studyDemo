@@ -46,22 +46,9 @@ SpecialStore.prototype.editSpecial = function () {
 };
 
 SpecialStore.prototype.hideEditFrom = function () {
+	this.editRowData = {};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 };
 
-SpecialStore.prototype.checkSpecialSort = function (newSpecialSort) {
-	this.isShowEditFrom = false;
-};
-
-SpecialStore.prototype.checkSpecialName = function (newSpecialName) {
-	var _this = this;
-	for (var i = 0; i < _this.specialList.length; i++) {
-		if (newSpecialName == _this.specialList[i].title) {
-			_this.isHaveSpecialName = true;
-			console.log("_this.isHaveSpecialName:" + _this.isHaveSpecialName);
-			break;
-		}
-	}
-};
 module.exports = alt.createStore(SpecialStore, 'SpecialStore');

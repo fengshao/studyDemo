@@ -45,23 +45,9 @@ BrandSettingStore.prototype.editSpecial = function () {
 };
 
 BrandSettingStore.prototype.hideEditFrom = function () {
+	this.editRowData = {};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
-};
-
-BrandSettingStore.prototype.checkSpecialSort = function (newSpecialSort) {
-	this.isShowEditFrom = false;
-};
-
-BrandSettingStore.prototype.checkSpecialName = function (newSpecialName) {
-	var _this = this;
-	for (var i = 0; i < _this.specialList.length; i++) {
-		if (newSpecialName == _this.specialList[i].title) {
-			_this.isHaveSpecialName = true;
-			console.log("_this.isHaveSpecialName:" + _this.isHaveSpecialName);
-			break;
-		}
-	}
 };
 
 module.exports = alt.createStore(BrandSettingStore, 'BrandSettingStore');

@@ -117,7 +117,7 @@ var EditForm = React.createClass({
 				<Form horizontal className="editform">
 					<FormItem
 						{...formItemLayout}
-						label="用户名"
+						label="专题名称"
 						hasFeedback
 						help={isFieldValidating('title') ? '校验中...' : (getFieldError('title') || []).join(', ')}
 					>

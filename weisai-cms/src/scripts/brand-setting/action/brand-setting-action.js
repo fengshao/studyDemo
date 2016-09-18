@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var PublicAjax = require("../../../ajax/public-ajax.js");
+var PublicAjax = require("../../../ajax/public-ajax");
 var BrandSettingAjax = require("../ajax/brand-setting-ajax");
 
 function BrandSettingAction() {
@@ -13,9 +13,7 @@ function BrandSettingAction() {
 		'editSpecial',
 		'showEditFrom',
 		'showAddFrom',
-		'hideEditFrom',
-		'checkSpecialSort',
-		'checkSpecialName'
+		'hideEditFrom'
 	);
 
 	this.getBrandList = function () {

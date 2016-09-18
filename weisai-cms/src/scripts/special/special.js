@@ -17,17 +17,12 @@ var Special = React.createClass({
 		this.setState(data);
 	},
 
-	resizeWindow: function () {
-	},
-
 	componentDidMount: function () {
-		$(window).on("resize", this.resizeWindow);
 		SpecialStore.listen(this.onChange);
 		SpecialAction.getSpecialList();
 	},
 
 	componentWillUnmount: function () {
-		$(window).off("resize", this.resizeWindow);
 		SpecialStore.unlisten(this.onChange);
 		alt.flush();
 	},
@@ -35,12 +30,6 @@ var Special = React.createClass({
 	events: {
 		deleteSpecialFnc: function (data) {
 			SpecialAction.deleteSpecial(data.id);
-		},
-		checkSpecialName: function (newSpecialName) {
-			SpecialAction.checkSpecialName(newSpecialName);
-		},
-		checkSpecialSort: function (newSpecialName) {
-			SpecialAction.checkSpecialSort(newSpecialSort);
 		},
 		showEditFrom: function (rowData) {
 			SpecialAction.showEditFrom(rowData);
@@ -65,8 +54,6 @@ var Special = React.createClass({
 				{this.state.isShowEditFrom || this.state.isShowAddFrom ?
 					(<EditForm
 						hideEditFrom={this.events.hideEditFrom}
-						checkSpecialName={this.events.checkSpecialName}
-						checkSpecialSort={this.events.checkSpecialSort}
 						addSpecial={this.events.addSpecial}
 						editSpecial={this.events.editSpecial}
 						allData={this.state.specialList}
