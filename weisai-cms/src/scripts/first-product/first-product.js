@@ -59,7 +59,7 @@ var FirstProduct = React.createClass({
 						allData={this.state.firstProductList}
 						editRowData={this.state.editRowData}
 					/>) : (
-					<Table tableData={this.state.firstProductList} titleData={"最鲜品"}
+					<Table tableData={this.state.firstProductList} titleData={"最鲜品（最多6个）"}
 						   deleteSpecialFnc={this.events.deleteSpecialFnc}
 						   showEditFrom={this.events.showEditFrom}
 						   showAddFrom={this.events.showAddFrom}

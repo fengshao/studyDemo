@@ -18,6 +18,7 @@ var TableComponent = React.createClass({
 	},
 
 	componentWillUnmount: function () {
+		$("body").css("overflow", "auto");
 		$(window).off("resize", this.resizeWindow);
 	},
 

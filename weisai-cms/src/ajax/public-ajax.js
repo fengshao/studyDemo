@@ -26,6 +26,7 @@ if (locationHref.indexOf("devel") != -1) {
 	parms.loginOut = "http://han.test.wesai.com/api/userLogout";//get
 }
 
+//typeId 1:品牌设置 2 主打活动 3 值得买 4 最鲜品 5 专题列表
 exports.getBrandList = function () {
 	var Deferred = $.Deferred();
 	$.ajax({

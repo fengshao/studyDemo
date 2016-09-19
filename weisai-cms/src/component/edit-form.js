@@ -12,6 +12,15 @@ var EditForm = React.createClass({
 		};
 	},
 
+	componentWillUnmount: function () {
+		$("body").css("overflow", "hidden");
+		alt.flush();
+	},
+
+	componentDidMount: function () {
+		$("body").css("overflow", "auto");
+	},
+
 	confirm: function (rowData) {
 		this.props.deleteSpecialFnc(rowData);
 	},
