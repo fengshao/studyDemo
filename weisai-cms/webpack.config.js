@@ -1,11 +1,33 @@
 var path = require('path');
 var webpack = require('webpack');
 
+//打包模式
+var webpackMode = 'dev';
+
+if (process.argv.indexOf('p') >= 0
+	||
+	process.argv.indexOf('-p') >= 0
+	||
+	process.argv.indexOf('--p') >= 0
+	||
+	process.argv.indexOf('production') >= 0
+	||
+	process.argv.indexOf('-production') >= 0
+	||
+	process.argv.indexOf('--production') >= 0) {
+	webpackMode = 'production';
+}
+
 var devEntry = [
-	'webpack-dev-server/client?http://localhost:3001',
-	'webpack/hot/only-dev-server',
 	'./publicFile/index'
 ];
+
+if (webpackMode !== 'production') {
+	devEntry.push(
+		'webpack-dev-server/client?http://localhost:3001',
+		'webpack/hot/only-dev-server'
+	);
+}
 
 module.exports = {
 	devtool: '#cheap-module-source-map',
