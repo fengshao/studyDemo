@@ -38,7 +38,7 @@ var App = React.createClass({
 	render: function () {
 		return (
 			<div>
-				{this.state.userIsLogin == 0 ? (<div>
+				{this.state.userIsLoginFlag == 0 ? (<div>
 					<div className="ant-col-24 top-menu-div">
 						<div className="ant-col-1"></div>
 						<div className="ant-col-22 login-welcome">

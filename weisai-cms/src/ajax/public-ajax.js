@@ -152,7 +152,7 @@ exports.editSpecial = function (newaddData) {
 	return Deferred.promise();
 };
 
-exports.userLogout = function (newaddData) {
+exports.userLogout = function () {
 	var Deferred = $.Deferred();
 	var user = window.sessionStorage.getItem("user");
 	$.ajax({
@@ -168,7 +168,7 @@ exports.userLogout = function (newaddData) {
 	return Deferred.promise();
 };
 
-exports.userIsLogin = function (newaddData) {
+exports.userIsLogin = function () {
 	var Deferred = $.Deferred();
 	var user = window.sessionStorage.getItem("user");
 	if (user) {
