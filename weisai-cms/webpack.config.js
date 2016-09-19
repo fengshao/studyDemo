@@ -4,7 +4,7 @@ var webpack = require('webpack');
 var devEntry = [
 	'webpack-dev-server/client?http://localhost:3001',
 	'webpack/hot/only-dev-server',
-	'./public/index'
+	'./publicFile/index'
 ];
 
 module.exports = {
