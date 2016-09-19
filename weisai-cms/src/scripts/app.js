@@ -1,30 +1,8 @@
 import {Link} from 'react-router';
 import { Button} from 'antd';
 var PublicAjax = require("../ajax/public-ajax");
-var AppStore = require("./appStore");
-var AppAction = require("./appAction");
 
 var App = React.createClass({
-
-	getInitialState: function () {
-		var data = AppStore.getState();
-		return data;
-	},
-
-	onChange: function () {
-		var data = AppStore.getState();
-		this.setState(data);
-	},
-
-	componentDidMount: function () {
-		AppStore.listen(this.onChange);
-		AppAction.getUserIsLogin();
-	},
-
-	componentWillUnmount: function () {
-		AppStore.unlisten(this.onChange);
-		alt.flush();
-	},
 
 	userLogout: function () {
 		PublicAjax.userLogout().then(function () {
@@ -38,7 +16,7 @@ var App = React.createClass({
 	render: function () {
 		return (
 			<div>
-				{this.state.userIsLoginFlag == 0 ? (<div>
+				<div>
 					<div className="ant-col-24 top-menu-div">
 						<div className="ant-col-1"></div>
 						<div className="ant-col-22 login-welcome">
@@ -60,13 +38,7 @@ var App = React.createClass({
 							{this.props.children}
 						</div>
 					</div>
-				</div>) : (
-					<div className="need-login-div">
-						<div className="need-login-centent">
-							<div className="need-login-title">您还未登录，请 <a href="/index.html">登录</a></div>
-						</div>
-					</div>
-				)}
+				</div>
 			</div>
 		);
 	}

@@ -23,6 +23,14 @@ body {
 	}
   }
 
+  .upload-img {
+	display: inherit !important;
+  }
+  .preview-img {
+	max-width: 100%;
+	max-height: 400px;
+  }
+
   .top-menu-div {
 	margin-top: 20px;
 	margin-bottom: 10px;

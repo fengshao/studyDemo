@@ -6,14 +6,26 @@ var SpecialAction = require("../action/special-action");
 
 function SpecialStore() {
 	this.specialList = [];
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.bindActions(SpecialAction);
 }
 
 SpecialStore.prototype.getSpecialList = function (specialList) {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.specialList = specialList ? specialList : [];
@@ -37,6 +49,13 @@ SpecialStore.prototype.showEditFrom = function (rowData) {
 };
 
 SpecialStore.prototype.showAddFrom = function () {
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowAddFrom = true;
 };
 
@@ -47,7 +66,13 @@ SpecialStore.prototype.editSpecial = function () {
 };
 
 SpecialStore.prototype.hideEditFrom = function () {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 };

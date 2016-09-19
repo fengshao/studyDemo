@@ -9,6 +9,15 @@ require("antd/dist/antd.css");
 // console.log(_);
 //使用react渲染页面
 var Frame = require("scripts/frame");
+var NeedLogin = require("component/needLogin");
+var PublicAjax = require("./ajax/public-ajax");
 
-
-ReactDOM.render(<Frame /> , $('#main')[0]);
+PublicAjax.userIsLogin().then(function (data) {
+	if (data === 0) {
+		ReactDOM.render(<Frame />, $('#main')[0]);
+	} else {
+		ReactDOM.render(<NeedLogin />, $('#main')[0]);
+	}
+}, function (errorMsg) {
+	ReactDOM.render(<NeedLogin />, $('#main')[0]);
+});

@@ -5,14 +5,26 @@ var BrandSettingAction = require("../action/brand-setting-action");
 
 function BrandSettingStore() {
 	this.brandSettingList = [];
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.bindActions(BrandSettingAction);
 }
 
 BrandSettingStore.prototype.getBrandList = function (brandSettingLists) {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.brandSettingList = brandSettingLists;
@@ -36,6 +48,13 @@ BrandSettingStore.prototype.showEditFrom = function (rowData) {
 };
 
 BrandSettingStore.prototype.showAddFrom = function () {
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowAddFrom = true;
 };
 
@@ -46,7 +65,13 @@ BrandSettingStore.prototype.editSpecial = function () {
 };
 
 BrandSettingStore.prototype.hideEditFrom = function () {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 };

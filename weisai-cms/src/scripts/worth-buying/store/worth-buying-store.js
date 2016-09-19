@@ -5,14 +5,26 @@ var WorthBuyingAction = require("../action/worth-buying-action");
 
 function WorthBuyingStore() {
 	this.worthBuyingList = [];
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.bindActions(WorthBuyingAction);
 }
 
 WorthBuyingStore.prototype.getWorthBuyingList = function (worthBuyingList) {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.worthBuyingList = worthBuyingList;
@@ -36,6 +48,13 @@ WorthBuyingStore.prototype.showEditFrom = function (rowData) {
 };
 
 WorthBuyingStore.prototype.showAddFrom = function () {
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowAddFrom = true;
 };
 
@@ -46,7 +65,13 @@ WorthBuyingStore.prototype.editSpecial = function () {
 };
 
 WorthBuyingStore.prototype.hideEditFrom = function () {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 };

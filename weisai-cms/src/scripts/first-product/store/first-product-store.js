@@ -5,14 +5,26 @@ var FirstProductAction = require("../action/first-product-action");
 
 function FirstProductStore() {
 	this.firstProductList = [];
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.bindActions(FirstProductAction);
 }
 
 FirstProductStore.prototype.getFirstProductList = function (firstProductList) {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 	this.firstProductList = firstProductList;
@@ -36,6 +48,13 @@ FirstProductStore.prototype.showEditFrom = function (rowData) {
 };
 
 FirstProductStore.prototype.showAddFrom = function () {
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowAddFrom = true;
 };
 
@@ -46,7 +65,13 @@ FirstProductStore.prototype.editSpecial = function () {
 };
 
 FirstProductStore.prototype.hideEditFrom = function () {
-	this.editRowData = {};
+	this.editRowData = {
+		title: "",
+		sort: "",
+		id: "",
+		url: "",
+		img: ""
+	};
 	this.isShowEditFrom = false;
 	this.isShowAddFrom = false;
 };

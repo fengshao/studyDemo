@@ -1,11 +1,16 @@
 /**
  * Created by fengs on 2016/9/17.
  */
-import {Form, Input, Button, InputNumber, Upload, Icon} from 'antd';
+import {Form, Input, Button, InputNumber, Upload, Icon,message} from 'antd';
 const FormItem = Form.Item;
-//require("jquery-form");
 var EditForm = React.createClass({
 
+
+	getInitialState: function () {
+		return {
+			imgSrc: this.props.editRowData.img
+		};
+	},
 
 	confirm: function (rowData) {
 		this.props.deleteSpecialFnc(rowData);
@@ -65,10 +70,28 @@ var EditForm = React.createClass({
 		}
 	},
 
+	checkImgType: function (rule, value, callback) {
+		if (!value) {
+			callback([new Error('抱歉，请选择png，jpg，jpeg格式的图片上传。')]);
+			return
+		}
+		var fileType = value.substr(value.lastIndexOf(".")).toLowerCase();//获得文件后缀名
+		if (fileType != '.jpg' && fileType != '.png' && fileType != '.jpeg') {
+			callback([new Error('抱歉，请选择png，jpg，jpeg格式的图片上传。')]);
+		} else {
+			callback();
+		}
+	},
+
 	saveSpecial: function () {
 
 		var _this = this;
+		if (!this.state.imgSrc) {
+			message.warning('请上传图片');
+			return;
+		}
 		this.props.form.validateFields((errors, values) => {
+			values.img = this.state.imgSrc;
 			var flag = false;
 			$.each(values, function (name, value) {
 				if (value != _this.props.editRowData[name]) {
@@ -90,6 +113,33 @@ var EditForm = React.createClass({
 
 	},
 
+	uploadImage: function () {
+		var formData = new FormData($("#fileForm")[0]),
+			url = 'http://10.2.2.9:20202/uploading';
+		$.ajax({
+			method: 'post',
+			url: url,
+			data: formData,
+			dataType: 'JSON',
+			cache: false,
+			processData: false,
+			contentType: false,
+			success: (data) => {
+				if (data && data.result) {
+					var imgData = data.result;
+					var srcUrl = imgData.savehost + imgData.savepath + "/" + imgData.savename;
+					this.setState({
+						imgSrc: srcUrl
+					})
+				} else {
+				}
+			},
+			error: (result) => {
+				message.error('上传失败');
+			}
+		});
+	},
+
 	render(){
 		const {getFieldProps, getFieldError, isFieldValidating} = this.props.form;
 		const specialNameProps = getFieldProps('title', {
@@ -109,7 +159,7 @@ var EditForm = React.createClass({
 		});
 
 		if (!this.props.isNotShowCancelBtn) {
-			const specialSortProps = getFieldProps('sort', {
+			var specialSortProps = getFieldProps('sort', {
 				rules: [
 					{required: true, message: '排序不能为空'},
 					{validator: this.checkSpecialSort}
@@ -119,13 +169,46 @@ var EditForm = React.createClass({
 		}
 
 
+		const imgProps = getFieldProps('img', {
+			validate: [{
+				rules: [
+					{required: true, message: '抱歉，请选择png，jpg，jpeg格式的图片上传。'},
+					{validator: this.checkImgType}
+				],
+				trigger: ['onChange']
+			}]
+		});
+
 		const formItemLayout = {
 			labelCol: {span: 7},
 			wrapperCol: {span: 12}
 		};
 		return (
 			<div>
+				<Form horizontal className="editform" id="fileForm">
+					<FormItem
+						label="专题图片"
+						hasFeedback
+						{...formItemLayout}
+						help={isFieldValidating('img') ? '校验中...' : (getFieldError('img') || []).join(', ')}
+					>
+						<Input {...imgProps} type="file" id="file" name="file" className="upload-img"
+											 accept="image/png, image/jpg, image/jpeg"
+											 style={{ width: '80%', marginRight: 8 }}
+						/>
+						<Button onClick={this.uploadImage}>上传</Button>
+					</FormItem>
+				</Form>
+
 				<Form horizontal className="editform">
+					<FormItem
+						{...formItemLayout}
+						label="图片预览"
+						hasFeedback
+					>
+						<img src={this.state.imgSrc ? this.state.imgSrc : this.props.editRowData.img }
+							 className="preview-img"/>
+					</FormItem>
 					<FormItem
 						{...formItemLayout}
 						label="专题名称"
@@ -144,7 +227,7 @@ var EditForm = React.createClass({
 						<Input {...specialUrlProps} placeholder="请输入链接"/>
 					</FormItem>
 
-					{this.props.isNotShowCancelBtn ? "" :
+					{!this.props.isNotShowCancelBtn ?
 						(<FormItem
 							{...formItemLayout}
 							label="排序"
@@ -154,7 +237,8 @@ var EditForm = React.createClass({
 							<Input placeholder="请输入排序序号"
 								{...specialSortProps}
 							/>
-						</FormItem>)}
+						</FormItem>) : ""
+					}
 
 
 					<FormItem wrapperCol={{ span: 12, offset: 7 }}>
@@ -171,16 +255,3 @@ var EditForm = React.createClass({
 EditForm = Form.create()(EditForm);
 
 module.exports = EditForm;
-
-//<form action="http://10.2.2.9:20202/uploading" enctype="multipart/form-data" method="post"
-//	  id="fileForm" name="fileForm">
-//	<label className="operate-from-label">专题图片：</label>
-//	<input type="file" id="file" name="file" accept="image/png, image/jpg, image/jpeg"
-//		   className="operate-from-input"/>
-//	<Button type="primary" onClick={this.uploadImgFnc}>上传</Button>
-//	<div id="imgurl-div">
-//		<div class="img-preview">图片预览区域</div>
-//		<img src=""/>
-//		<div class="error">请选择小于2MB的png，jpg，jpeg格式图片上传</div>
-//	</div>
-//</form>
