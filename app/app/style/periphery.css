@@ -1,0 +1,78 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #ffffff;
+  height: 100%;
+  font: 1.2rem/1 Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100% !important;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; }
+  body .periphery-content {
+    font-size: 1.1rem; }
+    body .periphery-content a {
+      text-decoration: none; }
+    body .periphery-content img {
+      vertical-align: middle; }
+    body .periphery-content #content-div {
+      padding: 0;
+      margin: 0;
+      width: 100%; }
+    body .periphery-content .bg-div {
+      width: 100%;
+      height: 7px;
+      background-color: #f2f1f6; }
+    body .periphery-content .periphery-commodity-title {
+      color: #565656;
+      padding-bottom: 15px;
+      padding-top: 15px;
+      font-weight: 200;
+      font-size: 13px;
+      padding-left: 12px;
+      text-align: left; }
+    body .periphery-content .worth-buying {
+      padding-bottom: 10px;
+      display: inline-block;
+      width: 100%; }
+      body .periphery-content .worth-buying .worth-buying-left-div {
+        margin-left: 10px; }
+      body .periphery-content .worth-buying .worth-buying-content {
+        position: relative;
+        display: inline-block; }
+      body .periphery-content .worth-buying .worth-buying-content-div {
+        float: left; }
+      body .periphery-content .worth-buying .worth-buying-right-div {
+        margin-left: 8px; }
+        body .periphery-content .worth-buying .worth-buying-right-div div {
+          position: absolute; }
+        body .periphery-content .worth-buying .worth-buying-right-div .worth-buying-right-img-div1 {
+          top: 0px; }
+        body .periphery-content .worth-buying .worth-buying-right-div .worth-buying-right-img-div2 {
+          bottom: 0px; }
+    body .periphery-content .first-product {
+      display: inline-block;
+      width: 100%; }
+      body .periphery-content .first-product .first-product-content {
+        margin-left: 5px; }
+      body .periphery-content .first-product .first-product-content-div {
+        float: left;
+        margin-left: 10px;
+        margin-bottom: 15px; }
+    body .periphery-content .special {
+      padding-bottom: 10px;
+      width: 100%; }
+      body .periphery-content .special .special-content-div {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px; }
+    body .periphery-content a {
+      display: inline-block;
+      height: 100%;
+      width: 100%; }
+      body .periphery-content a img {
+        width: 100%; }
+    body .periphery-content .pullUp {
+      display: none; }
+    body .periphery-content .pullDown {
+      display: none; }
+
+/*# sourceMappingURL=periphery.css.map */

@@ -9,124 +9,69 @@
 	<title>Title</title>
 	<link href="index.css" rel="stylesheet"/>
 	<script language="JavaScript" src="./jquery-1.9.1.js"></script>
+	<script language="JavaScript" src="./iscroll-zoom.js"></script>
+	<script language="JavaScript" src="./jweixin-1.0.0.js"></script>
+	<!--<script language="JavaScript" src="./periphery-wxshare.js"></script>-->
 	<script language="JavaScript" src="./index.js"></script>
 </head>
 <body>
 <div class="periphery-content">
-	<div class="periphery-top-title">
-		<div class="periphery-top-title-div">
-			<span>电影</span>
-			<span class="periphery-title-ports">体育</span>
+	<div id="refferTab" class="master_box" >
+		<div class="tab_master">
+			<ul>
+				<li class=""><a href="http://store.wepiao.com/index.php/wap/">电影</a></li>
+				<li class="on"><a href="javascript:">体育</a></li>
+			</ul>
 		</div>
 	</div>
+
+	<!--<div class="periphery-top-title">-->
+		<!--<div class="periphery-top-title-div">-->
+			<!--<a href="http://store.wepiao.com/index.php/wap/">电影</a>-->
+			<!--<span class="periphery-title-ports">体育</span>-->
+		<!--</div>-->
+	<!--</div>-->
 	<div class="main-activity">
-		<a href="#">
-			<img src="http://img.wesai.com/0102000057b2c9230000142aeed94df9.jpg">
+		<a href="#" onClick="aClickFnc('main_activity_1')">
+			<img src="">
 		</a>
 	</div>
 	<div class="brand">
-		<div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/5/d83/cc4e4/5d83acc4e49fe5ae3abe670f4c8fcb24.jpg">
-				</a>
-			</div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/f/aa4/83fac/faa4083facd8abb345aed4b3964866f4.jpg">
-				</a>
-			</div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/0/89b/8cf64/089bb8cf648573dbae7402c4a3249b13.jpg">
-				</a>
-			</div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/e/ab9/b8cf9/eab9fb8cf90ed8fa2b60596fc10c6dc8.jpg">
-				</a>
-			</div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/5/d83/cc4e4/5d83acc4e49fe5ae3abe670f4c8fcb24.jpg">
-				</a>
-			</div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/f/aa4/83fac/faa4083facd8abb345aed4b3964866f4.jpg">
-				</a>
-			</div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/0/89b/8cf64/089bb8cf648573dbae7402c4a3249b13.jpg">
-				</a>
-			</div>
-			<div class="brand-content-div">
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/e/ab9/b8cf9/eab9fb8cf90ed8fa2b60596fc10c6dc8.jpg">
-				</a>
-			</div>
+		<div class="brand-content">
 		</div>
 	</div>
+	<div class="bg-div"></div>
 	<div class="worth-buying">
-		<div class="worth-buying-content-div worth-buying-left-div">
-			<a>
-				<img src="http://devel-10016962.file.myqcloud.com/c/bd2/331db/cbd26331db1b208b72ab91f0c486d17e.jpg">
-			</a>
-		</div>
-		<div class="worth-buying-content-div worth-buying-right-div">
-			<div>
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/0/68c/92fa9/068c192fa91ef91da0c3243875e5f37e.jpg">
+		<div class="periphery-commodity-title">值得买</div>
+		<div class="periphery-content">
+			<div class="worth-buying-content-div worth-buying-left-div">
+				<a href="#" onClick="aClickFnc('worth_buying_1')">
+					<img src="">
 				</a>
 			</div>
-			<div>
-				<a>
-					<img src="http://devel-10016962.file.myqcloud.com/2/795/1bb7f/279531bb7fde5b341c3fcf60a7acd5ce.jpg">
-				</a>
+			<div class="worth-buying-content-div worth-buying-right-div">
+				<div class="worth-buying-right-img-div1">
+					<a href="#" onClick="aClickFnc('worth_buying_2')">
+						<img src="">
+					</a>
+				</div>
+				<div class="worth-buying-right-img-div2">
+					<a href="#" onClick="aClickFnc('worth_buying_3')">
+						<img src="">
+					</a>
+				</div>
 			</div>
 		</div>
 
 	</div>
+	<div class="bg-div"></div>
 	<div class="first-product">
-		<div>
-			<a>
-				<img src="http://devel-10016962.file.myqcloud.com/f/4db/b53b9/f4db0b53b90b1a745d4c94c76280442c.jpg">
-			</a>
-		</div>
-		<div>
-			<a>
-				<img src="http://devel-10016962.file.myqcloud.com/f/4db/b53b9/f4db0b53b90b1a745d4c94c76280442c.jpg">
-			</a>
-		</div>
-		<div>
-			<a>
-				<img src="http://devel-10016962.file.myqcloud.com/f/4db/b53b9/f4db0b53b90b1a745d4c94c76280442c.jpg">
-			</a>
-		</div>
-		<div>
-			<a>
-				<img src="http://devel-10016962.file.myqcloud.com/f/4db/b53b9/f4db0b53b90b1a745d4c94c76280442c.jpg">
-			</a>
-		</div>
-		<div>
-			<a>
-				<img src="http://devel-10016962.file.myqcloud.com/f/4db/b53b9/f4db0b53b90b1a745d4c94c76280442c.jpg">
-			</a>
-		</div>
-		<div>
-			<a>
-				<img src="http://devel-10016962.file.myqcloud.com/f/4db/b53b9/f4db0b53b90b1a745d4c94c76280442c.jpg">
-			</a>
+		<div class="periphery-commodity-title">最鲜品</div>
+		<div class="first-product-content">
 		</div>
 	</div>
+	<div class="bg-div"></div>
 	<div class="special">
-		<div class="">
-			<a href="#">
-				<img src="http://img.wesai.com/0102000057b2c9230000142aeed94df9.jpg"></img>
-			</a>
-		</div>
-
 	</div>
 </div>
 

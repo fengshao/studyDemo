@@ -1,48 +1,169 @@
 body {
-  font: 13px Helvetica, STHeiTi, sans-serif;
-  font-size: 14px;
   margin: 0px;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  font: 1.2rem/1 Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100% !important;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; }
   body .periphery-content {
-    font-size: 1.4rem; }
-    body .periphery-content .periphery-top-title-div {
-      background-color: #f2f1f6;
-      height: 30px;
-      width: 180px;
-      border-radius: 5px;
-      margin: 10px auto 0px auto; }
-      body .periphery-content .periphery-top-title-div span {
-        display: inline-block;
-        width: 90px;
-        height: 30px;
-        float: left;
-        text-align: center;
-        line-height: 30px;
-        color: #565656; }
-      body .periphery-content .periphery-top-title-div .periphery-title-ports {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        color: #ffffff;
-        background-color: #29cc6d; }
-    body .periphery-content .main-activity {
-      margin-top: 10px;
-      width: 100%; }
-    body .periphery-content .brand {
-      padding-left: 10px;
-      padding-right: 20px;
-      overflow: hidden;
+    font-size: 1.1rem; }
+    body .periphery-content a {
+      text-decoration: none; }
+    body .periphery-content img {
+      vertical-align: middle; }
+    body .periphery-content .bg-div {
       width: 100%;
-      height: 110px; }
+      height: 7px;
+      background-color: #f2f1f6; }
+    body .periphery-content .periphery-commodity-title {
+      color: #565656;
+      text-align: center;
+      padding-bottom: 15px;
+      padding-top: 15px;
+      font-weight: 200;
+      font-size: 13px; }
+    body .periphery-content .periphery-top-title {
+      padding: 10px 25% 8px; }
+      body .periphery-content .periphery-top-title .periphery-top-title-div {
+        background-color: #f2f1f6;
+        height: 27px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: 1px solid #e6e6e6; }
+        body .periphery-content .periphery-top-title .periphery-top-title-div span {
+          display: inline-block;
+          width: 50%;
+          height: 27px;
+          float: left;
+          text-align: center;
+          line-height: 27px;
+          color: #565656; }
+        body .periphery-content .periphery-top-title .periphery-top-title-div a {
+          display: inline-block;
+          width: 50%;
+          height: 27px;
+          float: left;
+          text-align: center;
+          line-height: 27px;
+          color: #565656;
+          text-decoration: none; }
+        body .periphery-content .periphery-top-title .periphery-top-title-div .periphery-title-ports {
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+          color: #ffffff;
+          background-color: #29cc6d; }
+    body .periphery-content .master_box {
+      padding: 10px 25% 8px;
+      background: #fff;
+      position: relative;
+      -webkit-tap-highlight-color: transparent; }
+      body .periphery-content .master_box:after {
+        display: none; }
+      body .periphery-content .master_box .tab_master {
+        position: relative;
+        -webkit-tap-highlight-color: transparent;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        -webkit-border-radius: 5px;
+        background: #f7f7f7; }
+        body .periphery-content .master_box .tab_master:before {
+          border: 1px solid #e6e6e6;
+          border-radius: 10px;
+          -webkit-border-radius: 10px; }
+        body .periphery-content .master_box .tab_master:before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 200%;
+          height: 200%;
+          border: 1px solid #eee;
+          -webkit-transform: scale(0.5);
+          -webkit-transform-origin: 0 0;
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box; }
+        body .periphery-content .master_box .tab_master ul {
+          display: box;
+          display: -webkit-box;
+          list-style: none outside none;
+          margin: 0;
+          padding: 0;
+          -webkit-tap-highlight-color: transparent; }
+          body .periphery-content .master_box .tab_master ul li {
+            width: 50%;
+            color: #666;
+            font-size: 15px;
+            -webkit-box-flex: 1.0;
+            box-flex: 1.0;
+            display: block;
+            -webkit-tap-highlight-color: transparent; }
+            body .periphery-content .master_box .tab_master ul li a {
+              display: block;
+              color: #666;
+              position: relative;
+              z-index: 3;
+              text-decoration: none; }
+          body .periphery-content .master_box .tab_master ul .on a {
+            background: #29cc6d;
+            color: #fff;
+            text-decoration: none; }
+      body .periphery-content .master_box .tab_master ul li:nth-child(1) a {
+        -webkit-border-radius: 5px 0 0 5px; }
+      body .periphery-content .master_box .tab_master ul li:last-child a {
+        -webkit-border-radius: 0 5px 5px 0; }
+    body .periphery-content .main-activity {
+      width: 100%;
+      display: inline-block; }
+    body .periphery-content .brand {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden; }
+      body .periphery-content .brand .brand-content {
+        display: inline-block;
+        margin-left: 2px; }
       body .periphery-content .brand .brand-content-div {
-        margin-left: 10px;
-        margin-top: 10px;
-        float: left; }
+        margin-left: 28.5px;
+        margin-top: 18px;
+        float: left;
+        margin-bottom: 12px; }
     body .periphery-content .worth-buying {
-      padding-left: 15px; }
+      padding-bottom: 10px;
+      display: inline-block;
+      width: 100%; }
+      body .periphery-content .worth-buying .worth-buying-left-div {
+        margin-left: 10px; }
+      body .periphery-content .worth-buying .periphery-content {
+        position: relative;
+        display: inline-block; }
       body .periphery-content .worth-buying .worth-buying-content-div {
         float: left; }
       body .periphery-content .worth-buying .worth-buying-right-div {
-        margin-left: 15px; }
+        margin-left: 8px; }
+        body .periphery-content .worth-buying .worth-buying-right-div div {
+          position: absolute; }
+        body .periphery-content .worth-buying .worth-buying-right-div .worth-buying-right-img-div1 {
+          top: 0px; }
+        body .periphery-content .worth-buying .worth-buying-right-div .worth-buying-right-img-div2 {
+          bottom: 0px; }
+    body .periphery-content .first-product {
+      display: inline-block;
+      width: 100%; }
+      body .periphery-content .first-product .first-product-content {
+        margin-left: 5px; }
+      body .periphery-content .first-product .first-product-content-div {
+        float: left;
+        margin-left: 10px;
+        margin-bottom: 15px; }
+    body .periphery-content .special {
+      margin-bottom: 60px;
+      width: 100%;
+      padding-top: 5px; }
+      body .periphery-content .special .special-content-div {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px; }
     body .periphery-content a {
       display: inline-block;
       height: 100%;
@@ -50,5 +171,50 @@ body {
       body .periphery-content a img {
         height: 100%;
         width: 100%; }
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+    body .periphery-content .fadeIn, body .periphery-content .toast.on {
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn; }
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+    body .periphery-content .fadeOut, body .periphery-content .toast.off {
+      -webkit-animation-name: fadeOut;
+      animation-name: fadeOut; }
+    body .periphery-content .toast {
+      position: fixed;
+      z-index: 100000001;
+      bottom: 18%;
+      left: 0;
+      text-align: center;
+      width: 100%;
+      -webkit-animation-duration: .5s;
+      animation-duration: .5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both; }
+      body .periphery-content .toast .toast-text {
+        max-width: 300px;
+        display: inline-block;
+        border-radius: 4px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 12px 20px;
+        font-size: 16px; }
 
 /*# sourceMappingURL=index.css.map */
