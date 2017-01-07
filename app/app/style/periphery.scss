@@ -129,11 +129,11 @@ body {
 	  }
 	}
 
-	.pullUp {
+	.hidden-div-cls {
 	  display: none;
-	}
-	.pullDown {
-	  display: none;
+	  position: absolute;
+	  left: -1000000;
+	  top: -1000000;
 	}
   }
 }

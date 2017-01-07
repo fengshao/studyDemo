@@ -70,9 +70,10 @@ body {
       width: 100%; }
       body .periphery-content a img {
         width: 100%; }
-    body .periphery-content .pullUp {
-      display: none; }
-    body .periphery-content .pullDown {
-      display: none; }
+    body .periphery-content .hidden-div-cls {
+      display: none;
+      position: absolute;
+      left: -1000000;
+      top: -1000000; }
 
 /*# sourceMappingURL=periphery.css.map */

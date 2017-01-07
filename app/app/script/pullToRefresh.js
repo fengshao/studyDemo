@@ -9,8 +9,9 @@ var refresher = {
 		"pullingDownLable": "释放刷新...",
 		"pullUpLable": "上拉加载更多…",
 		"pullingUpLable": "释放加载更多…",
-		"loadingLable": "Loading...",
-		"loadingEndLable": "已加载完全部内容"
+		"loadingLable": "",
+		"loadingEndLable": "已加载完全部内容",
+		"sssssss": null
 	},
 	init: function (parameter) {
 		var wrapper = document.getElementById(parameter.id);
@@ -24,10 +25,11 @@ var refresher = {
 		pullDown.className = "pullDown";
 		var loader = document.createElement("div");
 		loader.className = "loader";
-		for (var i = 0; i < 4; i++) {
-			var span = document.createElement("span");
-			loader.appendChild(span);
-		}
+
+		var pullDownLoadingSpan = document.createElement("div");
+		pullDownLoadingSpan.setAttribute("class", "dialog_loading dialog_loading_1");
+		loader.appendChild(pullDownLoadingSpan);
+
 		pullDown.appendChild(loader);
 		var pullDownLabel = document.createElement("div");
 		pullDownLabel.className = "pullDownLabel";
@@ -37,10 +39,9 @@ var refresher = {
 		pullUp.className = "pullUp";
 		var loader = document.createElement("div");
 		loader.className = "loader";
-		for (var i = 0; i < 4; i++) {
-			var span = document.createElement("span");
-			loader.appendChild(span);
-		}
+		var pullUpLoadingSpan = document.createElement("div");
+		pullUpLoadingSpan.setAttribute("class", "dialog_loading dialog_loading_1");
+		loader.appendChild(pullUpLoadingSpan);
 		pullUp.appendChild(loader);
 		var pullUpLabel = document.createElement("div");
 		pullUpLabel.className = "pullUpLabel";
@@ -78,11 +79,19 @@ var refresher = {
 			pullDownEl.classList.add("flip");
 			pullDownEl.querySelector('.pullDownLabel').innerHTML = refresher.info.pullingDownLable;
 			e.minScrollY = 0;
+			clearTimeout(refresher.info.sssssss);
+			this.loadingImgFnc(pullDownEl, 2);
 		}
 		if (e.scrollerH < e.wrapperH && e.y < (e.minScrollY - pullUpOffset) || e.scrollerH > e.wrapperH && e.y < (e.maxScrollY - pullUpOffset)) {
 			pullUpEl.style.display = "block";
 			pullUpEl.classList.add("flip");
-			pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.pullingUpLable;
+			clearTimeout(refresher.info.sssssss);
+			if (maxPage == curPage) {
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.loadingEndLable;
+			} else {
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.pullingUpLable;
+				this.loadingImgFnc(pullUpEl, 2);
+			}
 		}
 		if (e.scrollerH < e.wrapperH && e.y > (e.minScrollY - pullUpOffset) && pullUpEl.id.match('flip') || e.scrollerH > e.wrapperH && e.y > (e.maxScrollY - pullUpOffset) && pullUpEl.id.match('flip')) {
 			pullDownEl.classList.remove("flip");
@@ -98,11 +107,18 @@ var refresher = {
 			pullDownEl.style.lineHeight = pullDownEl.offsetHeight + "px";
 		}
 		if (pullUpEl.className.match('loading')) {
-			$(".pullUp").remove();
-			pullUpEl.classList.toggle("loading");
-			pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.pullUpLable;
+			console.log("onRelease");
+			clearTimeout(refresher.info.sssssss);
 			pullUpEl.querySelector('.loader').style.display = "none";
+			pullUpEl.classList.toggle("loading");
+			if (maxPage == curPage) {
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.loadingEndLable;
+
+			} else {
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.pullUpLable;
+			}
 			pullUpEl.style.lineHeight = pullUpEl.offsetHeight + "px";
+
 		}
 	},
 	onPulling: function (pullDownEl, pullDownAction, pullUpEl, pullUpAction) {
@@ -115,12 +131,33 @@ var refresher = {
 			if (pullDownAction) pullDownAction();
 		}
 		if (pullUpEl.className.match('flip') /*&&!pullDownEl.className.match('loading')*/) {
-			pullUpEl.classList.add("loading");
-			pullUpEl.classList.remove("flip");
-			pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.loadingLable;
-			pullUpEl.querySelector('.loader').style.display = "block";
-			pullUpEl.style.lineHeight = "20px";
-			if (pullUpAction) pullUpAction();
+			console.log("onPulling");
+			if (maxPage == curPage) {
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.loadingEndLable;
+
+			} else {
+				pullUpEl.classList.add("loading");
+				pullUpEl.classList.remove("flip");
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.loadingLable;
+				pullUpEl.querySelector('.loader').style.display = "block";
+				pullUpEl.style.lineHeight = "20px";
+				if (pullUpAction) pullUpAction();
+			}
 		}
+	},
+
+	loadingImgFnc: function (pullEL, i) {
+		var _this = this;
+		refresher.info.sssssss = setTimeout(function () {
+			pullEL.querySelector('.dialog_loading').classList.add("dialog_loading_" + i);
+			pullEL.querySelector('.dialog_loading').classList.remove("dialog_loading_" + (i - 1 == 0 ? 8 : i - 1));
+			i++;
+			if (i > 8) {
+				i = 1;
+			}
+			_this.loadingImgFnc(pullEL, i);
+		}, 100);
+
 	}
+
 }

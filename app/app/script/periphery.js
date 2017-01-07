@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/19.
  */
-var wxTitle1 = "", wxImgUrl1 = "", wxDesc1 = "", wxFriendsTitle1 = "";
+var maxPage = "", curPage = "";
 $(function () {
 
 	//typeId 1:品牌设置 2 主打活动 3 值得买 4 最鲜品 5 专题列表 6 搭配志
@@ -20,7 +20,6 @@ $(function () {
 	function Refresh() {
 		setTimeout(function () {
 			window.location.reload();
-			wrapper.refresh();
 		}, 1000);
 
 	};
@@ -48,8 +47,8 @@ $(function () {
 	function reftest() {
 		var special_data = data.special_data,
 			timestamp = data.timestamp;
-		parms.curPage++
-		console.log(parms.curPage + " ,, " + parms.maxPage)
+		parms.curPage++;
+		curPage = parms.curPage;
 		var datas = {
 			list: special_data.slice((parms.curPage - 1) * 6, parms.curPage * parms.pageSize - 1),
 			className: "special-content-div",
@@ -76,7 +75,8 @@ $(function () {
 	};
 
 	function renderDom() {
-		parms.maxPage = Math.ceil(data.special_data.length / 6);
+		maxPage = parms.maxPage = Math.ceil(data.special_data.length / 6);
+		curPage = parms.curPage;
 
 		var datas = {
 			list: data.specilTypeList
