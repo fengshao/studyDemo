@@ -55,7 +55,7 @@ var refresher = {
 		var pullUpOffset = pullUpEl.offsetHeight;
 		this.scrollIt(parameter, pullDownEl, pullDownOffset, pullUpEl, pullUpOffset);
 	},
-	isArd() {
+	isArd: function () {
 		var boo, ua = navigator.userAgent;
 		boo = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
 
