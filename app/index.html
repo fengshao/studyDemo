@@ -397,6 +397,35 @@
 			}]
 		};
 	</script>
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?97efb1d74482f6f468f68673ea596471";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<script type='text/javascript'>
+		var _vds = _vds || [];
+		window._vds = _vds;
+		(function () {
+			_vds.push(['setAccountId', 'b34fb27a27b105ef']);
+			(function () {
+				var vds = document.createElement('script');
+				vds.type = 'text/javascript';
+				vds.async = true;
+				vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(vds, s);
+			})();
+		})();
+	</script>
+	<script>
+		function aClickFnc(type) {
+			_hmt.push(['_trackEvent', type, 'click', 'code']);
+		}
+	</script>
 </head>
 <body>
 <div class="hidden-div-cls dialog_loading_1"></div>
@@ -454,7 +483,7 @@
 <script id="publicTemplate" type="text/html">
 	{{each list}}
 	<div class="{{className}}">
-		<a href="{{$value.url}}" onClick="aClickFnc(\'{{clickType}}{{$index + 1}}\')">
+		<a href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
 			<img src="{{$value.img ? $value.img : noImgUrl}}">
 		</a>
 	</div>
@@ -463,20 +492,20 @@
 <script id="worthBuyingTemplate" type="text/html">
 	{{if leftData}}
 	<div class="worth-buying-content-div worth-buying-left-div">
-		<a href="{{leftData.url}}" onClick="aClickFnc(\'worth_buying_1\')">
+		<a href="{{leftData.url}}" onClick="aClickFnc('hot_topics_1')">
 			<img src="{{leftData.img ? leftData.img : noLeftImgUrl}}">
 		</a>
 	</div>
 	{{if rightDataTop}}
 	<div class="worth-buying-content-div worth-buying-right-div">
 		<div class="worth-buying-right-img-div1">
-			<a href="{{rightDataTop.url}}" onClick="aClickFnc(\'worth_buying_2\')">
+			<a href="{{rightDataTop.url}}" onClick="aClickFnc('hot_topics_2')">
 				<img src="{{rightDataTop.img ? rightDataTop.img : noRightImgUrl}}"/>
 			</a>
 		</div>
 		{{if rightDataBottom}}
 		<div class="worth-buying-right-img-div2">
-			<a href="{{rightDataBottom.url}}" onClick="aClickFnc(\'worth_buying_3\')">
+			<a href="{{rightDataBottom.url}}" onClick="aClickFnc('hot_topics_3')">
 				<img src="{{rightDataBottom.img ? rightDataBottom.img : noRightImgUrl}}"/>
 			</a>
 		</div>

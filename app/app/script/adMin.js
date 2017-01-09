@@ -26,7 +26,7 @@ function Advertising() {
 					aElement.href = o.url;
 					(function (D) {
 						aElement.onclick = function () {
-							var clickStr = "main_activity_" + (D + 1);
+							var clickStr = "banner_" + (D + 1);
 							aClickFnc(clickStr);
 						};
 					})(D);

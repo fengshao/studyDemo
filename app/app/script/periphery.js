@@ -126,7 +126,7 @@ $(function () {
 			var datas = {
 				list: first_product_data.slice(0, 6),
 				className: "first-product-content-div",
-				clickType: "first_product_",
+				clickType: "recommend_",
 				noImgUrl: parms.noImgUrl + "first-product.jpg?v=" + timestamp
 			};
 			var html = template('publicTemplate', datas);
@@ -142,7 +142,7 @@ $(function () {
 			var datas = {
 				list: special_data.slice(0, 6),
 				className: "special-content-div",
-				clickType: "special_",
+				clickType: "depth_focusing_",
 				noImgUrl: parms.noImgUrl + "special.jpg?v=" + timestamp
 			};
 			var html = template('publicTemplate', datas);
