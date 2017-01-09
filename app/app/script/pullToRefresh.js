@@ -107,7 +107,6 @@ var refresher = {
 			pullDownEl.style.lineHeight = pullDownEl.offsetHeight + "px";
 		}
 		if (pullUpEl.className.match('loading')) {
-			console.log("onRelease");
 			clearTimeout(refresher.info.sssssss);
 			pullUpEl.querySelector('.loader').style.display = "none";
 			pullUpEl.classList.toggle("loading");
@@ -131,7 +130,6 @@ var refresher = {
 			if (pullDownAction) pullDownAction();
 		}
 		if (pullUpEl.className.match('flip') /*&&!pullDownEl.className.match('loading')*/) {
-			console.log("onPulling");
 			if (maxPage == curPage) {
 				pullUpEl.querySelector('.pullUpLabel').innerHTML = refresher.info.loadingEndLable;
 
