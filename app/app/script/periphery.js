@@ -1,6 +1,7 @@
 /**
  * Created by fengs on 2016/9/19.
  */
+var maxPage = "", curPage = "", wrapper = null;
 $(function () {
 
 	var parms = {
@@ -46,6 +47,7 @@ $(function () {
 		var special_data = data.special_data,
 			timestamp = data.timestamp;
 		parms.curPage++;
+		curPage = parms.curPage;
 		var datas = {
 			list: special_data.slice((parms.curPage - 1) * 6, parms.curPage * parms.pageSize - 1),
 			className: "special-content-div",
@@ -72,7 +74,8 @@ $(function () {
 	};
 
 	function renderDom() {
-		parms.maxPage = Math.ceil(data.special_data.length / 6);
+		maxPage = parms.maxPage = Math.ceil(data.special_data.length / parms.pageSize);
+		curPage = parms.curPage;
 		var datas = {
 			list: data.specilTypeList
 		};

@@ -9,6 +9,7 @@ body {
   margin: 0px !important;
   padding: 0px !important;
   background-color: #ffffff;
+  overflow: hidden !important;
   height: 100%;
   font: 1.2rem/1 Arial, Helvetica, sans-serif;
   -webkit-text-size-adjust: 100% !important;

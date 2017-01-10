@@ -11,7 +11,8 @@ var refresher = {
 		"pullingUpLable": "释放加载更多…",
 		"loadingLable": "",
 		"loadingEndLable": "已加载完全部内容",
-		"sssssss": null
+		"sssssss": null,
+		"oldY": -40
 	},
 	init: function (parameter) {
 		var wrapper = document.getElementById(parameter.id);
@@ -62,14 +63,44 @@ var refresher = {
 		return boo;
 	},
 	scrollIt: function (parameter, pullDownEl, pullDownOffset, pullUpEl, pullUpOffset) {
-		//eval(parameter.id + "= new iScroll(parameter.id, {useTransition: true,vScrollbar: false,topOffset: pullDownOffset,onRefresh: function () {refresher.onRelease(pullDownEl,pullUpEl);},onScrollMove: function () {refresher.onScrolling(this,pullDownEl,pullUpEl,pullUpOffset);},onScrollEnd: function () {refresher.onPulling(pullDownEl,parameter.pullDownAction,pullUpEl,parameter.pullUpAction);},})");
-		eval(parameter.id + "= new iScroll(parameter.id, {useTransition: true, vScrollbar: false, topOffset: pullDownOffset, scrollX: false, mouseWheel: true, click: this.isArd(), scrollbars: false, fadeScrollbars: true, interactiveScrollbars: false, keyBindings: false, deceleration: 0.0002, disableTouch: false, startY: 0, onRefresh: function () {refresher.onRelease(pullDownEl, pullUpEl);}, onScrollMove: function () {refresher.onScrolling(this, pullDownEl, pullUpEl, pullUpOffset);}, onScrollEnd: function () {refresher.onPulling(pullDownEl, parameter.pullDownAction, pullUpEl, parameter.pullUpAction);}});")
+		wrapper = new iScroll(parameter.id, {
+			useTransition: true,
+			vScrollbar: false,
+			topOffset: pullDownOffset,
+			scrollX: false,
+			mouseWheel: true,
+			click: this.isArd(),
+			scrollbars: false,
+			fadeScrollbars: true,
+			interactiveScrollbars: false,
+			keyBindings: false,
+			deceleration: 0.0002,
+			disableTouch: false,
+			startY: 0,
+			onRefresh: function () {
+				refresher.onRelease(pullDownEl, pullUpEl);
+			},
+			onScrollMove: function () {
+				refresher.onScrolling(this, pullDownEl, pullUpEl, pullUpOffset);
+			},
+			onScrollEnd: function () {
+				refresher.onPulling(pullDownEl, parameter.pullDownAction, pullUpEl, parameter.pullUpAction, this);
+			}
+		});
 		pullDownEl.querySelector('.pullDownLabel').innerHTML = refresher.info.pullDownLable;
 		document.addEventListener('touchmove', function (e) {
 			e.preventDefault();
 		}, false);
 	},
 	onScrolling: function (e, pullDownEl, pullUpEl, pullUpOffset) {
+		//if (e.y < refresher.info.oldY) {
+		//	alert('jsAlertMsg={"type":"1","isScrollUp":"false"}')
+		//}
+		//if (e.y > refresher.info.oldY) {
+		//	//上滑动true
+		//	alert('jsAlertMsg={"type":"1","isScrollUp":"true"}')
+		//}
+		//refresher.info.oldY = e.y;
 		if (e.y > -(pullUpOffset)) {
 			pullDownEl.id = '';
 			pullDownEl.querySelector('.pullDownLabel').innerHTML = refresher.info.pullDownLable;
@@ -120,7 +151,16 @@ var refresher = {
 
 		}
 	},
-	onPulling: function (pullDownEl, pullDownAction, pullUpEl, pullUpAction) {
+	onPulling: function (pullDownEl, pullDownAction, pullUpEl, pullUpAction, e) {
+		if (e.y < refresher.info.oldY) {
+			alert('jsAlertMsg={"type":"1","isScrollUp":"false"}')
+
+		}
+		if (e.y > refresher.info.oldY) {
+			//上滑动true
+			alert('jsAlertMsg={"type":"1","isScrollUp":"true"}')
+		}
+		refresher.info.oldY = e.y;
 		if (pullDownEl.className.match('flip') /*&&!pullUpEl.className.match('loading')*/) {
 			pullDownEl.classList.add("loading");
 			pullDownEl.classList.remove("flip");
