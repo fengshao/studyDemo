@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/19.
  */
-var maxPage = "", curPage = "", wrapper = null;
+var maxPage = 1, curPage = 1, wrapper = null;
 $(function () {
 
 	var parms = {
@@ -9,7 +9,7 @@ $(function () {
 		cliHG: "",
 		noImgUrl: "./app/image/",
 		curPage: 1,
-		maxPage: 2,
+		maxPage: 1,
 		pageSize: 6,
 		scrollState: false
 	};
@@ -64,8 +64,10 @@ $(function () {
 		parms.cliWH = document.documentElement.clientWidth;
 		parms.cliHG = document.documentElement.clientHeight;
 		var advContainer = document.getElementById('advInner');
-		advContainer.style.width = document.documentElement.clientWidth + "px";
-		advContainer.style.height = (parms.cliWH / 375 * 133) + "px";
+		if (advContainer) {
+			advContainer.style.width = document.documentElement.clientWidth + "px";
+			advContainer.style.height = (parms.cliWH / 375 * 133) + "px";
+		}
 		jQuery.Deferred().done(function () {
 			getImgAjax();
 		}, function () {
@@ -74,8 +76,10 @@ $(function () {
 	};
 
 	function renderDom() {
-		maxPage = parms.maxPage = Math.ceil(data.special_data.length / parms.pageSize);
-		curPage = parms.curPage;
+		if (data.special_data && data.special_data.length > 0) {
+			maxPage = parms.maxPage = Math.ceil(data.special_data.length / parms.pageSize);
+			curPage = parms.curPage;
+		}
 		var datas = {
 			list: data.specilTypeList
 		};
