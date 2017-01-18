@@ -18,7 +18,7 @@ $(function () {
 
 	function Refresh() {
 		setTimeout(function () {
-			window.location.reload();
+			window.location.reload(true);
 		}, 1000);
 
 	};
@@ -76,16 +76,34 @@ $(function () {
 	};
 
 	function renderDom() {
-		if (data.special_data && data.special_data.length > 0) {
-			maxPage = parms.maxPage = Math.ceil(data.special_data.length / parms.pageSize);
-			curPage = parms.curPage;
+
+		if (data.specilTypeList && data.specilTypeList.length > 0
+			&& data.worth_buying_data && data.worth_buying_data.length > 0
+			&& data.main_activity_data && data.main_activity_data.length > 0
+			&& data.first_product_data && data.first_product_data.length > 0
+			&& data.special_data && data.special_data.length > 0) {
+			$(".periphery-content").show();
+			$(".no-data-content").hide();
+
+			if (data.special_data && data.special_data.length > 0) {
+				maxPage = parms.maxPage = Math.ceil(data.special_data.length / parms.pageSize);
+				curPage = parms.curPage;
+			}
+			var datas = {
+				list: data.specilTypeList
+			};
+			var html = template('renderDom', datas);
+			$("#content-div").html(html);
+			layoutInit();
+		} else {
+			$(".no-data-content").show();
+			$(".periphery-content").hide();
+
+			$(".no-data-btn").on("click", function () {
+				window.location.reload(true);
+			});
+
 		}
-		var datas = {
-			list: data.specilTypeList
-		};
-		var html = template('renderDom', datas);
-		$("#content-div").html(html);
-		layoutInit();
 	};
 
 	function getImgAjax() {
