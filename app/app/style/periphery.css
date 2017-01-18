@@ -34,11 +34,10 @@ body {
     body .no-data-content .no-data-btn {
       font-size: 12px;
       color: #d12f38;
-      background-image: url(../image/wuwang_btn.png);
-      background-repeat: no-repeat;
+      border: 1px solid d12f38;
+      border-radius: 5px;
       width: 100px;
       height: 30px;
-      background-size: cover;
       line-height: 30px;
       margin: 0 auto; }
   body .hidden-div-cls {
