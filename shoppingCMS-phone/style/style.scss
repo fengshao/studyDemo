@@ -34,6 +34,7 @@ body {
 	//设计师推荐位样式
 	.designers-recommend {
 	  .designers-recommend-content {
+
 		height: 200px;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
@@ -136,7 +137,74 @@ body {
 
 	//商品区样式
 	.commodity-content {
-	  
+	  .commodity-content-list {
+		float: left;
+
+		.commodity-desc-content {
+		  .commodity-bg-img {
+		  }
+		  .commodity-desc-img {
+		  }
+		}
+
+	  }
+	  .commodity-content-list-cls {
+
+		margin: 50px 45px 30px 45px;
+		background-color: #00D0BC;
+		float: left;
+
+		a {
+		  float: left;
+		}
+
+		.commodity-content-list-div {
+		  .commodity-img {
+			width: 120px;
+			height: 120px;
+			float: left;
+			background-color: red;
+		  }
+		  .commodity-information {
+			float: right;
+			margin-right: 9px;
+			text-align: right;
+
+			label {
+			  display: block;
+			}
+
+			.commodity-information-name {
+			  font-size: 16px;
+			  color: #000000;
+			}
+
+			.commodity-information-description {
+			  font-size: 11px;
+			  color: #969696;
+			}
+
+			.commodity-information-original-price {
+			  font-size: 11px;
+			  color: #646464;
+			}
+			.commodity-information-price-label {
+
+			  .commodity-information-price-desc {
+				font-size: 11px;
+				color: #ff2841;
+			  }
+			  .commodity-information-price {
+				font-size: 19px;
+				color: #ff2841;
+			  }
+			}
+
+		  }
+
+		}
+	  }
+
 	}
 
 	a {

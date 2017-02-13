@@ -263,7 +263,7 @@ $(function () {
 		"is_include_desc": "1",
 		"title": "这特么又是个啥",
 		"title_color": "231",
-		"description": "楼上是假的我才是商品描述描述描述",
+		"description": "楼上是假的我才是商品描述描述描",
 		"description_color": "red",
 		"original_price": "原价：¥145.58",
 		"original_price_color": "#00ff22",
@@ -353,7 +353,10 @@ $(function () {
 		};
 		var html = template('renderCommodityDom', datas);
 		$(".commodity-content").html(html);
-		$(".bg_goods")("background-image", 'url("' + designersBg.img3 + '")');
+		$(".bg_goods").css("background-image", 'url("' + designersBg.img3 + '")');
+		$(".commodity-content-list-cls").css("width", parms.cliWH - 90);
+		$(".commodity-img").css("width", (parms.cliWH - 90) * (120 / 285)).css("height", (parms.cliWH - 90) * (120 / 285));
+		$(".commodity-information").css("width", (parms.cliWH - 90 ) - 9 - (parms.cliWH - 90 ) * (120 / 285));
 
 	};
 

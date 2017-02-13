@@ -114,27 +114,31 @@
 	{{each list}}
 	<div class="commodity-content-list">
 		{{if $value.is_include_desc == 1}}
-		<div class="commodity-desc-content">
-			<img class="commodity-bg-img" src="{{$value.desc_bg_pic}}">
+		<div class="commodity-desc-content" style="background: url('{{$value.desc_bg_pic}}')">
 			<img class="commodity-desc-img" src="{{$value.desc_pic}}">
 		</div>
 		{{/if}}
-		<a href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
-			<div class="commodity-content-list-div">
-				<div class="commodity-img">
-					<img class="commodity-img" src="{{$value.pic}}">
+		<div class="commodity-content-list-cls">
+			<a href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
+				<div class="commodity-content-list-div">
+					<div class="commodity-img">
+						<img class="commodity-img" src="{{$value.pic}}">
+					</div>
+					<div class="commodity-information">
+						<label class="commodity-information-name"
+							   style="color: {{$value.title_color}}">{{$value.title}}</label>
+						<label class="commodity-information-description"
+							   style="color: {{$value.description_color}}">{{$value.description}}</label>
+						<label class="commodity-information-original-price"
+							   style="color: {{$value.original_price_color}}">{{$value.original_price}}</label>
+						<label class="commodity-information-price-label">
+							<span class="commodity-information-price-desc" style="color: {{$value.price_desc_color}}">{{$value.price_desc}}</span>
+							<span class="commodity-information-price" style="color: {{$value.price_color}}">{{$value.price}}</span>
+						</label>
+					</div>
 				</div>
-				<div class="commodity-information">
-					<label style="color: {{$value.title_color}}">{{$value.title}}</label>
-					<label style="color: {{$value.description_color}}">{{$value.description}}</label>
-					<label style="color: {{$value.original_price_color}}">{{$value.original_price}}</label>
-					<label>
-						<span style="color: {{$value.price_color}}">{{$value.price}}</span>
-						<span style="color: {{$value.price_desc_color}}">{{$value.price_desc}}</span>
-					</label>
-				</div>
-			</div>
-		</a>
+			</a>
+		</div>
 	</div>
 
 	{{/each}}
