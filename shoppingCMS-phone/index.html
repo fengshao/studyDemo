@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<title>活动页面</title>
+	<link rel="stylesheet" type="text/css"
+		  href="./style/style.css"/>
+
+	<script>
+		function aClickFnc(type) {
+			_hmt.push(['_trackEvent', type, 'click', 'code']);
+		}
+	</script>
+
+</head>
+<body>
+<div class="active-content">
+</div>
+
+<script src=./script/jquery214.min.js></script>
+<script src=./script/template.js></script>
+<script src=./script/adMin.js></script>
+<script src=./script/index.js></script>
+
+</body>
+<script id="renderDom" type="text/html">
+	<div>
+		{{if obj.isEnd}}
+		<div class="active-end-content">
+		</div>
+		{{else }}
+		<div class="banner-content">
+			{{if obj.data.banner_from == 1}}
+			<div class="banner-cls">
+				<a href="{{obj.data.activity_url}}" onClick="aClickFnc('banner_1')">
+					<img src="{{obj.data.activity_pic_banner}}">
+				</a>
+			</div>
+			{{else }}
+			<div class="designers-recommend">
+				<div class="designers-recommend-content">
+					<div class="designers-recommend-bg">
+						<div class="designers-recommend-list-content">
+							<div id="arrow-left" class="arrow-left"></div>
+							<div id="arrow-right" class="arrow-right"></div>
+							<div id="designers-recommend-list" class="designers-recommend-list"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/if}}
+		</div>
+		{{if obj.data.is_had_hb == 1}}
+		<div class="hb-content">
+			<div class="hb-content-list">
+				{{if obj.data.hb_count == 1}}
+				<div class="hb-content-only-one hb-content-list-one-cls">
+					<a href="{{obj.data.hb_1_url}}" onClick="aClickFnc('hb_1')">
+						<img src="{{obj.data.hb_1_img}}">
+					</a>
+				</div>
+
+				{{else if obj.data.hb_count ==2}}
+
+				<div class="hb-content-two-left hb-content-list-two-cls">
+					<a href="{{obj.data.hb_1_url}}" onClick="aClickFnc('hb_1')">
+						<img src="{{obj.data.hb_1_img}}">
+					</a>
+				</div>
+
+				<div class="hb-content-two-right hb-content-list-two-cls">
+					<a href="{{obj.data.hb_2_url}}" onClick="aClickFnc('hb_2')">
+						<img src="{{obj.data.hb_2_img}}">
+					</a>
+				</div>
+				{{else if obj.data.hb_count ==3}}
+
+				<div class="hb-content-three-left hb-content-list-three-cls">
+					<a href="{{obj.data.hb_1_url}}" onClick="aClickFnc('hb_1')">
+						<img src="{{obj.data.hb_1_img}}">
+					</a>
+				</div>
+
+				<div class="hb-content-three-middle hb-content-list-three-cls">
+					<a href="{{obj.data.hb_2_url}}" onClick="aClickFnc('hb_2')">
+						<img src="{{obj.data.hb_2_img}}">
+					</a>
+				</div>
+
+				<div class="hb-content-three-right hb-content-list-three-cls">
+					<a href="{{obj.data.hb_3_url}}" onClick="aClickFnc('hb_3')">
+						<img src="{{obj.data.hb_3_img}}">
+					</a>
+				</div>
+
+				{{/if}}
+
+			</div>
+			<div class="hb-separate">
+				<img src="{{obj.data.bg_separate}}">
+			</div>
+		</div>
+		{{/if}}
+		<div class="commodity-content">
+		</div>
+		{{/if}}
+	</div>
+</script>
+<script id="renderCommodityDom" type="text/html">
+	{{each list}}
+	<div class="commodity-content-list">
+		{{if $value.is_include_desc == 1}}
+		<div class="commodity-desc-content">
+			<img class="commodity-bg-img" src="{{$value.desc_bg_pic}}">
+			<img class="commodity-desc-img" src="{{$value.desc_pic}}">
+		</div>
+		{{/if}}
+		<a href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
+			<div class="commodity-content-list-div">
+				<div class="commodity-img">
+					<img class="commodity-img" src="{{$value.pic}}">
+				</div>
+				<div class="commodity-information">
+					<label style="color: {{$value.title_color}}">{{$value.title}}</label>
+					<label style="color: {{$value.description_color}}">{{$value.description}}</label>
+					<label style="color: {{$value.original_price_color}}">{{$value.original_price}}</label>
+					<label>
+						<span style="color: {{$value.price_color}}">{{$value.price}}</span>
+						<span style="color: {{$value.price_desc_color}}">{{$value.price_desc}}</span>
+					</label>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	{{/each}}
+</script>
+</html>
