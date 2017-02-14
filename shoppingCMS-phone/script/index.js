@@ -244,9 +244,9 @@ $(function () {
 	var commoditysData = [{
 		"id": 213,
 		"is_include_desc": "0",
-		"title": "这特么是个啥",
+		"title": "这特么是个啥这特么是个啥这特么",
 		"title_color": "231",
-		"description": "这是商品描述描述描述",
+		"description": "这是商品描述描述描述描述描述描",
 		"description_color": "blue",
 		"original_price": "原价：¥145.58",
 		"original_price_color": "#00ff22",
@@ -273,8 +273,8 @@ $(function () {
 		"price_desc_color": "red",
 		"url": "http:\/\/www.baidu.com",
 		"pic": "\/\/devel-10016962.file.myqcloud.com\/0\/d57\/280e1\/0d577280e1a04bf57746416297dc6f48.png",
-		"desc_bg_pic": "http://devel-10016962.file.myqcloud.com/d/65a/e6809/d65a7e6809fec4d69717e3222d5d8c49.jpg",
-		"desc_pic": "http://devel-10016962.file.myqcloud.com/8/4a0/d907e/84a0dd907e50021db01f12f866c20785.jpg"
+		"desc_pic": "http://devel-10016962.file.myqcloud.com/d/65a/e6809/d65a7e6809fec4d69717e3222d5d8c49.jpg",
+		"desc_bg_pic": "http://devel-10016962.file.myqcloud.com/8/4a0/d907e/84a0dd907e50021db01f12f866c20785.jpg"
 	}];
 
 	var parms = {
@@ -354,9 +354,12 @@ $(function () {
 		var html = template('renderCommodityDom', datas);
 		$(".commodity-content").html(html);
 		$(".bg_goods").css("background-image", 'url("' + designersBg.img3 + '")');
-		$(".commodity-content-list-cls").css("width", parms.cliWH - 90);
+		$(".commodity-content-list-a").css("width", parms.cliWH - 90);
 		$(".commodity-img").css("width", (parms.cliWH - 90) * (120 / 285)).css("height", (parms.cliWH - 90) * (120 / 285));
 		$(".commodity-information").css("width", (parms.cliWH - 90 ) - 9 - (parms.cliWH - 90 ) * (120 / 285));
+		$(".commodity-desc-content").css("width", (parms.cliWH - 90 ));
+		$(".commodity-content-list-div").css("height", (parms.cliWH - 90) * (120 / 285));
+		$(".commodity-desc-img").css("width", parms.cliWH - 90 - 40);
 
 	};
 

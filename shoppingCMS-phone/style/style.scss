@@ -137,71 +137,92 @@ body {
 
 	//商品区样式
 	.commodity-content {
+	  background-color: #d12f38;
+	  float: left;
+
 	  .commodity-content-list {
 		float: left;
+		margin-bottom: 10px;
+		text-align: center;
+
+		&:last-child {
+		  margin-bottom: 0px;
+		}
 
 		.commodity-desc-content {
-		  .commodity-bg-img {
-		  }
+		  background-repeat: no-repeat;
+		  background-size: 100% 100%;
+		  margin: 0 auto 1px auto;
+
 		  .commodity-desc-img {
+			margin-top: 9px;
+			margin-bottom: 9px;
+
 		  }
 		}
 
-	  }
-	  .commodity-content-list-cls {
+		.commodity-content-list-cls {
 
-		margin: 50px 45px 30px 45px;
-		background-color: #00D0BC;
-		float: left;
-
-		a {
+		  background-color: #00D0BC;
 		  float: left;
-		}
 
-		.commodity-content-list-div {
-		  .commodity-img {
-			width: 120px;
-			height: 120px;
+		  a {
 			float: left;
-			background-color: red;
+			margin: 50px 45px 30px 45px;
 		  }
-		  .commodity-information {
-			float: right;
-			margin-right: 9px;
-			text-align: right;
 
-			label {
-			  display: block;
+		  .commodity-content-list-div {
+			overflow: hidden;
+
+			.commodity-img {
+			  width: 120px;
+			  height: 120px;
+			  float: left;
+			  background-color: red;
 			}
+			.commodity-information {
+			  float: right;
+			  margin-right: 9px;
+			  text-align: right;
+			  background-color: #ffffff;
 
-			.commodity-information-name {
-			  font-size: 16px;
-			  color: #000000;
-			}
+			  label {
+				display: block;
+			  }
 
-			.commodity-information-description {
-			  font-size: 11px;
-			  color: #969696;
-			}
+			  .commodity-information-name {
+				font-size: 16px;
+				color: #000000;
+				margin-top: 16px;
+			  }
 
-			.commodity-information-original-price {
-			  font-size: 11px;
-			  color: #646464;
-			}
-			.commodity-information-price-label {
-
-			  .commodity-information-price-desc {
+			  .commodity-information-description {
 				font-size: 11px;
-				color: #ff2841;
+				color: #969696;
+				margin-top: 5px;
+				line-height: 17px;
 			  }
-			  .commodity-information-price {
-				font-size: 19px;
-				color: #ff2841;
+
+			  .commodity-information-original-price {
+				font-size: 11px;
+				color: #646464;
+				margin-top: 16px;
 			  }
+			  .commodity-information-price-label {
+				margin-top: 12px;
+				.commodity-information-price-desc {
+				  font-size: 11px;
+				  color: #ff2841;
+				}
+				.commodity-information-price {
+				  font-size: 19px;
+				  color: #ff2841;
+				}
+			  }
+
 			}
 
 		  }
-
 		}
 	  }
 

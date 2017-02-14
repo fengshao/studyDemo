@@ -114,12 +114,12 @@
 	{{each list}}
 	<div class="commodity-content-list">
 		{{if $value.is_include_desc == 1}}
-		<div class="commodity-desc-content" style="background: url('{{$value.desc_bg_pic}}')">
+		<div class="commodity-desc-content" style="background-image: url('{{$value.desc_bg_pic}}')">
 			<img class="commodity-desc-img" src="{{$value.desc_pic}}">
 		</div>
 		{{/if}}
 		<div class="commodity-content-list-cls">
-			<a href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
+			<a class="commodity-content-list-a" href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
 				<div class="commodity-content-list-div">
 					<div class="commodity-img">
 						<img class="commodity-img" src="{{$value.pic}}">
