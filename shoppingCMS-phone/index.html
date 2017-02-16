@@ -119,7 +119,8 @@
 		</div>
 		{{/if}}
 		<div class="commodity-content-list-cls">
-			<a class="commodity-content-list-a" href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
+			<a class="commodity-content-list-a" href="{{$value.url}}"
+			   onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
 				<div class="commodity-content-list-div">
 					<div class="commodity-img">
 						<img class="commodity-img" src="{{$value.pic}}">
@@ -127,12 +128,19 @@
 					<div class="commodity-information">
 						<label class="commodity-information-name"
 							   style="color: {{$value.title_color}}">{{$value.title}}</label>
-						<label class="commodity-information-description"
-							   style="color: {{$value.description_color}}">{{$value.description}}</label>
+						<label class="commodity-information-description1"
+							   style="color: {{$value.description_color}}">{{$value.description.substring(0,10)}}</label>
+						{{if $value.description.substring(10,20).length > 0}}
+						<label class="commodity-information-description2"
+							   style="color: {{$value.description_color}}">{{$value.description.substring(10,20)}}</label>
+						{{else}}
+						<label class="commodity-information-description-zhanwei commodity-information-description2"
+							   style="color: {{$value.description_color}}">占位</label>
+						{{/if}}
 						<label class="commodity-information-original-price"
-							   style="color: {{$value.original_price_color}}">{{$value.original_price}}</label>
+							   style="color: {{$value.original_price_color}}">原价：{{$value.original_price}}</label>
 						<label class="commodity-information-price-label">
-							<span class="commodity-information-price-desc" style="color: {{$value.price_desc_color}}">{{$value.price_desc}}</span>
+							<span class="commodity-information-price-desc" style="color: {{$value.price_desc_color}}">现价:</span>
 							<span class="commodity-information-price" style="color: {{$value.price_color}}">{{$value.price}}</span>
 						</label>
 					</div>

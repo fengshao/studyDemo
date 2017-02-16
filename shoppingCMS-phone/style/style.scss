@@ -182,9 +182,10 @@ body {
 			}
 			.commodity-information {
 			  float: right;
-			  margin-right: 9px;
 			  text-align: right;
 			  background-color: #ffffff;
+			  padding-right: 9px;
+			  height: 100%;
 
 			  label {
 				display: block;
@@ -196,20 +197,30 @@ body {
 				margin-top: 16px;
 			  }
 
-			  .commodity-information-description {
-				font-size: 11px;
+			  .commodity-information-description1 {
+				font-size: 12px;
 				color: #969696;
 				margin-top: 5px;
-				line-height: 17px;
+			  }
+
+			  .commodity-information-description2 {
+				font-size: 12px;
+				color: #969696;
+				margin-top: 3px;
+			  }
+
+			  .commodity-information-description-zhanwei {
+				visibility: hidden;
 			  }
 
 			  .commodity-information-original-price {
-				font-size: 11px;
+				font-size: 12px;
 				color: #646464;
 				margin-top: 16px;
 			  }
+
 			  .commodity-information-price-label {
-				margin-top: 12px;
+				margin-top: 4px;
 				.commodity-information-price-desc {
 				  font-size: 11px;
 				  color: #ff2841;
@@ -224,6 +235,49 @@ body {
 
 		  }
 		}
+	  }
+
+	}
+
+	@media (max-width: 320px) {
+	  .commodity-information {
+
+		.commodity-information-name {
+		  font-size: 13px !important;
+		  color: #000000;
+		  margin-top: 10px !important;
+		}
+
+		.commodity-information-description1 {
+		  font-size: 10px !important;
+		  color: #969696;
+		  margin-top: 7px !important;
+		}
+
+		.commodity-information-description2 {
+		  font-size: 10px !important;
+		  color: #969696;
+		  margin-top: 2px !important;
+		}
+
+		.commodity-information-original-price {
+		  font-size: 10px !important;
+		  color: #646464;
+		  margin-top: 10px !important;
+		}
+
+		.commodity-information-price-label {
+		  margin-top: 2px !important;
+		  .commodity-information-price-desc {
+			font-size: 9px !important;
+			color: #ff2841;
+		  }
+		  .commodity-information-price {
+			font-size: 16px !important;
+			color: #ff2841;
+		  }
+		}
+
 	  }
 
 	}
