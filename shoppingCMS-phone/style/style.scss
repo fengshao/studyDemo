@@ -11,12 +11,25 @@ $designers_list_transition: 1s;
   top: 26px;
 }
 
-body {
+body, html {
+  min-height: 100%;
   margin: 0px;
   font: 1.2rem/1 Arial, Helvetica, sans-serif;
   -webkit-text-size-adjust: 100% !important;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  .return-home {
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	background-color: #d12f38;
+	bottom: 33.33%;
+	right: 0;
+	display: none;
+  }
 
   .active-content {
 
@@ -29,6 +42,8 @@ body {
 
 	img {
 	  vertical-align: middle;
+	  cursor: default !important;
+	  width: 100%;
 	}
 
 	//设计师推荐位样式
@@ -111,6 +126,7 @@ body {
 		padding-bottom: 10px;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
+		float: left;
 
 		.hb-content-only-one {
 		  margin-left: 88px;
@@ -137,7 +153,6 @@ body {
 
 	//商品区样式
 	.commodity-content {
-	  background-color: #d12f38;
 	  float: left;
 
 	  .commodity-content-list {
@@ -162,8 +177,8 @@ body {
 		}
 
 		.commodity-content-list-cls {
-
-		  background-color: #00D0BC;
+		  background-repeat: no-repeat;
+		  background-size: 100% 100%;
 		  float: left;
 
 		  a {
@@ -280,16 +295,6 @@ body {
 
 	  }
 
-	}
-
-	a {
-	  display: inline-block;
-	  height: 100%;
-	  width: 100%;
-
-	  img {
-		width: 100%;
-	  }
 	}
 
 	@-webkit-keyframes fadeIn {

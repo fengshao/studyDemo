@@ -89,13 +89,17 @@ function Advertising() {
 				for (var _ = [], D = 0; D < i.length; D++) {
 					var o = i[D]
 						, n = document.createElement("div")
-						, aElement = document.createElement("a")
 						, u = document.createElement("img");
 					n.setAttribute("class", "designers-recommend-content-div");
+
+					if (i[D].id == nowTypeID) {
+						n.setAttribute("class", "designers-recommend-content-div select");
+					}
+
+					n.setAttribute("data-id", i[D].id);
 					u.src = o.img;
-					aElement.href = o.url;
 					(function (D) {
-						aElement.onclick = function () {
+						u.onclick = function () {
 							var clickStr = "designers_recommend_" + (D + 1);
 							aClickFnc(clickStr);
 						};
@@ -105,8 +109,7 @@ function Advertising() {
 					});
 
 					_.push(u);
-					aElement.appendChild(u);
-					n.appendChild(aElement);
+					n.appendChild(u);
 
 					shelfGroupElement.appendChild(n);
 					if ((D + 1) % 3 === 0 || (iLength - D === 1 )) {
@@ -391,7 +394,7 @@ function MobileAdvertising() {
 		,
 		l.launch = function (l, type) {
 			var t = this;
-			t.n = 0,
+			t.n = index,
 				t.p = 0,
 				t.o = 0,
 				t.s = 0,
@@ -414,8 +417,11 @@ function MobileAdvertising() {
 		,
 		l.initEnvironment = function (l) {
 			var t = this;
+
+			var left = "-" + (index * 100) + "%";
+
 			t.css(l, {
-				left: "0%",
+				left: left,
 				width: 100 * t.advertiseNumber + "%",
 				height: "100%",
 				position: "absolute"
@@ -525,9 +531,12 @@ function MobileAdvertising() {
 				},
 				end: function (t) {
 					var r = +new Date - l.startPos.time;
-					0 === l.isScrolling && Number(r) > 10 && (Number(l.endPos.x) > 50 ? (l.endPos.x = 0,
-						l.pre(scrollType)) : Number(l.endPos.x) < -50 && (l.endPos.x = 0,
-						l.next(scrollType)))
+					if (l.endPos) {
+						0 === l.isScrolling && Number(r) > 10 && (Number(l.endPos.x) > 50 ? (l.endPos.x = 0,
+							l.pre(scrollType)) : Number(l.endPos.x) < -50 && (l.endPos.x = 0,
+							l.next(scrollType)))
+					}
+
 				}
 			};
 			window.addEventListener ? l.node.addEventListener("touchstart", t, !1) : window.attachEvent && l.node.attachEvent("touchstart", t)

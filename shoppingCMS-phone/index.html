@@ -12,13 +12,15 @@
 
 	<script>
 		function aClickFnc(type) {
-			_hmt.push(['_trackEvent', type, 'click', 'code']);
+//			_hmt.push(['_trackEvent', type, 'click', 'code']);
 		}
 	</script>
 
 </head>
 <body>
 <div class="active-content">
+</div>
+<div class="return-home">
 </div>
 
 <script src=./script/jquery214.min.js></script>
@@ -31,6 +33,7 @@
 	<div>
 		{{if obj.isEnd}}
 		<div class="active-end-content">
+			活动已经结束。
 		</div>
 		{{else }}
 		<div class="banner-content">
@@ -118,7 +121,7 @@
 			<img class="commodity-desc-img" src="{{$value.desc_pic}}">
 		</div>
 		{{/if}}
-		<div class="commodity-content-list-cls">
+		<div class="commodity-content-list-cls" style="background-image: url('{{goodsBgImg}}')">
 			<a class="commodity-content-list-a" href="{{$value.url}}"
 			   onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
 				<div class="commodity-content-list-div">
