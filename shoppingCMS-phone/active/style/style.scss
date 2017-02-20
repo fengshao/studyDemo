@@ -23,15 +23,43 @@ body, html {
 
   .return-home {
 	position: fixed;
-	width: 25px;
-	height: 63px;
-
-	background-color: #d12f38;
+	width: 36px;
+	height: 83px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 	bottom: 33.33%;
 	right: 0;
-	display: none;
 	border-bottom-left-radius: 4px;
 	border-top-left-radius: 4px;
+	a {
+	  height: 100%;
+	  width: 100%;
+	  display: block;
+	}
+  }
+
+  .music-btn {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+
+	img {
+	  height: 100%;
+	  width: 100%;
+	}
+
+	&.close-music-music {
+
+	  .icon-music-suspend {
+		display: block !important;
+	  }
+
+	  .icon-music-open {
+		display: none !important;
+	  }
+	}
   }
 
   .active-end-content {
@@ -54,20 +82,19 @@ body, html {
 
   }
 
+  a {
+	text-decoration: none;
+  }
+
+  img {
+	vertical-align: middle;
+	cursor: default !important;
+	width: 100%;
+  }
+
   .active-content {
 
 	font-size: 1.1rem;
-
-	a {
-	  text-decoration: none;
-
-	}
-
-	img {
-	  vertical-align: middle;
-	  cursor: default !important;
-	  width: 100%;
-	}
 
 	//设计师推荐位样式
 	.designers-recommend {
