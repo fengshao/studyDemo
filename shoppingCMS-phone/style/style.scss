@@ -23,12 +23,35 @@ body, html {
 
   .return-home {
 	position: fixed;
-	width: 40px;
-	height: 40px;
+	width: 25px;
+	height: 63px;
+
 	background-color: #d12f38;
 	bottom: 33.33%;
 	right: 0;
 	display: none;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+  }
+
+  .active-end-content {
+	display: none;
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.6);
+
+	.active-end-content-title {
+	  position: absolute;
+	  width: 300px;
+	  height: 200px;
+	  border: 1px solid #00F;
+
+	  left: 50%;
+	  top: 50%;
+	  margin: -100px 0 0 -150px;
+	}
+
   }
 
   .active-content {

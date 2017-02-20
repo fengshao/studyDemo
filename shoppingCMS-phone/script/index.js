@@ -1,7 +1,6 @@
 /**
  * Created by fengshao on 2017/2/13.
  */
-
 var activity_data = {
 	banner_from: "2",
 	activity_url: "www.baidu.com",
@@ -18,7 +17,7 @@ var activity_data = {
 	hb_3_url: "",
 	hb_3_img: "http://devel-10016962.file.myqcloud.com/8/4a0/d907e/84a0dd907e50021db01f12f866c20785.jpg",
 	bg_body: "//storage-devel.wesai.com/3/378/93031/3378c930319bba5d1ec34e71e2db32d4.jpg",
-	end_time: "2018-01-02 12:14:12"
+	end_time: "2011-01-02 12:14:12"
 };
 
 var goodstype_data = [{
@@ -440,6 +439,24 @@ var goods_data = [{
 	"desc_pic": "http://devel-10016962.file.myqcloud.com/d/65a/e6809/d65a7e6809fec4d69717e3222d5d8c49.jpg",
 	"desc_bg_pic": "http://devel-10016962.file.myqcloud.com/8/4a0/d907e/84a0dd907e50021db01f12f866c20785.jpg",
 	"type_id": 122
+}, {
+	"id": 115,
+	"is_include_desc": "1",
+	"title": "这特么又是个啥啊11",
+	"title_color": "231",
+	"description": "楼上是假的我才是",
+	"description_color": "",
+	"original_price": "¥145.58",
+	"original_price_color": "",
+	"price": "¥111.88",
+	"price_color": "",
+	"price_desc": "现价：",
+	"price_desc_color": "",
+	"url": "http:\/\/www.baidu.com",
+	"pic": "\/\/devel-10016962.file.myqcloud.com\/0\/d57\/280e1\/0d577280e1a04bf57746416297dc6f48.png",
+	"desc_pic": "http://devel-10016962.file.myqcloud.com/d/65a/e6809/d65a7e6809fec4d69717e3222d5d8c49.jpg",
+	"desc_bg_pic": "http://devel-10016962.file.myqcloud.com/8/4a0/d907e/84a0dd907e50021db01f12f866c20785.jpg",
+	"type_id": 108
 }];
 
 var nowTypeID = getQueryString("data-id");
@@ -464,6 +481,7 @@ function getNowTypeIDIndex() {
 }
 
 $(function () {
+	var goodstype_data = data.goodstype_data, activity_data = data.activity_data, goods_data = data.goods_data;
 
 	var parms = {
 		cliWH: 0,
@@ -475,40 +493,42 @@ $(function () {
 	function layoutInit() {
 		parms.cliWH = document.documentElement.clientWidth;
 		parms.cliHG = document.documentElement.clientHeight;
-
+		$(".active-end-content").css("height", parms.cliHG).css("width", parms.cliWH);
 		renderDom();
 	};
 
 	function renderDom() {
-
-
 		var nowTime = new Date().getTime();
 		var endTime = new Date(activity_data.end_time).getTime();
 		var isEnd = endTime < nowTime;
 		var datas = {
 			obj: {
-				data: activity_data,
-				isEnd: isEnd
+				data: activity_data
 			}
 		};
 		var html = template('renderDom', datas);
 		$(".active-content").html(html);
 
-		if (!isEnd) {
-			$(".return-home").show();
-			$(".designers-recommend-content").css("height", parms.cliWH / 375 * 200);
-			$("body").css("background-image", 'url("' + activity_data.bg_body + '")');
+		$(".return-home").show();
+		$(".designers-recommend-content").css("height", parms.cliWH / 375 * 200);
+		$("body").css("background-image", 'url("' + activity_data.bg_body + '")');
 
-			if (activity_data.banner_from == 2) {
-				renderDesigners();
-			}
-			if (activity_data.is_had_hb) {
-				renderHb();
-			}
+		if (activity_data.banner_from == 2) {
+			renderDesigners();
+		}
+		if (activity_data.is_had_hb) {
+			renderHb();
+		}
 
-			renderCommoditys();
+		renderCommoditys();
+
+		if (isEnd) {
+			$("body").scrollTop("0")
+			$("body").css("overflow", "hidden");
+			$(".active-end-content").show();
 		} else {
-			$(".return-home").hide();
+			$(".active-end-content").hide();
+			$("body").css("overflow", "auto");
 		}
 
 	};

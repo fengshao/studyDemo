@@ -18,10 +18,16 @@
 
 </head>
 <body>
-<div class="active-content">
+<div>
+	<div class="active-content">
+	</div>
+	<div class="return-home">
+	</div>
+	<div class="active-end-content">
+		<div class="active-end-content-title">活动已经结束。</div>
+	</div>
 </div>
-<div class="return-home">
-</div>
+
 
 <script src=./script/jquery214.min.js></script>
 <script src=./script/template.js></script>
@@ -31,11 +37,6 @@
 </body>
 <script id="renderDom" type="text/html">
 	<div>
-		{{if obj.isEnd}}
-		<div class="active-end-content">
-			活动已经结束。
-		</div>
-		{{else }}
 		<div class="banner-content">
 			{{if obj.data.banner_from == 1}}
 			<div class="banner-cls">
@@ -110,7 +111,6 @@
 		{{/if}}
 		<div class="commodity-content">
 		</div>
-		{{/if}}
 	</div>
 </script>
 <script id="renderCommodityDom" type="text/html">
