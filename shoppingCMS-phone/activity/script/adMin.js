@@ -89,15 +89,20 @@ function Advertising() {
 				for (var _ = [], D = 0; D < i.length; D++) {
 					var o = i[D]
 						, n = document.createElement("div")
+						, selectPic = document.createElement("img")
 						, u = document.createElement("img");
 					n.setAttribute("class", "designers-recommend-content-div");
+					selectPic.setAttribute("class", "select-img-cls");
+					u.setAttribute("class", "img-cls");
 
 					if (i[D].id == nowTypeID) {
 						n.setAttribute("class", "designers-recommend-content-div select");
 					}
 
 					n.setAttribute("data-id", i[D].id);
-					u.src = o.img;
+					n.setAttribute("data-index", D + 1);
+					u.src = o.pic;
+					selectPic.src = o.pic_select;
 					(function (D) {
 						u.onclick = function () {
 							var clickStr = "designers_recommend_" + (D + 1);
@@ -110,6 +115,7 @@ function Advertising() {
 
 					_.push(u);
 					n.appendChild(u);
+					n.appendChild(selectPic);
 
 					shelfGroupElement.appendChild(n);
 					if ((D + 1) % 3 === 0 || (iLength - D === 1 )) {

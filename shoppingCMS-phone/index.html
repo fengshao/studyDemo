@@ -8,11 +8,20 @@
 	<meta name="format-detection" content="telephone=no">
 	<title>活动页面</title>
 	<link rel="stylesheet" type="text/css"
-		  href="./active/style/style.css"/>
+		  href="./activity/style/style.css"/>
 
 	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?9cec8d46118debb6ccd35366cca0ff48";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<script>
 		function aClickFnc(type) {
-//			_hmt.push(['_trackEvent', type, 'click', 'code']);
+			_hmt.push(['_trackEvent', type, 'click', 'code']);
 		}
 	</script>
 
@@ -27,11 +36,16 @@
 </div>
 
 
-<script src=./active/script/data-js.js></script>
-<script src=./active/script/jquery214.min.js></script>
-<script src=./active/script/template.js></script>
-<script src=./active/script/adMin.js></script>
-<script src=./active/script/index.js></script>
+<script src=./activity/script/data-js.js></script>
+<script src=./activity/script/jquery214.min.js></script>
+<script src=./activity/script/share-util/jweixin-1.0.0.js></script>
+<script src=./activity/script/share-util/mqq.js></script>
+<script src=./activity/script/share-util/mqq.ui.js></script>
+<script src=./activity/script/share-util/MallShare.js></script>
+<script src=./activity/script/share-util/weixinapi.js></script>
+<script src=./activity/script/template.js></script>
+<script src=./activity/script/adMin.js></script>
+<script src=./activity/script/index.js></script>
 
 </body>
 <script id="returnHomeDom" type="text/html">
@@ -43,8 +57,9 @@
 </script>
 <script id="renderBgMusicDom" type="text/html">
 	<div class="music-btn" title="关闭背景音乐">
-		<img src="./active/images/open.png" class="icon-music-open"/>
-		<img src="./active/images/suspend.png" class="icon-music-suspend" style="display: none"/>
+		<img src="./activity/images/open.png" onClick="aClickFnc('close_music')" class="icon-music-open"/>
+		<img src="./activity/images/suspend.png" onClick="aClickFnc('open_music')" class="icon-music-suspend"
+			 style="display: none"/>
 	</div>
 	<div class="mp3-div">
 		<audio id="bgMusic" src="{{data}}" autoplay="autoplay" loop="loop"></audio>

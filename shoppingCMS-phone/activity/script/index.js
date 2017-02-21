@@ -10,6 +10,12 @@ var goodstype_data = data && data.goodstype_data ? data.goodstype_data : [],
 var nowTypeID = getQueryString("data-id");
 var index = getNowTypeIDIndex();
 
+
+var wxFriendsTitle = activity_data && activity_data.share_friends_title ? activity_data.share_friends_title : "更多优惠活动尽在娱票商城",
+	wxTitle = activity_data && activity_data.share_group_title ? activity_data.share_group_title : "娱票商城",
+	wxDesc = activity_data && activity_data.share_group_detail ? activity_data.share_group_detail : "更多优惠活动尽在娱票商城",
+	wxImgUrl = activity_data && activity_data.share_friends_pic ? activity_data.share_friends_pic.indexOf("http://") == 0 ? activity_data.share_friends_pic : location.protocol + activity_data.share_friends_pic : "";
+
 function getQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 	var r = window.location.search.substr(1).match(reg);
@@ -40,6 +46,7 @@ $(function () {
 		parms.cliWH = document.documentElement.clientWidth;
 		parms.cliHG = document.documentElement.clientHeight;
 		$(".active-end-content").css("height", parms.cliHG).css("width", parms.cliWH);
+
 		renderDom();
 	};
 
@@ -167,28 +174,42 @@ $(function () {
 	};
 
 	function renderCommoditys() {
-		var sss = [];
-		if (activity_data.banner_from == 2) {
-			var typeID = getQueryString("data-id") ? getQueryString("data-id") : goodstype_data[0].id;
-			goods_data.map(function (commodity, key) {
-				if (typeID == commodity.type_id) {
-					sss.push(commodity);
-				}
-			})
+		addEvent();
+		var typeID = getQueryString("data-id") ? getQueryString("data-id") : goodstype_data[0].id;
+		var element = null;
+		$(".designers-recommend-list-content .designers-recommend-content-div").each(function () {
+			if ($(this).attr("data-id") == typeID) {
+				element = $(this);
+			}
+		});
+
+		if (element) {
+			element.trigger("click");
 		} else {
-			sss = goods_data;
+			$(".designers-recommend-list-content .designers-recommend-content-div")[0].trigger("click");
 		}
 
-		var datas = {
-			list: sss,
-			clickType: "commodity_",
-			goodsBgImg: activity_data.bg_goods
-		};
-
-		var html = template('renderCommodityDom', datas);
-		$(".commodity-content").html(html);
-		layoutCommodity();
-		addEvent();
+		//var sss = [];
+		//if (activity_data.banner_from == 2) {
+		//	var typeID = getQueryString("data-id") ? getQueryString("data-id") : goodstype_data[0].id;
+		//	goods_data.map(function (commodity, key) {
+		//		if (typeID == commodity.type_id) {
+		//			sss.push(commodity);
+		//		}
+		//	})
+		//} else {
+		//	sss = goods_data;
+		//}
+		//
+		//var datas = {
+		//	list: sss,
+		//	clickType: "commodity_",
+		//	goodsBgImg: activity_data.bg_goods
+		//};
+		//
+		//var html = template('renderCommodityDom', datas);
+		//$(".commodity-content").html(html);
+		//layoutCommodity();
 	};
 
 	function layoutCommodity() {
@@ -207,6 +228,7 @@ $(function () {
 		$(".designers-recommend-content-div").on("click", function () {
 
 			var typeID = $(this).attr("data-id");
+			var index = $(this).attr("data-index");
 			$(".designers-recommend-content-div").removeClass("select");
 			$(this).addClass("select");
 			var sss = [];
@@ -218,7 +240,7 @@ $(function () {
 
 			var datas = {
 				list: sss,
-				clickType: "commodity_",
+				clickType: "commodity_" + index + "_",
 				goodsBgImg: activity_data.bg_goods
 			};
 
@@ -229,3 +251,33 @@ $(function () {
 	};
 
 });
+
+//微信分享
+var sharewx = {
+	title: wxTitle ? wxTitle : "娱票商城",
+	desc: wxDesc ? wxDesc : "更多优惠活动尽在娱票商城",
+	friend: wxFriendsTitle ? wxFriendsTitle : "更多优惠活动尽在娱票商城",
+	link: window.location.href,
+	imgUrl: wxImgUrl,
+	trigger: function (res) {
+		// alert('点击分享');
+	},
+	complete: function (res) {
+		// alert(JSON.stringify(res));
+	},
+	success: function (res) {
+		// alert('已分享');
+
+	},
+	cancel: function (res) {
+		// alert('已取消');
+	},
+	fail: function (res) {
+		// alert(JSON.stringify(res));
+	}
+};
+WeixinApi.init({
+	debug: false,
+	url: null
+});
+WeixinApi.share(sharewx);

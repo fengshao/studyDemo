@@ -144,6 +144,21 @@ body, html {
 				margin-left: 15px;
 				margin-top: 19px;
 
+				.select-img-cls {
+				  display: none;
+				}
+
+				&.select {
+
+				  .img-cls {
+					display: none;
+				  }
+
+				  .select-img-cls {
+					display: block;
+				  }
+				}
+
 				&:nth-child(1) {
 				  margin-left: 10px;
 				}
