@@ -7,7 +7,7 @@ var data = {
 		"id": 2,
 		"title": "\u5206\u4eab\u6d3b\u52a8\u540d\u79f0\u6d4b\u8bd51",
 		"start_time": "2017-01-31 15:00:43",
-		"end_time": "2017-02-25 15:00:46",
+		"end_time": "2014-02-25 15:00:46",
 		"bg_body": "\/\/storage-devel.wesai.com\/7\/996\/97e88\/7996c97e880d9cc4b6936163574aa3d2.jpg",
 		"bg_banner": "",
 		"bg_hb": "\/\/storage-devel.wesai.com\/5\/b94\/99bbf\/5b94899bbf6faee8496e656d42831b0b.jpg",
