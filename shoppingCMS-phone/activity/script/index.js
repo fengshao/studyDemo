@@ -98,9 +98,11 @@ $(function () {
 		renderCommoditys();
 
 		if (isEnd) {
-			alert("sss");
-			$("body").scrollTop("0")
 			$("body").css("overflow", "hidden");
+			//防止屏幕拖动
+			document.documentElement.addEventListener('touchmove', function (e) {
+				e.preventDefault();
+			});
 			$(".active-end-content").show();
 			$(".active-end-content .active-end-content-btn").on("click", function () {
 				window.location.href = activity_data.back_home_url;
