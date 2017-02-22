@@ -223,26 +223,32 @@ $(function () {
 	function addEvent() {
 		$(".designers-recommend-content-div").on("click", function () {
 
-			var typeID = $(this).attr("data-id");
-			var index = $(this).attr("data-index");
-			$(".designers-recommend-content-div").removeClass("select");
-			$(this).addClass("select");
-			var sss = [];
-			goods_data.map(function (commodity, key) {
-				if (typeID == commodity.type_id) {
-					sss.push(commodity);
-				}
-			})
+			if ($(this).hasClass("select")) {
+				return
+			} else {
 
-			var datas = {
-				list: sss,
-				clickType: "commodity_" + index + "_",
-				goodsBgImg: activity_data.bg_goods
-			};
+				var typeID = $(this).attr("data-id");
+				var index = $(this).attr("data-index");
+				$(".designers-recommend-content-div").removeClass("select");
+				$(this).addClass("select");
+				var sss = [];
+				goods_data.map(function (commodity, key) {
+					if (typeID == commodity.type_id) {
+						sss.push(commodity);
+					}
+				});
 
-			var html = template('renderCommodityDom', datas);
-			$(".commodity-content").html(html);
-			layoutCommodity();
+				var datas = {
+					list: sss,
+					clickType: "commodity_" + index + "_",
+					goodsBgImg: activity_data.bg_goods
+				};
+
+				var html = template('renderCommodityDom', datas);
+				$(".commodity-content").html(html);
+				layoutCommodity();
+			}
+
 		});
 	};
 
