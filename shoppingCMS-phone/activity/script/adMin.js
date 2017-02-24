@@ -95,9 +95,9 @@ function Advertising() {
 					selectPic.setAttribute("class", "select-img-cls");
 					u.setAttribute("class", "img-cls");
 
-					if (i[D].id == nowTypeID) {
-						n.setAttribute("class", "designers-recommend-content-div select");
-					}
+					//if (i[D].id == nowTypeID) {
+					//	n.setAttribute("class", "designers-recommend-content-div select");
+					//}
 
 					n.setAttribute("data-id", i[D].id);
 					n.setAttribute("data-index", D + 1);

@@ -9,6 +9,7 @@ $designers_list_transition: 1s;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   top: 26px;
+  z-index: 10;
 }
 
 body, html {
@@ -187,9 +188,6 @@ body, html {
 
 				&:nth-child(1) {
 				  margin-left: 10px;
-				}
-				&:last-child {
-				  margin-right: 10px;
 				}
 			  }
 			}
