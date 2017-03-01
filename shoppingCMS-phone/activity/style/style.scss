@@ -123,6 +123,14 @@ body, html {
 
 	font-size: 1.1rem;
 
+	.banner-cls {
+	  width: 100%;
+	  a {
+		display: inline-block;
+		width: 100%;
+	  }
+	}
+
 	//设计师推荐位样式
 	.designers-recommend {
 	  .designers-recommend-content {
@@ -290,6 +298,7 @@ body, html {
 			  background-color: #ffffff;
 			  padding-right: 9px;
 			  height: 100%;
+			  position: relative;
 
 			  label {
 				display: block;
@@ -298,7 +307,7 @@ body, html {
 			  .commodity-information-name {
 				font-size: 16px;
 				color: #000000;
-				margin-top: 16px;
+				margin-top: 14px;
 			  }
 
 			  .commodity-information-description1 {
@@ -316,22 +325,26 @@ body, html {
 			  .commodity-information-description-zhanwei {
 				visibility: hidden;
 			  }
+			  .commodity-price-content {
+				position: absolute;
+				right: 9px;
+				bottom: 5px;
 
-			  .commodity-information-original-price {
-				font-size: 12px;
-				color: #646464;
-				margin-top: 16px;
-			  }
-
-			  .commodity-information-price-label {
-				margin-top: 4px;
-				.commodity-information-price-desc {
-				  font-size: 11px;
-				  color: #ff2841;
+				.commodity-information-original-price {
+				  font-size: 12px;
+				  color: #646464;
 				}
-				.commodity-information-price {
-				  font-size: 19px;
-				  color: #ff2841;
+
+				.commodity-information-price-label {
+				  margin-top: 2px;
+				  .commodity-information-price-desc {
+					font-size: 12px;
+					color: #ff2841;
+				  }
+				  .commodity-information-price {
+					font-size: 19px;
+					color: #ff2841;
+				  }
 				}
 			  }
 
@@ -373,7 +386,7 @@ body, html {
 		.commodity-information-price-label {
 		  margin-top: 2px !important;
 		  .commodity-information-price-desc {
-			font-size: 9px !important;
+			font-size: 10px !important;
 			color: #ff2841;
 		  }
 		  .commodity-information-price {

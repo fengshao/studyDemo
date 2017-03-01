@@ -167,19 +167,21 @@
 						<label class="commodity-information-name"
 							   style="color: {{$value.title_color}}">{{$value.title}}</label>
 						<label class="commodity-information-description1"
-							   style="color: {{$value.description_color}}">{{$value.description.substring(0,10)}}</label>
-						{{if $value.description.substring(10,20).length > 0}}
+							   style="color: {{$value.description_color}}">{{$value.description.substring(0,8)}}</label>
+						{{if $value.description.substring(8,15).length > 0}}
 						<label class="commodity-information-description2"
-							   style="color: {{$value.description_color}}">{{$value.description.substring(10,20)}}</label>
+							   style="color: {{$value.description_color}}">{{$value.description.substring(8,15)}}</label>
 						{{else}}
 						<label class="commodity-information-description-zhanwei commodity-information-description2"
 							   style="color: {{$value.description_color}}">占位</label>
 						{{/if}}
-						<label class="commodity-information-original-price"
-							   style="color: {{$value.original_price_color}}">原价：{{$value.original_price}}</label>
-						<label class="commodity-information-price-label">
-							<span class="commodity-information-price-desc" style="color: {{$value.price_desc_color}}">现价:</span>
-							<span class="commodity-information-price" style="color: {{$value.price_color}}">{{$value.price}}</span>
+						<label class="commodity-price-content">
+							<label class="commodity-information-original-price"
+								   style="color: {{$value.original_price_color}}">原价：{{$value.original_price}}</label>
+							<label class="commodity-information-price-label">
+								<span class="commodity-information-price-desc" style="color: {{$value.price_desc_color}}">现价:</span>
+								<span class="commodity-information-price" style="color: {{$value.price_color}}">{{$value.price}}</span>
+							</label>
 						</label>
 					</div>
 				</div>
