@@ -8,8 +8,17 @@
 	<meta name="format-detection" content="telephone=no">
 	<title>活动页面</title>
 	<link rel="stylesheet" type="text/css"
-		  href="./style/style.css"/>
+		  href="./activity/style/style.css"/>
 
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?9cec8d46118debb6ccd35366cca0ff48";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
 	<script>
 		function aClickFnc(type) {
 			_hmt.push(['_trackEvent', type, 'click', 'code']);
@@ -18,26 +27,56 @@
 
 </head>
 <body>
-<div class="active-content">
+<div class="content">
+	<div class="active-content">
+	</div>
+	<div class="active-end-content">
+		<div class="active-end-content-cls">
+			<img src="./activity/images/logo.png"/>
+			<div class="active-end-content-title">活动已结束</div>
+			<div class="active-end-content-title">欢迎返回商城首页查看更多活动</div>
+			<div class="active-end-content-btn">返回商城</div>
+		</div>
+	</div>
 </div>
 
-<script src=./script/jquery214.min.js></script>
-<script src=./script/template.js></script>
-<script src=./script/adMin.js></script>
-<script src=./script/index.js></script>
+
+<script src=./activity/script/data-js.js></script>
+<script src=./activity/script/jquery214.min.js></script>
+<script src=./activity/script/share-util/jweixin-1.0.0.js></script>
+<script src=./activity/script/share-util/mqq.js></script>
+<script src=./activity/script/share-util/mqq.ui.js></script>
+<script src=./activity/script/share-util/MallShare.js></script>
+<script src=./activity/script/share-util/weixinapi.js></script>
+<script src=./activity/script/template.js></script>
+<script src=./activity/script/adMin.js></script>
+<script src=./activity/script/index.js></script>
 
 </body>
+<script id="returnHomeDom" type="text/html">
+	<div class="return-home">
+		<a href="{{data.back_home_url}}" onClick="aClickFnc('back_home_1')">
+			<img src="{{data.back_home_bg}}">
+		</a>
+	</div>
+</script>
+<script id="renderBgMusicDom" type="text/html">
+	<div class="music-btn" title="关闭背景音乐">
+		<img src="./activity/images/open.png" onClick="aClickFnc('close_music')" class="icon-music-open"/>
+		<img src="./activity/images/suspend.png" onClick="aClickFnc('open_music')" class="icon-music-suspend"
+			 style="display: none"/>
+	</div>
+	<div class="mp3-div">
+		<audio id="bgMusic" src="{{data}}" autoplay="autoplay" loop="loop"></audio>
+	</div>
+</script>
 <script id="renderDom" type="text/html">
 	<div>
-		{{if obj.isEnd}}
-		<div class="active-end-content">
-		</div>
-		{{else }}
 		<div class="banner-content">
-			{{if obj.data.banner_from == 1}}
+			{{if data.banner_from == 1}}
 			<div class="banner-cls">
-				<a href="{{obj.data.activity_url}}" onClick="aClickFnc('banner_1')">
-					<img src="{{obj.data.activity_pic_banner}}">
+				<a href="{{data.activity_url}}" onClick="aClickFnc('banner_1')">
+					<img src="{{data.activity_pic_banner}}">
 				</a>
 			</div>
 			{{else }}
@@ -54,46 +93,46 @@
 			</div>
 			{{/if}}
 		</div>
-		{{if obj.data.is_had_hb == 1}}
+		{{if data.is_had_hb == 1}}
 		<div class="hb-content">
 			<div class="hb-content-list">
-				{{if obj.data.hb_count == 1}}
+				{{if data.hb_count == 1}}
 				<div class="hb-content-only-one hb-content-list-one-cls">
-					<a href="{{obj.data.hb_1_url}}" onClick="aClickFnc('hb_1')">
-						<img src="{{obj.data.hb_1_img}}">
+					<a href="{{data.hb_1_url}}" onClick="aClickFnc('hb_1')">
+						<img src="{{data.hb_1_img}}">
 					</a>
 				</div>
 
-				{{else if obj.data.hb_count ==2}}
+				{{else if data.hb_count ==2}}
 
 				<div class="hb-content-two-left hb-content-list-two-cls">
-					<a href="{{obj.data.hb_1_url}}" onClick="aClickFnc('hb_1')">
-						<img src="{{obj.data.hb_1_img}}">
+					<a href="{{data.hb_1_url}}" onClick="aClickFnc('hb_1')">
+						<img src="{{data.hb_1_img}}">
 					</a>
 				</div>
 
 				<div class="hb-content-two-right hb-content-list-two-cls">
-					<a href="{{obj.data.hb_2_url}}" onClick="aClickFnc('hb_2')">
-						<img src="{{obj.data.hb_2_img}}">
+					<a href="{{data.hb_2_url}}" onClick="aClickFnc('hb_2')">
+						<img src="{{data.hb_2_img}}">
 					</a>
 				</div>
-				{{else if obj.data.hb_count ==3}}
+				{{else if data.hb_count ==3}}
 
 				<div class="hb-content-three-left hb-content-list-three-cls">
-					<a href="{{obj.data.hb_1_url}}" onClick="aClickFnc('hb_1')">
-						<img src="{{obj.data.hb_1_img}}">
+					<a href="{{data.hb_1_url}}" onClick="aClickFnc('hb_1')">
+						<img src="{{data.hb_1_img}}">
 					</a>
 				</div>
 
 				<div class="hb-content-three-middle hb-content-list-three-cls">
-					<a href="{{obj.data.hb_2_url}}" onClick="aClickFnc('hb_2')">
-						<img src="{{obj.data.hb_2_img}}">
+					<a href="{{data.hb_2_url}}" onClick="aClickFnc('hb_2')">
+						<img src="{{data.hb_2_img}}">
 					</a>
 				</div>
 
 				<div class="hb-content-three-right hb-content-list-three-cls">
-					<a href="{{obj.data.hb_3_url}}" onClick="aClickFnc('hb_3')">
-						<img src="{{obj.data.hb_3_img}}">
+					<a href="{{data.hb_3_url}}" onClick="aClickFnc('hb_3')">
+						<img src="{{data.hb_3_img}}">
 					</a>
 				</div>
 
@@ -101,25 +140,25 @@
 
 			</div>
 			<div class="hb-separate">
-				<img src="{{obj.data.bg_separate}}">
+				<img src="{{data.bg_separate}}">
 			</div>
 		</div>
 		{{/if}}
 		<div class="commodity-content">
 		</div>
-		{{/if}}
 	</div>
 </script>
 <script id="renderCommodityDom" type="text/html">
 	{{each list}}
 	<div class="commodity-content-list">
 		{{if $value.is_include_desc == 1}}
-		<div class="commodity-desc-content" style="background: url('{{$value.desc_bg_pic}}')">
+		<div class="commodity-desc-content" style="background-image: url('{{$value.desc_bg_pic}}')">
 			<img class="commodity-desc-img" src="{{$value.desc_pic}}">
 		</div>
 		{{/if}}
-		<div class="commodity-content-list-cls">
-			<a href="{{$value.url}}" onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
+		<div class="commodity-content-list-cls" style="background-image: url('{{goodsBgImg}}')">
+			<a class="commodity-content-list-a" href="{{$value.url}}"
+			   onClick="aClickFnc('{{clickType}}{{$index + 1}}')">
 				<div class="commodity-content-list-div">
 					<div class="commodity-img">
 						<img class="commodity-img" src="{{$value.pic}}">
@@ -127,13 +166,22 @@
 					<div class="commodity-information">
 						<label class="commodity-information-name"
 							   style="color: {{$value.title_color}}">{{$value.title}}</label>
-						<label class="commodity-information-description"
-							   style="color: {{$value.description_color}}">{{$value.description}}</label>
-						<label class="commodity-information-original-price"
-							   style="color: {{$value.original_price_color}}">{{$value.original_price}}</label>
-						<label class="commodity-information-price-label">
-							<span class="commodity-information-price-desc" style="color: {{$value.price_desc_color}}">{{$value.price_desc}}</span>
-							<span class="commodity-information-price" style="color: {{$value.price_color}}">{{$value.price}}</span>
+						<label class="commodity-information-description1"
+							   style="color: {{$value.description_color}}">{{$value.description.substring(0,8)}}</label>
+						{{if $value.description.substring(8,15).length > 0}}
+						<label class="commodity-information-description2"
+							   style="color: {{$value.description_color}}">{{$value.description.substring(8,15)}}</label>
+						{{else}}
+						<label class="commodity-information-description-zhanwei commodity-information-description2"
+							   style="color: {{$value.description_color}}">占位</label>
+						{{/if}}
+						<label class="commodity-price-content">
+							<label class="commodity-information-original-price"
+								   style="color: {{$value.original_price_color}}">原价：{{$value.original_price}}</label>
+							<label class="commodity-information-price-label">
+								<span class="commodity-information-price-desc" style="color: {{$value.price_desc_color}}">现价:</span>
+								<span class="commodity-information-price" style="color: {{$value.price_color}}">{{$value.price}}</span>
+							</label>
 						</label>
 					</div>
 				</div>
