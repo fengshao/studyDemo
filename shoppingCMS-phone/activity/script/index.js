@@ -6,10 +6,9 @@ var goodstype_data = data && data.goodstype_data ? data.goodstype_data : [],
 	activity_data = data && data.activity_data ? data.activity_data : [],
 	goods_data = data && data.goods_data ? data.goods_data : [],
 	designersBg = data && data.designersBg_data[0] ? data.designersBg_data[0] : {};
-
+document.title = activity_data.title;
 var nowTypeID = getQueryString("data-id");
 var index = getNowTypeIDIndex();
-
 
 var wxFriendsTitle = activity_data && activity_data.share_friends_title ? activity_data.share_friends_title : "更多优惠活动尽在娱票商城",
 	wxTitle = activity_data && activity_data.share_group_title ? activity_data.share_group_title : "娱票商城",
