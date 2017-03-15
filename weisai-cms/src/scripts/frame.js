@@ -1,31 +1,74 @@
-import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+var Router = require("react-router").Router;
+var hashHistory = require("react-router").hashHistory;
+//import React, { Component } from 'react';
+//import {Router, hashHistory} from 'react-router';
+//import App from 'scripts/left-menu';
+import PublicAjax from '../ajax/public-ajax';
+function init() {
 
-import App from 'scripts/app';
-import BrandSetting from 'scripts/brand-setting/brand-setting';
-import MainActivity from 'scripts/main-activity/main-activity';
-import WorthBuying from 'scripts/worth-buying/worth-buying';
-import FirstProduct from 'scripts/first-product/first-product';
-import Special from 'scripts/special/special';
-import NoMatch from 'scripts/nomatch';
+	var childRoutes = [];
+	var objData = PublicAjax.getRouteData();
+	var data = objData ? objData.data : "";
 
-let Frame = React.createClass({
-	render: function () {
-		return (
-			<div>
-				<Router history={hashHistory}>
-					<Route path="/" component={App}>
-						<IndexRoute component={BrandSetting}/>
-						<Route path="brand_setting" component={BrandSetting}/>
-						<Route path="main_activity" component={MainActivity}/>
-						<Route path="worth_buying" component={WorthBuying}/>
-						<Route path="first_product" component={FirstProduct}/>
-						<Route path="special" component={Special}/>
-						<Route path="*" component={NoMatch}/>
-					</Route>
-				</Router>
-			</div>
-		);
+	_.each(data, function (module) {
+		switch (module.route_path) {
+			//品牌列表
+			case 'brand_setting':
+				childRoutes.push(require("./brand-setting"));
+				break;
+			//主打活动
+			case 'main_activity':
+				childRoutes.push(require("./main-activity"));
+				break;
+			//值得买
+			case 'worth_buying':
+				childRoutes.push(require("./worth-buying"));
+				break;
+			//最鲜品
+			case 'first_product':
+				childRoutes.push(require("./first-product"));
+				break;
+			//专题列表
+			case 'special':
+				childRoutes.push(require("./special"));
+				break;
+			//搭配志
+			case 'fashion':
+				childRoutes.push(require("./fashion"));
+				break;
+			//设计师推荐
+			case 'designers_recommend':
+				childRoutes.push(require("./designers-recommend-bgimg"));
+				break;
+		}
+	});
+
+	childRoutes.push(require("./special-type-list"));
+	if (window.sessionStorage.getItem("user_role") == 1) {
+		childRoutes.push(require("./share-edit"));
+		childRoutes.push(require("../sources/share-activities"));
 	}
-});
+	childRoutes.push(require("./operate-log"));
 
-module.exports = Frame;
+	childRoutes.push({
+		path: '*',
+		components: require("./nomatch")
+	});
+
+	var rootRoute = {
+		component: 'div',
+		childRoutes: [{
+			path: '/',
+			component: require("./left-menu"),
+			childRoutes: childRoutes
+		}]
+	};
+
+
+	ReactDOM.render(
+		<Router history={hashHistory} routes={rootRoute}/>,
+		$('#main')[0]
+	);
+
+}
+exports.init = init;

@@ -6,12 +6,12 @@ import {Table, Icon, Button, message, Popconfirm} from 'antd';
 var TableComponent = React.createClass({
 	getInitialState: function () {
 		return {
-			tableHeight: $(window).height() - 56 - 30 - 130 - 80
+			tableHeight: $(window).height() - 56 - 30 - 130 - 80 - ( this.props.topNavHeight ? this.props.topNavHeight : 0)
 		}
 	},
 
 	resizeWindow: function () {
-		var tableHeight = $(window).height() - 56 - 30 - 130 - 80;
+		var tableHeight = $(window).height() - 56 - 30 - 130 - 80 - 60 - ( this.props.topNavHeight ? this.props.topNavHeight : 0)
 		this.setState({
 			tableHeight: tableHeight
 		});
@@ -28,6 +28,7 @@ var TableComponent = React.createClass({
 
 	getTableColumns: function () {
 		var _this = this;
+		var user_role = window.sessionStorage.getItem("user_role");
 		var columns = [
 			{
 				title: 'ID',
@@ -45,14 +46,14 @@ var TableComponent = React.createClass({
 				key: 'title_key'
 			},
 			{
-				title: '链接',
-				dataIndex: 'url',
+				title: user_role == 1 ? '微信链接' : 'APP链接',
+				dataIndex: user_role == 1 ? 'url_wechat' : 'url_app',
 				width: '22%',
 				key: 'url_key'
 			},
 			{
 				title: '专题封面',
-				dataIndex: 'img',
+				dataIndex: 'img_wechat',
 				width: '18%',
 				key: 'img_key',
 				render: function (rowData) {
@@ -88,7 +89,7 @@ var TableComponent = React.createClass({
 
 	getPagination: function () {
 		return {
-			total: this.props.tableData.length,
+			total: this.props.tableData ? this.props.tableData.length : 0,
 			showTotal: total => `共 ${total} 条`,
 			defaultCurrent: 1,
 			pageSize: 10,
@@ -116,7 +117,6 @@ var TableComponent = React.createClass({
 		var data = this.props.tableData;
 		var tableHeight = this.state.tableHeight;
 		var title = this.titleElement();
-
 		return (
 			<Table title={() => title} bordered columns={columns} dataSource={data} pagination={pagination}
 				   scroll={{ y: tableHeight }}/>

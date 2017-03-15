@@ -1,9 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
-
+var CleanPlugin = require('clean-webpack-plugin'); //清理文件夹
 //打包模式
 var webpackMode = 'dev';
-
 if (process.argv.indexOf('p') >= 0
 	||
 	process.argv.indexOf('-p') >= 0
@@ -29,28 +28,61 @@ if (webpackMode !== 'production') {
 	);
 }
 
+//插件
+var pluginLists = [
+	new webpack.optimize.OccurenceOrderPlugin(),
+	new webpack.NoErrorsPlugin(),
+	new webpack.ProvidePlugin({
+		React: 'react',
+		ReactDOM: 'react-dom',
+		$: 'jquery',
+		jQuery: 'jquery',
+		'window.jQuery': 'jquery',
+		'_': 'underscore'
+	}),
+	new webpack.optimize.CommonsChunkPlugin({
+		name: 'vendor',
+		filename: 'vendor.js'
+	})
+];
+//热替换插件
+if (webpackMode !== 'production') {
+	pluginLists.push(new webpack.HotModuleReplacementPlugin());
+}
+//压缩混淆插件
+if (webpackMode === 'production') {
+	pluginLists.push(new webpack.optimize.UglifyJsPlugin({
+		test: /(\.jsx|\.js)$/,
+		compress: {
+			warnings: false
+		}
+	}));
+
+	pluginLists.push(new CleanPlugin(['dist'], {
+		"root": path.resolve(__dirname, ''),
+		verbose: true,
+		dry: false
+	}));
+}
+
+var webpackOutPublicPath = webpackMode == "production" ? '/shoppingCMS/dist/' : "/dist/";
 module.exports = {
 	devtool: '#cheap-module-source-map',
+	devServer: {
+		host: '0.0.0.0'
+	},
 	entry: {
 		login: devEntry.concat('./src/login'),
-		home: devEntry.concat('./src/home')
+		home: devEntry.concat('./src/home'),
+		vendor: ['react']
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
 		filename: '[name].bundle.js',
-		publicPath: '/dist/'
+		chunkFilename: '[id].[name].[hash].[chunkhash].js',
+		publicPath: webpackOutPublicPath
 	},
-	plugins: [
-		new webpack.ProvidePlugin({
-			React: 'react',
-			ReactDOM: 'react-dom',
-			$: 'jquery',
-			jQuery: 'jquery',
-			'window.jQuery': 'jquery',
-			'_': 'underscore'
-		}),
-		new webpack.HotModuleReplacementPlugin()
-	],
+	plugins: pluginLists,
 	resolve: {
 		extensions: ['', '.js', '.jsx'],
 		root: [

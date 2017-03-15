@@ -16,35 +16,43 @@ let Demo = React.createClass({
 
 	loginFnc: function (loginData) {
 		var locationHref = window.location.href.split("#")[0];
-		var url = "http://han.wesai.com/api/userLogin";
+		var url = "//topics-cms.intra.wesai.com/api/login";
 
 		if (locationHref.indexOf("devel") != -1) {
-			url = "http://han.devel.wesai.com/api/userLogin";
+			url = "//topics-cms.devel.wesai.com/api/login";
 		} else if (locationHref.indexOf("test") != -1) {
-			url = "http://han.test.wesai.com/api/userLogin";
+			url = "//topics-cms.test.wesai.com/api/login";
+		} else if (locationHref.indexOf("127.0.0.1") != -1) {
+			//url = "//topics-cms.mjd.wesai.com/api/login";
+			url = "//periphery.devel.wesai.com/api/login";
 		}
 		const hide = message.loading('正在登录，请稍后...', 0);
 		$.ajax({
 			"type": "post",
+
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain: true,
 			"data": loginData,
 			"url": url,
 			"success": function (data) {
 				hide();
-				if (data.error == 0) {
+				if (data.code == 0) {
 					window.sessionStorage.setItem("username", loginData.name);
-					window.sessionStorage.setItem("user", data.user);
+					window.sessionStorage.setItem("user_role", data.data.user_role);
 					const hide = message.loading('登录成功，正在跳转...', 0);
 					setTimeout(function () {
 						hide();
-						window.location.href = '/home.html';
+						window.location.href = '/local_home.html';
 					}, 2500);
 				} else {
-					message.error(data.message ? data.message : "登录失败，请重试");
+					message.error(data.detail ? data.detail : "登录失败，请重试");
 				}
 			},
 			"error": function (data) {
 				hide();
-				message.error(data.message ? data.message : "登录失败，请重试");
+				message.error(data.detail ? data.detail : "登录失败，请重试");
 			}
 		});
 	},

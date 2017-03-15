@@ -13,8 +13,14 @@ var NeedLogin = require("component/needLogin");
 var PublicAjax = require("./ajax/public-ajax");
 
 PublicAjax.userIsLogin().then(function (data) {
-	if (data === 0) {
-		ReactDOM.render(<Frame />, $('#main')[0]);
+	if (data && (data.user_role == 1 || data.user_role == 3)) {
+		window.sessionStorage.setItem("user_role", data.user_role);
+		window.sessionStorage.setItem("username", data.user_name);
+		PublicAjax.getUserDataByAjax(data.user_role).done(function () {
+			Frame.init();
+		}).fail(function () {
+		});
+
 	} else {
 		ReactDOM.render(<NeedLogin />, $('#main')[0]);
 	}

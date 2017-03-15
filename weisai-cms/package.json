@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "weisai cms project",
   "scripts": {
-    "start": "webpack-dev-server --port 3001"
+    "start": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --port 3001",
+    "startbuild": "webpack -p --progress "
   },
   "repository": {
     "type": "git"
@@ -28,15 +29,18 @@
     "style-loader": "0.13.0",
     "url-loader": "0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "clean-webpack-plugin": "^0.1.9"
   },
   "dependencies": {
     "alt": "0.17.9",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "classnames": "2.2.5",
     "jquery": "2.2.1",
     "underscore": "1.8.3",
     "antd": "1.11.1",
-    "react-router": "2.8.1"
+    "react-router": "2.8.1",
+    "react-copy-button-wrapper": "^0.0.3"
   }
 }

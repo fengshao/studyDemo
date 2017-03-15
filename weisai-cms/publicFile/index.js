@@ -3,3 +3,4 @@
  */
 var Alt = require("alt");
 window.alt = new Alt();
+window.altApp = new Alt();

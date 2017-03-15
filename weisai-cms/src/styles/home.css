@@ -1,7 +1,46 @@
 body {
   background: lightblue;
-  overflow: hidden;
+  overflow: auto;
   font-size: 16px; }
+  body .model-commodity-cls {
+    margin-left: 8px !important; }
+  body .rightContent_content {
+    margin-top: -20px; }
+  body .topNav {
+    position: relative;
+    z-index: 11;
+    top: 0;
+    right: 0;
+    height: 50px;
+    background: #fff;
+    padding-left: 30px; }
+    body .topNav:before {
+      content: " ";
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+      border-bottom: 2px dotted #edf1f2; }
+    body .topNav ul.topnav-links {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 50px; }
+      body .topNav ul.topnav-links li {
+        padding: 0 20px;
+        position: relative;
+        float: left; }
+        body .topNav ul.topnav-links li a {
+          font-size: 14px;
+          display: block;
+          color: #b6c2c9;
+          outline: none; }
+          body .topNav ul.topnav-links li a.active {
+            color: #4d96d1; }
+      body .topNav ul.topnav-links .topNav-menu-item-selected {
+        border-bottom: 2px solid transparent;
+        color: #4d96d1; }
+        body .topNav ul.topnav-links .topNav-menu-item-selected a {
+          color: #4d96d1; }
   body .need-login-div {
     position: absolute;
     height: 100%;
@@ -18,10 +57,27 @@ body {
       right: 0;
       font-size: 16px; }
   body .upload-img {
-    display: inherit !important; }
+    display: inherit !important;
+    width: 70% !important;
+    padding: 2px 7px; }
+  body .upload-btn {
+    float: right; }
   body .preview-img {
-    max-width: 100%;
+    max-width: 57%;
     max-height: 400px; }
+  body .all-preview-img {
+    position: absolute;
+    left: 0; }
+  body .arrow-left {
+    left: 4%;
+    width: 27px;
+    position: absolute;
+    top: 36%; }
+  body .arrow-right {
+    left: 48%;
+    width: 27px;
+    position: absolute;
+    top: 36%; }
   body .top-menu-div {
     margin-top: 20px;
     margin-bottom: 10px; }
@@ -30,6 +86,8 @@ body {
       margin-left: 20px;
       font-size: 16px;
       line-height: 30px; }
+      body .top-menu-div .login-welcome .top-left-cls {
+        float: left; }
       body .top-menu-div .login-welcome label.usernam-label {
         font-size: 16px;
         color: #c3bbbb;
@@ -57,6 +115,14 @@ body {
       border: 0px !important; }
       body .right-content .ant-table-title .ant-btn {
         margin-left: 20px; }
+      body .right-content .ant-table-title .range-picker-span {
+        margin-left: 10px; }
+      body .right-content .ant-table-title .ant-search-input-wrapper {
+        margin-left: 10px; }
+        body .right-content .ant-table-title .ant-search-input-wrapper .ant-input-group-wrap .ant-search-btn {
+          height: 26px; }
+    body .right-content .designers-bg-btn {
+      margin-top: 10px; }
     body .right-content tr th {
       text-align: center; }
     body .right-content tr td {
@@ -64,9 +130,116 @@ body {
       body .right-content tr td img {
         height: 100px;
         width: 100%; }
+    body .right-content .operate-log-div .operate-td {
+      text-align: left;
+      padding-left: 20px;
+      padding-right: 20px; }
     body .right-content .td-img {
       width: 100%; }
     body .right-content .operate-btn {
       margin-right: 10px; }
+    body .right-content .active-operate-btn {
+      margin-right: 10px;
+      margin-top: 5px; }
+    body .right-content .right-content-bottom {
+      margin-top: 10px; }
+    body .right-content .share-btn {
+      float: right;
+      margin-left: 15px; }
+    body .right-content .share-message {
+      border: 1px solid #d5f1fd;
+      background-color: #eaf8fe;
+      position: relative;
+      padding: 8px 16px 8px 16px;
+      border-radius: 6px;
+      color: #666;
+      font-size: 12px;
+      line-height: 32px;
+      margin-bottom: 10px; }
+    body .right-content .fieldset-cls {
+      display: block;
+      -webkit-margin-start: 2px;
+      -webkit-margin-end: 2px;
+      -webkit-padding-before: 0.35em;
+      -webkit-padding-start: 0.75em;
+      -webkit-padding-end: 0.75em;
+      -webkit-padding-after: 0.625em;
+      min-width: -webkit-min-content;
+      border-width: 2px;
+      border-style: groove;
+      border-image: initial;
+      margin-bottom: 10px; }
+      body .right-content .fieldset-cls legend {
+        display: block;
+        -webkit-padding-start: 2px;
+        -webkit-padding-end: 2px;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        width: auto;
+        text-align: center; }
+    body .right-content .col-cls {
+      position: relative;
+      z-index: 11; }
+    body .right-content .seize-cls {
+      visibility: hidden; }
+    body .right-content .edit-form-content {
+      margin-top: 20px;
+      float: left;
+      width: 100%; }
+      body .right-content .edit-form-content form {
+        width: 100%;
+        float: left; }
+    body .right-content .sharing-activities-form {
+      padding: 10px 20px 10px 20px; }
+      body .right-content .sharing-activities-form .ant-steps-icon {
+        top: 3.5px !important; }
+      body .right-content .sharing-activities-form .anticon-check {
+        top: 6.5px !important; }
+      body .right-content .sharing-activities-form .ant-form-item {
+        float: left;
+        width: 100%; }
+    body .right-content .eq-cls {
+      color: red; }
+    body .right-content .commodity-form {
+      position: relative;
+      float: left;
+      width: 100%; }
+    body .right-content .banner-form-cls {
+      background: #cccccc;
+      width: 80%;
+      margin-left: 6%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      float: left; }
+    body .right-content .red-packets-content {
+      background: #cccccc;
+      width: 80%;
+      margin-left: 6%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      float: left; }
+    body .right-content .calendar-picker-cls .ant-calendar-picker {
+      width: 100% !important; }
+    body .right-content .goods-type-search {
+      margin-left: 10px; }
+    body .right-content .commodity-classification-cls {
+      padding-top: 20px;
+      float: left;
+      width: 100%; }
+      body .right-content .commodity-classification-cls .add-commodityClassification-btn {
+        margin-top: 5px; }
+      body .right-content .commodity-classification-cls .commodity-classification-list-content {
+        margin-top: 20px; }
+        body .right-content .commodity-classification-cls .commodity-classification-list-content .commodity-classification-list {
+          height: 30px;
+          line-height: 30px; }
+          body .right-content .commodity-classification-cls .commodity-classification-list-content .commodity-classification-list .commodity-classification-list-name {
+            float: left; }
+          body .right-content .commodity-classification-cls .commodity-classification-list-content .commodity-classification-list .commodity-classification-list-btn .ant-btn-sm {
+            margin-top: 3px;
+            margin-left: 10px; }
 
 /*# sourceMappingURL=home.css.map */
