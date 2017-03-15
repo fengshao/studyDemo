@@ -1,7 +1,6 @@
 html {
   height: 100% !important;
   width: 100% !important;
-  overflow: hidden !important;
   margin: 0px !important;
   padding: 0px !important; }
 
@@ -9,7 +8,6 @@ body {
   margin: 0px !important;
   padding: 0px !important;
   background-color: #ffffff;
-  overflow: hidden !important;
   height: 100%;
   font: 1.2rem/1 Arial, Helvetica, sans-serif;
   -webkit-text-size-adjust: 100% !important;
@@ -65,17 +63,16 @@ body {
       height: 7px;
       background-color: #f2f1f6; }
     body .periphery-content .periphery-commodity-title {
-      color: #565656;
-      padding-bottom: 15px;
-      padding-top: 15px;
-      font-weight: 200;
-      font-size: 13px;
-      padding-left: 12px;
-      text-align: left; }
+      color: #000000;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      font-size: 15px;
+      text-align: center; }
     body .periphery-content .worth-buying {
-      padding-bottom: 10px;
+      padding-bottom: 20px;
       display: inline-block;
-      width: 100%; }
+      width: 100%;
+      border-bottom: 1px solid #ececec; }
       body .periphery-content .worth-buying .worth-buying-left-div {
         margin-left: 10px; }
       body .periphery-content .worth-buying .worth-buying-content {
@@ -93,9 +90,13 @@ body {
           bottom: 0px; }
     body .periphery-content .first-product {
       display: inline-block;
-      width: 100%; }
+      width: 100%;
+      border-bottom: 1px solid #ececec; }
       body .periphery-content .first-product .first-product-content {
-        margin-left: 5px; }
+        margin-left: 3px;
+        position: relative;
+        float: left;
+        margin-bottom: 5px; }
       body .periphery-content .first-product .first-product-content-div {
         float: left;
         margin-left: 10px;
@@ -103,15 +104,41 @@ body {
     body .periphery-content .special {
       padding-bottom: 10px;
       width: 100%; }
+      body .periphery-content .special .special-title {
+        padding-bottom: 5px; }
       body .periphery-content .special .special-content-div {
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px; }
+        margin-left: 13px;
+        margin-right: 13px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        border-bottom: 1px solid #ececec; }
     body .periphery-content a {
       display: inline-block;
       height: 100%;
       width: 100%; }
       body .periphery-content a img {
-        width: 100%; }
+        width: 100%;
+        height: 100%; }
+  @media (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+      /*iphone5*/ }
+      body .periphery-content .periphery-commodity-title {
+        padding-bottom: 12px;
+        padding-top: 12px;
+        font-size: 12px; } }
+  @media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+      /*iphone6*/ }
+      body .periphery-content .periphery-commodity-title {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        font-size: 15px; } }
+  @media (device-width: 414px) and (-webkit-min-device-pixel-ratio: 3) {
+    body {
+      /*iphone6plus*/ }
+      body .periphery-content .periphery-commodity-title {
+        font-size: 17px;
+        padding-bottom: 20px;
+        padding-top: 20px; } }
 
 /*# sourceMappingURL=periphery.css.map */
