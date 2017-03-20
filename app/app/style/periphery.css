@@ -74,14 +74,14 @@ body {
       width: 100%;
       border-bottom: 1px solid #ececec; }
       body .periphery-content .worth-buying .worth-buying-left-div {
-        margin-left: 10px; }
+        margin-left: 13px; }
       body .periphery-content .worth-buying .worth-buying-content {
         position: relative;
         display: inline-block; }
       body .periphery-content .worth-buying .worth-buying-content-div {
         float: left; }
       body .periphery-content .worth-buying .worth-buying-right-div {
-        margin-left: 8px; }
+        margin-left: 10px; }
         body .periphery-content .worth-buying .worth-buying-right-div div {
           position: absolute; }
         body .periphery-content .worth-buying .worth-buying-right-div .worth-buying-right-img-div1 {
