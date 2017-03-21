@@ -29,7 +29,6 @@ $(function () {
 
 		if (data.specilTypeList && data.specilTypeList.length > 0
 			&& data.worth_buying_data && data.worth_buying_data.length > 0
-			&& data.main_activity_data && data.main_activity_data.length > 0
 			&& data.first_product_data && data.first_product_data.length > 0
 			&& data.special_data && data.special_data.length > 0) {
 			$(".periphery-content").show();
@@ -116,7 +115,7 @@ $(function () {
 			var divWidth = parms.cliWH - 20;
 
 			var datas = {
-				list: special_data,
+				list: special_data.slice(0, 6),
 				className: "special-content-div",
 				clickType: "depth_focusing_",
 				noImgUrl: parms.noImgUrl + "special.jpg?isNeedDownload=true&level=3&v=" + timestamp,
