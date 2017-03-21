@@ -115,7 +115,8 @@ $(function () {
 			var divWidth = parms.cliWH - 20;
 
 			var datas = {
-				list: special_data.slice(0, 6),
+				//list: special_data.slice(0, 6),
+				list: special_data,
 				className: "special-content-div",
 				clickType: "depth_focusing_",
 				noImgUrl: parms.noImgUrl + "special.jpg?isNeedDownload=true&level=3&v=" + timestamp,
