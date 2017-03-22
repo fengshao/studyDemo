@@ -64,12 +64,12 @@ body {
       background-color: #f2f1f6; }
     body .periphery-content .periphery-commodity-title {
       color: #000000;
-      padding-bottom: 20px;
-      padding-top: 20px;
+      padding-bottom: 15px;
+      padding-top: 15px;
       font-size: 15px;
       text-align: center; }
     body .periphery-content .worth-buying {
-      padding-bottom: 20px;
+      padding-bottom: 10px;
       display: inline-block;
       width: 100%;
       border-bottom: 1px solid #ececec; }
@@ -123,22 +123,22 @@ body {
     body {
       /*iphone5*/ }
       body .periphery-content .periphery-commodity-title {
-        padding-bottom: 12px;
-        padding-top: 12px;
+        padding-bottom: 8px;
+        padding-top: 8px;
         font-size: 12px; } }
   @media (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
     body {
       /*iphone6*/ }
       body .periphery-content .periphery-commodity-title {
-        padding-bottom: 20px;
-        padding-top: 20px;
+        padding-bottom: 15px;
+        padding-top: 15px;
         font-size: 15px; } }
   @media (device-width: 414px) and (-webkit-min-device-pixel-ratio: 3) {
     body {
       /*iphone6plus*/ }
       body .periphery-content .periphery-commodity-title {
         font-size: 17px;
-        padding-bottom: 20px;
-        padding-top: 20px; } }
+        padding-bottom: 15px;
+        padding-top: 15px; } }
 
 /*# sourceMappingURL=periphery.css.map */
