@@ -89,7 +89,7 @@ $(function () {
 
 		if (first_product_data && first_product_data.length > 0) {
 			var divWidth = (parms.cliWH - 46) / 3;
-			var divHeight = divWidth / 220 * 426;
+			var divHeight = divWidth / 219 * 402;
 
 			var datas = {
 				list: first_product_data.slice(0, 6),
