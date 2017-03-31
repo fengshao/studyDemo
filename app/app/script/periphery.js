@@ -1,6 +1,7 @@
 /**
  * Created by fengs on 2016/9/19.
  */
+
 $(function () {
 
 	var parms = {
@@ -11,8 +12,6 @@ $(function () {
 	};
 
 	renderDom();
-	//$("img").lazyload();
-
 
 	function layoutInit() {
 		parms.cliWH = document.documentElement.clientWidth;
@@ -25,22 +24,21 @@ $(function () {
 		getImgAjax();
 	};
 
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)return unescape(r[2]);
+		return null;
+	};
+
 	function renderDom() {
 
-		if (data.specilTypeList && data.specilTypeList.length > 0
-			&& data.worth_buying_data && data.worth_buying_data.length > 0
-			&& data.first_product_data && data.first_product_data.length > 0
-			&& data.special_data && data.special_data.length > 0) {
-			$(".periphery-content").show();
-			$(".no-data-content").hide();
 
-			var datas = {
-				list: data.specilTypeList
-			};
-			var html = template('renderDom', datas);
-			$("#content-div").html(html);
-			layoutInit();
-		} else {
+		if (!(data.specilTypeList && data.specilTypeList.length > 0)
+			&& !(data.worth_buying_data && data.worth_buying_data.length > 0)
+			&& !(data.first_product_data && data.first_product_data.length > 0)
+			&& !(!GetQueryString("wVersion") && data.main_activity_data && data.main_activity_data.length > 0)
+			&& !(data.special_data && data.special_data.length > 0)) {
 			$(".no-data-content").show();
 			$(".periphery-content").hide();
 
@@ -48,14 +46,34 @@ $(function () {
 				window.location.reload(true);
 			});
 
+			return
 		}
+
+		$(".periphery-content").show();
+		$(".no-data-content").hide();
+
+		var datas = {
+			list: data.specilTypeList,
+			appVersion: GetQueryString("wVersion")
+		};
+		var html = template('renderDom', datas);
+		$("#content-div").html(html);
+		layoutInit();
 	};
 
 	function getImgAjax() {
 		var worth_buying_data = data.worth_buying_data,
 			first_product_data = data.first_product_data,
 			special_data = data.special_data,
+			main_activity_data = data.main_activity_data,
 			timestamp = data.timestamp;
+
+		if (main_activity_data && main_activity_data.length > 0 && !GetQueryString("wVersion")) {
+			adObj(main_activity_data.slice(0, 6));
+		} else {
+			$(".main-activity").hide();
+		}
+
 
 		if (worth_buying_data && worth_buying_data.length > 0) {
 			parms.cliWH = document.documentElement.clientWidth;
@@ -84,7 +102,6 @@ $(function () {
 			$(".worth-buying-right-img-div1,.worth-buying-right-img-div2").css("width", rightWidth).css("height", rightHeight);
 		} else {
 			$(".worth-buying").hide();
-			$(".worth-buying").next().hide();
 		}
 
 		if (first_product_data && first_product_data.length > 0) {
@@ -107,7 +124,6 @@ $(function () {
 			$(".first-product-content-div").css("width", divWidth).css("height", divHeight);
 		} else {
 			$(".first-product").hide();
-			$(".first-product").next().hide();
 		}
 
 		if (special_data && special_data.length > 0) {

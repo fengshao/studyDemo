@@ -382,11 +382,19 @@
 <script src=./app/script/jquery214.min.js?v=1484725887></script>
 <script src=./app/script/template.js?v=1484725887></script>
 <script src=./app/script/periphery.js?v=1484725887></script>
+<script src=./app/script/adMin.js?v=1484725869></script>
 </body>
 <script id="renderDom" type="text/html">
 	<div>
 		{{each list}}
-		{{if $value.type_id == 2}}
+		{{if ($value.type_id == 1 && !appVersion)}}
+		<div class="main-activity">
+			<div id="advPanel">
+				<div id="advInner" style="display: none;"></div>
+			</div>
+		</div>
+		<div class="bg-div"></div>
+		{{else if $value.type_id == 2}}
 		<div class="worth-buying">
 			<div class="periphery-commodity-title">{{$value.type_name}}</div>
 			<div class="worth-buying-content" id="worth-buying-content"></div>
