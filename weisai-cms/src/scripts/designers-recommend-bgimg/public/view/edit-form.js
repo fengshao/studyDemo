@@ -234,7 +234,7 @@ var EditForm = React.createClass({
 		var formData = new FormData($("#leftArrowForm")[0]);
 		$.ajax({
 			method: 'post',
-			url: url,
+			url: PublicAjax.publicParms.url,
 			data: formData,
 			dataType: 'JSON',
 			cache: false,
@@ -261,7 +261,7 @@ var EditForm = React.createClass({
 		var formData = new FormData($("#rightArrowForm")[0]);
 		$.ajax({
 			method: 'post',
-			url: url,
+			url: PublicAjax.publicParms.url,
 			data: formData,
 			dataType: 'JSON',
 			cache: false,

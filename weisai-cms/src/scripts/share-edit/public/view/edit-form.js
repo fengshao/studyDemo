@@ -75,7 +75,7 @@ var EditForm = React.createClass({
 		var formData = new FormData($("#fileForm")[0]);
 		$.ajax({
 			method: 'post',
-			url: url,
+			url: PublicAjax.publicParms.url,
 			data: formData,
 			dataType: 'JSON',
 			cache: false,
