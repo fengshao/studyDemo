@@ -17,11 +17,16 @@ if (process.argv.indexOf('p') >= 0
 	webpackMode = 'production';
 }
 
+if (process.argv.indexOf('-tomcat') >= 0 ||
+	process.argv.indexOf('tomcat') >= 0) {
+	webpackMode = "tomcat";
+}
+
 var devEntry = [
 	'./publicFile/index'
 ];
 
-if (webpackMode !== 'production') {
+if (webpackMode !== 'production' && webpackMode !== 'tomcat') {
 	devEntry.push(
 		'webpack-dev-server/client?http://localhost:3001',
 		'webpack/hot/only-dev-server'
@@ -46,11 +51,11 @@ var pluginLists = [
 	})
 ];
 //热替换插件
-if (webpackMode !== 'production') {
+if (webpackMode !== 'production' && webpackMode !== 'tomcat') {
 	pluginLists.push(new webpack.HotModuleReplacementPlugin());
 }
 //压缩混淆插件
-if (webpackMode === 'production') {
+if (webpackMode === 'production' || webpackMode === 'tomcat') {
 	pluginLists.push(new webpack.optimize.UglifyJsPlugin({
 		test: /(\.jsx|\.js)$/,
 		compress: {
@@ -65,7 +70,7 @@ if (webpackMode === 'production') {
 	}));
 }
 
-var webpackOutPublicPath = webpackMode == "production" ? '/shoppingCMS/dist/' : "/dist/";
+var webpackOutPublicPath = webpackMode == "production" ? '/shoppingCMS/dist/' :webpackMode == "tomcat"?"./dist/": "/dist/";
 module.exports = {
 	devtool: '#cheap-module-source-map',
 	devServer: {
@@ -143,7 +148,7 @@ module.exports = {
 				include: [
 					path.resolve(__dirname, "src")
 				]
-			},
+			}
 		]
 	}
 };

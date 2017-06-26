@@ -4,7 +4,9 @@
   "description": "weisai cms project",
   "scripts": {
     "start": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --port 3001",
-    "startbuild": "webpack -p --progress "
+    "startbuild": "webpack -p --progress ",
+    "starttomcatbuild": "webpack -tomcat --progress "
+
   },
   "repository": {
     "type": "git"
