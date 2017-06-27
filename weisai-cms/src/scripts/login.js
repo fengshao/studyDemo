@@ -17,7 +17,8 @@ let Demo = React.createClass({
 	loginFnc: function (loginData) {
 		var locationHref = window.location.href.split("#")[0];
 		var url = "//topics-cms.intra.wesai.com/api/login";
-
+		window.location.href = '/local_home.html';
+		return;
 		if (locationHref.indexOf("devel") != -1) {
 			url = "//topics-cms.devel.wesai.com/api/login";
 		} else if (locationHref.indexOf("test") != -1) {
@@ -79,7 +80,7 @@ let Demo = React.createClass({
 				>
 					<Input placeholder="请输入用户名"
 						   defaultValue="admin"
-						{...userNmaeProps}
+						   {...userNmaeProps}
 					/>
 				</FormItem>
 				<FormItem
@@ -89,7 +90,7 @@ let Demo = React.createClass({
 				>
 					<Input type="password" placeholder="请输入密码"
 						   defaultValue="admin"
-						{...passWordProps}
+						   {...passWordProps}
 					/>
 				</FormItem>
 				<Button type="primary" htmlType="submit">登录</Button>

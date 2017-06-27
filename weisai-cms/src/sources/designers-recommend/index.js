@@ -1,8 +1,8 @@
 /**
  * Created by fengshao on 2016/12/27.
  */
-import designers_recommend_bgimg from 'scripts/designers-recommend-bgimg';
-import designers_recommend_list from 'scripts/designers-recommend-list';
+import designers_recommend_bgimg from 'scripts/modules/designers-recommend-bgimg';
+import designers_recommend_list from 'scripts/modules/designers-recommend-list';
 import RightContent from '../../component/right-content';
 function getChildRoutes() {
 	var childRoutes = [

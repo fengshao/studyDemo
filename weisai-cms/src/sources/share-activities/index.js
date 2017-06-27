@@ -1,10 +1,10 @@
 /**
  * Created by fengshao on 2017/1/22.
  */
-import commodity_classification from 'scripts/commodity-classification';
-import commodity_management from 'scripts/commodity-management';
-import sharing_activities_management from 'scripts/sharing-activities-management';
-import sharing_activities_log from 'scripts/sharing-activities-log';
+import commodity_classification from 'scripts/modules/commodity-classification';
+import commodity_management from 'scripts/modules/commodity-management';
+import sharing_activities_management from 'scripts/modules/sharing-activities-management';
+import sharing_activities_log from 'scripts/modules/sharing-activities-log';
 import RightContent from '../../component/right-content';
 function getChildRoutes() {
 	var childRoutes = [

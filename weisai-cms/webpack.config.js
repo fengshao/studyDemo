@@ -1,6 +1,58 @@
 var path = require('path');
 var webpack = require('webpack');
 var CleanPlugin = require('clean-webpack-plugin'); //清理文件夹
+var readDirRecursive = require("./src/lib/utils/readDirRecursive");
+var fs = require("fs");
+
+var config = global.config = require('./src/conf/config');
+
+//定义全局的portal路径
+global.portal_root_path = path.resolve(__dirname, "./src");
+//定义全局的modules路径
+global.module_root_path = path.resolve(__dirname, "./src/scripts/modules");
+global.config = config;
+
+
+
+var modulesPath = path.join(__dirname, './src/scripts/modules');
+var files = readDirRecursive(modulesPath);
+files.forEach(function (fp) {
+	if (!/\.http\.js$/.test(fp)) {
+		return;
+	}
+	var routeConfig = require(fp);
+	if (!routeConfig.module || !routeConfig.routes || !routeConfig.routes.length) {
+		return;
+	}
+	// routeConfig.routes.forEach(function (route) {
+	// 	try {
+	// 		route.passport = route.passport === undefined ? routeConfig.passport : route.passport;
+	// 		route.passport = (route.passport === undefined || route.passport === true) ? {
+	// 			"needLogin": true
+	// 		} : route.passport;
+	// 		route.passport = (route.passport === false) ? {"needLogin": false} : route.passport;
+	// 		app[route.method](route.path, passportChecker(route.passport), privilegesChecker(route.passport, route.privileges), require(path.resolve(__dirname, "./modules", route.module || routeConfig.module))[route.handler]);
+	// 	} catch (error) {
+	// 		// 加载路由错误时，显示当前的错误信息，并抛出异常。
+	// 		console.error("加载路由错误: \n文件路径:%s \n错误信息:%s", JSON.stringify(route, null, 4), error.message);
+	// 		throw error;
+	// 	}
+	// });
+	//加载nock数据
+	if (config.provideNockData) {
+		var moduleDir = path.dirname(fp);
+		var nock = path.resolve(moduleDir, "../nock/index.js");
+		if (fs.existsSync(nock)) {
+			try {
+				require(nock).init();
+			} catch (error) {
+				// 加载nock错误时，显示当前的错误信息，并抛出异常。
+				console.error("加载nock错误: \n文件路径:%s \n错误信息:%s", nock, error.message);
+			}
+		}
+	}
+});
+
 //打包模式
 var webpackMode = 'dev';
 if (process.argv.indexOf('p') >= 0
@@ -70,7 +122,7 @@ if (webpackMode === 'production' || webpackMode === 'tomcat') {
 	}));
 }
 
-var webpackOutPublicPath = webpackMode == "production" ? '/shoppingCMS/dist/' :webpackMode == "tomcat"?"./dist/": "/dist/";
+var webpackOutPublicPath = webpackMode == "production" ? '/shoppingCMS/dist/' : webpackMode == "tomcat" ? "./dist/" : "/dist/";
 module.exports = {
 	devtool: '#cheap-module-source-map',
 	devServer: {

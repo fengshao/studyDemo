@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "weisai cms project",
   "scripts": {
-    "start": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --port 3001",
+    "start": "webpack-dev-server --devtool eval-source-map --progress --nock --colors --hot --port 3001",
     "startbuild": "webpack -p --progress ",
     "starttomcatbuild": "webpack -tomcat --progress "
-
   },
   "repository": {
     "type": "git"
@@ -32,7 +31,8 @@
     "url-loader": "0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
-    "clean-webpack-plugin": "^0.1.9"
+    "clean-webpack-plugin": "^0.1.9",
+    "nock": "7.2.2"
   },
   "dependencies": {
     "alt": "0.17.9",
@@ -43,6 +43,9 @@
     "underscore": "1.8.3",
     "antd": "1.11.1",
     "react-router": "2.8.1",
-    "react-copy-button-wrapper": "^0.0.3"
+    "react-copy-button-wrapper": "^0.0.3",
+    "node-uuid": "1.4.7",
+    "log4js": "0.6.29",
+    "distributed-trace-for-nodejs": "1.0.3"
   }
 }

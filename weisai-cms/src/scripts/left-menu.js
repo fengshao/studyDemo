@@ -126,6 +126,10 @@ var App = React.createClass({
 									);
 								}) : ""
 							}
+							<li><Link to="/brand_setting"
+									  query={{"type_id":"1","type_name":"ssss"}}
+									  activeClassName="active-route">专题模块</Link></li>
+
 							<li><Link to="/special_type" activeClassName="active-route">专题模块</Link></li>
 							{user_role == 1 ?
 								<li><Link to="/share_edit" activeClassName="active-route">分享设置</Link></li>
