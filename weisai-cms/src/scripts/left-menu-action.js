@@ -14,8 +14,8 @@ function APPAction() {
 
 	this.getUserData = function () {
 		var _this = this;
-		PublicAjax.getUserData().then(function (list) {
-			_this.dispatch(list.data);
+		PublicAjax.getUserData().then(function (data) {
+			_this.dispatch(data);
 		}, function (errorMsg) {
 			_this.dispatch(errorMsg);
 		});

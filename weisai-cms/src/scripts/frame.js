@@ -8,7 +8,7 @@ function init() {
 
 	var childRoutes = [];
 	var objData = PublicAjax.getRouteData();
-	var data = objData ? objData.data : "";
+	var data = objData ? objData : "";
 
 	_.each(data, function (module) {
 		switch (module.route_path) {

@@ -26,35 +26,35 @@ let Demo = React.createClass({
 			//url = "//topics-cms.mjd.wesai.com/api/login";
 			url = "//periphery.devel.wesai.com/api/login";
 		}
-		const hide = message.loading('正在登录，请稍后...', 0);
-		$.ajax({
-			"type": "post",
-
-			xhrFields: {
-				withCredentials: true
-			},
-			crossDomain: true,
-			"data": loginData,
-			"url": url,
-			"success": function (data) {
-				hide();
-				if (data.code == 0) {
-					window.sessionStorage.setItem("username", loginData.name);
-					window.sessionStorage.setItem("user_role", data.data.user_role);
-					const hide = message.loading('登录成功，正在跳转...', 0);
-					setTimeout(function () {
-						hide();
-						window.location.href = '/local_home.html';
-					}, 2500);
-				} else {
-					message.error(data.detail ? data.detail : "登录失败，请重试");
-				}
-			},
-			"error": function (data) {
-				hide();
-				message.error(data.detail ? data.detail : "登录失败，请重试");
-			}
-		});
+		// const hide = message.loading('正在登录，请稍后...', 0);
+		// $.ajax({
+		// 	"type": "post",
+		//
+		// 	xhrFields: {
+		// 		withCredentials: true
+		// 	},
+		// 	crossDomain: true,
+		// 	"data": loginData,
+		// 	"url": url,
+		// 	"success": function (data) {
+		// hide();
+		// if (data.code == 0) {
+		window.sessionStorage.setItem("username", loginData.name);
+		window.sessionStorage.setItem("user_role", 1);
+		const hide = message.loading('登录成功，正在跳转...', 0);
+		setTimeout(function () {
+			hide();
+			window.location.href = '/local_home.html';
+		}, 2500);
+		// } else {
+		// 	message.error(data.detail ? data.detail : "登录失败，请重试");
+		// }
+		// },
+		// "error": function (data) {
+		// 	hide();
+		// 	message.error(data.detail ? data.detail : "登录失败，请重试");
+		// }
+		// });
 	},
 
 	render() {

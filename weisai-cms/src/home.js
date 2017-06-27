@@ -12,18 +12,18 @@ var Frame = require("scripts/frame");
 var NeedLogin = require("component/needLogin");
 var PublicAjax = require("./ajax/public-ajax");
 
-PublicAjax.userIsLogin().then(function (data) {
-	if (data && (data.user_role == 1 || data.user_role == 3)) {
-		window.sessionStorage.setItem("user_role", data.user_role);
-		window.sessionStorage.setItem("username", data.user_name);
-		PublicAjax.getUserDataByAjax(data.user_role).done(function () {
+// PublicAjax.userIsLogin().then(function (data) {
+// 	if (data && (data.user_role == 1 || data.user_role == 3)) {
+		window.sessionStorage.setItem("user_role", 1);
+		window.sessionStorage.setItem("username", "sss");
+		PublicAjax.getUserDataByAjax().done(function () {
 			Frame.init();
 		}).fail(function () {
 		});
 
-	} else {
-		ReactDOM.render(<NeedLogin />, $('#main')[0]);
-	}
-}, function (errorMsg) {
-	ReactDOM.render(<NeedLogin />, $('#main')[0]);
-});
+	// } else {
+	// 	ReactDOM.render(<NeedLogin />, $('#main')[0]);
+	// }
+// }, function (errorMsg) {
+// 	ReactDOM.render(<NeedLogin />, $('#main')[0]);
+// });
