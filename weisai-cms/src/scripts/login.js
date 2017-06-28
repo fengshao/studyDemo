@@ -44,7 +44,7 @@ let Demo = React.createClass({
 		const hide = message.loading('登录成功，正在跳转...', 0);
 		setTimeout(function () {
 			hide();
-			window.location.href = '/local_home.html';
+			window.location.href = './local_home.html';
 		}, 2500);
 		// } else {
 		// 	message.error(data.detail ? data.detail : "登录失败，请重试");
