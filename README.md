@@ -1,6 +1,6 @@
 # studyDemo
 
-### weisai-cms demo 地址：http://zuihongchen.online/hongchen/
+### cms-demo demo 地址：http://zuihongchen.online/hongchen/
 本地访问方式：
 #### 一
 1. npm install
