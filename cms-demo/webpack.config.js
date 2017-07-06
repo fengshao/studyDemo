@@ -70,7 +70,7 @@ if (webpackMode === 'production' || webpackMode === 'tomcat') {
 	}));
 }
 
-var webpackOutPublicPath = webpackMode == "production" ? '/shoppingCMS/dist/' :webpackMode == "tomcat"?"./dist/": "/dist/";
+var webpackOutPublicPath = webpackMode == "production" ? '/dist/' : webpackMode == "tomcat" ? "./dist/" : "/dist/";
 module.exports = {
 	devtool: '#cheap-module-source-map',
 	devServer: {
