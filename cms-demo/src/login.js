@@ -12,13 +12,13 @@ var Login = require("scripts/login");
 
 var PublicAjax = require("./ajax/public-ajax");
 
-PublicAjax.userIsLogin().then(function (data) {
-	if (data && (data.user_role == 1 || data.user_role == 3)) {
-		window.sessionStorage.setItem("user_role", data.user_role);
-		window.location.href = '/local_home.html';
-	} else {
-		ReactDOM.render(<Login />, $('#main')[0]);
-	}
-}, function (errorMsg) {
+// PublicAjax.userIsLogin().then(function (data) {
+// 	if (data && (data.user_role == 1 || data.user_role == 3)) {
+// window.sessionStorage.setItem("user_role", 1);
+// window.location.href = '/local_home.html';
+// } else {
 	ReactDOM.render(<Login />, $('#main')[0]);
-});
+// }
+// }, function (errorMsg) {
+// 	ReactDOM.render(<Login />, $('#main')[0]);
+// });
