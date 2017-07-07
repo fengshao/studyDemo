@@ -1,6 +1,6 @@
 # studyDemo
 
-### cms-demo demo 地址：http://zuihongchen.online/hongchen/
+### cms-demo demo 地址：http://www.zuihongchen.online  or 101.200.40.127:8086
 本地访问方式：
 #### 一
 1. npm install
