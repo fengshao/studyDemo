@@ -3,7 +3,7 @@ cms-demo
 
 
 ### Development
-### demo 地址：http://zuihongchen.online/hongchen/
+### demo 地址：http://www.zuihongchen.online  or http://101.200.40.127:8086  账号密码 任意
 本地访问方式：
 #### 一
 ```
