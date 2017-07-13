@@ -1,6 +1,6 @@
 # studyDemo
 
-### cms-demo demo 地址：http://www.zuihongchen.cc:8086  or http://101.200.40.127:8086  账号密码 任意
+### cms-demo demo 地址：http://www.zuihongchen.cc:8086/cms/  or http://101.200.40.127:8086/cms/  账号密码 任意
 
 本地访问方式：
 #### 一
