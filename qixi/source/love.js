@@ -57,7 +57,6 @@
         // x = 16 sin^3 t
         // y = 13 cos t - 5 cos 2t - 2 cos 3t - cos 4t
         // http://www.wolframalpha.com/input/?i=x+%3D+16+sin%5E3+t%2C+y+%3D+(13+cos+t+-+5+cos+2t+-+2+cos+3t+-+cos+4t)
-        console.log("Heart");
         var points = [], x, y, t;
         for (var i = 10; i < 30; i += 0.2) {
             t = i / Math.PI;
@@ -106,7 +105,6 @@
             return this.cirle.point.y < (this.tree.height + 20);
         },
         move: function (x, y) {
-            debugger
             this.clear();
             this.drawCirle();
             this.addPosition(x, y);
@@ -124,7 +122,6 @@
             this.setHeartScale(scale);
         },
         drawHeart: function () {
-            console.log("drawHeart");
             var ctx = this.tree.ctx, heart = this.heart;
             var point = heart.point, color = heart.color,
                 scale = heart.scale;
@@ -142,7 +139,6 @@
             ctx.restore();
         },
         drawCirle: function () {
-            console.log("drawCirle");
             var ctx = this.tree.ctx, cirle = this.cirle;
             var point = cirle.point, color = cirle.color,
                 scale = cirle.scale, radius = cirle.radius;
@@ -158,7 +154,6 @@
             ctx.restore();
         },
         drawText: function () {
-            console.log("drawText");
             var ctx = this.tree.ctx, heart = this.heart;
             var point = heart.point, color = heart.color,
                 scale = heart.scale;
@@ -179,14 +174,12 @@
             ctx.restore();
         },
         clear: function () {
-            console.log("clear");
             var ctx = this.tree.ctx, cirle = this.cirle;
             var point = cirle.point, scale = cirle.scale, radius = 60;
             var w = h = (radius * scale);
             ctx.clearRect(point.x - w, point.y - h, 4 * w, 4 * h);
         },
         hover: function (x, y) {
-            console.log("hover");
             var ctx = this.tree.ctx;
             var pixel = ctx.getImageData(x, y, 1, 1);
             return pixel.data[3] == 255
@@ -203,8 +196,6 @@
     };
     Footer.prototype = {
         draw: function () {
-            debugger
-            console.log("draw1");
             var ctx = this.tree.ctx, point = this.point;
             var len = this.length / 2;
 
@@ -238,7 +229,7 @@
 
         this.initSeed();
         this.initFooter();
-        // this.initBranch();
+        this.initBranch();
         // this.initBloom();
     };
     Tree.prototype = {
@@ -305,6 +296,7 @@
         },
 
         addBranchs: function (branchs) {
+            debugger
             var s = this, b, p1, p2, p3, r, l, c;
             for (var i = 0; i < branchs.length; i++) {
                 b = branchs[i];
@@ -392,7 +384,6 @@
             this.record[k || "move"].speed = speed;
         },
         move: function (k, x, y) {
-            console.log("move");
             var s = this, ctx = s.ctx;
             var rec = s.record[k || "move"];
             var point = rec.point,
@@ -419,7 +410,6 @@
         },
 
         jump: function () {
-            console.log("jump");
             var s = this, blooms = s.blooms;
             if (blooms.length) {
                 for (var i = 0; i < blooms.length; i++) {
@@ -453,6 +443,7 @@
 
     Branch.prototype = {
         grow: function () {
+            console.log("grow");
             var s = this, p;
             if (s.len <= s.length) {
                 p = bezier([s.point1, s.point2, s.point3], s.len * s.t);
@@ -465,6 +456,7 @@
             }
         },
         draw: function (p) {
+            console.log("draw");
             var s = this;
             var ctx = s.tree.ctx;
             ctx.save();
