@@ -1,0 +1,176 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	background: #ffe;
+	font-size: 14px;
+	font-family: '微软雅黑', '宋体', sans-serif;
+	color: #231F20;
+	overflow: auto;
+	width: 100%;
+	height: 100%;
+}
+
+a {
+	color: #000;
+	font-size: 14px;
+}
+
+#main {
+	width: 100%;
+	height: 100%;
+}
+
+#wrap {
+	position: relative;
+	margin: 0 auto;
+	/*width: 1100px;*/
+	/*height: 680px;*/
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+	/*margin-top: 10px;*/
+}
+
+#text {
+	width: 40%;
+	/*height: 425px;*/
+	left: 25px;
+	top: 10px;
+	position: absolute;
+}
+
+#code {
+	display: none;
+	font-size: 16px;
+}
+
+#clock-box {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	font-size: 16px;
+	display: none;
+}
+
+#clock-box a {
+	font-size: 16px;
+	text-decoration: none;
+}
+
+#clock {
+	margin-left: 48px;
+}
+
+#clock .digit {
+	font-size: 18px;
+}
+
+#canvas {
+	margin: 0 auto;
+	/*width: 1100px;*/
+	/*height: 680px;*/
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 10;
+}
+
+#error {
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 100px;
+	display: none;
+}
+
+.hand {
+	cursor: pointer;
+}
+
+.say {
+	margin-left: 5px;
+	font-size: 12px;
+}
+
+.space {
+	margin-right: 40px;
+}
+
+.mask {
+	width: 100%;
+	height: 100%;
+	background: #32373b;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	display: none;
+}
+
+.mask-box {
+	width: 100%;
+	height: 252px;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin-top: -119px;
+}
+
+.mask-pic {
+	width: 194px;
+	height: 194px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.mask span {
+	font-size: 12px;
+	display: block;
+	color: #ffd40a;
+	text-align: center;
+	width: 100%;
+	height: 25px;
+	padding-top: 10px;
+}
+
+.mask i {
+	width: 128px;
+	height: 194px;
+	background: url(./hengping.png) 0 0 no-repeat;
+	background-size: 128px 194px;
+	display: block;
+	margin: 0 auto;
+	-webkit-animation: maskAni 1.5s ease infinite alternate;
+	animation: maskAni 1.5s ease infinite alternate;
+}
+
+@-webkit-keyframes maskAni {
+	0% {
+		-webkit-transform: rotate(-90deg);
+	}
+	30% {
+		-webkit-transform: rotate(-90deg);
+	}
+	70% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+.music-btn {
+	float: right;
+	right: 20px;
+	top: 20px;
+	cursor: pointer;
+	position: absolute;
+	z-index: 100;
+}
+
+.music-btn.close-music-music .icon-music-suspend {
+	display: block !important;
+}
+
+.music-btn.close-music-music .icon-music-open {
+	display: none !important;
+}
