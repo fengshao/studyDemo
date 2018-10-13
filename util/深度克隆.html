@@ -28,9 +28,56 @@
 		a {
 			text-decoration: none
 		}
+
+		/*.left {*/
+		/*position: relative;*/
+		/*background-color: #0f0f0f;*/
+		/*height: 300px;*/
+		/*float: left;*/
+		/*width: 100px;*/
+		/*margin-right: -100px;*/
+		/*}*/
+
+		/*.right {*/
+		/*background-color: #00CCFF;*/
+		/*height: 300px;*/
+		/*width: 100%;*/
+		/*float: right;*/
+		/*}*/
+
+		.left {
+			position: relative;
+			float: left;
+			width: 190px;
+			margin-right: -190px;
+			height: 100px;
+			background-color: #00CCFF;
+		}
+
+		.right {
+			float: right;
+			width: 100%;
+			height: 100px;
+			background-color: #0f0f0f;
+		}
+
+		.right div {
+			margin-left: 190px;
+			height: 100px;
+			background-color: #407f29;
+
+		}
+
 	</style>
 </head>
 <body>
+<div class="left">qqqqqqqqq</div>
+<div class="right">
+	<div class="dddd">
+
+	</div>
+</div>
+
 <script>
 
 	const isType = (obj, type) => {

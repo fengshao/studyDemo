@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>Title</title>
+	<style>
+	</style>
+	<script>
+		window.onload = function () {
+			function Element(ele) {
+				this.ele = document.getElementById(ele);
+			}
+
+			Element.prototype.html = function (val) {
+				var ele = this.ele;
+				if (val) {
+					ele.innerHTML = val;
+					return this;
+				} else {
+					return ele.innerHTML;
+				}
+			};
+
+			Element.prototype.on = function (type, fn) {
+				var ele = this.ele;
+				ele.addEventListener(type, fn);
+				return this;
+			}
+
+			var element = new Element('hello');
+
+			element.html('sshello').on('click', function () {
+				alert('handleClick');
+			});
+
+			var a = {
+				name: 'A',
+				fun: function () {
+					console.log(this.name);
+				}
+			};
+
+			a.fun();  //this === a
+			a.fun.call({name: 'B'});  //this === { name: 'B' }
+			var fun1 = a.fun;
+			fun1(); //this === window
+
+
+			function A() {
+			}
+
+			function B(a) {
+				this.a = a;
+			}
+
+			function C(a) {
+				if (a) {
+					this.a = a;
+				}
+			}
+
+			A.prototype.a = 1;
+			B.prototype.a = 1;
+			C.prototype.a = 1;
+
+			console.log(new A().a);
+			console.log(new B().a);
+			console.log(new C(2).a);
+
+		}
+	</script>
+</head>
+<body>
+<div id="hello"></div>
+
+</body>
+</html>
